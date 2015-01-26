@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DAL
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private DbContext _context; 
 

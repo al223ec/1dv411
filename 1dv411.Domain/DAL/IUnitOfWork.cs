@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DAL
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<DiagramData> DiagramDataRepository { get; }
         void Save(); 

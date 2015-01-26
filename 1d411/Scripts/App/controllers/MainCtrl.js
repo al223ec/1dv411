@@ -1,5 +1,6 @@
 angular.module('MainCtrl', []).controller('MainController', ['$scope', 'AppService', function ($scope, AppService) {
-    $scope.data = {}; 
+
+    $scope.data = {};
 
     $scope.getDiagramData = function (query) {
         var request = AppService.getDiagramData(query);

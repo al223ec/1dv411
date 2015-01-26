@@ -8,11 +8,17 @@ namespace _1dv411.Domain.DbEntities
 {
     public enum LayoutPartialType
     {
-
+        Diagram,
+        Text,
+        Image
     }
     class LayoutPartial : BaseDto
     {
         public LayoutPartialType Type { get; set; }
         public virtual Layout Layout { get; set; }
+        public string Value { get; set; }
+
+        //kan vara null
+        public virtual DiagramData DiagramData { get; set; }
     }
 }

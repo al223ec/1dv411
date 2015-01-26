@@ -9,6 +9,7 @@ namespace _1d411.Controllers
 {
     public class ValuesController : ApiController
     {
+        //Exmpel på en API Controller
         // GET api/values
         public IEnumerable<string> Get()
         {

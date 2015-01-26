@@ -11,6 +11,14 @@ namespace _1dv411.Domain
     {
         private IUnitOfWork _unitOfWork; 
 
+        public DiagramService()
+            : this(new UnitOfWork())
+        { }
+        public DiagramService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork; 
+        }
+
         public IEnumerable<DiagramData> GetDiagramData(string query)
         {
             return new List<DiagramData>{
@@ -29,7 +37,7 @@ namespace _1dv411.Domain
             {
                 if (disposing)
                 {
-                   // _unitOfWork.Dispose();
+                    _unitOfWork.Dispose();
                 }
             }
             this.disposed = true;

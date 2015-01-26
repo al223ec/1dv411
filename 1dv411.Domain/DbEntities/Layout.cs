@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public enum LayoutType {
-
+    public enum LayoutType 
+    {
     }
     class Layout : BaseDto
     {

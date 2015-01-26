@@ -6,6 +6,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
                     templateUrl: 'Views/App/home.html',
                     controller: 'MainController'
                 })
+                .when('/exempel', {
+                    templateUrl: 'Views/App/exempel.html',
+                    controller: 'MainController'
+                })
                 //TODO: implementera felhantering
             
                 .when('/404', { 
