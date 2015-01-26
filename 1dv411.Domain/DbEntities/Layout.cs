@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    private enum LayoutType {
+    public enum LayoutType {
 
     }
-    class Layout
+    class Layout : BaseDto
     {
         public LayoutType Type { get; set; }
         public virtual ICollection<LayoutPartial> LayoutPartials { get; set; }

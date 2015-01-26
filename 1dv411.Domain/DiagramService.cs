@@ -15,7 +15,7 @@ namespace _1dv411.Domain
         {
             return new List<DiagramData>{
                 new DiagramData{
-                    Data = "test"
+                    Data = query
                 },
             };
         }

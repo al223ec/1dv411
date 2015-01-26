@@ -11,6 +11,20 @@ namespace _1d411
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-animate.js",
+                        "~/Scripts/angular-mock.js",
+                        "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-resource.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
+                        "~/Scripts/App/services/AppService.js",
+                        "~/Scripts/App/controllers/MainCtrl.js",
+                        "~/Scripts/App/appRoutes.js",
+                        "~/Scripts/App/app.js"
+                        ));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
