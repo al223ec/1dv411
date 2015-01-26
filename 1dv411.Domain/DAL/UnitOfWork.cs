@@ -1,35 +1,36 @@
-﻿using _1dv411.Domain.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1dv411.Domain
+namespace _1dv411.Domain.DAL
 {
-    public class DiagramService : IDiagramService
+    class UnitOfWork : IUnitOfWork
     {
-        private IUnitOfWork _unitOfWork; 
+        private DbContext _context; 
 
-        public IEnumerable<DiagramData> GetDiagramData(string query)
+        private IRepository<DiagramData> _diagramDataRepository; 
+        public IRepository<DiagramData> DiagramDataRepository
         {
-            return new List<DiagramData>{
-                new DiagramData{
-                    Data = "test"
-                },
-            };
+            get { return _diagramDataRepository ?? (_diagramDataRepository = new Repository<DiagramData>(_context)); }
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
         }
 
         #region IDisposable
         private bool disposed = false;
-
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
                 if (disposing)
                 {
-                   // _unitOfWork.Dispose();
+                    //_context.Dispose();
                 }
             }
             this.disposed = true;
