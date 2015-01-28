@@ -16,7 +16,10 @@ namespace _1d411
                         "~/Scripts/angular-animate.js",
                         "~/Scripts/angular-mock.js",
                         "~/Scripts/angular-route.js",
-                        "~/Scripts/angular-resource.js"
+                        "~/Scripts/angular-resource.js",
+                        "~/Scripts/d3.js",
+                        "~/Scripts/c3.js",
+                        "~/Scripts/angular-chart.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
@@ -36,7 +39,8 @@ namespace _1d411
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/c3.css",
+                      "~/Content/angular-chart.css"));
 
             //För att minifiera alla filer
             //BundleTable.EnableOptimizations = true;

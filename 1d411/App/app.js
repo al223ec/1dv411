@@ -4,6 +4,7 @@ var app = angular.module('AppName', [
 	'appRoutes',
     'MainCtrl',
     'AppService',
+    'angularChart'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 
