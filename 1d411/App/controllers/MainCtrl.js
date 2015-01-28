@@ -1,5 +1,8 @@
 angular.module('MainCtrl', []).controller('MainController', ['$scope', 'AppService', function ($scope, AppService) {
 
+    this.dataset = {};
+    this.schema = {};
+    this.options = {};
     //$scope.data = {};
 
     //$scope.getDiagramData = function (query) {
@@ -15,7 +18,7 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope', 'AppServi
     //    });
     //}
 
-    $scope.dataset = [
+    this.dataset = [
         {
             'day': '2013-01-02_00:00:00',
             'sales': 13461.295202,
@@ -23,7 +26,7 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope', 'AppServi
         }
     ];
 
-    $scope.schema = {
+    this.schema = {
         day: {
             type: 'datetime',
             format: '%Y-%m-%d_%H:%M:%S',
@@ -31,7 +34,7 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope', 'AppServi
         }
     };
 
-    $scope.options = {
+    this.options = {
         rows: [{
             key: 'income',
             type: 'bar'

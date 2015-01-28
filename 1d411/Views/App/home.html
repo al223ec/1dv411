@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" ng-controller="MainController as main">
     <h4>Hello home!</h4>
     <form name="myForm" ng-submit="getDiagramData(query)">
         Query: <input type="text" name="query" ng-model="query" required>
@@ -10,7 +10,6 @@
     <p>
         <a href="/exempel">Route</a>
     </p>
-    <angularChart dataset="dataset" schema="schema" options="options">
-    </angularChart>
+    <angularchart dataset="main.dataset" schema="main.schema" options="main.options"></angularchart>
 </div>
 
