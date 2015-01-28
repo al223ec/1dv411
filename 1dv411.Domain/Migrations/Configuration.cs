@@ -20,34 +20,58 @@ namespace _1dv411.Domain.Migrations
         {
             List<Order> orders = new List<Order>{
                 new Order{
-                    Id = 1,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-26")
+                    Date = DateTime.Parse("2014-01-26"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
                 new Order{
-                    Id = 2,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-27")
+                    Date = DateTime.Parse("2014-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
                 new Order{
-                    Id = 3,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-27")
+                    Date = DateTime.Parse("2014-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
                 new Order{
-                    Id = 4,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28")
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
                 new Order{
-                    Id = 5,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28")
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
                 new Order{
-                    Id = 6,
                     OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28")
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2015-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2015-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
                 },
             };
 
