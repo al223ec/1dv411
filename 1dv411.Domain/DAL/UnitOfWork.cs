@@ -9,15 +9,14 @@ namespace _1dv411.Domain.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private DbContext _context; 
-
+        private DbContext _context;
+        /*
         private IRepository<DiagramData> _diagramDataRepository; 
         public IRepository<DiagramData> DiagramDataRepository
         {
             get { return _diagramDataRepository ?? (_diagramDataRepository = new Repository<DiagramData>(_context)); }
         }
-
-
+        */
         public void Save()
         {
             throw new NotImplementedException();
@@ -31,7 +30,7 @@ namespace _1dv411.Domain.DAL
             {
                 if (disposing)
                 {
-                    //_context.Dispose();
+                   // _context.Dispose();
                 }
             }
             this.disposed = true;

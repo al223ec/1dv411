@@ -10,5 +10,9 @@ namespace _1dv411.Domain.DbEntities
     {
         //[Column(Order = 0), Key] Oklart
         public virtual int Id { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime ModifiedAt { get; set; }
+
     }
 }

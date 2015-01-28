@@ -23,7 +23,8 @@ namespace _1dv411.Domain
         {
             return new List<DiagramData>{
                 new DiagramData{
-                    Data = query
+                    Orders = 100,
+                    OrdersLastYear = 125
                 },
             };
         }

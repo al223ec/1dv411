@@ -8,7 +8,7 @@ namespace _1d411.Controllers
 {
     public class AppController : Controller
     {
-        //Denna kontroller serverar endast SPA 
+        //Denna kontroller serverar endast en SPA 
         // GET: App
         public ActionResult Index()
         {

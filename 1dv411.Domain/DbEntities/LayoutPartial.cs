@@ -18,7 +18,7 @@ namespace _1dv411.Domain.DbEntities
         public virtual Layout Layout { get; set; }
         public string Value { get; set; }
 
-        //kan vara null
-        public virtual DiagramData DiagramData { get; set; }
+        //kan vara null tveksam om denna ska vara med
+       // public virtual DiagramData DiagramData { get; set; }
     }
 }

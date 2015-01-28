@@ -58,6 +58,7 @@
     <Compile Include="DbEntities\BaseDto.cs" />
     <Compile Include="DbEntities\Layout.cs" />
     <Compile Include="DbEntities\LayoutPartial.cs" />
+    <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />

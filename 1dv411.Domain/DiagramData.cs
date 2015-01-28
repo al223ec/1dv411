@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public class DiagramData : BaseDto
+    public class DiagramData 
     {
-        public string Data { get; set; }
+        public DateTime Date { get; set; }
+        public int Orders { get; set; }
+        public int OrdersLastYear { get; set; }
     }
 }

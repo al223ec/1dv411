@@ -20,10 +20,10 @@ namespace _1d411
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
-                        "~/Scripts/App/services/AppService.js",
-                        "~/Scripts/App/controllers/MainCtrl.js",
-                        "~/Scripts/App/appRoutes.js",
-                        "~/Scripts/App/app.js"
+                        "~/App/services/AppService.js",
+                        "~/App/controllers/MainCtrl.js",
+                        "~/App/appRoutes.js",
+                        "~/App/app.js"
                         ));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -37,6 +37,9 @@ namespace _1d411
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //För att minifiera alla filer
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

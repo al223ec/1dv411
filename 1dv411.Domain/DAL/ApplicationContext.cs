@@ -13,6 +13,8 @@ namespace _1dv411.Domain.DAL
     {
         public DbSet<DiagramData> DiagramData { get; set; }
         public DbSet<Screen> Screens { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
         //TODO:Hur ser databasen ut
 
         public ApplicationContext()
