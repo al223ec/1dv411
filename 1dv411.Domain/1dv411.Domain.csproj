@@ -52,23 +52,39 @@
   <ItemGroup>
     <Compile Include="DAL\ApplicationContext.cs" />
     <Compile Include="DAL\IRepository.cs" />
-    <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />
     <Compile Include="DbEntities\Layout.cs" />
     <Compile Include="DbEntities\LayoutPartial.cs" />
+    <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IDiagramService.cs" />
+    <Compile Include="Migrations\201501281516420_InitialCreate.cs" />
+    <Compile Include="Migrations\201501281516420_InitialCreate.Designer.cs">
+      <DependentUpon>201501281516420_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501281519261_Date.cs" />
+    <Compile Include="Migrations\201501281519261_Date.Designer.cs">
+      <DependentUpon>201501281519261_Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501281516420_InitialCreate.resx">
+      <DependentUpon>201501281516420_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501281519261_Date.resx">
+      <DependentUpon>201501281519261_Date.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

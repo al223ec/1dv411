@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DAL
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
-        public DbSet<DiagramData> DiagramData { get; set; }
         public DbSet<Screen> Screens { get; set; }
-        //TODO:Hur ser databasen ut
+
+        public DbSet<Order> Orders { get; set; }
+        //TODO:Hur ser databasen ut??
 
         public ApplicationContext()
-            :base("ApplicationConnectionString")
+            : base("LocalApplicationDbContext")
         { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

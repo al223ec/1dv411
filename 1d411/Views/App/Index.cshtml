@@ -1,12 +1,28 @@
-﻿
-@{
-    ViewBag.Title = "App index";
+﻿@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 
-<div class="row" ng-view>
-</div>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-@section Scripts {
+
+    <title>Index</title>
+</head>
+<body ng-app="AppName" ng-controller="MainController">
+    <div class="container body-content">
+        <div class="row" ng-view>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/app")
-}
+</body>
+</html>

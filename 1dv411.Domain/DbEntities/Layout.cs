@@ -9,7 +9,7 @@ namespace _1dv411.Domain.DbEntities
     public enum LayoutType 
     {
     }
-    class Layout : BaseDto
+    public class Layout : BaseDto
     {
         public LayoutType Type { get; set; }
         public virtual ICollection<LayoutPartial> LayoutPartials { get; set; }

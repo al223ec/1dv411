@@ -21,9 +21,13 @@ namespace _1dv411.Domain
 
         public IEnumerable<DiagramData> GetDiagramData(string query)
         {
+            var date = DateTime.Parse("2014-01-28"); 
+
             return new List<DiagramData>{
                 new DiagramData{
-                    Data = query
+                    Orders = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date)).Count(),
+                    OrdersLastYear = 125,
+                    Date = date,
                 },
             };
         }

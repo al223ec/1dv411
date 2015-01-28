@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1dv411.Domain.DbEntities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,14 +8,28 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DAL
 {
+    public interface IUnitOfWork : IDisposable
+    {
+        //IRepository<DiagramData> DiagramDataRepository { get; }
+        IRepository<Order> OrderRepository { get; }
+        void Save();
+    }
     public class UnitOfWork : IUnitOfWork
     {
-        private DbContext _context; 
+        private DbContext _context;
 
-        private IRepository<DiagramData> _diagramDataRepository; 
-        public IRepository<DiagramData> DiagramDataRepository
+        private IRepository<Order> _orderRepository; 
+        public IRepository<Order> OrderRepository
         {
-            get { return _diagramDataRepository ?? (_diagramDataRepository = new Repository<DiagramData>(_context)); }
+            get { return _orderRepository ?? (_orderRepository = new Repository<Order>(_context)); }
+        }
+
+        public UnitOfWork()
+            : this(new ApplicationContext())
+        { }
+        public UnitOfWork(DbContext dbContext)
+        {
+            _context = dbContext; 
         }
 
 
@@ -31,7 +46,7 @@ namespace _1dv411.Domain.DAL
             {
                 if (disposing)
                 {
-                    //_context.Dispose();
+                   _context.Dispose();
                 }
             }
             this.disposed = true;
