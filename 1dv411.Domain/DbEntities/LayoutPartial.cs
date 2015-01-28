@@ -12,7 +12,7 @@ namespace _1dv411.Domain.DbEntities
         Text,
         Image
     }
-    class LayoutPartial : BaseDto
+    public class LayoutPartial : BaseDto
     {
         public LayoutPartialType Type { get; set; }
         public virtual Layout Layout { get; set; }
