@@ -12,8 +12,7 @@ namespace _1dv411.Domain.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            //AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true; 
+           // AutomaticMigrationDataLossAllowed = true; 
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
