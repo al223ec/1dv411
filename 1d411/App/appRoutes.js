@@ -1,5 +1,5 @@
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
+angular.module('appRoutes', ['ngRoute'])
+    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
         $routeProvider
                 .when('/', {
@@ -8,7 +8,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
                 })
                 .when('/exempel', {
                     templateUrl: 'Views/App/exempel.html',
-                    controller: 'MainController'
+                    controller: 'mainController'
                 })
                 //TODO: implementera felhantering
             

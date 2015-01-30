@@ -2,7 +2,8 @@ var app = angular.module('AppName', [
 	'ngRoute', 
 	'ngAnimate',
 	'appRoutes',
-    'MainCtrl',
+    'MainTestModule',
+    'chartDirectives',
     'AppService',
     'angularChart'
 ]);

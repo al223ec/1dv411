@@ -25,6 +25,8 @@ namespace _1d411
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
                         "~/App/services/AppService.js",
                         "~/App/controllers/MainCtrl.js",
+                        "~/App/factories/ChartGenerator.js",
+                        "~/App/directives/charts.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
                         ));
