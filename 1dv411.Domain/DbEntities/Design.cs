@@ -9,5 +9,6 @@ namespace _1dv411.Domain.DbEntities
     public class Design : BaseDto
     {
         public virtual ICollection<Layout> Layout { get; set; }
+        public int NumberOfFields { get; set; }
     }
 }

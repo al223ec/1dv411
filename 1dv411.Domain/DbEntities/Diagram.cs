@@ -10,7 +10,8 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Diagram : BaseDto
     {
-        [ForeignKey("Id")]
+        public int LayoutId { get; set;  }
+        [ForeignKey("LayoutId")]
         public virtual Layout Layout { get; set; }
     }
 }

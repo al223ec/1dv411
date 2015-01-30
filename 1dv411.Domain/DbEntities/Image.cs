@@ -9,9 +9,9 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Image : BaseDto
     {
-        public string Url { get; set; }
-        
-        [ForeignKey("Id")]
+        public int LayoutId { get; set; }
+        [ForeignKey("LayoutId")]
         public virtual Layout Layout { get; set; }
+        public string Url { get; set; }
     }
 }

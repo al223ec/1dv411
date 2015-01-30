@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public enum TextType{
-
+    public enum TextType
+    {
+        String,
+        Header
     }
     public class Text : BaseDto
     {
-        public TextType Type { get; set; }
-        
-        [ForeignKey("Id")]
+        public int LayoutId { get; set; }
+        [ForeignKey("LayoutId")]
         public virtual Layout Layout { get; set; }
+        public TextType Type { get; set; }
+        public string Value { get; set; }
+
     }
 }
