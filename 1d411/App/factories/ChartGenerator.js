@@ -40,7 +40,7 @@ angular.module('ChartGenerator', [])
                         axis: {
                             y: {
                                 label: {
-                                    text: 'Orders ',
+                                    text: 'Ordrar ',
                                     position: 'outer-middle'
                                 }
                             },
