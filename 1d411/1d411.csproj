@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\directives\charts.js" />
+    <Content Include="App\directives\googleChart.js" />
     <Content Include="App\factories\ChartGenerator.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\angular-chart.css" />
@@ -240,6 +241,7 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\googleChartJs.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -989,6 +991,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\App\exempel.html" />
+    <Content Include="Views\App\google-chart.html" />
     <Content Include="Views\App\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
     <Content Include="Web.config" />

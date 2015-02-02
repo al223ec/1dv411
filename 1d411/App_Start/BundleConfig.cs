@@ -19,6 +19,7 @@ namespace _1d411
                         "~/Scripts/angular-resource.js",
                         "~/Scripts/d3.js",
                         "~/Scripts/c3.js",
+                        "~/Scripts/googleChartJs.js",
                         "~/Scripts/angular-chart.js"
                         ));
 
@@ -26,6 +27,7 @@ namespace _1d411
                         "~/App/services/AppService.js",
                         "~/App/controllers/MainCtrl.js",
                         "~/App/factories/ChartGenerator.js",
+                        "~/App/directives/googleChart.js",
                         "~/App/directives/charts.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
