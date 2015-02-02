@@ -6,18 +6,18 @@ angular.module('MainTestModule', [])
         this.options = {};
         //$scope.data = {};
 
-        //$scope.getDiagramData = function (query) {
-        //    var request = AppService.getDiagramData(query);
-        //    request.error(function (data, status, headers, config) {
-        //        //Do something on failure
-        //        console.log("Failure"); 
-        //    });
+        $scope.getDiagramData = function (query) {
+            var request = AppService.getDiagramData(query);
+            request.error(function (data, status, headers, config) {
+                //Do something on failure
+                console.log("Failure"); 
+            });
 
-        //    request.then(function (response) {
-        //        $scope.data = response.data;
-        //        console.log(response)
-        //    });
-        //}
+            request.then(function (response) {
+                $scope.data = response.data;
+                console.log(response)
+            });
+        }
 
         this.dataset = [
             {
