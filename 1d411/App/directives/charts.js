@@ -5,8 +5,9 @@ var charts = angular.module('chartDirectives', []);
 charts.directive('inventoryChart', function () {
     return {
         restrict: 'E',
-        template: "<div><p>Below is a custom directive.</p><p ng-show='testController.isTest()'>test</p></div>" +
-            "<div id='chart'></div>",
+        //template: "<div><p>Below is a custom directive.</p><p ng-show='testController.isTest()'>test</p></div>" +
+        //    "<div id='chart'></div>",
+        templateUrl: "Views/App/inventory-chart.html",
         controller: function () {
 
             this.test = true;

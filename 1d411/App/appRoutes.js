@@ -14,11 +14,11 @@ angular.module('appRoutes', ['ngRoute'])
             
                 .when('/404', { 
                     templateUrl: 'views/404.html', 
-                    controller: 'NotFoundErrorCtrl' 
+                    controller: 'NotFoundErrorCtrl'
                 })
                 .when('/apierror', {
-                    templateUrl: 'views/apierror.html', 
-                    controller: 'ApiErrorCtrl' 
+                    templateUrl: 'views/apierror.html',
+                    controller: 'ApiErrorCtrl'
                 })
                 .otherwise({redirectTo: '/'});
         // to configure how the application deep linking paths are stored.
