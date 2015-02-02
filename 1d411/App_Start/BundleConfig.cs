@@ -27,6 +27,7 @@ namespace _1d411
                         "~/App/services/AppService.js",
                         "~/App/controllers/MainCtrl.js",
                         "~/App/factories/ChartGenerator.js",
+                        "~/App/factories/googleChartFactory.js",
                         "~/App/directives/googleChart.js",
                         "~/App/directives/charts.js",
                         "~/App/appRoutes.js",

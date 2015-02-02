@@ -5,7 +5,8 @@ var app = angular.module('AppName', [
     'MainTestModule',
     'chartDirectives',
     'AppService',
-    'google',
+    'GoogleChart',
+    'ChartProvider',
     'angularChart'
 ]);
 

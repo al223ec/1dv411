@@ -166,6 +166,7 @@
     <Content Include="App\directives\charts.js" />
     <Content Include="App\directives\googleChart.js" />
     <Content Include="App\factories\ChartGenerator.js" />
+    <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\angular-chart.css" />
     <Content Include="Content\angular-chart.min.css" />
