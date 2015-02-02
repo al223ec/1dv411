@@ -33,6 +33,20 @@ namespace _1d411.Controllers
         {
             return Ok(_service.GetDiagramData(numberOfDays.Value));
         }
+
+        [Route("week")]
+        [HttpGet]
+        public IHttpActionResult GetWeek()
+        {
+            return Ok(_service.GetDiagramDataThisWeek());
+        }
+
+        [Route("month")]
+        [HttpGet]
+        public IHttpActionResult GetMonth()
+        {
+            return Ok(_service.GetDiagramDataThisMonth());
+        }
         #region IDisposable
 
         protected override void Dispose(bool disposing)

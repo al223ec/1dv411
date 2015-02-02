@@ -19,34 +19,38 @@ namespace _1dv411.Domain
             _unitOfWork = unitOfWork; 
         }
 
-        public IEnumerable<DiagramData> GetDiagramData(string query)
-        {
-            var date = DateTime.Parse("2014-01-28"); 
-
-            return new List<DiagramData>{
-                new DiagramData{
-                    Orders = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date)).Count(),
-                    OrdersLastYear = 125,
-                    Date = date,
-                },
-            };
-        }
         public IEnumerable<DiagramData> GetDiagramData(int numberOfDays)
         {
-            var date = DateTime.Parse("2014-01-28"); 
-            var diagramData = new List<DiagramData>(); 
-            
+            return GetDiagramData(numberOfDays, DateTime.Today); 
+        }
+        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisWeek()
+        {
+            //TODO:Ordna detta 
+            return GetDiagramData(7, DateTime.Today); 
+        }
+
+        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisMonth()
+        {
+            //TODO:Ordna detta 
+            return GetDiagramData(30, DateTime.Today);
+        }
+
+        private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
+        {
+            //Denna metod returnerar i nuläget inte riktigt korrekt data, måste se till att man hämtar rätt dag från förra året. 
+            var diagramData = new List<DiagramData>();
             for (int i = 0; i < numberOfDays; i++)
-			{   
-			    diagramData.Add(
-                    new DiagramData{
+            {
+                diagramData.Add(
+                    new DiagramData
+                    {
                         Orders = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date)).Count(),
-                        OrdersLastYear = 125,
+                        OrdersLastYear = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date.AddYears(-1))).Count(),
                         Date = date,
-                });
-                date.AddDays(1); 
-			}
-            return diagramData;     
+                    });
+                date = date.AddDays(1);
+            }
+            return diagramData;
         }
 
         #region IDisposable
@@ -70,5 +74,7 @@ namespace _1dv411.Domain
             GC.SuppressFinalize(this);
         }
         #endregion
+
+
     }
 }

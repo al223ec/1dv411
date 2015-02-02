@@ -17,6 +17,7 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
+            /***
             var design = new Design();
             design.NumberOfFields = 2;
             Layout layout = new Layout
@@ -53,18 +54,8 @@ namespace _1dv411.Domain.Migrations
             var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
             ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
             context.SaveChanges();
-
-            //  This method will be called after migrating to the latest version.
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+             
+             * */
         }
         private List<Order> GetTestOrders(DateTime date)
         {
