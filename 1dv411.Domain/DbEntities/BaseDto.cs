@@ -10,8 +10,9 @@ namespace _1dv411.Domain.DbEntities
 {
     public abstract class BaseDto
     {
-        [Column(Order = 0), Key] 
-        public virtual int Id { get; set; }
+        [Key]
+        [Column(Order = 1)] 
+        public int Id { get; set; }
 
         [Column(TypeName = "DateTime2")]
         public DateTime CreatedAt { get; set; }

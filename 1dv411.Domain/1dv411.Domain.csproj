@@ -65,29 +65,9 @@
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IDiagramService.cs" />
-    <Compile Include="Migrations\201501301140120_initialCreate.cs" />
-    <Compile Include="Migrations\201501301140120_initialCreate.Designer.cs">
-      <DependentUpon>201501301140120_initialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301148015_Fields.cs" />
-    <Compile Include="Migrations\201501301148015_Fields.Designer.cs">
-      <DependentUpon>201501301148015_Fields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301209016_Design table.cs" />
-    <Compile Include="Migrations\201501301209016_Design table.Designer.cs">
-      <DependentUpon>201501301209016_Design table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301233076_fk.cs" />
-    <Compile Include="Migrations\201501301233076_fk.Designer.cs">
-      <DependentUpon>201501301233076_fk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301237372_fk-redesign.cs" />
-    <Compile Include="Migrations\201501301237372_fk-redesign.Designer.cs">
-      <DependentUpon>201501301237372_fk-redesign.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301246335_key-column order.cs" />
-    <Compile Include="Migrations\201501301246335_key-column order.Designer.cs">
-      <DependentUpon>201501301246335_key-column order.cs</DependentUpon>
+    <Compile Include="Migrations\201502021042444_initialcreate.cs" />
+    <Compile Include="Migrations\201502021042444_initialcreate.Designer.cs">
+      <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,23 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501301140120_initialCreate.resx">
-      <DependentUpon>201501301140120_initialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301148015_Fields.resx">
-      <DependentUpon>201501301148015_Fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301209016_Design table.resx">
-      <DependentUpon>201501301209016_Design table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301233076_fk.resx">
-      <DependentUpon>201501301233076_fk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301237372_fk-redesign.resx">
-      <DependentUpon>201501301237372_fk-redesign.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301246335_key-column order.resx">
-      <DependentUpon>201501301246335_key-column order.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502021042444_initialcreate.resx">
+      <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
