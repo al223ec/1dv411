@@ -9,5 +9,6 @@ namespace _1dv411.Domain
     public interface IDiagramService : IDisposable
     {
         IEnumerable<DiagramData> GetDiagramData(string query);
+        IEnumerable<DiagramData> GetDiagramData(int numberOfDays);
     }
 }

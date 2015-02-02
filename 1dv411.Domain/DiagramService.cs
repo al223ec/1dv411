@@ -31,6 +31,23 @@ namespace _1dv411.Domain
                 },
             };
         }
+        public IEnumerable<DiagramData> GetDiagramData(int numberOfDays)
+        {
+            var date = DateTime.Parse("2014-01-28"); 
+            var diagramData = new List<DiagramData>(); 
+            
+            for (int i = 0; i < numberOfDays; i++)
+			{   
+			    diagramData.Add(
+                    new DiagramData{
+                        Orders = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date)).Count(),
+                        OrdersLastYear = 125,
+                        Date = date,
+                });
+                date.AddDays(1); 
+			}
+            return diagramData;     
+        }
 
         #region IDisposable
         private bool disposed = false;

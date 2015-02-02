@@ -11,15 +11,14 @@ namespace _1dv411.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true; 
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
-
             var design = new Design();
             design.NumberOfFields = 2;
-
             Layout layout = new Layout
             {
                 Name = "TestLayout",
@@ -36,7 +35,6 @@ namespace _1dv411.Domain.Migrations
                 }
             };
             layout.Diagrams = diagrams;
-
             var texts = new List<Text>
             {
                 new Text{
@@ -47,67 +45,13 @@ namespace _1dv411.Domain.Migrations
                 }
             };
             layout.Texts = texts;
-
             context.Layouts.AddOrUpdate(layout);
-            context.SaveChanges(); 
+            context.SaveChanges();
 
-            List<Order> orders = new List<Order>{
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-26"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-27"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-27"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2014-01-28"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2015-01-27"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-                new Order{
-                    OrderGroupId = "StringIdFromDb",
-                    Date = DateTime.Parse("2015-01-27"),
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
-            };
-            orders.ForEach(o => context.Orders.AddOrUpdate(o)); 
+            var ordersThisYear = GetTestOrders(DateTime.Today);
+            ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
+            ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
             context.SaveChanges();
 
             //  This method will be called after migrating to the latest version.
@@ -121,6 +65,28 @@ namespace _1dv411.Domain.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+        }
+        private List<Order> GetTestOrders(DateTime date)
+        {
+            Random rnd = new Random();
+            List<Order> orders = new List<Order>();
+            for (int i = 0; i < 150; i++)
+            {
+                int numberOfOrders = rnd.Next(1, 13);
+                for (int j = 0; j < numberOfOrders; j++)
+                {
+                    orders.Add(
+                      new Order
+                      {
+                          OrderGroupId = "StringIdFromDb",
+                          Date = date,
+                          CreatedAt = date,
+                          ModifiedAt = date,
+                      });
+                }
+                date = date.AddDays(1);
+            }
+            return orders; 
         }
     }
 }

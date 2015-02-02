@@ -21,13 +21,18 @@ namespace _1d411.Controllers
             _service = service;
         }
 
+        //[Route("find/{query?}")]
+        //[HttpGet]
+        //public IHttpActionResult Find(string query)
+        //{
+        //    return Ok(_service.GetDiagramData(query));
+        //}
         [Route("find/{query?}")]
         [HttpGet]
-        public IHttpActionResult Find(string query)
-       {
-            return Ok(_service.GetDiagramData(query));
+        public IHttpActionResult Find(int? numberOfDays)
+        {
+            return Ok(_service.GetDiagramData(numberOfDays.Value));
         }
-
         #region IDisposable
 
         protected override void Dispose(bool disposing)
