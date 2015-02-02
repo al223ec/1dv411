@@ -20,7 +20,7 @@ namespace _1d411
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<_1dv411.Domain.DAL.ApplicationContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<_1dv411.Domain.DAL.ApplicationContext>());
         }
     }
 }

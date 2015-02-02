@@ -12,12 +12,45 @@ namespace _1dv411.Domain.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            //AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true; 
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
+
+            var design = new Design();
+            design.NumberOfFields = 2;
+
+            Layout layout = new Layout
+            {
+                Name = "TestLayout",
+                Design = design,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
+            };
+            var diagrams = new List<Diagram>{
+                new Diagram
+                {
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Layout = layout
+                }
+            };
+            layout.Diagrams = diagrams;
+
+            var texts = new List<Text>
+            {
+                new Text{
+                    Type = TextType.Header,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Layout = layout
+                }
+            };
+            layout.Texts = texts;
+
+            context.Layouts.AddOrUpdate(layout);
+            context.SaveChanges(); 
+
             List<Order> orders = new List<Order>{
                 new Order{
                     OrderGroupId = "StringIdFromDb",
@@ -74,11 +107,10 @@ namespace _1dv411.Domain.Migrations
                     ModifiedAt = DateTime.Now,
                 },
             };
+            orders.ForEach(o => context.Orders.AddOrUpdate(o)); 
+            context.SaveChanges();
 
-            orders.ForEach(o => context.Orders.Add(o));
-            context.SaveChanges(); 
             //  This method will be called after migrating to the latest version.
-
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
