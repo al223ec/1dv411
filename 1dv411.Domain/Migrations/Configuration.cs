@@ -2,6 +2,7 @@ namespace _1dv411.Domain.Migrations
 {
     using _1dv411.Domain.DbEntities;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -21,14 +22,95 @@ namespace _1dv411.Domain.Migrations
 
             Layout layout = new Layout
             {
-                Id = 1,
                 Name = "TestLayout",
-                Design = design
+                Design = design,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
             };
-            context.Layouts.AddOrUpdate(layout);
-            context.SaveChanges();
-            //  This method will be called after migrating to the latest version.
+            var diagrams = new List<Diagram>{
+                new Diagram
+                {
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Layout = layout
+                }
+            };
+            layout.Diagrams = diagrams;
 
+            var texts = new List<Text>
+            {
+                new Text{
+                    Type = TextType.Header,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Layout = layout
+                }
+            };
+            layout.Texts = texts;
+
+            context.Layouts.AddOrUpdate(layout);
+            context.SaveChanges(); 
+
+            List<Order> orders = new List<Order>{
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-26"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2014-01-28"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2015-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Order{
+                    OrderGroupId = "StringIdFromDb",
+                    Date = DateTime.Parse("2015-01-27"),
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+            };
+            orders.ForEach(o => context.Orders.AddOrUpdate(o)); 
+            context.SaveChanges();
+
+            //  This method will be called after migrating to the latest version.
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
