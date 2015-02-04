@@ -7,7 +7,7 @@ angular.module("ChartProvider", ['AppService'])
 
     return {
         draw: function () {
-            var diagramDataPromise = AppService.getDiagramData();
+            var diagramDataPromise = AppService.getDiagramData(7);
             diagramDataPromise.success(function (json) {
                 var orderData = JSON.parse(JSON.stringify(json));
 
@@ -19,7 +19,6 @@ angular.module("ChartProvider", ['AppService'])
                
 
                 orderData.forEach(function (order) {
-                    console.log(order);
                     data.addRows([[order.date, order.orders, order.ordersLastYear]])
                 });
 
@@ -31,7 +30,6 @@ angular.module("ChartProvider", ['AppService'])
                     enableInteractivity: false
                 };
 
-                console.log(data);
                 var googleChart = new google.visualization.ColumnChart(document.getElementById("chartDiv"));
                 googleChart.draw(data, options);
 

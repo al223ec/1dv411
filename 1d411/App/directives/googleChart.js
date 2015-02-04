@@ -1,5 +1,5 @@
 ﻿
-angular.module("GoogleChart", ['ChartProvider'])
+angular.module("GoogleChart", [])
 
     .directive("googleChart", ['ChartGenerator', function (ChartGenerator) {
         return {
