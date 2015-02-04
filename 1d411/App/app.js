@@ -7,6 +7,7 @@ var app = angular.module('AppName', [
     'AppService',
     'GoogleChart',
     'ChartProvider',
+    'ChartGenerator',
     'angularChart'
 ]);
 
