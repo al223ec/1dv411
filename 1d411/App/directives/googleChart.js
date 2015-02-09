@@ -7,6 +7,7 @@ angular.module("GoogleChart", [])
             templateUrl: 'Views/App/google-chart.html',
 
             controller: function () {
+                console.log(ChartGenerator);
                ChartGenerator.draw();
             },
             controllerAs: 'GoogelCtrl'

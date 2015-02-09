@@ -1,12 +1,13 @@
 ﻿//load the chart library
 google.load('visualization', '1', { packages: ['corechart'] });
 
-angular.module("ChartProvider", ['AppService'])
+angular.module("ChartProvider", [])
 
-.factory("ChartGenerator", ['AppService', function (AppService) {
+    .factory("ChartGenerator", ['AppService', function (AppService) {
 
     return {
         draw: function () {
+            console.log("rdfsxz");
             var diagramDataPromise = AppService.getDiagramData(7);
             diagramDataPromise.success(function (json) {
                 var orderData = JSON.parse(JSON.stringify(json));
