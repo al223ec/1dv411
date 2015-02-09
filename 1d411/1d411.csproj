@@ -996,8 +996,10 @@
     <Content Include="Views\App\exempel.html" />
     <Content Include="Views\App\google-chart.html" />
     <Content Include="Views\App\Layout\layout.html" />
+    <Content Include="Views\App\Layout\Layout1.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
+    <Content Include="Views\Partials\monthDiagram.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
