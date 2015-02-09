@@ -1,13 +1,14 @@
-angular.module('MainTestModule', [])
+angular.module('Main', [])
     .controller('MainController', ['$scope', 'AppService', function ($scope, AppService) {
 
         this.dataset = {};
         this.schema = {};
         this.options = {};
+        $scope.diagramData = {};
         //$scope.data = {};
 
-        $scope.getDiagramData = function (query) {
-            var request = AppService.getDiagramData(query);
+        $scope.getDiagramData = function () {
+            var request = AppService.getDiagramDataByWeek();
             request.error(function (data, status, headers, config) {
                 //Do something on failure
                 console.log("Failure"); 

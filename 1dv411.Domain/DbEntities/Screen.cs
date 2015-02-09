@@ -9,6 +9,9 @@ namespace _1dv411.Domain.DbEntities
     public class Screen : BaseDto
     {
         public string Name { get; set; }
-        public virtual Layout Layout { get; set; }
+
+        public int Timer { get; set; }
+
+        public virtual ICollection<LayoutScreen> LayoutScreens { get; set; }
     }
 }

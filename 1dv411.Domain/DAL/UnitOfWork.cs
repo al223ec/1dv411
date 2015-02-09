@@ -10,7 +10,6 @@ namespace _1dv411.Domain.DAL
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IRepository<DiagramData> DiagramDataRepository { get; }
         IRepository<Order> OrderRepository { get; }
         void Save();
     }
@@ -31,7 +30,6 @@ namespace _1dv411.Domain.DAL
         {
             _context = dbContext; 
         }
-
 
         public void Save()
         {

@@ -3,17 +3,16 @@ angular.module('appRoutes', ['ngRoute'])
 
         $routeProvider
                 .when('/', {
-                    templateUrl: 'Views/App/home.html',
+                    templateUrl: 'Views/App/Main/home.html',
                     controller: 'MainController'
                 })
-                .when('/1dv411/exempel', {
-                    templateUrl: 'Views/App/exempel.html',
-                    controller: 'mainController'
+                .when('/layout', {
+                    templateUrl: 'Views/App/Layout/Layout.html',
+                    controller: 'LayoutController'
                 })
-
-                .when('/test/monthDiagram', {
+                .when('/exempel', {
                     templateUrl: 'Views/App/exempel.html',
-                    controller: 'mainController'
+                    controller: 'MainController'
                 })
                 //TODO: implementera felhantering
             
@@ -27,5 +26,5 @@ angular.module('appRoutes', ['ngRoute'])
                 })
                 .otherwise({redirectTo: '/'});
         // to configure how the application deep linking paths are stored.
-        $locationProvider.hashPrefix('!').html5Mode(true);
+        $locationProvider.html5Mode(true);         
 }]);

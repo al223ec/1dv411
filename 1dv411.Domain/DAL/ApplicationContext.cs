@@ -17,6 +17,8 @@ namespace _1dv411.Domain.DAL
         public DbSet<Diagram> Diagrams { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Text> Texts { get; set; }
+        public DbSet<Screen> Screens { get; set; }
+        public DbSet<LayoutScreen> LayoutScreens { get; set; }
         //TODO:Hur ser databasen ut??
 
         public ApplicationContext()
@@ -29,10 +31,6 @@ namespace _1dv411.Domain.DAL
             //modelBuilder.HasDefaultSchema("app");
             // One-to-many with Fluent API.
             //modelBuilder.Entity<User>().HasMany<Tweet>(t => t.Tweets).WithRequired(t => t.User).HasForeignKey(t => t.UserId);
-            //modelBuilder.Entity<Layout>().HasMany<Diagram>(l => l.Diagrams).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasMany<Image>(l => l.Images).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasMany<Text>(l => l.Texts).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasRequired<Design>(l => l.Design);
 
             base.OnModelCreating(modelBuilder);
         }
