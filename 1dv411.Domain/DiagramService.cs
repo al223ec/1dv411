@@ -37,15 +37,17 @@ namespace _1dv411.Domain
 
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
+            //TODO:DENNA METOD 
             //Denna metod returnerar i nuläget inte riktigt korrekt data, måste se till att man hämtar rätt dag från förra året. 
             var diagramData = new List<DiagramData>();
             for (int i = 0; i < numberOfDays; i++)
             {
+                var previousYear = date.AddYears(-1); 
                 diagramData.Add(
                     new DiagramData
                     {
                         Orders = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date)).Count(),
-                        OrdersLastYear = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(date.AddYears(-1))).Count(),
+                        OrdersLastYear = _unitOfWork.OrderRepository.Get(o => o.Date.Equals(previousYear)).Count(),
                         Date = date,
                     });
                 date = date.AddDays(1);

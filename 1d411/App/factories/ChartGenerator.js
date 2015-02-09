@@ -18,7 +18,7 @@ angular.module('ChartGenerator', [])
         return {
             draw: function () {
 
-                var diagramDataPromise = AppService.getDiagramData();
+                var diagramDataPromise = AppService.getDiagramDataByWeek();
                 diagramDataPromise.success(function (json) {
                     var orderData = JSON.parse(JSON.stringify(json));
 
