@@ -6,7 +6,12 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/home.html',
                     controller: 'MainController'
                 })
-                .when('/exempel', {
+                .when('/1dv411/exempel', {
+                    templateUrl: 'Views/App/exempel.html',
+                    controller: 'mainController'
+                })
+
+                .when('/test/monthDiagram', {
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'mainController'
                 })
@@ -22,5 +27,5 @@ angular.module('appRoutes', ['ngRoute'])
                 })
                 .otherwise({redirectTo: '/'});
         // to configure how the application deep linking paths are stored.
-        $locationProvider.html5Mode(true);         
+        $locationProvider.hashPrefix('!').html5Mode(true);
 }]);
