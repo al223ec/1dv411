@@ -14,7 +14,7 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'MainController'
                 })
-                .when('/test/monthDiagram', {
+                .when('/monthDiagram', {
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'mainController'
                  })
