@@ -3,6 +3,7 @@ var app = angular.module('AppName', [
 	'ngAnimate',
 	'appRoutes',
     'MainTestModule',
+    'LayoutCtrl',
     'chartDirectives',
     'AppService',
     'GoogleChart',
