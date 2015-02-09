@@ -19,9 +19,7 @@ namespace _1dv411.Domain.DbEntities
         public virtual Design Design { get; set; }
         
         public virtual ICollection<Diagram> Diagrams { get; set; }
-
         public virtual ICollection<Text> Texts{ get; set; }
-
         public virtual ICollection<Image> Images{ get; set; }
     }
 }
