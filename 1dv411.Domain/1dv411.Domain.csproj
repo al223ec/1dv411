@@ -59,7 +59,9 @@
     <Compile Include="DbEntities\Diagram.cs" />
     <Compile Include="DbEntities\Image.cs" />
     <Compile Include="DbEntities\Layout.cs" />
+    <Compile Include="DbEntities\LayoutScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
+    <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Text.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
@@ -68,6 +70,10 @@
     <Compile Include="Migrations\201502021042444_initialcreate.cs" />
     <Compile Include="Migrations\201502021042444_initialcreate.Designer.cs">
       <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502091207084_ScreenAndLayoutScreen.cs" />
+    <Compile Include="Migrations\201502091207084_ScreenAndLayoutScreen.Designer.cs">
+      <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201502021042444_initialcreate.resx">
       <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502091207084_ScreenAndLayoutScreen.resx">
+      <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
