@@ -18,7 +18,7 @@ namespace _1d411.Controllers
         //this actionresult is temporary, just need the routing to work for now
         public ActionResult Month()
         {
-            return new FilePathResult("../Views/App/exempel.html", "text/html");
+            return new FilePathResult("../Views/App/Layout/diagram.html", "text/html");
         }
     }
 }
