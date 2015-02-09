@@ -1,4 +1,4 @@
-angular.module('MainTestModule', [])
+angular.module('Main', [])
     .controller('MainController', ['$scope', 'AppService', function ($scope, AppService) {
 
         this.dataset = {};
