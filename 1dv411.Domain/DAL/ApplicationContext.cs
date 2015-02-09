@@ -29,10 +29,6 @@ namespace _1dv411.Domain.DAL
             //modelBuilder.HasDefaultSchema("app");
             // One-to-many with Fluent API.
             //modelBuilder.Entity<User>().HasMany<Tweet>(t => t.Tweets).WithRequired(t => t.User).HasForeignKey(t => t.UserId);
-            //modelBuilder.Entity<Layout>().HasMany<Diagram>(l => l.Diagrams).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasMany<Image>(l => l.Images).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasMany<Text>(l => l.Texts).WithRequired(d => d.Layout).HasForeignKey(t => t.Id);
-            //modelBuilder.Entity<Layout>().HasRequired<Design>(l => l.Design);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -47,6 +47,7 @@ namespace _1d411.Controllers
         {
             return Ok(_service.GetDiagramDataThisMonth());
         }
+
         #region IDisposable
 
         protected override void Dispose(bool disposing)
