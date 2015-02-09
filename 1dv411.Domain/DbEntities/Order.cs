@@ -13,7 +13,8 @@ namespace _1dv411.Domain.DbEntities
 
         [Column(TypeName = "DateTime2")]
         public DateTime Date { get; set; }
-        /*
+
+        /* * * * * * 
         * The MSDN documentation for datetime recommends using datetime2. Here is their recommendation:
         * Use the time, date, datetime2 and datetimeoffset data types for new work. These types align with the SQL Standard. 
         * They are more portable. time, datetime2 and datetimeoffset provide more seconds precision. datetimeoffset provides 
