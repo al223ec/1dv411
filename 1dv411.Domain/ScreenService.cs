@@ -22,7 +22,7 @@ namespace _1dv411.Domain
 
         public IEnumerable<LayoutScreen> GetLayoutScreens()
         {
-            return _unitOfWork.LayoutScreenRepository.Get().Take(10);
+            return _unitOfWork.LayoutScreenRepository.Get(null, null, "Screen, Layout").Take(10).ToList();
         }
     }
 }

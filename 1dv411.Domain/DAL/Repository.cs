@@ -20,8 +20,8 @@ namespace _1dv411.Domain.DAL
             _set = _context.Set<T>();
         }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>,
-            IOrderedQueryable<T>> orderBy = null, string includeProperties = "")
+        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, 
+            string includeProperties = "")
         {
             IQueryable<T> query = _set;
 
