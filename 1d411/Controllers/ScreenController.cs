@@ -11,7 +11,7 @@ namespace _1d411.Controllers
     [RoutePrefix("screen")]
     public class ScreenController : ApiController
     {
-                private IScreenService _service;
+        private IScreenService _service;
         
         public ScreenController()
             : this(new ScreenService())
@@ -19,6 +19,13 @@ namespace _1d411.Controllers
         public ScreenController(IScreenService service)
         {
             _service = service;
+        }
+
+        [Route("find/")]
+        [HttpGet]
+        public IHttpActionResult Find()
+        {
+            return Ok(_service.GetLayoutScreens());
         }
 
     }

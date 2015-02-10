@@ -20,6 +20,16 @@ angular.module('Main', [])
             });
         }
 
+        $scope.getScreen = function () {
+            var req = AppService.getScreen();
+            req.error(function () {
+
+            });
+            req.then(function (response) {
+                console.log(response.data); 
+            }); 
+        }
+
         this.dataset = [
             {
                 'day': '2013-01-02_00:00:00',

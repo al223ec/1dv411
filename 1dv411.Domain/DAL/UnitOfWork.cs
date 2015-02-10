@@ -13,6 +13,7 @@ namespace _1dv411.Domain.DAL
         IRepository<Order> OrderRepository { get; }
 
         IRepository<Screen> ScreenRepository { get; }
+        IRepository<LayoutScreen> LayoutScreenRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
@@ -29,6 +30,12 @@ namespace _1dv411.Domain.DAL
         public IRepository<Screen> ScreenRepository
         {
             get { return _screenRepository ?? (_screenRepository = new Repository<Screen>(_context)); }
+        }
+
+        private IRepository<LayoutScreen> _layoutScreenRepository;
+        public IRepository<LayoutScreen> LayoutScreenRepository
+        {
+            get { return _layoutScreenRepository ?? (_layoutScreenRepository = new Repository<LayoutScreen>(_context)); }
         }
 
         public UnitOfWork()

@@ -9,5 +9,9 @@ angular.module('AppService', []).factory('AppService', ['$http', function ($http
         getDiagramDataByMonth: function () {
             return $http.get('/diagramData/month/');
         },
+
+        getScreen: function () {
+            return $http.get('/screen/find')
+        }
     }       
 }]);
