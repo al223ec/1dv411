@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1d411.Tests", "..\..\Visual
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1dv411.Domain", "1dv411.Domain\1dv411.Domain.csproj", "{1436D18A-B207-4CE7-8477-C2F33389F3BD}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "1dv411.ModelingProject", "1dv411.ModelingProject\1dv411.ModelingProject.modelproj", "{08F4B52A-EA65-4D56-A6F1-3EFCC0AF8F55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{1436D18A-B207-4CE7-8477-C2F33389F3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1436D18A-B207-4CE7-8477-C2F33389F3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1436D18A-B207-4CE7-8477-C2F33389F3BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08F4B52A-EA65-4D56-A6F1-3EFCC0AF8F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F4B52A-EA65-4D56-A6F1-3EFCC0AF8F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F4B52A-EA65-4D56-A6F1-3EFCC0AF8F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F4B52A-EA65-4D56-A6F1-3EFCC0AF8F55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

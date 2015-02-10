@@ -4,13 +4,18 @@
         Query: <input type="text" name="query" ng-model="query" required>
         <input type="submit" id="submit" value="Submit" />
     </form>
+
+    <a href="" ng-click="getScreen()">Screen</a>
     <p>
         {{data}}
     </p>
     <p>
         <a href="/exempel">Route</a> | 
         <a href="/layout">Layouts/Skärmar</a> 
+        <a href="/screen">Screen ctrl</a> 
     </p>
+
+
     <angularchart dataset="main.dataset" schema="main.schema" options="main.options"></angularchart>
     <inventory-chart></inventory-chart>
 
