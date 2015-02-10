@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,10 +11,12 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Diagram : BaseDto
     {
+        [JsonIgnore]
         [ForeignKey("Layout")]
         [Column(Order = 2)] 
         public int LayoutId { get; set;  }
 
+        [JsonIgnore]
         public virtual Layout Layout { get; set; }
     }
 }

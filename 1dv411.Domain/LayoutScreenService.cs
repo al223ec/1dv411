@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface IScreenService
+    public interface ILayoutScreenService
     {
         IEnumerable<Screen> GetScreens();
 
@@ -15,11 +15,11 @@ namespace _1dv411.Domain
 
         Layout GetLayout(int id);
     }
-    public class ScreenService : ServiceBase, IScreenService
+    public class LayoutScreenService : ServiceBase, ILayoutScreenService
     {
         public IEnumerable<Screen> GetScreens()
         {
-            return _unitOfWork.ScreenRepository.Get(s => s.Id == 1).ToList(); 
+            return _unitOfWork.ScreenRepository.Get(s => s.Id == 1).ToList();
         }
 
         public IEnumerable<LayoutScreen> GetLayoutScreens()
@@ -31,7 +31,7 @@ namespace _1dv411.Domain
 
         public Layout GetLayout(int id)
         {
-            return _unitOfWork.LayoutRepository.Get(l => l.Id == id).FirstOrDefault(); 
+            return _unitOfWork.LayoutRepository.Get(l => l.Id == id, null).FirstOrDefault();
         }
     }
 }

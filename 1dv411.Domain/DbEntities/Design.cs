@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace _1dv411.Domain.DbEntities
     public class Design : BaseDto
     {
         //CSS:url hur layouten defakto ser ut
+
+        [JsonIgnore]
         public virtual ICollection<Layout> Layout { get; set; }
         public int NumberOfFields { get; set; }
     }
