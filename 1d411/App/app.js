@@ -6,10 +6,9 @@ var app = angular.module('AppName', [
     'Layout',
     'chartDirectives',
     'AppService',
-    'GoogleChart',
     'ChartProvider',
-    'ChartGenerator',
-    'angularChart'
+    'angularChart',
+    'ChartFactory'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 
