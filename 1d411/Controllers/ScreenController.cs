@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace _1d411.Controllers
 {
-    [RoutePrefix("screen")]
+    [RoutePrefix("screenlayout")]
     public class ScreenController : ApiController
     {
         private IScreenService _service;
@@ -20,6 +20,13 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
+        [Route("get/layout/{query?}")]
+        [HttpGet]
+        public IHttpActionResult find(int? id)
+        {
+            return Ok(_service.GetLayout(id.Value));
+        }
+
 
         [Route("find/")]
         [HttpGet]
@@ -27,11 +34,7 @@ namespace _1d411.Controllers
         {
             return Ok(_service.GetLayoutScreens());
         }
-        [Route("find/{query?}")]
-        [HttpGet]
-        public IHttpActionResult Find()
-        {
-            return Ok(_service.GetLayoutScreens());
-        }
+        
+
     }
 }

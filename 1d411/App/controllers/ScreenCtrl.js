@@ -12,6 +12,17 @@ layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', function (
         req.then(function (response) {
             console.log(response.data);
         });
-    }
+    }; 
+
+    $scope.getLayout = function (id) {
+        var req = ScreenService.getLayout(id);
+        req.error(function () {
+
+        });
+
+        req.then(function (response) {
+            $scope.layout == response.data;
+        });
+    }; 
 
 }]);

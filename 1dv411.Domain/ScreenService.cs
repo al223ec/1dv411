@@ -12,6 +12,8 @@ namespace _1dv411.Domain
         IEnumerable<Screen> GetScreens();
 
         IEnumerable<LayoutScreen> GetLayoutScreens();
+
+        Layout GetLayout(int id);
     }
     public class ScreenService : ServiceBase, IScreenService
     {
@@ -24,6 +26,12 @@ namespace _1dv411.Domain
         {
             //För att implementera eager loading, hämta ut object som är specad
             return _unitOfWork.LayoutScreenRepository.Get(null, null, "Screen, Layout").Take(10).ToList();
+        }
+
+
+        public Layout GetLayout(int id)
+        {
+            return _unitOfWork.LayoutRepository.Get(l => l.Id == id).FirstOrDefault(); 
         }
     }
 }

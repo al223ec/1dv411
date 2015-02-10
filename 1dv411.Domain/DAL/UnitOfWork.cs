@@ -11,9 +11,9 @@ namespace _1dv411.Domain.DAL
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Order> OrderRepository { get; }
-
         IRepository<Screen> ScreenRepository { get; }
         IRepository<LayoutScreen> LayoutScreenRepository { get; }
+        IRepository<Layout> LayoutRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
@@ -36,6 +36,13 @@ namespace _1dv411.Domain.DAL
         public IRepository<LayoutScreen> LayoutScreenRepository
         {
             get { return _layoutScreenRepository ?? (_layoutScreenRepository = new Repository<LayoutScreen>(_context)); }
+        }
+
+
+        private IRepository<Layout> _layoutRepository;
+        public IRepository<Layout> LayoutRepository
+        {
+            get { return _layoutRepository ?? (_layoutRepository = new Repository<Layout>(_context)); }
         }
 
         public UnitOfWork()

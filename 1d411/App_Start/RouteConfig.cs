@@ -27,7 +27,7 @@ namespace _1d411
                 defaults: new { controller = "App", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.AppendTrailingSlash = true;
+           // routes.AppendTrailingSlash = true;
         }
 
        
