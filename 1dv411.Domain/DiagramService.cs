@@ -7,18 +7,8 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public class DiagramService : IDiagramService
+    public class DiagramService : ServiceBase, IDiagramService
     {
-        private IUnitOfWork _unitOfWork; 
-
-        public DiagramService()
-            : this(new UnitOfWork())
-        { }
-        public DiagramService(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork; 
-        }
-
         public IEnumerable<DiagramData> GetDiagramData(int numberOfDays)
         {
             return GetDiagramData(numberOfDays, DateTime.Today); 
