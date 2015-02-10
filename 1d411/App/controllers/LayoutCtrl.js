@@ -26,8 +26,8 @@ layoutCtrl.controller('monthCtrl', ['$scope', 'AppService', function ($scope, Ap
 
     var getData = function () {
         var diagramDataPromise = AppService.getDiagramDataByMonth();
-        diagramDataPromise.success(function (json) {
-            console.log(json);
+        diagramDataPromise.success(function (data) {
+            console.log(data);
         })
 
         return "error";
@@ -42,7 +42,7 @@ layoutCtrl.controller('monthCtrl', ['$scope', 'AppService', function ($scope, Ap
     }
     var orderData = getFakeData();
     google.load('visualization', '1', { packages: ['corechart'] });
-    google.setOnLoadCallback(function () {
+    //google.setOnLoadCallback(function () {
         console.log("load");
         var data = new google.visualization.DataTable();
 
@@ -71,7 +71,7 @@ layoutCtrl.controller('monthCtrl', ['$scope', 'AppService', function ($scope, Ap
         
         
        
-    });
+    //});
 
    
 
