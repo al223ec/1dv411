@@ -20,6 +20,7 @@ angular.module('Main', [])
             });
         }
 
+
         this.dataset = [
             {
                 'day': '2013-01-02_00:00:00',

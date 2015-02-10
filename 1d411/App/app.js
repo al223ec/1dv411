@@ -4,11 +4,14 @@ var app = angular.module('AppName', [
 	'appRoutes',
     'Main',
     'Layout',
+    'Screen',
     'chartDirectives',
     'AppService',
+    'ScreenService',
+    'GoogleChart',
     'ChartProvider',
-    'angularChart',
-    'ChartFactory'
+    'ChartGenerator',
+    'angularChart'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 

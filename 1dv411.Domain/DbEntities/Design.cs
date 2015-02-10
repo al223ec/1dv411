@@ -8,7 +8,7 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Design : BaseDto
     {
-        //CSS:url
+        //CSS:url hur layouten defakto ser ut
         public virtual ICollection<Layout> Layout { get; set; }
         public int NumberOfFields { get; set; }
     }

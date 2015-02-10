@@ -11,16 +11,38 @@ namespace _1dv411.Domain.DAL
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Order> OrderRepository { get; }
+        IRepository<Screen> ScreenRepository { get; }
+        IRepository<LayoutScreen> LayoutScreenRepository { get; }
+        IRepository<Layout> LayoutRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
     {
         private DbContext _context;
 
-        private IRepository<Order> _orderRepository; 
+        private IRepository<Order> _orderRepository;
         public IRepository<Order> OrderRepository
         {
             get { return _orderRepository ?? (_orderRepository = new Repository<Order>(_context)); }
+        }
+
+        private IRepository<Screen> _screenRepository; 
+        public IRepository<Screen> ScreenRepository
+        {
+            get { return _screenRepository ?? (_screenRepository = new Repository<Screen>(_context)); }
+        }
+
+        private IRepository<LayoutScreen> _layoutScreenRepository;
+        public IRepository<LayoutScreen> LayoutScreenRepository
+        {
+            get { return _layoutScreenRepository ?? (_layoutScreenRepository = new Repository<LayoutScreen>(_context)); }
+        }
+
+
+        private IRepository<Layout> _layoutRepository;
+        public IRepository<Layout> LayoutRepository
+        {
+            get { return _layoutRepository ?? (_layoutRepository = new Repository<Layout>(_context)); }
         }
 
         public UnitOfWork()
