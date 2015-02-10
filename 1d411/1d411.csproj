@@ -167,6 +167,7 @@
     <Content Include="App\controllers\LayoutCtrl.js" />
     <Content Include="App\directives\charts.js" />
     <Content Include="App\directives\googleChart.js" />
+    <Content Include="App\factories\ChartFactory.js" />
     <Content Include="App\factories\ChartGenerator.js" />
     <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
