@@ -27,6 +27,11 @@ namespace _1d411.Controllers
         {
             return Ok(_service.GetLayoutScreens());
         }
-
+        [Route("find/{query?}")]
+        [HttpGet]
+        public IHttpActionResult Find()
+        {
+            return Ok(_service.GetLayoutScreens());
+        }
     }
 }

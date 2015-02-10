@@ -22,6 +22,7 @@ namespace _1dv411.Domain
 
         public IEnumerable<LayoutScreen> GetLayoutScreens()
         {
+            //För att implementera eager loading, hämta ut object som är specad
             return _unitOfWork.LayoutScreenRepository.Get(null, null, "Screen, Layout").Take(10).ToList();
         }
     }
