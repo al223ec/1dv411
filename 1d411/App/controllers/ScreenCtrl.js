@@ -2,8 +2,6 @@
 var layoutCtrl = angular.module('Screen', []);
 
 layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', function ($scope, ScreenService) {
-
-
     $scope.getScreen = function () {
         var req = ScreenService.getScreen();
         req.error(function () {
@@ -21,7 +19,7 @@ layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', function (
         });
 
         req.then(function (response) {
-            $scope.layout == response.data;
+            $scope.layout = response.data;
         });
     }; 
 

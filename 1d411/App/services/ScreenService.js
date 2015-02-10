@@ -6,7 +6,7 @@ angular.module('ScreenService', []).factory('ScreenService', ['$http', function 
             return $http.get('/screenlayout/find');
         },
         getLayout: function (id) {
-            return $http.get('/screenlayout/get/layout/' + id);
+            return $http.get('/screenlayout/layout/');
         },
     }; 
 }]);

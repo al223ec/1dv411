@@ -28,6 +28,7 @@ namespace _1d411
                         "~/App/services/ScreenService.js",
                         "~/App/controllers/MainCtrl.js",
                         "~/App/factories/ChartFactory.js",
+                        "~/App/factories/ChartGenerator.js",
                         "~/App/controllers/LayoutCtrl.js",
                         "~/App/controllers/ScreenCtrl.js",
                         "~/App/factories/googleChartFactory.js",

@@ -20,11 +20,11 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
-        [Route("get/layout/{query?}")]
+        [Route("layout/")]
         [HttpGet]
-        public IHttpActionResult find(int? id)
+        public IHttpActionResult FindById()
         {
-            return Ok(_service.GetLayout(id.Value));
+            return Ok(_service.GetLayout(1));
         }
 
 
