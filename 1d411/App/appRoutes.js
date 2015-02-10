@@ -14,9 +14,9 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'MainController'
                 })
-                .when('/monthDiagram', {
-                    templateUrl: 'Views/App/exempel.html',
-                    controller: 'mainController'
+                .when('/data/monthDiagram', {
+                    templateUrl: 'Views/App/Layout/diagram.html',
+                    controller: 'monthCtrl'
                  })
                 //TODO: implementera felhantering
             

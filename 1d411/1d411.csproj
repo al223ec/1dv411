@@ -121,7 +121,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Angular\" />
-    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1000,6 +999,7 @@
     <Content Include="Views\App\Layout\diagram.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
+    <Content Include="Views\Partials\diagaramData.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

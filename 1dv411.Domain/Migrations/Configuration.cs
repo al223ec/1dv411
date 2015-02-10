@@ -61,13 +61,13 @@ namespace _1dv411.Domain.Migrations
 
            context.Layouts.Add(layout);
            context.SaveChanges();
-
+            */
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 context.SaveChanges(); 
-           */
+           
         }
         private List<Order> GetTestOrders(DateTime date)
         {
