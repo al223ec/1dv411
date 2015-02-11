@@ -14,11 +14,11 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/Screen/index.html',
                     controller: 'ScreenController'
                 })
-                .when('/data/testscreen/:id', {
+                .when('/app/testscreen/:id', {
                     templateUrl: 'Views/App/testview.html',
                     controller: 'TestScreenCtrl'
                 })
-                .when('/data/testLayout', {
+                .when('/app/testLayout', {
                     templateUrl: 'Views/App/Layout/h-2.html',
                     controller: 'LayoutController'
 
@@ -27,7 +27,7 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'MainController'
                 })
-                .when('/data/monthDiagram', {
+                .when('/app/monthDiagram', {
                     templateUrl: 'Views/App/Layout/diagram.html',
                     controller: 'LayoutController'
                  })
