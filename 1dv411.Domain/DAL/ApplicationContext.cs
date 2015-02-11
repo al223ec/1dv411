@@ -13,7 +13,6 @@ namespace _1dv411.Domain.DAL
     {
         public DbSet<Layout> Layouts { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Design> Designs { get; set; }
         public DbSet<Diagram> Diagrams { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Text> Texts { get; set; }

@@ -55,12 +55,12 @@
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />
-    <Compile Include="DbEntities\Design.cs" />
     <Compile Include="DbEntities\Diagram.cs" />
     <Compile Include="DbEntities\Image.cs" />
     <Compile Include="DbEntities\Layout.cs" />
     <Compile Include="DbEntities\LayoutScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
+    <Compile Include="DbEntities\Partial.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Text.cs" />
     <Compile Include="DbServices\IDbService.cs" />
@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201502091207084_ScreenAndLayoutScreen.Designer.cs">
       <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502111137473_PartialBase.cs" />
+    <Compile Include="Migrations\201502111137473_PartialBase.Designer.cs">
+      <DependentUpon>201502111137473_PartialBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502091207084_ScreenAndLayoutScreen.resx">
       <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502111137473_PartialBase.resx">
+      <DependentUpon>201502111137473_PartialBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,14 +9,8 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public class Diagram : BaseDto
+    public class Diagram : Partial
     {
-        [JsonIgnore]
-        [ForeignKey("Layout")]
-        [Column(Order = 2)] 
-        public int LayoutId { get; set;  }
-
-        [JsonIgnore]
-        public virtual Layout Layout { get; set; }
+        public int DiagramInfo { get; set; }
     }
 }

@@ -8,17 +8,8 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public class Image : BaseDto
+    public class Image : Partial
     {
-        [JsonIgnore]
-        [ForeignKey("Layout")]
-        [Column(Order = 2)] 
-        public int LayoutId { get; set; }
-
-        [JsonIgnore]
-        public virtual Layout Layout { get; set; }
-
-
         public string Url { get; set; }
     }
 }
