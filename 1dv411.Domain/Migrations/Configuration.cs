@@ -16,7 +16,8 @@ namespace _1dv411.Domain.Migrations
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
-        {
+        {   /*
+             * TODO: Fixa mer och bättre testdata
             Layout layout = new Layout
             {
                 Name = "TestLayout2",
@@ -26,30 +27,33 @@ namespace _1dv411.Domain.Migrations
 
             var partials = new List<Partial>
             {
-                new Partial{
-                    Position = 1,
-                    Layout = layout,
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                },
+                //new Partial{
+                //    Position = 1,
+                //    LayoutId = 1,
+                //    CreatedAt = DateTime.Now,
+                //    ModifiedAt = DateTime.Now,
+                //},
                 new Text{
-                    Position = 2,
+                    LayoutId = 1,
+                    Position = 1,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
                     Value = "Some text"
                 },
                 new Diagram
                 {
-                    Position = 3,
+                    LayoutId = 1,
+                    Position = 2,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
                     DiagramInfo = 123, 
                 },
             };
 
-            layout.Partials = partials;
-            context.Layouts.Add(layout);
-            context.SaveChanges();
+            //layout.Partials = partials;
+            //context.Layouts.Add(layout);
+            partials.ForEach(p => context.Partials.Add(p)); 
+            context.SaveChanges();*/
             /*
             var diagrams = new List<Diagram>{
                   new Diagram
@@ -88,7 +92,7 @@ namespace _1dv411.Domain.Migrations
             };
             context.LayoutScreens.Add(layoutScreen);
 
-            /*
+            /**** För att seeda orders 
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
