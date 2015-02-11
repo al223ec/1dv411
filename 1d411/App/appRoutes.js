@@ -30,7 +30,7 @@ angular.module('appRoutes', ['ngRoute'])
                 .when('/app/monthDiagram', {
                     templateUrl: 'Views/App/Layout/diagram.html',
                     controller: 'LayoutController'
-                 })
+                })
                 //TODO: implementera felhantering
             
                 .when('/404', { 
