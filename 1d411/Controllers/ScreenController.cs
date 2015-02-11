@@ -11,12 +11,12 @@ namespace _1d411.Controllers
     [RoutePrefix("screenlayout")]
     public class ScreenController : ApiController
     {
-        private IScreenService _service;
+        private ILayoutScreenService _service;
         
         public ScreenController()
-            : this(new ScreenService())
+            : this(new LayoutScreenService())
         { }
-        public ScreenController(IScreenService service)
+        public ScreenController(ILayoutScreenService service)
         {
             _service = service;
         }
