@@ -15,8 +15,6 @@ namespace _1dv411.Domain.DbEntities
     }
     public class Text : Partial
     {
-        [JsonIgnore]
-        public virtual Layout Layout { get; set; }
         public TextType Type { get; set; }
         public string Value { get; set; }
 

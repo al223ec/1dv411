@@ -12,62 +12,89 @@ namespace _1dv411.Domain.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true; 
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
+            Layout layout = new Layout
+            {
+                Name = "TestLayout2",
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
+            };
+
+            var partials = new List<Partial>
+            {
+                new Partial{
+                    Position = 1,
+                    Layout = layout,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                },
+                new Text{
+                    Position = 2,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Value = "Some text"
+                },
+                new Diagram
+                {
+                    Position = 3,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    DiagramInfo = 123, 
+                },
+            };
+
+            layout.Partials = partials;
+            context.Layouts.Add(layout);
+            context.SaveChanges();
             /*
-           var design = new Design();
-           design.NumberOfFields = 2;
-           Layout layout = new Layout
-           {
-               Name = "TestLayout2",
-               Design = design,
-               CreatedAt = DateTime.Now,
-               ModifiedAt = DateTime.Now
-           };
-           var diagrams = new List<Diagram>{
-               new Diagram
-               {
-                   CreatedAt = DateTime.Now,
-                   ModifiedAt = DateTime.Now,
-                   Layout = layout
-               }
-           };
-           layout.Diagrams = diagrams;
-           var texts = new List<Text>
-           {
-               new Text{
-                   Type = TextType.Header,
-                   CreatedAt = DateTime.Now,
-                   ModifiedAt = DateTime.Now,
-                   Layout = layout
-               }
-           };
-           layout.Texts = texts;
+            var diagrams = new List<Diagram>{
+                  new Diagram
+                  {
+                      CreatedAt = DateTime.Now,
+                      ModifiedAt = DateTime.Now,
+                      DiagramInfo = 123, 
+                  }
+              };
+            diagrams.ForEach(d => partials.Add(d));
+            var texts = new List<Text>{
+                  new Text
+                  {
+                      Type = TextType.Header,
+                      CreatedAt = DateTime.Now,
+                      ModifiedAt = DateTime.Now,
+                      Value = "Some text"
+                  },
+              };
+            texts.ForEach(d => partials.Add(d));
 
-           Screen screen = new Screen
-           {
-               Name = "lager"
-           };
-           LayoutScreen layoutScreen = new LayoutScreen
-           {
-               Layout = layout,
-               Screen = screen, 
-           };
-           context.Screens.Add(screen); 
-           context.LayoutScreens.Add(layoutScreen); 
+            context.Layouts.Add(layout);
+            context.SaveChanges();
 
-           context.Layouts.Add(layout);
-           context.SaveChanges();
-            */
+            partials.ForEach(p => context.Partials.Add(p)); 
+            context.SaveChanges(); 
+
+            Screen screen = new Screen
+              {
+                  Name = "lager"
+              };
+            LayoutScreen layoutScreen = new LayoutScreen
+            {
+                Layout = layout,
+                Screen = screen,
+            };
+            context.LayoutScreens.Add(layoutScreen);
+
+            /*
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 context.SaveChanges(); 
-           
+           */
         }
         private List<Order> GetTestOrders(DateTime date)
         {
@@ -89,7 +116,7 @@ namespace _1dv411.Domain.Migrations
                 }
                 date = date.AddDays(1);
             }
-            return orders; 
+            return orders;
         }
     }
 }

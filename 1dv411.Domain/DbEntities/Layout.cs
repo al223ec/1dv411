@@ -12,10 +12,7 @@ namespace _1dv411.Domain.DbEntities
     {
         public string Name { get; set; }
         public string TemplateUrl { get; set; }
-                
-        public virtual ICollection<Diagram> Diagrams { get; set; }
-        public virtual ICollection<Text> Texts{ get; set; }
-        public virtual ICollection<Image> Images{ get; set; }
+        public virtual ICollection<Partial> Partials { get; set; }
         public virtual ICollection<LayoutScreen> LayoutScreens { get; set; }
     }
 }
