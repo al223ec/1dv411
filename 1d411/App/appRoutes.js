@@ -31,10 +31,6 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/Layout/diagram.html',
                     controller: 'LayoutController'
                 })
-                .when('/data/view', {
-                    templateUrl: 'Views/App/Layout/h-1-down-v-2.html',
-                    controller: 'LayoutController'
-                })
                 //TODO: implementera felhantering
             
                 .when('/404', { 
