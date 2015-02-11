@@ -1000,13 +1000,15 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\App\exempel.html" />
     <Content Include="Views\App\google-chart.html" />
-
+    <Content Include="Views\App\Layout\h-1-down-v-2.html" />
+    <Content Include="Views\App\Layout\h-1-up-v-2.html" />
+    <Content Include="Views\App\Layout\h-2-v-1-left.html" />
+    <Content Include="Views\App\Layout\h-2-v-1-right.html" />
     <Content Include="Views\App\Layout\h-2-v-2.html" />
-
     <Content Include="Views\App\Layout\h-2.html" />
-
     <Content Include="Views\App\Layout\layout.html" />
     <Content Include="Views\App\Layout\diagram.html" />
+    <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
     <Content Include="Views\App\Screen\index.html" />
