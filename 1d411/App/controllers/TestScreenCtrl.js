@@ -3,14 +3,13 @@ var layoutCtrl = angular.module('TestScreen', []);
 
 layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenerator', '$routeParams', function ($scope, ScreenService, ChartGenerator, $routeParams) {
 
-    //ChartGenerator.draw('testChart');
-
     ScreenService.getLayoutForScreen($routeParams.id)
         .success(function (response) {
-            console.log(response);
+
+            // Actual response
             //$scope.layout = response;
           
-
+            // Fake response
             $scope.layout = {
                 "$id": "1",
                 "layoutScreens":
@@ -36,7 +35,8 @@ layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenera
                     {
                         "$id": "3",
                         "type": 0,
-                        "value": "Some text",
+                        'title': 'Some title',
+                        "text": "Some text",
                         "position": 1,
                         "id": 10,
                         "name": "text"
@@ -47,31 +47,29 @@ layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenera
             };
 
             var partials = $scope.layout.partials;
-            $scope.partials = [];
-            $scope.partialnames = [];
+            
+            // TODO: Sort the response layout object order by position.
             for (var i = 1; i <= partials.length; i++) {
                 var value = "partial" + i;
                 console.log(i);
-                $scope["partial"+i] = partials[i-1];
+                $scope["partial" + i] = partials[i - 1];
+
+                // Check if partial type is text and set the text properties on scope for the text partial view.
+                switch (partials[i - 1].name) {
+                    case 'text':
+                        $scope.title = partials[i - 1].title;
+                        $scope.text = partials[i - 1].text;
+                        break;
+
+                    default:
+                        break;
+                }
             }
             console.log($scope);
-            //mkae sort
 
         })
         .then(function () {
 
             ChartGenerator.draw('testChart');
         });
-
-    //ScreenService.getScreen()
-    //    .success(function (response) {
-    //        console.log(response);
-    //    })
-    //    .then(function () {
-
-    //        //ChartGenerator.draw('testChart');
-    //    });
-
-    
-
 }]);
