@@ -10,9 +10,13 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/Layout/Layout.html',
                     controller: 'LayoutController'
                 })
-                .when('/screen', {
+                .when('/data/screen', {
                     templateUrl: 'Views/App/Screen/index.html',
                     controller: 'ScreenController'
+                })
+                .when('/data/testscreen/:id', {
+                    templateUrl: 'Views/App/testview.html',
+                    controller: 'TestScreenCtrl'
                 })
                 .when('/exempel', {
                     templateUrl: 'Views/App/exempel.html',

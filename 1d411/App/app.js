@@ -5,12 +5,12 @@ var app = angular.module('AppName', [
     'Main',
     'Layout',
     'Screen',
+    'TestScreen',
     'chartDirectives',
     'AppService',
     'ScreenService',
     'GoogleChart',
     'ChartProvider',
-    'ChartGenerator',
     'angularChart'
 ]);
 

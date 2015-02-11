@@ -1,7 +1,7 @@
 ﻿"use strict";
 var layoutCtrl = angular.module('Screen', []);
 
-layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', function ($scope, ScreenService) {
+layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', function ($scope, ScreenService, $routeParams) {
     $scope.getScreen = function () {
         var req = ScreenService.getScreen();
         req.error(function () {

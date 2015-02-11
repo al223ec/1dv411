@@ -6,7 +6,7 @@ angular.module('chartDirectives', [])
             restrict: 'E',
             templateUrl: 'Views/App/inventory-chart.html',
             controller: function () {
-
+                console.log('inventory chart controller running');
                 // Test Code
                 this.test = true;
                 this.isTest = function () {
@@ -19,4 +19,19 @@ angular.module('chartDirectives', [])
             },
             controllerAs: 'testController'
         }
-}]);
+    }])
+    .directive('layoutContent', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {
+                layoutname: "@"
+            },
+            template: '<div ng-transclude></div>',
+            controller: function () {
+                
+                console.log('running');
+            },
+            replace: true
+        }
+    });

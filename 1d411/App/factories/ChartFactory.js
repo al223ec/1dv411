@@ -54,7 +54,6 @@
 
 
                     var options = {
-                        hAxis{labels: ''},
                         title: 'Företagsdata',
                         vAxis: { textPosition: 'none' },
                         enableInteractivity: false
