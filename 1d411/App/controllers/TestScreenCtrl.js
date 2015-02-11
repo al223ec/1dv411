@@ -5,7 +5,7 @@ layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenera
 
     //ChartGenerator.draw('testChart');
 
-    ScreenService.getLayout($routeParams.id)
+    ScreenService.getLayoutForScreen($routeParams.id)
         .success(function (response) {
             console.log(response);
             $scope.layout = response;

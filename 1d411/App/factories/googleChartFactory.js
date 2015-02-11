@@ -16,13 +16,13 @@ angular.module("ChartProvider", [])
 
                 var data = new google.visualization.DataTable();
 
-                data.addColumn('string', 'Datum');
+                data.addColumn('datetime', 'Datum');
                 data.addColumn('number', 'Ordrar');
                 data.addColumn('number', 'Ordrar Förra Året')
                
 
                 orderData.forEach(function (order) {
-                    data.addRows([[order.date, order.orders, order.ordersLastYear]])
+                    data.addRows([[new Date(order.date), order.orders, order.ordersLastYear]])
                 });
 
               
