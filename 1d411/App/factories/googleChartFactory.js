@@ -6,10 +6,12 @@ angular.module("ChartProvider", [])
     .factory("ChartGenerator", ['AppService', function (AppService) {
 
     return {
-        draw: function () {
+        draw: function (id) {
             console.log("rdfsxz");
-            var diagramDataPromise = AppService.getDiagramData(7);
+            var diagramDataPromise = AppService.getDiagramDataByWeek();
+            //var diagramDataPromise = AppService.getDiagramDataByMonth();
             diagramDataPromise.success(function (json) {
+                console.log(json);
                 var orderData = JSON.parse(JSON.stringify(json));
 
                 var data = new google.visualization.DataTable();
@@ -31,7 +33,7 @@ angular.module("ChartProvider", [])
                     enableInteractivity: false
                 };
 
-                var googleChart = new google.visualization.ColumnChart(document.getElementById("chartDiv"));
+                var googleChart = new google.visualization.ColumnChart(document.getElementById(id));
                 googleChart.draw(data, options);
 
                 })
