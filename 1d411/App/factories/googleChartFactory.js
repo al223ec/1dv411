@@ -4,7 +4,7 @@ google.load('visualization', '1', { packages: ['corechart'] });
 angular.module("ChartProvider", [])
 
     .factory("ChartGenerator", ['AppService', function (AppService) {
-
+    
     return {
         draw: function (id) {
             console.log("rdfsxz");
@@ -33,6 +33,7 @@ angular.module("ChartProvider", [])
                     enableInteractivity: false
                 };
 
+                var div = document.createElement("div");
                 var googleChart = new google.visualization.ColumnChart(document.getElementById(id));
                 googleChart.draw(data, options);
 
