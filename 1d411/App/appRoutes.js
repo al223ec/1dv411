@@ -18,6 +18,11 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/testview.html',
                     controller: 'TestScreenCtrl'
                 })
+                .when('/data/testLayout', {
+                    templateUrl: 'Views/App/Layout/h-2.html',
+                    controller: 'LayoutController'
+
+                })
                 .when('/exempel', {
                     templateUrl: 'Views/App/exempel.html',
                     controller: 'MainController'
