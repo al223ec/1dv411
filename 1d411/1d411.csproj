@@ -167,11 +167,14 @@
   <ItemGroup>
     <Content Include="App\controllers\LayoutCtrl.js" />
     <Content Include="App\controllers\ScreenCtrl.js" />
+    <Content Include="App\controllers\TestScreenCtrl.js" />
     <Content Include="App\directives\charts.js" />
     <Content Include="App\directives\googleChart.js" />
+    <Content Include="App\directives\layoutContent.js" />
     <Content Include="App\factories\ChartFactory.js" />
     <Content Include="App\factories\ChartGenerator.js" />
     <Content Include="App\factories\googleChartFactory.js" />
+    <Content Include="App\services\json_example.js" />
     <Content Include="App\services\ScreenService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\angular-chart.css" />
@@ -999,15 +1002,22 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\App\exempel.html" />
     <Content Include="Views\App\google-chart.html" />
+    <Content Include="Views\App\Layout\h-1-down-v-2.html" />
+    <Content Include="Views\App\Layout\h-1-up-v-2.html" />
+    <Content Include="Views\App\Layout\h-2-v-1-left.html" />
+    <Content Include="Views\App\Layout\h-2-v-1-right.html" />
     <Content Include="Views\App\Layout\h-2-v-2.html" />
     <Content Include="Views\App\Layout\h-2.html" />
     <Content Include="Views\App\Layout\layout.html" />
     <Content Include="Views\App\Layout\diagram.html" />
+    <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
     <Content Include="Views\App\Screen\index.html" />
-    <Content Include="Views\App\Screen\test-screen-view.html" />
-    <Content Include="Views\Partials\chart.html" />
+    <Content Include="Views\App\testview.html" />
+    <Content Include="Views\Partials\diagaramData.html" />
+    <Content Include="Views\Partials\diagram.html" />
+    <Content Include="Views\Partials\text.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1055,7 +1065,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>30447</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

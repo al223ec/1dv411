@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,13 +13,8 @@ namespace _1dv411.Domain.DbEntities
         String,
         Header
     }
-    public class Text : BaseDto
+    public class Text : Partial
     {
-        [ForeignKey("Layout")]
-        [Column(Order = 2)] 
-        public int LayoutId { get; set; }
-
-        public virtual Layout Layout { get; set; }
         public TextType Type { get; set; }
         public string Value { get; set; }
 
