@@ -37,12 +37,9 @@
   <Class Name="_1dv411.Domain.DbEntities.Layout">
     <Position X="5.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAEAAAAAAAAAAAAAAAQAACAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AABAAAEAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Layout.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Partial" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.BaseDto">
     <Position X="4.25" Y="0.5" Width="1.5" />

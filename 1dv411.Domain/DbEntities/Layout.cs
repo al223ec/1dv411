@@ -14,16 +14,5 @@ namespace _1dv411.Domain.DbEntities
         public string TemplateUrl { get; set; }
         public virtual ICollection<Partial> Partials { get; set; }
         public virtual ICollection<LayoutScreen> LayoutScreens { get; set; }
-
-        public Partial Partial
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
     }
 }

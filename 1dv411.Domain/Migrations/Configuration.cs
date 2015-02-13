@@ -11,8 +11,8 @@ namespace _1dv411.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
@@ -34,7 +34,7 @@ namespace _1dv411.Domain.Migrations
                 //    ModifiedAt = DateTime.Now,
                 //},
                 new Text{
-                    LayoutId = 1,
+                    Layout = layout,
                     Position = 1,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
@@ -42,7 +42,7 @@ namespace _1dv411.Domain.Migrations
                 },
                 new Diagram
                 {
-                    LayoutId = 1,
+                    Layout = layout,
                     Position = 2,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
@@ -50,10 +50,10 @@ namespace _1dv411.Domain.Migrations
                 },
             };
 
-            //layout.Partials = partials;
-            //context.Layouts.Add(layout);
-            partials.ForEach(p => context.Partials.Add(p)); 
-            context.SaveChanges();*/
+            layout.Partials = partials;
+            context.Layouts.Add(layout);
+            //partials.ForEach(p => context.Partials.Add(p)); 
+            context.SaveChanges();
             /*
             var diagrams = new List<Diagram>{
                   new Diagram
