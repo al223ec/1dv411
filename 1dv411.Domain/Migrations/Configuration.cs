@@ -17,56 +17,18 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {   /*
-             * TODO: Fixa mer och bättre testdata */ 
-            Layout layout = new Layout
-            {
-                Name = "En till Hero",
-                TemplateUrl = "Hero",
-                CreatedAt = DateTime.Now,
-                ModifiedAt = DateTime.Now
-            };
+             * TODO: Fixa mer och bättre testdata */
 
-            var partials = new List<Partial>
-            {
-                //new Partial{
-                //    Position = 1,
-                //    LayoutId = 1,
-                //    CreatedAt = DateTime.Now,
-                //    ModifiedAt = DateTime.Now,
-                //},
-                new Text{
-                    Layout = layout,
-                    Position = 1,
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                    Value = "Fet text"
-                },
-                new Text{
-                    Layout = layout,
-                    Position = 3,
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                    Value = "Vem var det som kaste?"
-                },
-                new Diagram
-                {
-                    Layout = layout,
-                    Position = 2,
-                    CreatedAt = DateTime.Now,
-                    ModifiedAt = DateTime.Now,
-                    DiagramInfo = 123, 
-                },
-            };
-
-            layout.Partials = partials;
-            context.Layouts.Add(layout);
-            //partials.ForEach(p => context.Partials.Add(p)); 
-            context.SaveChanges();
-          
+            SeedHero(context);
+            SeedDefault(context);
+            //SeedVertical(context);
+            SeedHorizontal(context); 
+            
+            /****
             Screen screen = new Screen
-              {
+            {
                   Name = "fika"
-              };
+            };
             LayoutScreen layoutScreen = new LayoutScreen
             {
                 Layout = layout,
@@ -82,6 +44,94 @@ namespace _1dv411.Domain.Migrations
                 context.SaveChanges(); 
              * */
 
+        }
+        private Layout CreateLayout(string name, string template)
+        {
+            Layout layout = new Layout
+            {
+                Name = name,
+                TemplateUrl = template,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
+            };
+            return layout; 
+        }
+
+        private Text CreateText(Layout layout, int position, string value)
+        {
+            return new Text
+            {
+                Layout = layout,
+                Position = position,
+                Value = value,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
+            }; 
+        }
+
+        private Diagram CreateDiagram(Layout layout, int position, int info)
+        {
+            return new Diagram
+            {
+                Layout = layout,
+                Position = position,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now,
+                DiagramInfo = info,
+            };
+        }
+
+        private Image CreateImage()
+        {
+            throw new NotImplementedException(); 
+        }
+        private void SeedHero(DAL.ApplicationContext context)
+        {
+            Layout hero = CreateLayout("Hero", "hero"); 
+
+            var partials = new List<Partial>
+            {
+                CreateText(hero, 1, "hero Fet texta sd as  sdasd lorem"),
+                CreateDiagram (hero, 2, 666),
+                CreateText(hero, 3, "En till text för hero Fet texta sd as  sdasd lorem"),
+            };
+
+            hero.Partials = partials;
+            context.Layouts.Add(hero);
+            context.SaveChanges();
+            
+        }
+        private void SeedDefault(DAL.ApplicationContext context)
+        {
+            Layout defaultLayout = CreateLayout("Default layout", "default_template");
+            var partials = new List<Partial>
+            {
+                CreateText(defaultLayout, 1, "Default layout text"),
+                CreateDiagram (defaultLayout, 2, 222),
+            };
+
+            defaultLayout.Partials = partials;
+            context.Layouts.Add(defaultLayout);
+            context.SaveChanges();
+        }
+        private void SeedVertical(DAL.ApplicationContext context)
+        {
+            throw new NotImplementedException();
+        }
+        private void SeedHorizontal(DAL.ApplicationContext context)
+        {
+            Layout horizontal = CreateLayout("Horizontal layout", "horizontal");
+
+            var partials = new List<Partial>
+            {
+                CreateDiagram (horizontal, 1, 111),
+                CreateDiagram (horizontal, 2, 222),
+                CreateDiagram (horizontal, 3, 333),
+            };
+
+            horizontal.Partials = partials;
+            context.Layouts.Add(horizontal);
+            context.SaveChanges();
         }
         private List<Order> GetTestOrders(DateTime date)
         {
