@@ -121,6 +121,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Angular\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -158,10 +159,11 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DiagramDataController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JsonFormatHelper\PartialObjectNameContractResolver.cs" />
+    <Compile Include="JsonFormatHelper\RootFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +178,7 @@
     <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="App\services\json_example.js" />
     <Content Include="App\services\ScreenService.js" />
+    <Content Include="App\services\PartialHtmlService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\angular-chart.css" />
     <Content Include="Content\angular-chart.min.css" />
@@ -1013,7 +1016,10 @@
     <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\inventory-chart.html" />
+    <Content Include="Views\App\Partials\_diagram.html" />
+    <Content Include="Views\App\Partials\_text.html" />
     <Content Include="Views\App\Screen\index.html" />
+    <Content Include="Views\App\Templates\default_template.html" />
     <Content Include="Views\App\testview.html" />
     <Content Include="Views\Partials\diagaramData.html" />
     <Content Include="Views\Partials\diagram.html" />
@@ -1031,12 +1037,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\App\Index.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\1dv411.Domain\1dv411.Domain.csproj">

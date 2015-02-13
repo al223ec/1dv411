@@ -1,33 +1,47 @@
 ﻿"use strict";
-var layoutCtrl = angular.module('Screen', []);
+var screenModule = angular.module('Screen', []);
 
-layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', function ($scope, ScreenService, $routeParams) {
-    $scope.getScreen = function () {
-        var req = ScreenService.getScreen();
-        req.error(function () {
+screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', 'appConfig',
+    function ($scope, ScreenService, $routeParams, appConfig) {
 
-        });
-        req.then(function (response) {
-            console.log(response.data);
-            $scope.screen = response.data;
-        });
-    }; 
+    var req = ScreenService.getLayoutForScreen($routeParams.id);
+    req.error(function () {
+    });
 
-    $scope.getLayout = function (id) {
-        var req = ScreenService.getLayout(1);
-        req.error(function () {
+    req.then(function (response) {
+        if (response.data != null) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen
 
-        });
+            $scope.templateUrl = response.data.templateUrl; //TODO:Fixa detta på serversida, att det är riktig data
+            $scope.templateUrl = appConfig.templateUrlRoot + "default_template" + ".html";
 
-        req.then(function (response) {
-            console.log(response.data)
-            $scope.layout = response.data;
-        });
+            var partials = response.data.partials;
+            var sortedPartials = [];
 
-    }
-
-    $scope.renderDiagram = function () {
-
-    }
-
+            for (var i = 0; i < partials.length; i++) {
+                sortedPartials[partials[i].position] = partials[i]; 
+            }
+            $scope.partials = sortedPartials;
+        }
+    });
 }]);
+
+screenModule.directive('partial', function ($compile, PartialHtmlService) {
+    // https://docs.angularjs.org/api/ng/service/$compile
+    // https://github.com/simpulton/angular-dynamic-templates
+
+    var linker = function (scope, element, attrs) {
+        PartialHtmlService.getPartialHtml(scope.partial.partialType).then(function (response) {
+            var templates = response.data;
+
+            element.html(templates);
+            $compile(element.contents())(scope);
+        });
+    }
+    return {
+        restrict: "E", // only matches element name
+        link: linker,
+        scope: {
+            partial:'='
+        },
+    };
+});

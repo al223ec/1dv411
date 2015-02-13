@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
+    [JsonObject(Title = "Diagram")]
     public class Diagram : Partial
     {
+        public override string PartialType { get { return "Diagram"; } }
         public int DiagramInfo { get; set; }
     }
 }

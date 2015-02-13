@@ -11,13 +11,13 @@ namespace _1dv411.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {   /*
-             * TODO: Fixa mer och bättre testdata
+             * TODO: Fixa mer och bättre testdata */ 
             Layout layout = new Layout
             {
                 Name = "TestLayout2",
@@ -34,7 +34,7 @@ namespace _1dv411.Domain.Migrations
                 //    ModifiedAt = DateTime.Now,
                 //},
                 new Text{
-                    LayoutId = 1,
+                    Layout = layout,
                     Position = 1,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
@@ -42,7 +42,7 @@ namespace _1dv411.Domain.Migrations
                 },
                 new Diagram
                 {
-                    LayoutId = 1,
+                    Layout = layout,
                     Position = 2,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
@@ -50,37 +50,11 @@ namespace _1dv411.Domain.Migrations
                 },
             };
 
-            //layout.Partials = partials;
-            //context.Layouts.Add(layout);
-            partials.ForEach(p => context.Partials.Add(p)); 
-            context.SaveChanges();*/
-            /*
-            var diagrams = new List<Diagram>{
-                  new Diagram
-                  {
-                      CreatedAt = DateTime.Now,
-                      ModifiedAt = DateTime.Now,
-                      DiagramInfo = 123, 
-                  }
-              };
-            diagrams.ForEach(d => partials.Add(d));
-            var texts = new List<Text>{
-                  new Text
-                  {
-                      Type = TextType.Header,
-                      CreatedAt = DateTime.Now,
-                      ModifiedAt = DateTime.Now,
-                      Value = "Some text"
-                  },
-              };
-            texts.ForEach(d => partials.Add(d));
-
+            layout.Partials = partials;
             context.Layouts.Add(layout);
+            //partials.ForEach(p => context.Partials.Add(p)); 
             context.SaveChanges();
-
-            partials.ForEach(p => context.Partials.Add(p)); 
-            context.SaveChanges(); 
-
+          
             Screen screen = new Screen
               {
                   Name = "lager"
@@ -92,13 +66,13 @@ namespace _1dv411.Domain.Migrations
             };
             context.LayoutScreens.Add(layoutScreen);
 
-            /**** För att seeda orders 
+            /**** För att seeda ordrar    */ 
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 context.SaveChanges(); 
-           */
+        
         }
         private List<Order> GetTestOrders(DateTime date)
         {

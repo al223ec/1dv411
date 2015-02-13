@@ -9,6 +9,7 @@ var app = angular.module('AppName', [
     'chartDirectives',
     'AppService',
     'ScreenService',
+    'PartialHtmlService',
     'GoogleChart',
     'ChartProvider',
     'angularChart'
@@ -52,4 +53,9 @@ app.config(['$httpProvider', function($httpProvider) {
 	*	app.controller()
 	*	directive's link functions (again if found)
 	*/
-}]); 
+}]);
+
+app.constant("appConfig", {
+    "templateUrlRoot": "/Views/App/Templates/",
+    "partialRoot": "/Views/App/Partials/",
+})

@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
+    [JsonObject(Title = "Image")]
     public class Image : Partial
     {
+        public override string PartialType { get { return "Image"; } }
         public string Url { get; set; }
     }
 }

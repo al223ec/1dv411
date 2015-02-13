@@ -10,12 +10,4 @@
       handle="viewcode://./CodeSchema_Namespace?Namespace%3D_1dv411"
       tag="ViewCode" />
   </referencesInternal>
-  <packagedElements>
-    <packageHasNamedElement>
-      <packageMoniker
-        Id="f0015b7e-a2bc-4983-be50-921494940f88"
-        LastKnownName="Domain"
-        LastKnownLocation="Package1_1416.uml" />
-    </packageHasNamedElement>
-  </packagedElements>
 </package>
