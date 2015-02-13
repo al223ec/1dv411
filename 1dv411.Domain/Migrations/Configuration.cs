@@ -20,7 +20,8 @@ namespace _1dv411.Domain.Migrations
              * TODO: Fixa mer och bättre testdata */ 
             Layout layout = new Layout
             {
-                Name = "TestLayout2",
+                Name = "En till Hero",
+                TemplateUrl = "Hero",
                 CreatedAt = DateTime.Now,
                 ModifiedAt = DateTime.Now
             };
@@ -38,7 +39,14 @@ namespace _1dv411.Domain.Migrations
                     Position = 1,
                     CreatedAt = DateTime.Now,
                     ModifiedAt = DateTime.Now,
-                    Value = "Some text"
+                    Value = "Fet text"
+                },
+                new Text{
+                    Layout = layout,
+                    Position = 3,
+                    CreatedAt = DateTime.Now,
+                    ModifiedAt = DateTime.Now,
+                    Value = "Vem var det som kaste?"
                 },
                 new Diagram
                 {
@@ -57,7 +65,7 @@ namespace _1dv411.Domain.Migrations
           
             Screen screen = new Screen
               {
-                  Name = "lager"
+                  Name = "fika"
               };
             LayoutScreen layoutScreen = new LayoutScreen
             {
@@ -66,13 +74,14 @@ namespace _1dv411.Domain.Migrations
             };
             context.LayoutScreens.Add(layoutScreen);
 
-            /**** För att seeda ordrar    */ 
+            /**** För att seeda ordrar    
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 context.SaveChanges(); 
-        
+             * */
+
         }
         private List<Order> GetTestOrders(DateTime date)
         {

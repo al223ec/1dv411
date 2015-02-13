@@ -54,6 +54,7 @@ namespace _1d411
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/c3.css",
+                      "~/Content/Site.css",
                       "~/Content/angular-chart.css"));
 
             //För att minifiera alla filer

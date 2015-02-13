@@ -10,9 +10,8 @@ screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeP
 
     req.then(function (response) {
         if (response.data != null) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen
-
-            $scope.templateUrl = response.data.templateUrl; //TODO:Fixa detta på serversida, att det är riktig data
-            $scope.templateUrl = appConfig.templateUrlRoot + "default_template" + ".html";
+            var templateName = response.data.templateUrl == null ? "default_template" : response.data.templateUrl;
+            $scope.templateUrl = appConfig.templateUrlRoot + templateName + ".html";
 
             var partials = response.data.partials;
             var sortedPartials = [];
@@ -21,7 +20,10 @@ screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeP
                 sortedPartials[partials[i].position] = partials[i]; 
             }
             $scope.partials = sortedPartials;
+        } else {
+            console.log("Verkar inte få något bra svar från servern, är databasen seedad?")
         }
+        
     });
 }]);
 
