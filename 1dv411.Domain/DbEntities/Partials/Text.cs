@@ -13,8 +13,10 @@ namespace _1dv411.Domain.DbEntities
         String,
         Header
     }
+    [JsonObject(Title = "Text")]
     public class Text : Partial
     {
+        public override string PartialType { get { return "Text"; } }
         public TextType Type { get; set; }
         public string Value { get; set; }
 

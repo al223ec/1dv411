@@ -13,13 +13,24 @@ layoutCtrl.controller('ScreenController', ['$scope', 'ScreenService', '$routePar
     }; 
 
     $scope.getLayout = function (id) {
-        var req = ScreenService.getLayout(id);
+        var req = ScreenService.getLayoutForScreen(id);
         req.error(function () {
 
         });
 
         req.then(function (response) {
-            $scope.layout = response.data;
+            console.log(response.data);
+
+            $scope.templateUrl = response.data.templateUrl; //TODO:Fixa detta på serversida, att det är riktig data
+            $scope.templateUrl = "/Views/App/Templates/default_template.html";
+
+            var partials = response.data.partials;
+            var sortedPartials = []; 
+
+            for (var i = 0; i < partials.length; i++) {
+                sortedPartials[partials[i].position] = partials[i]; 
+            }
+            $scope.partials = sortedPartials;
         });
     }; 
 

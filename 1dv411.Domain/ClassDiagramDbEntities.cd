@@ -3,7 +3,7 @@
   <Class Name="_1dv411.Domain.DbEntities.Diagram">
     <Position X="6.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Diagram.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -11,26 +11,26 @@
     <Position X="8" Y="5.5" Width="1.5" />
     <InheritanceLine Type="_1dv411.Domain.DbEntities.Partial" FixedToPoint="true">
       <Path>
-        <Point X="8.75" Y="4.117" />
+        <Point X="8.75" Y="4.31" />
         <Point X="8.75" Y="5.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Image.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.Partial">
     <Position X="8" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAhAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Partial.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.Text">
     <Position X="9.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Text.cs</FileName>
     </TypeIdentifier>
   </Class>

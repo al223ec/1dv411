@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public class Partial : BaseDto
+    public abstract class Partial : BaseDto
     {
         [JsonIgnore]
         [ForeignKey("Layout")]
@@ -19,5 +19,7 @@ namespace _1dv411.Domain.DbEntities
         public virtual Layout Layout { get; set; }
 
         public int Position { get; set; }
+
+        public abstract string PartialType { get; }
     }
 }
