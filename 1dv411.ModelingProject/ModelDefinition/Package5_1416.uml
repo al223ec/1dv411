@@ -63,12 +63,6 @@
               <templateBindingHasTemplateParameterSubstitution>
                 <templateParameterSubstitution
                   Id="a800e9aa-5343-4fa2-a1f2-1c4cfb3b8b32">
-                  <actuals>
-                    <classMoniker
-                      Id="4e6078e4-b278-471f-946f-7f97ede64c00"
-                      LastKnownName="Diagram"
-                      LastKnownLocation="Package2_1416.uml" />
-                  </actuals>
                   <formal>
                     <classifierTemplateParameterMoniker
                       Id="50a279bf-c91a-47a4-be05-c05ac797f77d"
@@ -210,12 +204,6 @@
               <templateBindingHasTemplateParameterSubstitution>
                 <templateParameterSubstitution
                   Id="ca8c79cd-8871-49a3-971b-b8572e234684">
-                  <actuals>
-                    <classMoniker
-                      Id="c24c9f9e-1471-4875-b18b-ade315d73634"
-                      LastKnownName="Image"
-                      LastKnownLocation="Package2_1416.uml" />
-                  </actuals>
                   <formal>
                     <classifierTemplateParameterMoniker
                       Id="50a279bf-c91a-47a4-be05-c05ac797f77d"
@@ -280,12 +268,6 @@
               <templateBindingHasTemplateParameterSubstitution>
                 <templateParameterSubstitution
                   Id="428f4d98-2db0-48c9-aafa-dd3e90f5c0a7">
-                  <actuals>
-                    <classMoniker
-                      Id="0341a573-85c5-418c-b1f1-1b6e8725c2e0"
-                      LastKnownName="LayoutScreen"
-                      LastKnownLocation="Package2_1416.uml" />
-                  </actuals>
                   <formal>
                     <classifierTemplateParameterMoniker
                       Id="50a279bf-c91a-47a4-be05-c05ac797f77d"
@@ -350,12 +332,6 @@
               <templateBindingHasTemplateParameterSubstitution>
                 <templateParameterSubstitution
                   Id="d93a1b1a-0c23-457e-b6d0-00e2bd96bb55">
-                  <actuals>
-                    <classMoniker
-                      Id="f406dd04-361a-45f3-a7c5-8fa738e3eac5"
-                      LastKnownName="Text"
-                      LastKnownLocation="Package2_1416.uml" />
-                  </actuals>
                   <formal>
                     <classifierTemplateParameterMoniker
                       Id="50a279bf-c91a-47a4-be05-c05ac797f77d"
@@ -420,12 +396,6 @@
               <templateBindingHasTemplateParameterSubstitution>
                 <templateParameterSubstitution
                   Id="6eba7165-9771-4a2f-9634-ff693dcc6e0b">
-                  <actuals>
-                    <classMoniker
-                      Id="5575dc10-8458-45f5-acf4-fd79008cdeb3"
-                      LastKnownName="Layout"
-                      LastKnownLocation="Package2_1416.uml" />
-                  </actuals>
                   <formal>
                     <classifierTemplateParameterMoniker
                       Id="50a279bf-c91a-47a4-be05-c05ac797f77d"
