@@ -13,3 +13,10 @@ layoutCtrl.controller('LayoutDetailsController', ['$scope', 'AppService', functi
 
 }]);
 
+layoutCtrl.controller('testController', ['$scope', 'AppService', 'GoogleChartGenerator', function ($scope, AppService, GoogleChartGenerator) {
+    var layoutName = 'h-2';
+    GoogleChartGenerator.draw('chartDiv');
+    $scope.layoutUrl = "Views/App/Layout/" + layoutName + '.html';
+
+    console.log($scope.layoutUrl);
+}]);

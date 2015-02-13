@@ -24,8 +24,8 @@ angular.module('appRoutes', ['ngRoute'])
                     controller: 'MainController'
                 })
                 .when('/data/monthDiagram', {
-                    templateUrl: 'Views/App/Layout/diagram.html',
-                    controller: 'LayoutController'
+                    templateUrl: 'Views/App/Screen/test-screen-view.html',
+                    controller: 'testController'
                  })
                 //TODO: implementera felhantering
             
