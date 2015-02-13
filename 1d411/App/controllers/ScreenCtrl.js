@@ -1,59 +1,44 @@
 ﻿"use strict";
-var screenModlue = angular.module('Screen', []);
+var screenModule = angular.module('Screen', []);
 
-screenModlue.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', function ($scope, ScreenService, $routeParams) {
+screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', 'appConfig',
+    function ($scope, ScreenService, $routeParams, appConfig) {
+
     var req = ScreenService.getLayoutForScreen($routeParams.id);
     req.error(function () {
     });
 
     req.then(function (response) {
-        console.log(response.data);
+        if (response.data != null) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen
 
-        $scope.templateUrl = response.data.templateUrl; //TODO:Fixa detta på serversida, att det är riktig data
-        $scope.templateUrl = "/Views/App/Templates/default_template.html";
+            $scope.templateUrl = response.data.templateUrl; //TODO:Fixa detta på serversida, att det är riktig data
+            $scope.templateUrl = appConfig.templateUrlRoot + "default_template" + ".html";
 
-        var partials = response.data.partials;
-        var sortedPartials = []; 
+            var partials = response.data.partials;
+            var sortedPartials = []; 
 
-        for (var i = 0; i < partials.length; i++) {
-            sortedPartials[partials[i].position] = partials[i]; 
+            for (var i = 0; i < partials.length; i++) {
+                sortedPartials[partials[i].position] = partials[i]; 
+            }
+            $scope.partials = sortedPartials;
         }
-        $scope.partials = sortedPartials;
     });
 }]);
 
-screenModlue.directive('partial', function ($compile) {
+screenModule.directive('partial', function ($compile, PartialHtmlService) {
     // https://docs.angularjs.org/api/ng/service/$compile
     // https://github.com/simpulton/angular-dynamic-templates
 
-    //TODO: Detta ska hämtas från partials 
-    var diagramTemplate = '<div>{{partial.diagramInfo}}</div>';
-    var textTemplate = '<div>{{partial.value}}</div>';
-    var imageTemplate = '<div>Image template</div>';
+    var linker = function (scope, element, attrs) {
+        PartialHtmlService.getPartialHtml(scope.partial.partialType).then(function (response) {
+            var templates = response.data;
 
-    var getTemplate = function(contentType) {
-        var template = ''
-        switch(contentType) {
-            case 'Diagram':
-                template = diagramTemplate;
-                break;
-            case 'Text':
-                template = textTemplate;
-                break;
-            case 'Image':
-                template = imageTemplate;
-                break;
-        }
-
-        return template;
-    }
-
-    var linker = function(scope, element, attrs) {
-        element.html(getTemplate(scope.partial.partialType));
-        $compile(element.contents())(scope);
+            element.html(templates);
+            $compile(element.contents())(scope);
+        });
     }
     return {
-        restrict: "E",
+        restrict: "E", // only matches element name
         link: linker,
         scope: {
             partial:'='

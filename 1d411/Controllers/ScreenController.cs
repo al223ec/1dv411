@@ -20,21 +20,19 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
-        [Route("layout/")]
+        [Route("layout/{id:int}")]
         [HttpGet]
-        public IHttpActionResult FindById()
+        public IHttpActionResult FindById(int id)
         {
-            return Ok(_service.GetLayout(1));
+            return Ok(_service.GetLayout(id));
         }
 
 
-        [Route("find/")]
-        [HttpGet]
-        public IHttpActionResult Find()
-        {
-            return Ok(_service.GetLayoutScreens());
-        }
-        
-
+        //[Route("find/")]
+        //[HttpGet]
+        //public IHttpActionResult Find()
+        //{
+        //    return Ok(_service.GetLayoutScreens());
+        //}
     }
 }
