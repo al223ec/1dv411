@@ -14,6 +14,10 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/Screen/index.html',
                     controller: 'ScreenController'
                 })
+                .when('/app/screen/:id', {
+                    templateUrl: 'Views/App/Screen/index.html',
+                    controller: 'ScreenController'
+                })
                 .when('/app/testscreen/:id', {
                     templateUrl: 'Views/App/testview.html',
                     controller: 'TestScreenCtrl'
