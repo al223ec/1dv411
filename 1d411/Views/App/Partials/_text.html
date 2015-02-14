@@ -1,4 +1,9 @@
 <div class="partial">
-    <h1>Such text</h1>
-    {{partial.value}}
+    <h1>{{partial.heading}}</h1>
+    <p ng-repeat="paragraph in partial.paragraphs">
+        {{paragraph}}
+    </p>
+    <footer>
+        {{partial.footer}}
+    </footer>
 </div>
