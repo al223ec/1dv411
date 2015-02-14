@@ -22,6 +22,5 @@ namespace _1dv411.Domain.DbEntities
         [JsonIgnore]
         [Column(TypeName = "DateTime2")]
         public DateTime ModifiedAt { get; set; }
-
     }
 }

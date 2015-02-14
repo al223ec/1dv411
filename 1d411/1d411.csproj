@@ -1020,6 +1020,8 @@
     <Content Include="Views\App\Partials\_text.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
+    <Content Include="Views\App\Templates\hero.html" />
+    <Content Include="Views\App\Templates\horizontal.html" />
     <Content Include="Views\App\testview.html" />
     <Content Include="Views\Partials\diagaramData.html" />
     <Content Include="Views\Partials\diagram.html" />

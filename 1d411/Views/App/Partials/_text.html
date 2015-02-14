@@ -1,1 +1,13 @@
-<div><h1>Such text</h1>{{partial.value}}</div>
+<div class="partial">
+    <div ng-repeat="textContent in partial.textContents">
+        <h1 ng-if="textContent.type == 'Heading'">
+            {{textContent.content}}
+        </h1>
+        <p ng-if="textContent.type == 'Paragraph'">
+            {{textContent.content}}
+        </p>
+        <footer ng-if="textContent.type == 'Footer'">
+            {{textContent.content}}
+        </footer>
+    </div>
+</div>

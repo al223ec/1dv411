@@ -27,12 +27,11 @@ namespace _1d411.Controllers
             return Ok(_service.GetLayout(id));
         }
 
-
-        //[Route("find/")]
-        //[HttpGet]
-        //public IHttpActionResult Find()
-        //{
-        //    return Ok(_service.GetLayoutScreens());
-        //}
+        [Route("screen/{screenId:int}")]
+        [HttpGet]
+        public IHttpActionResult FindLayoutsByScreenId(int screenId)
+        {
+            return Ok(_service.GetLayoutsWithScreenId(screenId));
+        }
     }
 }

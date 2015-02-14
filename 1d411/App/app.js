@@ -56,6 +56,7 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.constant("appConfig", {
+    //TODO:: Besluta om detta är smart
     "templateUrlRoot": "/Views/App/Templates/",
-    "partialRoot": "/Views/App/Partials/",
+    "partialUrlRoot": "/Views/App/Partials/",
 })

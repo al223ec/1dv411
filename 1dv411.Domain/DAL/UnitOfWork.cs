@@ -14,6 +14,7 @@ namespace _1dv411.Domain.DAL
         IRepository<Screen> ScreenRepository { get; }
         IRepository<LayoutScreen> LayoutScreenRepository { get; }
         IRepository<Layout> LayoutRepository { get; }
+        IRepository<Text> TextRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
@@ -43,6 +44,12 @@ namespace _1dv411.Domain.DAL
         public IRepository<Layout> LayoutRepository
         {
             get { return _layoutRepository ?? (_layoutRepository = new Repository<Layout>(_context)); }
+        }
+
+        private IRepository<Text> _textRepository;
+        public IRepository<Text> TextRepository
+        {
+            get { return _textRepository ?? (_textRepository = new Repository<Text>(_context)); }
         }
 
         public UnitOfWork()

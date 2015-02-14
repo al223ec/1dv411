@@ -8,17 +8,11 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public enum TextType
-    {
-        String,
-        Header
-    }
-    [JsonObject(Title = "Text")]
     public class Text : Partial
     {
         public override string PartialType { get { return "Text"; } }
-        public TextType Type { get; set; }
-        public string Value { get; set; }
+
+        public ICollection<TextContent> TextContents { get; set; }
 
     }
 }

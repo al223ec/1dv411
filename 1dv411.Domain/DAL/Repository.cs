@@ -37,6 +37,7 @@ namespace _1dv411.Domain.DAL
             }
 
             return orderBy == null ? query.ToList() : orderBy(query).ToList();
+
         }
 
         public T GetById(object id)
@@ -53,10 +54,13 @@ namespace _1dv411.Domain.DAL
         {
             if (entity.Id == 0)
             {
+                entity.CreatedAt = DateTime.Now;
+                entity.ModifiedAt = DateTime.Now; 
                 _set.Add(entity);
             }
             else
             {
+                entity.ModifiedAt = DateTime.Now; 
                 _set.Attach(entity);
                 _context.Entry(entity).State = EntityState.Modified;
             }
