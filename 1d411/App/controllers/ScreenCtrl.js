@@ -5,15 +5,16 @@ screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeP
     function ($scope, ScreenService, $routeParams, appConfig) {
 
         var req = ScreenService.getLayoutForScreen($routeParams.id);
-        req.error(function () {
+        req.error(function (data, status, headers, config) {
 
         });
-        req.then(function (response) {
-            if (response.data != null) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen
-                var templateName = response.data.templateUrl == null ? "default_template" : response.data.templateUrl;
+        req.success(function (data, status, headers, config) {
+           // console.log(data, status, headers, config);
+            if (data) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen men data är däremot  null
+                var templateName = data.templateUrl == null ? "default_template" : data.templateUrl;
                 $scope.templateUrl = appConfig.templateUrlRoot + templateName + ".html";
 
-                var partials = response.data.partials;
+                var partials = data.partials;
                 var sortedPartials = [];
 
                 for (var i = 0; i < partials.length; i++) {
@@ -21,13 +22,13 @@ screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeP
                 }
                 $scope.partials = sortedPartials;
             } else {
-                console.log("Verkar inte få något bra svar från servern, är databasen seedad och uppe?")
+                console.log("Verkar inte få något bra svar från servern, är databasen seedad och uppe? Annars kanske inte id:et finns")
             }
         
         });
         ScreenService.getLayoutsWithScreenId($routeParams.id)
-        .then(function (response) {
-            console.log(response.data); 
+        .success(function (data, status, headers, config) {
+            console.log(data); 
         }); 
         
 }]);

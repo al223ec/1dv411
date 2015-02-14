@@ -37,6 +37,7 @@ namespace _1dv411.Domain.DAL
             }
 
             return orderBy == null ? query.ToList() : orderBy(query).ToList();
+
         }
 
         public T GetById(object id)

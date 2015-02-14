@@ -17,14 +17,14 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {   /*
-             * TODO: Fixa mer och bättre testdata 
-            */
+             * TODO: Fixa mer och bättre testdata */
+
             var hero = SeedHero(context);
             var def = SeedDefault(context);
             //SeedVertical(context);
             var hor = SeedHorizontal(context); 
             
-            /** kommentera bort detta som default, kör endast en gång***/
+            /** kommentera bort detta som default, kör endast en gång */
             Screen screen = new Screen
             {
                   Name = "Lager"
@@ -42,14 +42,13 @@ namespace _1dv411.Domain.Migrations
             context.LayoutScreens.Add(layoutScreenHero);
             context.LayoutScreens.Add(layoutScreenDef);
             context.SaveChanges();
-            /**** För att seeda ordrar                 * */
+            /**** För att seeda ordrar                 *
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 context.SaveChanges(); 
-
-
+            /**/
         }
         private Layout CreateLayout(string name, string template)
         {

@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201502141145560_TextContent.Designer.cs">
       <DependentUpon>201502141145560_TextContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502141244246_TextContent-TextType.cs" />
+    <Compile Include="Migrations\201502141244246_TextContent-TextType.Designer.cs">
+      <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502141145560_TextContent.resx">
       <DependentUpon>201502141145560_TextContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502141244246_TextContent-TextType.resx">
+      <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

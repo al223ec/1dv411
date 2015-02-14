@@ -23,24 +23,18 @@ namespace _1dv411.Domain.DbEntities
         public int TextId { get; set; }
 
         [JsonIgnore]
-        public virtual Text Text { get; set; }
+        public Text Text { get; set; }
 
         public string Content { get; set; }
 
+        public TextType TextType  { get; set; }
+
         public string Type 
-        { 
+        {
             get 
             { 
-                return _textType.ToString();  
-            } 
-        }
-        private TextType _textType;
-        public TextType TextType 
-        { 
-            set 
-            { 
-                _textType = value; 
-            } 
+                return this.TextType.ToString(); 
+            }
         }
     }
 }
