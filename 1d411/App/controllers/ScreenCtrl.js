@@ -1,10 +1,10 @@
 ﻿"use strict";
 var screenModule = angular.module('Screen', []);
 
-screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeParams', 'appConfig',
-    function ($scope, ScreenService, $routeParams, appConfig) {
+screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        var req = ScreenService.getLayoutForScreen($routeParams.id);
+        var req = LayoutScreenService.getLayoutForScreen($routeParams.id);
         req.error(function (data, status, headers, config) {
 
         });
@@ -20,15 +20,17 @@ screenModule.controller('ScreenController', ['$scope', 'ScreenService', '$routeP
                 for (var i = 0; i < partials.length; i++) {
                     sortedPartials[partials[i].position] = partials[i]; 
                 }
+                console.log(partials); 
                 $scope.partials = sortedPartials;
             } else {
                 console.log("Verkar inte få något bra svar från servern, är databasen seedad och uppe? Annars kanske inte id:et finns")
             }
         
         });
-        ScreenService.getLayoutsWithScreenId($routeParams.id)
+
+        LayoutScreenService.getLayoutsWithScreenId($routeParams.id)
         .success(function (data, status, headers, config) {
-            console.log(data); 
+            //console.log(data); 
         }); 
         
 }]);

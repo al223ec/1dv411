@@ -24,7 +24,7 @@ namespace _1dv411.Domain.Migrations
             //SeedVertical(context);
             var hor = SeedHorizontal(context); 
             
-            /** kommentera bort detta som default, kör endast en gång */
+            /** kommentera bort detta som default, kör endast en gång 
             Screen screen = new Screen
             {
                   Name = "Lager"
@@ -113,14 +113,17 @@ namespace _1dv411.Domain.Migrations
                 CreateText(hero, 1, "Hero heading", new string[] {
                     "A defense officer, Nameless, was summoned by the King of Qin regarding his success of terminating three warriors.",
                     "In ancient China, before the reign of the first emperor, warring factions throughout the Six Kingdoms plot to assassinate the most powerful ruler, Qin. When a minor official defeats Qin's three principal enemies, he is summoned to the palace to tell Qin the story of his surprising victory",
-                }),
+                },
+                "Footer ska max finnas en gång per text"),
                 CreateDiagram (hero, 2, 666),
                 CreateText(hero, 3, "Flying Daggers", new string[] {
                     "A romantic police captain breaks a beautiful member of a rebel group out of prison to help her rejoin her fellows, but things are not what they seem.",
                     "During the reign of the Tang dynasty in China, a secret organization called 'The House of the Flying Daggers' rises and opposes the government. A police officer called Leo sends officer Jin to investigate a young dancer named Mei, claiming that she has ties to the 'Flying Daggers'. Leo arrests Mei, only to have Jin breaking her free in a plot to gain her trust and lead the police to the new leader of the secret organization. But things are far more complicated than they seem...",
                     "To prepare for her role, Ziyi Zhang lived with a blind girl for two months. The blind girl became blind at the age of 12 because of a brain tumor.",
                     "Towards the end of the 'Echo Game', Leo throws the entire bowl of beans into the drums. They fall the floor, but when Leo moves to Mei, they have all disappeared."
-                }),
+                },
+                "Footer ska max finnas en gång per text"
+                ),
             };
 
             hero.Partials = partials;

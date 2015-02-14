@@ -10,11 +10,9 @@ namespace _1dv411.Domain
     public interface ILayoutScreenService
     {
         IEnumerable<Screen> GetScreens();
-
         IEnumerable<LayoutScreen> GetLayoutScreens();
-
         IEnumerable<Layout> GetLayoutsWithScreenId(int screenId);
-
+        IEnumerable<Layout> GetAllLayouts();
         Layout GetLayout(int id);
     }
     public class LayoutScreenService : ServiceBase, ILayoutScreenService
@@ -52,7 +50,8 @@ namespace _1dv411.Domain
                 {
                     if (partials[i].PartialType == "Text")
                     {
-                        partials[i] = _unitOfWork.TextRepository.Get(t => t.LayoutId == layout.Id, null, "TextContents").FirstOrDefault(); 
+                        var textPartial = partials[i];
+                        partials[i] = _unitOfWork.TextRepository.Get(t => t.Id == textPartial.Id, null, "TextContents").FirstOrDefault(); 
                     }
                 }
                 layout.Partials = partials;
@@ -60,6 +59,9 @@ namespace _1dv411.Domain
             return layout; 
         }
 
-
+        public IEnumerable<Layout> GetAllLayouts()
+        {
+            return _unitOfWork.LayoutRepository.Get();
+        }
     }
 }

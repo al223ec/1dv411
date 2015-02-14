@@ -177,7 +177,7 @@
     <Content Include="App\factories\ChartGenerator.js" />
     <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="App\services\json_example.js" />
-    <Content Include="App\services\ScreenService.js" />
+    <Content Include="App\services\LayoutScreenService.js" />
     <Content Include="App\services\PartialHtmlService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\angular-chart.css" />
