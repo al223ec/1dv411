@@ -27,6 +27,13 @@ namespace _1d411.Controllers
             return Ok(_service.GetLayout(id));
         }
 
+        [Route("layouts")]
+        [HttpGet]
+        public IHttpActionResult GetAllLayouts()
+        {
+            return Ok(_service.GetAllLayouts());
+        }
+
         [Route("screen/{screenId:int}")]
         [HttpGet]
         public IHttpActionResult FindLayoutsByScreenId(int screenId)

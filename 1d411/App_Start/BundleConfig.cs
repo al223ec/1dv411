@@ -25,7 +25,7 @@ namespace _1d411
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
                         "~/App/services/AppService.js",
-                        "~/App/services/ScreenService.js",
+                        "~/App/services/LayoutScreenService.js",
                         "~/App/services/PartialHtmlService.js",
 
                         "~/App/controllers/MainCtrl.js",

@@ -6,13 +6,13 @@ var app = angular.module('AppName', [
     'Layout',
     'Screen',
     'TestScreen',
-    'chartDirectives',
+    //'chartDirectives',
     'AppService',
-    'ScreenService',
+    'LayoutScreenService',
     'PartialHtmlService',
-    'GoogleChart',
-    'ChartProvider',
-    'angularChart'
+    //'GoogleChart',
+    //'ChartProvider',
+    //'angularChart'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 
