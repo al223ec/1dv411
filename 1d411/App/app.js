@@ -57,5 +57,5 @@ app.config(['$httpProvider', function($httpProvider) {
 
 app.constant("appConfig", {
     "templateUrlRoot": "/Views/App/Templates/",
-    "partialRoot": "/Views/App/Partials/",
+    "partialUrlRoot": "/Views/App/Partials/",
 })

@@ -13,6 +13,8 @@ namespace _1dv411.Domain
 
         IEnumerable<LayoutScreen> GetLayoutScreens();
 
+        IEnumerable<Layout> GetLayoutsWithScreenId(int screenId);
+
         Layout GetLayout(int id);
     }
     public class LayoutScreenService : ServiceBase, ILayoutScreenService
@@ -29,9 +31,20 @@ namespace _1dv411.Domain
         }
 
 
+        public IEnumerable<Layout> GetLayoutsWithScreenId(int screenId)
+        {
+            List<Layout> layouts = new List<Layout>(); 
+            var layoutScreens = _unitOfWork.LayoutScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Layout").ToList();
+            layoutScreens.ForEach(ls => layouts.Add(ls.Layout));
+
+            return layouts; 
+        }
+
         public Layout GetLayout(int id)
         {
             return _unitOfWork.LayoutRepository.Get(l => l.Id == id, null).FirstOrDefault();
         }
+
+
     }
 }

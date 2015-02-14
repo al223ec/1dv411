@@ -63,7 +63,7 @@ namespace _1dv411.Domain.Migrations
             {
                 Layout = layout,
                 Position = position,
-                Value = value,
+                Heading = value,
                 CreatedAt = DateTime.Now,
                 ModifiedAt = DateTime.Now
             }; 
