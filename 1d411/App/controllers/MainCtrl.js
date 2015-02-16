@@ -10,12 +10,13 @@ angular.module('Main', [])
             });
 
         /**/
-        //var cb = function (data) {
-        //    $scope.layouts = data;
-        //}
-        //LayoutScreenService.getAllLayouts(cb);
+        var cb = function (data) {
+            $scope.layouts = data;
+        }
+        LayoutScreenService.getAllLayouts(cb);
 
-        //scope.showLayout = function (layout) {
-        //    $scope.selectedLayout = layout;
-        //}
+        $scope.showLayout = function (layout) {
+            $scope.selectedLayout = layout;
+            console.log($scope.selectedLayout);
+        }
     }]);
