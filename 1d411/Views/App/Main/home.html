@@ -1,21 +1,15 @@
-<div class="col-md-12">
-    <h4>Hello home!</h4>
-    <ul>
-        <li ng-repeat="layout in layouts">
-            <a href="/app/screen/{{layout.id}}"> {{layout.name}}</a>
-        </li>
-    </ul>
-
-
-    <!--<angularchart dataset="main.dataset" schema="main.schema" options="main.options"></angularchart>
-    <inventory-chart></inventory-chart>
-
-    <google-chart></google-chart>-->
-    
-    <!--<div ng-controller="GoogleCtrl">
-        <h1>{{header}}</h1>
-        <div google-chart="ColumnChart" ng-model="data1"></div>
-
-    </div>--->
+<div class="row">
+    <div class="col-md-6">
+        <h4>Screens</h4>
+        <ul>
+            <li ng-repeat="l in layouts">
+                <a href="/app/screen/{{l.id}}"> {{l.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h3>Admin</h3>
+        <a href="/app/admin/screens/">Admin!</a>
+    </div>
 </div>
 

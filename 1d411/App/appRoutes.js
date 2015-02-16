@@ -6,30 +6,25 @@ angular.module('appRoutes', ['ngRoute'])
                     templateUrl: 'Views/App/Main/home.html',
                     controller: 'MainController'
                 })
-                .when('/layout', {
-                    templateUrl: 'Views/App/Layout/Layout.html',
-                    controller: 'LayoutController'
-                })
                 .when('/app/screen/:id', {
                     templateUrl: 'Views/App/Screen/index.html',
                     controller: 'ScreenController'
                 })
-                .when('/app/testscreen/:id', {
-                    templateUrl: 'Views/App/testview.html',
-                    controller: 'TestScreenCtrl'
+                .when('/app/admin/screens', {
+                    templateUrl: 'Views/App/Admin/screens.html',
+                    controller: 'AdminScreensController'
                 })
-                .when('/app/testLayout', {
-                    templateUrl: 'Views/App/Layout/h-2.html',
-                    controller: 'LayoutController'
-
+                .when('/app/admin/layouts', {
+                    templateUrl: 'Views/App/Admin/layouts.html',
+                    controller: 'AdminLayoutsController'
                 })
-                .when('/exempel', {
-                    templateUrl: 'Views/App/exempel.html',
-                    controller: 'MainController'
+                .when('/app/admin/designs', {
+                    templateUrl: 'Views/App/Admin/designs.html',
+                    controller: 'AdminDesignsController'
                 })
-                .when('/app/monthDiagram', {
-                    templateUrl: 'Views/App/Layout/diagram.html',
-                    controller: 'LayoutController'
+                .when('/app/admin/diagrams', {
+                    templateUrl: 'Views/App/Admin/diagrams.html',
+                    controller: 'AdminDiagramsController'
                 })
                 //TODO: implementera felhantering
             

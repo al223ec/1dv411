@@ -3,7 +3,7 @@
   <Class Name="_1dv411.Domain.DbEntities.Diagram">
     <Position X="6.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Diagram.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -16,7 +16,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Image.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -30,7 +30,7 @@
   <Class Name="_1dv411.Domain.DbEntities.Text">
     <Position X="9.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Text.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -62,5 +62,26 @@
       <FileName>DbEntities\Screen.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="_1dv411.Domain.DbEntities.TextContent" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="_1dv411.Domain.DbEntities.BaseDto" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="1.125" />
+        <Point X="12.25" Y="1.125" />
+        <Point X="12.25" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAAAEAAAAAAAAAAAAAQAACAAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\TextContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="_1dv411.Domain.DbEntities.TextType" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\TextContent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

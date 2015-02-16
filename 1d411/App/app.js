@@ -3,16 +3,10 @@ var app = angular.module('AppName', [
 	'ngAnimate',
 	'appRoutes',
     'Main',
-    'Layout',
     'Screen',
-    'TestScreen',
-    //'chartDirectives',
     'AppService',
     'LayoutScreenService',
     'PartialHtmlService',
-    //'GoogleChart',
-    //'ChartProvider',
-    //'angularChart'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 

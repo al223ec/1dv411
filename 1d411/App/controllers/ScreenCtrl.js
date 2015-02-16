@@ -9,8 +9,7 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
 
         });
         req.success(function (data, status, headers, config) {
-            //console.log(data, status, headers, config);
-            if (data) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen men data är däremot  null
+            if (data) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen men data är däremot null
                 var templateName = data.templateUrl == null ? "default_template" : data.templateUrl;
                 $scope.templateUrl = appConfig.templateUrlRoot + templateName + ".html";
 
@@ -20,6 +19,7 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
                 for (var i = 0; i < partials.length; i++) {
                     sortedPartials[partials[i].position] = partials[i]; 
                 }
+
                 console.log(partials); 
                 $scope.partials = sortedPartials;
             } else {
@@ -33,7 +33,29 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
             //console.log(data); 
         }); 
         
-}]);
+    }]);
+
+screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+        var screens = LayoutScreenService.getScreens().success(function (data) {
+            $scope.screens = data;
+        });
+        $scope.selectScreen = function (screen) {
+            $scope.s = ($scope.s != screen) ? screen : null;    
+        }
+    }]);
+screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
+screenModule.controller('AdminDesignsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
+screenModule.controller('AdminDiagramsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
 
 screenModule.directive('partial', function ($compile, PartialHtmlService) {
     // https://docs.angularjs.org/api/ng/service/$compile

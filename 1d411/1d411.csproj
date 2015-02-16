@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\directives\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Angular\" />
     <Folder Include="Views\Shared\" />
@@ -158,6 +159,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DiagramDataController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,14 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\controllers\LayoutCtrl.js" />
     <Content Include="App\controllers\ScreenCtrl.js" />
-    <Content Include="App\controllers\TestScreenCtrl.js" />
-    <Content Include="App\directives\charts.js" />
-    <Content Include="App\directives\googleChart.js" />
-    <Content Include="App\directives\layoutContent.js" />
-    <Content Include="App\factories\ChartFactory.js" />
-    <Content Include="App\factories\ChartGenerator.js" />
     <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="App\services\json_example.js" />
     <Content Include="App\services\LayoutScreenService.js" />
@@ -185,8 +180,6 @@
     <Content Include="Content\angular-circular-navigation.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\c3.css" />
-    <Content Include="Content\c3.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -194,7 +187,6 @@
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
     <Content Include="Scripts\angular-aria.min.js" />
-    <Content Include="Scripts\angular-chart.js" />
     <Content Include="Scripts\angular-circular-navigation.js" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
@@ -240,8 +232,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Scripts\c3.js" />
-    <Content Include="Scripts\d3.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -1003,8 +993,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\App\exempel.html" />
-    <Content Include="Views\App\google-chart.html" />
+    <Content Include="Views\App\Admin\layouts.html" />
+    <Content Include="Views\App\Admin\designs.html" />
+    <Content Include="Views\App\Admin\diagrams.html" />
+    <Content Include="Views\App\Admin\_nav.html" />
+    <Content Include="Views\App\Admin\_screen.html" />
     <Content Include="Views\App\Layout\h-1-down-v-2.html" />
     <Content Include="Views\App\Layout\h-1-up-v-2.html" />
     <Content Include="Views\App\Layout\h-2-v-1-left.html" />
@@ -1015,15 +1008,13 @@
     <Content Include="Views\App\Layout\diagram.html" />
     <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
-    <Content Include="Views\App\inventory-chart.html" />
     <Content Include="Views\App\Partials\_diagram.html" />
     <Content Include="Views\App\Partials\_text.html" />
+    <Content Include="Views\App\Admin\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
     <Content Include="Views\App\Templates\hero.html" />
     <Content Include="Views\App\Templates\horizontal.html" />
-    <Content Include="Views\App\testview.html" />
-    <Content Include="Views\Partials\diagaramData.html" />
     <Content Include="Views\Partials\diagram.html" />
     <Content Include="Views\Partials\text.html" />
     <Content Include="Web.config">
