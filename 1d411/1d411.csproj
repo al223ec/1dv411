@@ -159,6 +159,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DiagramDataController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -992,6 +993,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\App\Admin\layouts.html" />
+    <Content Include="Views\App\Admin\designs.html" />
+    <Content Include="Views\App\Admin\diagrams.html" />
+    <Content Include="Views\App\Admin\_nav.html" />
+    <Content Include="Views\App\Admin\_screen.html" />
     <Content Include="Views\App\Layout\h-1-down-v-2.html" />
     <Content Include="Views\App\Layout\h-1-up-v-2.html" />
     <Content Include="Views\App\Layout\h-2-v-1-left.html" />
@@ -1004,6 +1010,7 @@
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\Partials\_diagram.html" />
     <Content Include="Views\App\Partials\_text.html" />
+    <Content Include="Views\App\Admin\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
     <Content Include="Views\App\Templates\hero.html" />

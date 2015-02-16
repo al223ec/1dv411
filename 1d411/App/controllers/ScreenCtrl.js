@@ -33,7 +33,29 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
             //console.log(data); 
         }); 
         
-}]);
+    }]);
+
+screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+        var screens = LayoutScreenService.getScreens().success(function (data) {
+            $scope.screens = data;
+        });
+        $scope.selectScreen = function (screen) {
+            $scope.s = ($scope.s != screen) ? screen : null;    
+        }
+    }]);
+screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
+screenModule.controller('AdminDesignsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
+screenModule.controller('AdminDiagramsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
+    }]);
 
 screenModule.directive('partial', function ($compile, PartialHtmlService) {
     // https://docs.angularjs.org/api/ng/service/$compile

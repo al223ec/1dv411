@@ -9,14 +9,12 @@ angular.module('Main', [])
                 $scope.layouts = data; 
             });
 
-        /**/
-        var cb = function (data) {
-            $scope.layouts = data;
-        }
-        LayoutScreenService.getAllLayouts(cb);
 
         $scope.showLayout = function (layout) {
             $scope.selectedLayout = layout;
             console.log($scope.selectedLayout);
         }
+        LayoutScreenService.getScreens().success(function (data) {
+            $scope.screens = data;
+        }); 
     }]);

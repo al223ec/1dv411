@@ -8,37 +8,31 @@ using System.Web.Http;
 
 namespace _1d411.Controllers
 {
-    [RoutePrefix("screenlayout")]
+    [RoutePrefix("screens")]
     public class ScreenController : ApiController
     {
-        private ILayoutScreenService _service;
+        private IScreenService _service;
         
         public ScreenController()
-            : this(new LayoutScreenService())
+            : this(new ScreenService())
         { }
-        public ScreenController(ILayoutScreenService service)
+        public ScreenController(IScreenService service)
         {
             _service = service;
         }
-        [Route("layout/{id:int}")]
-        [HttpGet]
-        public IHttpActionResult FindById(int id)
-        {
-            return Ok(_service.GetLayout(id));
-        }
 
-        [Route("layouts")]
-        [HttpGet]
-        public IHttpActionResult GetAllLayouts()
-        {
-            return Ok(_service.GetAllLayouts());
-        }
-
-        [Route("screen/{screenId:int}")]
+        [Route("layouts/{screenId:int}")]
         [HttpGet]
         public IHttpActionResult FindLayoutsByScreenId(int screenId)
         {
             return Ok(_service.GetLayoutsWithScreenId(screenId));
+        }
+
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult GetAllScreens()
+        {
+            return Ok(_service.GetAllScreens());
         }
     }
 }
