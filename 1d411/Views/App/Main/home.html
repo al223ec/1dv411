@@ -3,19 +3,8 @@
     <ul>
         <li ng-repeat="layout in layouts">
             <a href="/app/screen/{{layout.id}}"> {{layout.name}}</a>
+            <span ng-click="showLayout(layout)">Click me</span>
         </li>
     </ul>
-
-
-    <!--<angularchart dataset="main.dataset" schema="main.schema" options="main.options"></angularchart>
-    <inventory-chart></inventory-chart>
-
-    <google-chart></google-chart>-->
-    
-    <!--<div ng-controller="GoogleCtrl">
-        <h1>{{header}}</h1>
-        <div google-chart="ColumnChart" ng-model="data1"></div>
-
-    </div>--->
 </div>
 

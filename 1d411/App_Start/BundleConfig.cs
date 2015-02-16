@@ -17,28 +17,16 @@ namespace _1d411
                         "~/Scripts/angular-mock.js",
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-resource.js",
-                        "~/Scripts/d3.js",
-                        "~/Scripts/c3.js",
-                        "~/Scripts/googleChartJs.js",
-                        "~/Scripts/angular-chart.js"
+                        "~/Scripts/googleChartJs.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
                         "~/App/services/AppService.js",
                         "~/App/services/LayoutScreenService.js",
                         "~/App/services/PartialHtmlService.js",
-
                         "~/App/controllers/MainCtrl.js",
-                        "~/App/controllers/LayoutCtrl.js",
-                        "~/App/controllers/ScreenCtrl.js",
-                        "~/App/controllers/TestScreenCtrl.js",
-                        
-                        "~/App/factories/ChartGenerator.js",
-                        "~/App/factories/ChartFactory.js",
+                        "~/App/controllers/ScreenCtrl.js",                        
                         "~/App/factories/googleChartFactory.js",
-                        "~/App/directives/layoutContent.js",
-                        "~/App/directives/googleChart.js",
-                        "~/App/directives/charts.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
                         ));
@@ -53,9 +41,7 @@ namespace _1d411
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/c3.css",
-                      "~/Content/Site.css",
-                      "~/Content/angular-chart.css"));
+                      "~/Content/Site.css"));
 
             //För att minifiera alla filer
             //BundleTable.EnableOptimizations = true;
