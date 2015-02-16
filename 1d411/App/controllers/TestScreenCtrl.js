@@ -1,7 +1,7 @@
 ﻿"use strict";
 var layoutCtrl = angular.module('TestScreen', []);
 
-layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenerator', '$routeParams', function ($scope, ScreenService, ChartGenerator, $routeParams) {
+layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'GoogleChartGenerator', '$routeParams', function ($scope, ScreenService, GoogleChartGenerator, $routeParams) {
 
     ScreenService.getLayoutForScreen($routeParams.id)
         .success(function (response) {
@@ -70,6 +70,6 @@ layoutCtrl.controller('TestScreenCtrl', ['$scope', 'ScreenService', 'ChartGenera
         })
         .then(function () {
 
-            ChartGenerator.draw('testChart');
+            GoogleChartGenerator.draw('testChart');
         });
 }]);
