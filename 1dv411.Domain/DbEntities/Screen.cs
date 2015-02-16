@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace _1dv411.Domain.DbEntities
 
         public int Timer { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<LayoutScreen> LayoutScreens { get; set; }
     }
 }

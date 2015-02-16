@@ -10,7 +10,7 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Text : Partial
     {
-        public override string PartialType { get { return "Text"; } }
+        //public override string PartialType { get { return "Text"; } }
 
         public ICollection<TextContent> TextContents { get; set; }
 
