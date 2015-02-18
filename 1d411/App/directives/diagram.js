@@ -8,6 +8,7 @@ diagramModule.directive('diagram', function ($compile, appConfig, chartFactory) 
         chartFactory.draw(div, scope.data);
 
         element.html(div);
+        div.className = "diagram";
         $compile(element.contents())(scope);
     }
 

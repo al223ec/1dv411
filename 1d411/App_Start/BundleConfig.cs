@@ -17,6 +17,9 @@ namespace _1d411
                         "~/Scripts/angular-mock.js",
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-resource.js",
+                        "~/Scripts/c3/c3.min.js",
+                        "~/Scripts/d3/d3.min.js",
+
                         "~/Scripts/googleChartJs.js"
                         ));
 
@@ -27,7 +30,8 @@ namespace _1d411
                         "~/App/controllers/MainCtrl.js",
                         "~/App/controllers/ScreenCtrl.js",
                         "~/App/directives/partial.js",
-                        "~/App/directives/diagram.js", 
+                        "~/App/directives/diagram.js",
+                        "~/App/directives/angular-chart.js", 
                         "~/App/factories/chartFactory.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
@@ -44,6 +48,8 @@ namespace _1d411
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/angular-chart.css",
+                      "~/Content/c3.css",
                       "~/Content/Site.css"));
 
             //För att minifiera alla filer

@@ -10,6 +10,7 @@ var app = angular.module('AppName', [
     'ChartProvider',
     'LayoutScreenService',
     'PartialHtmlService',
+    'angularChart'
 ]);
 
 app.run(['$location', '$rootScope', '$log', '$route', '$http', 

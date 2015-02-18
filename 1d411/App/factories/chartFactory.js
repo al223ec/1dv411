@@ -24,11 +24,21 @@ chartModule.factory("chartFactory", [function () {
             var options = {
                 title: 'Desing Onlines Orderdata',
                 vAxis: { textPosition: 'none' },
-                enableInteractivity: false
+                enableInteractivity: true
             };
 
             var googleChart = new google.visualization.ColumnChart(div);
-            googleChart.draw(data, options);
+
+            $(window).resize(function () {
+                googleChart.draw(data, options);
+            });
+            angular.element(document).ready(function () {
+                console.log("ready");
+                googleChart.draw(data, options);
+            });
+            $(document).ready(function () {
+                
+            });
         }
     }
 

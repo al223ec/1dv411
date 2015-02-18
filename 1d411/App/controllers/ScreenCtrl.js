@@ -3,7 +3,6 @@ var screenModule = angular.module('Screen', []);
 
 screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
-
         //TODO:: Fixa denna fråga
         var req = LayoutScreenService.getLayout($routeParams.id);
         req.error(function (data, status, headers, config) {

@@ -9,6 +9,9 @@ partial.directive('partial', function ($compile, PartialHtmlService) {
     // https://docs.angularjs.org/api/ng/service/$compile
     // https://github.com/simpulton/angular-dynamic-templates
 
+
+
+
     var linker = function (scope, element, attrs) {
 
         scope[scope.partial.partialType.toLowerCase()] = scope.partial; //Sätter partial namnet på scopet så att det kan nås via detta attr
@@ -18,6 +21,32 @@ partial.directive('partial', function ($compile, PartialHtmlService) {
             element.html(partialTemplates);
             $compile(element.contents())(scope);
         });
+
+        //TODO:Detta ska flyttas ligger bara här tillfälligt för test av angular chart
+        if (scope.partial.partialType == "Diagram"){
+            scope.dataset = scope.partial.data;
+            scope.schema = {
+                day: {
+                    type: 'datetime',
+                    format: '%Y-%m-%d_%H:%M:%S',
+                    name: 'Date'
+                }
+            };
+
+            scope.options = {
+                rows: [{
+                    key: 'orders',
+                    type: 'bar'
+                }, {
+                    key: 'ordersLastYear',
+                    type: 'bar'
+                }],
+                xAxis: {
+                    key: 'date',
+                    displayFormat: '%Y-%m-%d %H:%M:%S'
+                }
+            };
+        }
     }
 
     return {
