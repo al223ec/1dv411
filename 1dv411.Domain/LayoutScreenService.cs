@@ -7,16 +7,20 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface ILayoutScreenService
+    public interface ILayoutScreenService : IService<LayoutScreen>
     {
-        IEnumerable<LayoutScreen> GetLayoutScreens();
     }
     public class LayoutScreenService : ServiceBase, ILayoutScreenService
     {
-        public IEnumerable<LayoutScreen> GetLayoutScreens()
+        public IEnumerable<LayoutScreen> GetAll()
         {
             //För att implementera eager loading, hämta ut object som är specad
-            return _unitOfWork.LayoutScreenRepository.Get(null, null, "Screen, Layout").Take(10).ToList();
+            return _unitOfWork.LayoutScreenRepository.Get(null, null, "Screen, Layout").ToList();
+        }
+
+        public LayoutScreen GetById(int id)
+        {
+            return _unitOfWork.LayoutScreenRepository.Get(l => l.Id == id).FirstOrDefault();
         }
     }
 }

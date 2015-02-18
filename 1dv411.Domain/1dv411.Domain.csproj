@@ -68,6 +68,7 @@
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IDiagramService.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="LayoutScreenService.cs" />
     <Compile Include="LayoutService.cs" />
     <Compile Include="Migrations\201502021042444_initialcreate.cs" />
@@ -97,6 +98,10 @@
     <Compile Include="Migrations\201502141244246_TextContent-TextType.cs" />
     <Compile Include="Migrations\201502141244246_TextContent-TextType.Designer.cs">
       <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502181042424_AddedDiagramType.cs" />
+    <Compile Include="Migrations\201502181042424_AddedDiagramType.Designer.cs">
+      <DependentUpon>201502181042424_AddedDiagramType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502141244246_TextContent-TextType.resx">
       <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502181042424_AddedDiagramType.resx">
+      <DependentUpon>201502181042424_AddedDiagramType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -164,8 +164,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="JsonFormatHelper\PartialObjectNameContractResolver.cs" />
-    <Compile Include="JsonFormatHelper\RootFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

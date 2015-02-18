@@ -20,7 +20,6 @@ namespace _1dv411.Domain.DbEntities
 
         public int Position { get; set; }
 
-        //Detta borde kunna lösas med reflektion också tex.  this.getType().Name; 
         public string PartialType { get { return this.GetType().Name.Substring(0, this.GetType().Name.IndexOf('_')); } }
     }
 }
