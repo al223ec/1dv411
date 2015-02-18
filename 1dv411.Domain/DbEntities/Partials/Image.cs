@@ -10,7 +10,6 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Image : Partial
     {
-       // public override string PartialType { get { return "Image"; } }
         public string Url { get; set; }
     }
 }

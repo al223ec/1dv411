@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface IScreenService
+    public interface IScreenService : IService<Screen>
     {
-        IEnumerable<Screen> GetAllScreens();
         IEnumerable<Layout> GetLayoutsWithScreenId(int screenId);
-
-        Screen GetScreen(int id); 
     }
     public class ScreenService : ServiceBase, IScreenService
     {
-        public IEnumerable<Screen> GetAllScreens()
+        public IEnumerable<Screen> GetAll()
         {
             return _unitOfWork.ScreenRepository.Get();
+        }
+        public Screen GetById(int id)
+        {
+            return _unitOfWork.ScreenRepository.Get(s => s.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Layout> GetLayoutsWithScreenId(int screenId)
@@ -26,16 +27,9 @@ namespace _1dv411.Domain
             List<Layout> layouts = new List<Layout>();
             //Hämta alla relationsobjekt
             var layoutScreens = _unitOfWork.LayoutScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Layout").ToList();
-            //Lägg till all layouts till listan
+            //Lägg till all layouts till listan layouts 
             layoutScreens.ForEach(ls => layouts.Add(ls.Layout));
             return layouts;
-        }
-
-
-
-        public Screen GetScreen(int id)
-        {
-            return _unitOfWork.ScreenRepository.Get(s => s.Id == id).FirstOrDefault(); 
         }
     }
 }

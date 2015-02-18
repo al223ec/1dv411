@@ -20,6 +20,21 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
+
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult GetAllLayouts()
+        {
+            return Ok(_service.GetAll());
+        }
+
+        [Route("{id:int}")]
+        [HttpGet]
+        public IHttpActionResult FindById(int id)
+        {
+            return Ok(_service.GetById(id));
+        }
+
         [Route("names")]
         [HttpGet]
         public IHttpActionResult GetAllLayoutNames()
@@ -27,19 +42,6 @@ namespace _1d411.Controllers
             return Ok(_service.GetAllLayoutNames());
         }
 
-        [Route("{id:int}")]
-        [HttpGet]
-        public IHttpActionResult FindById(int id)
-        {
-            return Ok(_service.GetLayout(id));
-        }
-
-        [HttpGet]
-        [Route("")]
-        public IHttpActionResult GetAllLayouts()
-        {
-            return Ok(_service.GetAllLayouts());
-        }
 
     }
 }

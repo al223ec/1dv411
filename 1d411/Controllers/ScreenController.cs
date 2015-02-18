@@ -32,7 +32,16 @@ namespace _1d411.Controllers
         [Route("")]
         public IHttpActionResult GetAllScreens()
         {
-            return Ok(_service.GetAllScreens());
+            return Ok(_service.GetAll());
         }
+
+
+        [Route("{id:int}")]
+        [HttpGet]
+        public IHttpActionResult FindById(int id)
+        {
+            return Ok(_service.GetById(id));
+        }
+
     }
 }

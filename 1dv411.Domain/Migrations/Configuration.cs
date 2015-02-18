@@ -17,7 +17,7 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {   /*
-             * TODO: Fixa mer och bättre testdata */
+             * TODO: Fixa mer och bättre testdata 
 
             var hero = SeedHero(context);
             var def = SeedDefault(context);
@@ -97,6 +97,7 @@ namespace _1dv411.Domain.Migrations
                 Layout = layout,
                 Position = position,
                 DiagramInfo = info,
+                DiagramType = DiagramType.Week
             };
         }
 

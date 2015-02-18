@@ -17,9 +17,11 @@ namespace _1dv411.Domain.DbEntities
     }
     public class Diagram : Partial
     {
-       // public override string PartialType { get { return "Diagram"; } }
-
         //TODO::Vilken info är nödvändig
         public int DiagramInfo { get; set; }
+        public string Type { get { return this.DiagramType.ToString(); } }
+       
+        [JsonIgnore]
+        public DiagramType? DiagramType { get; set; }
     }
 }

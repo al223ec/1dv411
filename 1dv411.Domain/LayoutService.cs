@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface ILayoutService
+    public interface ILayoutService : IService<Layout>
     {
         IEnumerable<string> GetAllLayoutNames();
-        Layout GetLayout(int id); 
-        IEnumerable<Layout> GetAllLayouts();
     }
     public class LayoutService : ServiceBase, ILayoutService
     {
@@ -23,7 +21,7 @@ namespace _1dv411.Domain
                .OrderBy(s => s)
                .ToList();
         }
-        public Layout GetLayout(int id)
+        public Layout GetById(int id)
         {
             var layout = _unitOfWork.LayoutRepository.Get(l => l.Id == id, null, "Partials").FirstOrDefault();
 
@@ -44,7 +42,7 @@ namespace _1dv411.Domain
             return layout;
         }
 
-        public IEnumerable<Layout> GetAllLayouts()
+        public IEnumerable<Layout> GetAll()
         {
             return _unitOfWork.LayoutRepository.Get();
         }

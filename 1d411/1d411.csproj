@@ -119,7 +119,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\directives\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Angular\" />
     <Folder Include="Views\Shared\" />
@@ -164,12 +163,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="JsonFormatHelper\PartialObjectNameContractResolver.cs" />
-    <Compile Include="JsonFormatHelper\RootFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\controllers\ScreenCtrl.js" />
+    <Content Include="App\directives\partial.js" />
     <Content Include="App\factories\googleChartFactory.js" />
     <Content Include="App\services\json_example.js" />
     <Content Include="App\services\LayoutScreenService.js" />
