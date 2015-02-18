@@ -9,9 +9,6 @@ partial.directive('partial', function ($compile, PartialHtmlService) {
     // https://docs.angularjs.org/api/ng/service/$compile
     // https://github.com/simpulton/angular-dynamic-templates
 
-
-
-
     var linker = function (scope, element, attrs) {
 
         scope[scope.partial.partialType.toLowerCase()] = scope.partial; //Sätter partial namnet på scopet så att det kan nås via detta attr
@@ -23,6 +20,7 @@ partial.directive('partial', function ($compile, PartialHtmlService) {
         });
 
         //TODO:Detta ska flyttas ligger bara här tillfälligt för test av angular chart
+        //http://maxklenk.github.io/angular-chart/index.html Angular chart, verkar vettigare än google chart tycker jag
         if (scope.partial.partialType == "Diagram"){
             scope.dataset = scope.partial.data;
             scope.schema = {
