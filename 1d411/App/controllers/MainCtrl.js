@@ -1,20 +1,13 @@
 angular.module('Main', [])
     .controller('MainController', ['$scope', 'AppService', 'LayoutScreenService', function ($scope, AppService, LayoutScreenService) {
 
-        LayoutScreenService.getAllLayouts()
-            .error(function () {
-
-            })
+        LayoutScreenService.getLayouts()
             .success(function (data) {
+                console.log(data);
                 $scope.layouts = data; 
             });
-
-
         $scope.showLayout = function (layout) {
             $scope.selectedLayout = layout;
             console.log($scope.selectedLayout);
         }
-        LayoutScreenService.getScreens().success(function (data) {
-            $scope.screens = data;
-        }); 
     }]);

@@ -2,21 +2,21 @@
 
 //Denna servicen ska servera layout objekt utifrån vilken screen de tillhör
 angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http', function ($http) {
-    return {
-        getLayoutForScreen: function (id) {
-            return $http.get('/layouts/' + id);
-        },
-        getLayoutsWithScreenId: function (screenId) {
-            return $http.get('/screens/layouts/' + screenId);
-        },
+    return {        
         getScreens: function(){
             return $http.get('/screens/');
         },
         getScreen: function(id){
             return $http.get('/screens/' + id);
         },
-        getAllLayouts: function () {
+        getLayoutsWithScreenId: function (screenId) {
+            return $http.get('/screens/layouts/' + screenId);
+        },
+        getLayouts: function () {
             return $http.get('/layouts/'); 
+        },
+        getLayout: function (id) {
+            return $http.get('/layouts/' + id); 
         },
         getAllLayoutNames: function () {
             return $http.get('/layouts/names'); 

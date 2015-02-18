@@ -19,8 +19,6 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
                 for (var i = 0; i < partials.length; i++) {
                     sortedPartials[partials[i].position] = partials[i]; 
                 }
-
-                console.log(partials); 
                 $scope.partials = sortedPartials;
             } else {
                 console.log("Verkar inte få något bra svar från servern, är databasen seedad och uppe? Annars kanske inte id:et finns")

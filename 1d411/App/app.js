@@ -26,14 +26,15 @@ app.factory('errorInterceptor', ['$q', '$rootScope',
     function ($q, $rootScope) {
        return {
 		    'response': function(response) {
-		      // do something on success
-		      return response;
+		        // do something on success
+		        return response;
 		    },
 		    'responseError': function (rejection) {
                 //do something on fail!
 		   	    //408: Request Timeout 418: I'm a teapot
-		       //rejection.status === 0
-		      return $q.reject(rejection);
+		        //rejection.status === 0
+		        console.log("något har gått fel! loggat från app.js " + rejection.status); 
+		        return $q.reject(rejection);
 		    }
 		  };
 }]);
