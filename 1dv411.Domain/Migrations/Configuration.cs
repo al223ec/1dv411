@@ -97,6 +97,7 @@ namespace _1dv411.Domain.Migrations
                 Layout = layout,
                 Position = position,
                 DiagramInfo = info,
+                DiagramType = DiagramType.Week
             };
         }
 

@@ -25,7 +25,8 @@ namespace _1d411
                         "~/App/services/LayoutScreenService.js",
                         "~/App/services/PartialHtmlService.js",
                         "~/App/controllers/MainCtrl.js",
-                        "~/App/controllers/ScreenCtrl.js",                        
+                        "~/App/controllers/ScreenCtrl.js",
+                        "~/App/directives/partial.js",                        
                         "~/App/factories/googleChartFactory.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
