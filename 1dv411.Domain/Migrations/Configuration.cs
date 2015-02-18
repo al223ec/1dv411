@@ -18,16 +18,15 @@ namespace _1dv411.Domain.Migrations
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {   /*
              * TODO: Fixa mer och bättre testdata 
-
+             * kommentera bort detta som default, kör endast en gång 
+             * 
             var hero = SeedHero(context);
             var def = SeedDefault(context);
-            //SeedVertical(context);
-            var hor = SeedHorizontal(context); 
-            
-            /** kommentera bort detta som default, kör endast en gång 
-            Screen screen = new Screen
+            var hor = SeedHorizontal(context);
+
+             * Screen screen = new Screen
             {
-                  Name = "Lager"
+                Name = "Lager"
             };
             LayoutScreen layoutScreenHero = new LayoutScreen
             {
@@ -39,9 +38,21 @@ namespace _1dv411.Domain.Migrations
                 Layout = def,
                 Screen = screen,
             };
+            Screen fika = new Screen
+            {
+                Name = "Fika"
+            };
+            LayoutScreen layoutScreenHor = new LayoutScreen
+            {
+                Layout = hor,
+                Screen = fika,
+            };
+
+            context.LayoutScreens.Add(layoutScreenHor);
             context.LayoutScreens.Add(layoutScreenHero);
             context.LayoutScreens.Add(layoutScreenDef);
             context.SaveChanges();
+
             /**** För att seeda ordrar                 *
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));

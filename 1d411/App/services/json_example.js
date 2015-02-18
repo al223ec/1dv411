@@ -175,11 +175,11 @@ var layout = {
 
 http://localhost:30447/screens
 var screens = [
-{
-    "name": "Lager",
-    "timer": 0,
-    "id": 1
-}
+    {
+        "name": "Lager",
+        "timer": 0,
+        "id": 1
+    }
 ]
 
 http://localhost:30447/screens/1
@@ -191,53 +191,52 @@ var screen =
 }
 
 
-http://localhost:30447/screens/laouts/1
-
+http://localhost:30447/screens/1/laouts/
 var layoutsWithScreenId = [
-{
-    "partials": [
     {
-        "textContents": null,
-        "position": 1,
-        "partialType": "Text",
+        "partials": [
+        {
+            "textContents": null,
+            "position": 1,
+            "partialType": "Text",
+            "id": 1
+        },
+        {
+            "textContents": null,
+            "position": 3,
+            "partialType": "Text",
+            "id": 2
+        },
+        {
+            "diagramInfo": 666,
+            "type": "",
+            "position": 2,
+            "partialType": "Diagram",
+            "id": 3
+        }
+        ],
+        "name": "Hero",
+        "templateUrl": "hero",
         "id": 1
     },
     {
-        "textContents": null,
-        "position": 3,
-        "partialType": "Text",
+        "partials": [
+        {
+            "textContents": null,
+            "position": 1,
+            "partialType": "Text",
+            "id": 4
+        },
+        {
+            "diagramInfo": 222,
+            "type": "",
+            "position": 2,
+            "partialType": "Diagram",
+            "id": 5
+        }
+        ],
+        "name": "Default layout",
+        "templateUrl": "default_template",
         "id": 2
-    },
-    {
-        "diagramInfo": 666,
-        "type": "",
-        "position": 2,
-        "partialType": "Diagram",
-        "id": 3
     }
-    ],
-    "name": "Hero",
-    "templateUrl": "hero",
-    "id": 1
-},
-{
-    "partials": [
-    {
-        "textContents": null,
-        "position": 1,
-        "partialType": "Text",
-        "id": 4
-    },
-    {
-        "diagramInfo": 222,
-        "type": "",
-        "position": 2,
-        "partialType": "Diagram",
-        "id": 5
-    }
-    ],
-    "name": "Default layout",
-    "templateUrl": "default_template",
-    "id": 2
-}
-]
+    ]

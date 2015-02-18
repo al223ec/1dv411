@@ -4,10 +4,12 @@ var screenModule = angular.module('Screen', []);
 screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        var req = LayoutScreenService.getLayoutForScreen($routeParams.id);
+        //TODO:: Fixa denna fråga
+        var req = LayoutScreenService.getLayout($routeParams.id);
         req.error(function (data, status, headers, config) {
 
         });
+
         req.success(function (data, status, headers, config) {
             if (data) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen men data är däremot null
                 var templateName = data.templateUrl == null ? "default_template" : data.templateUrl;
@@ -23,14 +25,7 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
             } else {
                 console.log("Verkar inte få något bra svar från servern, är databasen seedad och uppe? Annars kanske inte id:et finns")
             }
-        
         });
-
-        LayoutScreenService.getLayoutsWithScreenId($routeParams.id)
-        .success(function (data, status, headers, config) {
-            //console.log(data); 
-        }); 
-        
     }]);
 
 screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',

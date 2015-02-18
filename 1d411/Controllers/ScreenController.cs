@@ -21,7 +21,7 @@ namespace _1d411.Controllers
             _service = service;
         }
 
-        [Route("layouts/{screenId:int}")]
+        [Route("{screenId:int}/layouts")]
         [HttpGet]
         public IHttpActionResult FindLayoutsByScreenId(int screenId)
         {

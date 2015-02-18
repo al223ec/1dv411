@@ -6,6 +6,7 @@ angular.module('Main', [])
                 console.log(data);
                 $scope.layouts = data; 
             });
+
         $scope.showLayout = function (layout) {
             $scope.selectedLayout = layout;
             console.log($scope.selectedLayout);
