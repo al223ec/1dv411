@@ -1,5 +1,5 @@
 angular.module('Main', [])
-    .controller('MainController', ['$scope', 'AppService', 'LayoutScreenService', function ($scope, AppService, LayoutScreenService) {
+    .controller('MainController', ['$scope', 'appService', 'LayoutScreenService', function ($scope, appService, LayoutScreenService) {
 
         LayoutScreenService.getLayouts()
             .success(function (data) {

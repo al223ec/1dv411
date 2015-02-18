@@ -43,5 +43,15 @@ namespace _1d411.Controllers
             return Ok(_service.GetById(id));
         }
 
+
+        #region IDisposable
+
+        protected override void Dispose(bool disposing)
+        {
+            _service.Dispose();
+            base.Dispose(disposing);
+        }
+
+        #endregion
     }
 }

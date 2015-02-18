@@ -5,7 +5,9 @@ var app = angular.module('AppName', [
     'Main',
     'Screen',
     'Partial',
+    'Diagram',
     'AppService',
+    'ChartProvider',
     'LayoutScreenService',
     'PartialHtmlService',
 ]);

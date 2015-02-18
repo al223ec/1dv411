@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ApplicationContext.cs" />
+    <Compile Include="DAL\DiagramDbContext.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
-    <Compile Include="IDiagramService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="LayoutScreenService.cs" />
     <Compile Include="LayoutService.cs" />

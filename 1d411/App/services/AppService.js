@@ -1,4 +1,8 @@
-angular.module('AppService', []).factory('AppService', ['$http', function ($http) {
+"use strict";
+
+var appServiceModule = angular.module('AppService', []); 
+
+appServiceModule.factory('appService', ['$http', function ($http) {
     return {
         getDiagramData : function(query) {
             return $http.get('/diagramData/find/' + query);

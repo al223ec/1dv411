@@ -21,13 +21,14 @@ namespace _1d411
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
-                        "~/App/services/AppService.js",
+                        "~/App/services/appService.js",
                         "~/App/services/LayoutScreenService.js",
                         "~/App/services/PartialHtmlService.js",
                         "~/App/controllers/MainCtrl.js",
                         "~/App/controllers/ScreenCtrl.js",
-                        "~/App/directives/partial.js",                        
-                        "~/App/factories/googleChartFactory.js",
+                        "~/App/directives/partial.js",
+                        "~/App/directives/diagram.js", 
+                        "~/App/factories/chartFactory.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
                         ));

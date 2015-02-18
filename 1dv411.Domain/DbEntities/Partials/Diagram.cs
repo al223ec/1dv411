@@ -20,7 +20,8 @@ namespace _1dv411.Domain.DbEntities
         //TODO::Vilken info är nödvändig
         public int DiagramInfo { get; set; }
         public string Type { get { return this.DiagramType.ToString(); } }
-       
+
+        public virtual IEnumerable<DiagramData> Data { get; set; }
         [JsonIgnore]
         public DiagramType? DiagramType { get; set; }
     }
