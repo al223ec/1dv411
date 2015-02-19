@@ -31,9 +31,36 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
+            console.log($scope.screens);
         });
+
+
         $scope.selectScreen = function (screen) {
-            $scope.s = ($scope.s != screen) ? screen : null;    
+            $scope.s = ($scope.s != screen) ? screen : null;
+            if ($scope.s === null) {
+                $scope.layouts = null;
+                $scope.screenLayouts = null;
+            } else {
+                getLayouts();
+                getScreenLayouts();
+            }
+            
+           
+        }
+
+        var getLayouts = function () {
+
+            LayoutScreenService.getLayouts().success(function (data) {
+                $scope.layouts = data;
+            });
+        }
+
+        var getScreenLayouts = function () {
+            LayoutScreenService.getLayoutsWithScreenId($scope.s.id).success(function (data) {
+                console.log(data);
+                $scope.screenLayouts = data;
+            })
+
         }
     }]);
 screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',

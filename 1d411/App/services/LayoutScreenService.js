@@ -10,7 +10,7 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
             return $http.get('/screens/' + id);
         },
         getLayoutsWithScreenId: function (screenId) {
-            return $http.get('/screens/layouts/' + screenId);
+            return $http.get('/screens/' + screenId + '/layouts');
         },
         getLayouts: function () {
             return $http.get('/layouts/'); 

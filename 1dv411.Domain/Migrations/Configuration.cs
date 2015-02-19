@@ -19,12 +19,12 @@ namespace _1dv411.Domain.Migrations
         {   /*
              * TODO: Fixa mer och bättre testdata 
              * kommentera bort detta som default, kör endast en gång 
-             * 
-            var hero = SeedHero(context);
+             
+           var hero = SeedHero(context);
             var def = SeedDefault(context);
             var hor = SeedHorizontal(context);
 
-             * Screen screen = new Screen
+              Screen screen = new Screen
             {
                 Name = "Lager"
             };
@@ -52,7 +52,7 @@ namespace _1dv411.Domain.Migrations
             context.LayoutScreens.Add(layoutScreenHero);
             context.LayoutScreens.Add(layoutScreenDef);
             context.SaveChanges();
-
+            */
             /**** För att seeda ordrar                 
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
