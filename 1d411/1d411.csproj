@@ -166,11 +166,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\controllers\DiagramCtrl.js" />
     <Content Include="App\controllers\ScreenCtrl.js" />
     <Content Include="App\directives\angular-chart.js" />
-    <Content Include="App\directives\diagram.js" />
     <Content Include="App\directives\partial.js" />
-    <Content Include="App\factories\chartFactory.js" />
     <Content Include="App\services\json_example.js" />
     <Content Include="App\services\LayoutScreenService.js" />
     <Content Include="App\services\PartialHtmlService.js" />

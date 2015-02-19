@@ -18,24 +18,31 @@ namespace _1d411
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-resource.js",
                         "~/Scripts/c3/c3.min.js",
-                        "~/Scripts/d3/d3.min.js",
-
-                        "~/Scripts/googleChartJs.js"
+                        "~/Scripts/d3/d3.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(                    
-                        "~/App/services/appService.js",
-                        "~/App/services/LayoutScreenService.js",
-                        "~/App/services/PartialHtmlService.js",
-                        "~/App/controllers/MainCtrl.js",
-                        "~/App/controllers/ScreenCtrl.js",
-                        "~/App/directives/partial.js",
-                        "~/App/directives/diagram.js",
-                        "~/App/directives/angular-chart.js", 
-                        "~/App/factories/chartFactory.js",
                         "~/App/appRoutes.js",
                         "~/App/app.js"
                         ));
+
+            bundles.Add(new ScriptBundle("~/bundles/app/controllers").Include(
+                        "~/App/controllers/MainCtrl.js",
+                        "~/App/controllers/DiagramCtrl.js",
+                        "~/App/controllers/ScreenCtrl.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/app/directives").Include(
+                        "~/App/directives/partial.js",
+                        "~/App/directives/angular-chart.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/app/services").Include(
+                        "~/App/services/appService.js",
+                        "~/App/services/LayoutScreenService.js",
+                        "~/App/services/PartialHtmlService.js"
+                        ));
+            
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

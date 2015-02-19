@@ -7,7 +7,6 @@ var app = angular.module('AppName', [
     'Partial',
     'Diagram',
     'AppService',
-    'ChartProvider',
     'LayoutScreenService',
     'PartialHtmlService',
     'angularChart'
