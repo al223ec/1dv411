@@ -6,7 +6,7 @@
             <li ng-repeat="l in layouts">
                 <a ng-click="selectLayout(l)">
                     <div class="layout-thumb small-thumb">
-                        <ng-include src="'/Views/App/Templates/{{l.templateUrl}}.html'" />
+                        <ng-include src="'/Views/App/Templates/' + l.templateUrl + '.html'"></ng-include>
                     </div>
                     {{l.name}}
                 </a>

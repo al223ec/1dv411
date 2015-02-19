@@ -38,10 +38,12 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
     }]);
 screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
         var layouts = LayoutScreenService.getLayouts().success(function(data){
             $scope.layouts = data;
         });
         $scope.selectLayout = function (layout) {
+            $scope.templatePath = '/Views/App/Templates/' + layout.templateUrl + '.html';
             $scope.layout = ($scope.layout != layout) ? layout : null;
         };
         $scope.selectPartial = function (e) {
@@ -59,7 +61,7 @@ screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenServic
 
         var getPartialFromPos = function(pp){
             for (var i = 0; i < $scope.layout.partials.length; i++) {
-                if (pp === parseInt(position)) {
+                if (pp === parseInt($scope.layout.partials[i].position)) {
                     return $scope.layout.partials[i];
                 }
             }

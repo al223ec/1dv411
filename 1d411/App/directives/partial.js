@@ -9,14 +9,15 @@ partial.directive('partial', function ($compile, PartialHtmlService) {
     // https://github.com/simpulton/angular-dynamic-templates
 
     var linker = function (scope, element, attrs) {
+        if(scope.partial != null){
+            scope[scope.partial.partialType.toLowerCase()] = scope.partial; //Sätter partial namnet på scopet så att det kan nås via detta attr
 
-        scope[scope.partial.partialType.toLowerCase()] = scope.partial; //Sätter partial namnet på scopet så att det kan nås via detta attr
-
-        PartialHtmlService.getPartialHtml(scope.partial.partialType).success(function (data) {
-            var partialTemplates = data;
-            element.html(partialTemplates);
-            $compile(element.contents())(scope);
-        });
+            PartialHtmlService.getPartialHtml(scope.partial.partialType).success(function (data) {
+                var partialTemplates = data;
+                element.html(partialTemplates);
+                $compile(element.contents())(scope);
+            });
+        }
     }
 
     return {

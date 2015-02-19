@@ -49,6 +49,7 @@ p{
 
 .row .col{
     float:left;
+    height:100%;
 }
 
 .row.h100{height:100%}
