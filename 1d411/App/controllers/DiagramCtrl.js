@@ -5,12 +5,18 @@ var diagramModule = angular.module('Diagram', []);
 //Denna kontroller ska även uppdatera diagrammet i ett vist tidsintervall
 
 diagramModule.controller('DiagramController', ['$scope', function ($scope) {
+    var data = $scope.diagram.data;
+    for (var i = 0; i < data.length; i++) {
+        data[i].budget = data[i].ordersLastYear * 1.25; 
+        console.log(data[i]); 
+    }
 
     $scope.dataset = $scope.diagram.data;
+
     $scope.schema = {
         day: {
             type: 'datetime',
-            format: '%Y-%m-%d_%H:%M:%S',
+            format: '%Y-%m-%d',
             name: 'Date'
         }
     };
@@ -22,12 +28,28 @@ diagramModule.controller('DiagramController', ['$scope', function ($scope) {
         }, {
             key: 'ordersLastYear',
             type: 'bar'
-        }],
+        },
+        {
+          key: "budget",
+          type: "spline",
+          axis : "y",
+          color: "#ff7f0e"
+        },
+        ],
         xAxis: {
             key: 'date',
             displayFormat: '%Y-%m-%d %H:%M:%S'
         }
     };
+
+    $scope.add = function () {
+        console.log("add"); 
+        for (var i = 0; i < $scope.dataset.length; i++) {
+            console.log($scope.dataset[i].orders);
+            $scope.dataset[i].orders += 1; 
+            console.log($scope.dataset[i].orders);
+        }
+    }
 }]);
 /**
 Use controllers to:
