@@ -1,15 +1,14 @@
 <div class="partial">
-    <h3>Such diagram</h3>
     <h4>{{diagram.type}}</h4>
 </div>
 <div class="row">
     <div class="col-lg-12">
-
-        <angularchart dataset="dataset"
-                      schema="schema"
-                      options="options">
-        </angularchart>
-        <!--<diagram class="diagram" data="diagram.data"></diagram>-->
+        <div ng-controller="DiagramController">
+            <angularchart dataset="dataset"
+                          schema="schema"
+                          options="options">
+            </angularchart>
+        </div>
     </div>
 </div>
 
