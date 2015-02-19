@@ -1,3 +1,21 @@
-﻿
-<ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
-<h3>Layouts2</h3>
+﻿<ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+<div id="admin-content">
+    <h3>Layouts2</h3>
+    <div id="admin-left-content">
+        <ul class="item-list">
+            <li ng-repeat="l in layouts">
+                <a ng-click="selectLayout(l)">
+                    <div class="layout-thumb small-thumb">
+                        <ng-include src="'/Views/App/Templates/{{l.templateUrl}}.html'" />
+                    </div>
+                    {{l.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="admin-right-content">
+        <div ng-show="layout">
+            <ng-include src="'/Views/App/Admin/_layout.html'"></ng-include>
+        </div>
+    </div>
+</div>
