@@ -3,6 +3,7 @@ var app = angular.module('AppName', [
 	'ngAnimate',
 	'appRoutes',
     'Main',
+    'Admin',
     'Screen',
     'Partial',
     'Diagram',

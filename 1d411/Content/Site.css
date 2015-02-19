@@ -36,9 +36,17 @@ p{
   
 }
 
+
+
 /* 
     Classes
 */
+
+.layoutBox {
+    display:inline-block;
+    margin:7px;
+}
+
 .clear{
     clear:both;
 }

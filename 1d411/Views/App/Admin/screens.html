@@ -16,12 +16,13 @@
     <div ng-show="screenLayouts">
         <h3>Layouter för {{s.name}}</h3>
         <ul class="item-list">
-            <li ng-repeat="sl in screenLayouts">
+            <li class="layoutBox" ng-repeat="sl in screenLayouts">
+                <p> {{sl.name}}</p>
                 <a ng-click="selectLayout(sl)">
                     <div class="layout-thumb small-thumb">
                         <ng-include src="'/Views/App/Templates/' + sl.templateUrl + '.html'"></ng-include>
                     </div>
-                    {{sl.name}}
+                   
                 </a>
             </li>
         </ul>
@@ -31,12 +32,13 @@
     <div ng-show="layouts">
         <h3>Lägg till en ny layout till {{s.name}}</h3>
         <ul class="item-list">
-            <li ng-repeat="l in layouts">
-                <a ng-click="selectLayout(l)">
+            <li class="layoutBox" ng-repeat="l in layouts">
+                <p>{{l.name}}</p>
+                <a href="" ng-click="addLayout(l)">
                     <div class="layout-thumb small-thumb">
                         <ng-include src="'/Views/App/Templates/' + l.templateUrl + '.html'"></ng-include>
                     </div>
-                    {{l.name}}
+                  
                 </a>
             </li>
         </ul>

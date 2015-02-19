@@ -166,6 +166,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\controllers\AdminCtrl.js" />
     <Content Include="App\controllers\DiagramCtrl.js" />
     <Content Include="App\controllers\ScreenCtrl.js" />
     <Content Include="App\directives\angular-chart.js" />
