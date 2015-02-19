@@ -1,0 +1,16 @@
+﻿<div>
+    <div class="row">
+        <div class="col w50"><label for="label-name">Layout Name</label></div>
+        <div class="col w50"><input type="text" id="label-name" name="label-name" value="{{l.name}}" /></div>
+    </div>
+</div>
+<div>
+    <div ng-click="selectPartial($event)" class="layout-thumb big-thumb">
+        <ng-include src="'/Views/App/Templates/{{l.templateUrl}}.html'" />
+    </div>
+</div>
+<div>
+    <div ng-show="partial">
+        <ng-include src="'/Views/App/Admin/_layout_partial.html'"></ng-include>
+    </div>
+</div>

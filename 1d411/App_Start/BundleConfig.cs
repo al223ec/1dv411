@@ -43,14 +43,13 @@ namespace _1d411
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/angular-chart.css",
                       "~/Content/c3.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/admin.css"));
 
             //För att minifiera alla filer
             //BundleTable.EnableOptimizations = true;
