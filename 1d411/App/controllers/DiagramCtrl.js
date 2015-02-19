@@ -3,16 +3,14 @@ var diagramModule = angular.module('Diagram', []);
 
 //http://maxklenk.github.io/angular-chart/index.html Angular chart, verkar vettigare än google chart tycker jag
 //Denna kontroller ska även uppdatera diagrammet i ett vist tidsintervall
-
 diagramModule.controller('DiagramController', ['$scope', function ($scope) {
-    var data = $scope.diagram.data;
+    console.log($scope.diagram);
+    var data = $scope.diagram.data; 
     for (var i = 0; i < data.length; i++) {
         data[i].budget = data[i].ordersLastYear * 1.25; 
-        console.log(data[i]); 
     }
 
     $scope.dataset = $scope.diagram.data;
-
     $scope.schema = {
         day: {
             type: 'datetime',
@@ -44,11 +42,8 @@ diagramModule.controller('DiagramController', ['$scope', function ($scope) {
 
     $scope.add = function () {
         console.log("add"); 
-        for (var i = 0; i < $scope.dataset.length; i++) {
-            console.log($scope.dataset[i].orders);
-            $scope.dataset[i].orders += 1; 
-            console.log($scope.dataset[i].orders);
-        }
+        $scope.dataset[1].orders += 1; 
+        console.log($scope.dataset[1].orders);
     }
 }]);
 /**
@@ -62,4 +57,57 @@ Do not use controllers to:
     Format input — Use angular form controls instead.
     Filter output — Use angular filters instead.
     Share code or state across controllers — Use angular services instead.
-    Manage the life-cycle of other components (for example, to create service instances).*/
+    Manage the life-cycle of other components (for example, to create service instances).
+    
+//Samma funktionalitet som kontrollern men detta genom ett direktiv 
+// nås via: <diagram diagram="diagram"></diagram>
+diagramModule.directive('diagram', function ($compile) {
+    var template = '<angularchart dataset="dataset" schema="schema" options="options"></angularchart>'; 
+
+    var linker = function (scope, element, attrs) {
+        scope.dataset = scope.diagram.data;
+        console.log(scope.diagram);
+
+        scope.schema = {
+            day: {
+                type: 'datetime',
+                format: '%Y-%m-%d',
+                name: 'Date'
+            }
+        };
+
+        scope.options = {
+            rows: [{
+                key: 'orders',
+                type: 'bar'
+            }, {
+                key: 'ordersLastYear',
+                type: 'bar'
+            },
+            {
+              key: "budget",
+              type: "spline",
+              axis : "y",
+              color: "#ff7f0e"
+            },
+            ],
+            xAxis: {
+                key: 'date',
+                displayFormat: '%Y-%m-%d %H:%M:%S'
+            }
+        };
+        element.html(template);
+        $compile(element.contents())(scope);
+    }
+    return {
+        restrict: "E", // only matches element name
+        link: linker,
+        scope: {
+            diagram: '='
+        },
+    };
+});
+    
+    
+    
+    */
