@@ -12,7 +12,8 @@ namespace _1d411.Controllers
     public class DiagramController : ApiController
     {
         private IServiceFacade _service;
-        
+
+        #region Constructor
         public DiagramController()
             : this(new ServiceFacade())
         { }
@@ -20,7 +21,8 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
-        
+        #endregion
+
         [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult GetDataWithDiagramId(int id)

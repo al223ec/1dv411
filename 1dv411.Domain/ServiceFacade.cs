@@ -1,4 +1,5 @@
 ﻿using _1dv411.Domain.DAL;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,34 +15,37 @@ namespace _1dv411.Domain
         IDiagramService DiagramService { get; }
         IPageService PageService { get; }
         IPageScreenService PageScreenService { get; }
+        IService<Template> TemplateService { get; }
     }
     public class ServiceFacade : IServiceFacade
     {
         private IUnitOfWork _unitOfWork;
 
-        private IScreenService _screenService; 
+        private IScreenService _screenService;
+        private IPageScreenService _pageScreenService;
+        private IService<Template> _templateService;
+        private IDiagramService _diagramService;
+        private IPageService _pageService; 
+
         public IScreenService ScreenService 
         {
             get { return _screenService ?? (_screenService = new ScreenService(_unitOfWork, this.PageService)); }
         }
-
-        private IDiagramService _diagramService; 
         public IDiagramService DiagramService
         {
             get { return _diagramService ?? (_diagramService = new DiagramService(_unitOfWork)); }
         }
-
-        private IPageService _pageService; 
         public IPageService PageService
         {
             get { return _pageService ?? (_pageService = new PageService(_unitOfWork, this.DiagramService)); }
         }
-
-
-        private IPageScreenService _pageScreenService; 
         public IPageScreenService PageScreenService
         {
             get { return _pageScreenService ?? (_pageScreenService = new PageScreenService(_unitOfWork)); }
+        }
+        public IService<Template> TemplateService
+        {
+            get { return _templateService ?? (_templateService = new TemplateService(_unitOfWork)); }
         }
 
         #region Construct

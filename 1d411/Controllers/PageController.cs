@@ -12,7 +12,8 @@ namespace _1d411.Controllers
     public class PageController : ApiController
     {
         private IServiceFacade _service;
-        
+
+        #region Constructor
         public PageController()
             : this(new ServiceFacade())
         { }
@@ -20,6 +21,7 @@ namespace _1d411.Controllers
         {
             _service = service;
         }
+        #endregion
 
         [HttpGet]
         [Route("")]

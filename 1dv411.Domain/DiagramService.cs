@@ -11,16 +11,19 @@ namespace _1dv411.Domain
     public interface IDiagramService
     {
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
-
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
     }
     public class DiagramService : IDiagramService
     {
         private IUnitOfWork _unitOfWork;
+
+        #region Constructor
         public DiagramService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+        #endregion
+
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
             date = date.Date; //Tar bort time delen av datumet, eller nollställer den

@@ -14,14 +14,16 @@ namespace _1dv411.Domain
     public class PageScreenService :  IPageScreenService
     {
         private IUnitOfWork _unitOfWork;
+
+        #region Constructor
         public PageScreenService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
+        #endregion
+        
         public IEnumerable<PageScreen> GetAll()
         {
-            //För att implementera eager loading, hämta ut object som är specad
             return _unitOfWork.PageScreenRepository.Get(null, null, "Screen, Page").ToList();
         }
 

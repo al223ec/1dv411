@@ -8,7 +8,8 @@
 		"ba8cb3b2-15ce-e3f4-b0d7-0518f0f71588",
 		"5901b607-397e-5a38-23e1-09801edf406f",
 		"11258a8b-8e71-40ab-b2aa-52d64d1b9a64",
-		"80b9f16a-daf5-55b0-2ddd-3a89a97ccb62"
+		"80b9f16a-daf5-55b0-2ddd-3a89a97ccb62",
+		"c0f39a65-2a7b-0d54-bdc8-3f9aa4627f9b"
 	],
 	"folders": [],
 	"timestamp": 1424262936870,
@@ -135,6 +136,27 @@
 			"description": "",
 			"collectionId": "42f5dd33-1055-7f61-462c-51f3bbb80f9b",
 			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "c0f39a65-2a7b-0d54-bdc8-3f9aa4627f9b",
+			"headers": "Authorization: Token token=ryTVpWSZ7mc0s72K3Or9TYpKOTzSVA4eejP1Bz5s0lIt\n",
+			"url": "http://localhost:30447/templates/",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"name": "templates",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1424449679262,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "42f5dd33-1055-7f61-462c-51f3bbb80f9b",
 			"synced": false
 		}
 	]

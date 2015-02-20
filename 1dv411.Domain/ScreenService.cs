@@ -17,11 +17,14 @@ namespace _1dv411.Domain
     {
         private IUnitOfWork _unitOfWork;
         private IPageService _pageService;
+
+        #region Constructor
         public ScreenService(IUnitOfWork unitOfWork, IPageService pageService)
         {
             _unitOfWork = unitOfWork;
             _pageService = pageService; 
         }
+        #endregion
 
         public IEnumerable<Screen> GetAll()
         {

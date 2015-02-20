@@ -15,13 +15,16 @@ namespace _1dv411.Domain
     public class PageService : IPageService
     {
         private IUnitOfWork _unitOfWork; 
-
         private IDiagramService _diagramService;
+
+        #region Constructor
         public PageService(IUnitOfWork unitOfWork, IDiagramService diagramService)
         {
             _unitOfWork = unitOfWork;
             _diagramService = diagramService; 
         }
+        #endregion
+        
         public IEnumerable<string> GetAllPageNames()
         {
             return _unitOfWork.PageRepository
@@ -40,7 +43,7 @@ namespace _1dv411.Domain
                 var partials = page.Partials.ToList();
                 for (int i = 0; i < partials.Count; i++)
                 {
-                    var partial = partials[i]; //Gillar inte att man användare paritals[i]
+                    var partial = partials[i]; //Linq till databas gillar inte att man användare paritals[i]
 
                     if (partial.PartialType == "Text")
                     {
