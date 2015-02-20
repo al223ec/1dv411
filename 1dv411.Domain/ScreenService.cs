@@ -30,7 +30,7 @@ namespace _1dv411.Domain
             var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Page").ToList();
             //Lägg till all layouts till listan layouts 
             layoutScreens.ForEach(ls => pages.Add(ls.Page));
-            return pages;
+            return pages.Count() > 0 ? pages : null;
         }
     }
 }

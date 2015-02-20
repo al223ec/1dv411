@@ -10,29 +10,12 @@ namespace _1dv411.Domain
 {
     public interface IDiagramService : IDisposable
     {
-        IEnumerable<DiagramData> GetDiagramData(int numberOfDays);
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
-        IEnumerable<DiagramData> GetDiagramDataThisWeek();
-        IEnumerable<DiagramData> GetDiagramDataThisMonth();
+
+        IEnumerable<DiagramData> GetDataWithDiagramId(int id);
     }
     public class DiagramService : ServiceBase, IDiagramService
     {
-        public IEnumerable<DiagramData> GetDiagramData(int numberOfDays)
-        {
-            return GetDiagramData(numberOfDays, DateTime.Today); 
-        }
-        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisWeek()
-        {
-            //TODO:Ordna detta 
-            return GetDiagramData(7, DateTime.Today); 
-        }
-
-        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisMonth()
-        {
-            //TODO:Ordna detta 
-            return GetDiagramData(30, DateTime.Today);
-        }
-
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
             date = date.Date; 
@@ -54,7 +37,7 @@ namespace _1dv411.Domain
             return diagramData;
         }
 
-
+        //TODO: Fixa
         public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
         {
             switch (diagramType)
@@ -70,6 +53,12 @@ namespace _1dv411.Domain
             }
 
             return GetDiagramData(7, DateTime.Now);
+        }
+
+        public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
+        {
+            var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
+            return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
         }
     }
 }
