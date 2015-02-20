@@ -999,6 +999,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\App\Admin\Page\pages.html" />
+    <Content Include="Views\App\Admin\Screen\_new_screen.html" />
     <Content Include="Views\App\Admin\Screen\_pages.html" />
     <Content Include="Views\App\Admin\Screen\_screen_pages.html" />
     <Content Include="Views\App\Admin\Template\templates.html" />
