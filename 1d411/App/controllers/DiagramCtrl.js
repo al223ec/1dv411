@@ -31,7 +31,7 @@ diagramModule.controller('DiagramController', ['$scope', function ($scope) {
           key: "budget",
           type: "spline",
           axis : "y",
-          color: "#ff7f0e"
+          color: "#ff000e"
         },
         ],
         xAxis: {

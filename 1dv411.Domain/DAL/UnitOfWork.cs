@@ -12,8 +12,8 @@ namespace _1dv411.Domain.DAL
     {
         IRepository<Order> OrderRepository { get; }
         IRepository<Screen> ScreenRepository { get; }
-        IRepository<LayoutScreen> LayoutScreenRepository { get; }
-        IRepository<Layout> LayoutRepository { get; }
+        IRepository<PageScreen> PageScreenRepository { get; }
+        IRepository<Page> PageRepository { get; }
         IRepository<Text> TextRepository { get; }
         void Save();
     }
@@ -33,17 +33,17 @@ namespace _1dv411.Domain.DAL
             get { return _screenRepository ?? (_screenRepository = new Repository<Screen>(_context)); }
         }
 
-        private IRepository<LayoutScreen> _layoutScreenRepository;
-        public IRepository<LayoutScreen> LayoutScreenRepository
+        private IRepository<PageScreen> _pageScreenRepository;
+        public IRepository<PageScreen> PageScreenRepository
         {
-            get { return _layoutScreenRepository ?? (_layoutScreenRepository = new Repository<LayoutScreen>(_context)); }
+            get { return _pageScreenRepository ?? (_pageScreenRepository = new Repository<PageScreen>(_context)); }
         }
 
 
-        private IRepository<Layout> _layoutRepository;
-        public IRepository<Layout> LayoutRepository
+        private IRepository<Page> _pageRepository;
+        public IRepository<Page> PageRepository
         {
-            get { return _layoutRepository ?? (_layoutRepository = new Repository<Layout>(_context)); }
+            get { return _pageRepository ?? (_pageRepository = new Repository<Page>(_context)); }
         }
 
         private IRepository<Text> _textRepository;

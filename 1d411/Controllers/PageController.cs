@@ -8,22 +8,22 @@ using System.Web.Http;
 
 namespace _1d411.Controllers
 {
-    [RoutePrefix("layouts")]
-    public class LayoutController : ApiController
+    [RoutePrefix("pages")]
+    public class PageController : ApiController
     {
         private ILayoutService _service;
         
-        public LayoutController()
-            : this(new LayoutService())
+        public PageController()
+            : this(new PageService())
         { }
-        public LayoutController(ILayoutService service)
+        public PageController(ILayoutService service)
         {
             _service = service;
         }
 
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetAllLayouts()
+        public IHttpActionResult GetAllPages()
         {
             return Ok(_service.GetAll());
         }
@@ -37,9 +37,9 @@ namespace _1d411.Controllers
 
         [Route("names")]
         [HttpGet]
-        public IHttpActionResult GetAllLayoutNames()
+        public IHttpActionResult GetAllPageNames()
         {
-            return Ok(_service.GetAllLayoutNames());
+            return Ok(_service.GetAllPageNames());
         }
 
 

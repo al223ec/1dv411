@@ -12,48 +12,48 @@ namespace _1dv411.Domain.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
-        {   /*
-             * TODO: Fixa mer och bättre testdata 
-             * kommentera bort detta som default, kör endast en gång 
+        {
+            /*
+                        * TODO: Fixa mer och bättre testdata 
+                        * kommentera bort detta som default, kör endast en gång */
              
-           var hero = SeedHero(context);
+            var hero = SeedHero(context);
             var def = SeedDefault(context);
             var hor = SeedHorizontal(context);
 
-              Screen screen = new Screen
+            Screen screen = new Screen
             {
-                Name = "Lager"
+                 Name = "Lager"
             };
-            LayoutScreen layoutScreenHero = new LayoutScreen
+            PageScreen layoutScreenHero = new PageScreen
             {
-                Layout = hero,
+                Page = hero,
                 Screen = screen,
             };
-            LayoutScreen layoutScreenDef = new LayoutScreen
+            PageScreen layoutScreenDef = new PageScreen
             {
-                Layout = def,
+                Page = def,
                 Screen = screen,
             };
             Screen fika = new Screen
             {
                 Name = "Fika"
             };
-            LayoutScreen layoutScreenHor = new LayoutScreen
+            PageScreen layoutScreenHor = new PageScreen
             {
-                Layout = hor,
+                Page = hor,
                 Screen = fika,
             };
 
-            context.LayoutScreens.Add(layoutScreenHor);
-            context.LayoutScreens.Add(layoutScreenHero);
-            context.LayoutScreens.Add(layoutScreenDef);
+            context.PageScreens.Add(layoutScreenHor);
+            context.PageScreens.Add(layoutScreenHero);
+            context.PageScreens.Add(layoutScreenDef);
             context.SaveChanges();
-            */
-            /**** För att seeda ordrar                 
+                       
+            /**** För att seeda ordrar               */  
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
@@ -61,17 +61,23 @@ namespace _1dv411.Domain.Migrations
                 context.SaveChanges(); 
             /**/
         }
-        private Layout CreateLayout(string name, string template)
+
+        private Page CreatePage(string name, string templateFileName)
         {
-            Layout layout = new Layout
+            Template template = new Template
+            {
+                FileName = templateFileName,
+            };
+            Page page = new Page
             {
                 Name = name,
-                TemplateUrl = template,
+                Template = template,
+
             };
-            return layout; 
+            return page;
         }
 
-        private Text CreateText(Layout layout, int position, string heading, string[] paragraphs, string footer = null)
+        private Text CreateText(Page page, int position, string heading, string[] paragraphs, string footer = null)
         {
             var textContents = new List<_1dv411.Domain.DbEntities.TextContent>{
                     new _1dv411.Domain.DbEntities.TextContent {
@@ -95,17 +101,17 @@ namespace _1dv411.Domain.Migrations
 
             return new Text
             {
-                Layout = layout,
+                Page = page,
                 Position = position,
                 TextContents = textContents,
-            }; 
+            };
         }
 
-        private Diagram CreateDiagram(Layout layout, int position, int info)
+        private Diagram CreateDiagram(Page page, int position, int info)
         {
             return new Diagram
             {
-                Layout = layout,
+                Page = page,
                 Position = position,
                 DiagramInfo = info,
                 DiagramType = DiagramType.Week
@@ -114,11 +120,11 @@ namespace _1dv411.Domain.Migrations
 
         private Image CreateImage()
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
         }
-        private Layout SeedHero(DAL.ApplicationContext context)
+        private Page SeedHero(DAL.ApplicationContext context)
         {
-            Layout hero = CreateLayout("Hero", "hero"); 
+            Page hero = CreatePage("Hero", "hero");
 
             var partials = new List<Partial>
             {
@@ -139,12 +145,12 @@ namespace _1dv411.Domain.Migrations
             };
 
             hero.Partials = partials;
-            return AddOrUpdateLayout(context, hero);
-            
+            return AddOrUpdatePage(context, hero);
+
         }
-        private Layout SeedDefault(DAL.ApplicationContext context)
+        private Page SeedDefault(DAL.ApplicationContext context)
         {
-            Layout defaultLayout = CreateLayout("Default layout", "default_template");
+            Page defaultLayout = CreatePage("Default layout", "default_template");
             var partials = new List<Partial>
             {
                 CreateText(defaultLayout, 1, "Default layout text", new string[] {
@@ -154,15 +160,15 @@ namespace _1dv411.Domain.Migrations
             };
 
             defaultLayout.Partials = partials;
-            return AddOrUpdateLayout(context, defaultLayout);
+            return AddOrUpdatePage(context, defaultLayout);
         }
         private void SeedVertical(DAL.ApplicationContext context)
         {
             throw new NotImplementedException();
         }
-        private Layout SeedHorizontal(DAL.ApplicationContext context)
+        private Page SeedHorizontal(DAL.ApplicationContext context)
         {
-            Layout horizontal = CreateLayout("Horizontal layout", "horizontal");
+            Page horizontal = CreatePage("Horizontal layout", "horizontal");
 
             var partials = new List<Partial>
             {
@@ -172,13 +178,13 @@ namespace _1dv411.Domain.Migrations
             };
 
             horizontal.Partials = partials;
-            return AddOrUpdateLayout(context, horizontal); 
+            return AddOrUpdatePage(context, horizontal);
         }
-        private Layout AddOrUpdateLayout(DAL.ApplicationContext context, Layout layout)
+        private Page AddOrUpdatePage(DAL.ApplicationContext context, Page page)
         {
-            context.Layouts.AddOrUpdate(l => l.Name, layout);
+            context.Pages.AddOrUpdate(l => l.Name, page);
             context.SaveChanges();
-            return layout; 
+            return page;
         }
         private List<Order> GetTestOrders(DateTime date)
         {

@@ -11,7 +11,8 @@ namespace _1dv411.Domain.DAL
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Layout> Layouts { get; set; }
+        public DbSet<Template> Templates { get; set; }
+        public DbSet<Page> Pages { get; set; }
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Screen> Screens { get; set; }
@@ -22,7 +23,7 @@ namespace _1dv411.Domain.DAL
 
         public DbSet<Text> Texts { get; set; }
         public DbSet<TextContent> TextContents { get; set; }
-        public DbSet<LayoutScreen> LayoutScreens { get; set; }
+        public DbSet<PageScreen> PageScreens { get; set; }
         //TODO:Hur ser databasen ut??
 
         public ApplicationContext()

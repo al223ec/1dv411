@@ -58,52 +58,29 @@
     <Compile Include="DbEntities\BaseDto.cs" />
     <Compile Include="DbEntities\Partials\Diagram.cs" />
     <Compile Include="DbEntities\Partials\Image.cs" />
-    <Compile Include="DbEntities\Layout.cs" />
-    <Compile Include="DbEntities\LayoutScreen.cs" />
+    <Compile Include="DbEntities\Page.cs" />
+    <Compile Include="DbEntities\PageScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Partials\Partial.cs" />
     <Compile Include="DbEntities\Partials\TextContent.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
+    <Compile Include="DbEntities\Template.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IService.cs" />
-    <Compile Include="LayoutScreenService.cs" />
-    <Compile Include="LayoutService.cs" />
-    <Compile Include="Migrations\201502021042444_initialcreate.cs" />
-    <Compile Include="Migrations\201502021042444_initialcreate.Designer.cs">
-      <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
+    <Compile Include="Migrations\201502201112033_Recreated.cs" />
+    <Compile Include="Migrations\201502201112033_Recreated.Designer.cs">
+      <DependentUpon>201502201112033_Recreated.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502091207084_ScreenAndLayoutScreen.cs" />
-    <Compile Include="Migrations\201502091207084_ScreenAndLayoutScreen.Designer.cs">
-      <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502111137473_PartialBase.cs" />
-    <Compile Include="Migrations\201502111137473_PartialBase.Designer.cs">
-      <DependentUpon>201502111137473_PartialBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502111143420_partials-property.cs" />
-    <Compile Include="Migrations\201502111143420_partials-property.Designer.cs">
-      <DependentUpon>201502111143420_partials-property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502141044513_UpdatedTextProp.cs" />
-    <Compile Include="Migrations\201502141044513_UpdatedTextProp.Designer.cs">
-      <DependentUpon>201502141044513_UpdatedTextProp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502141145560_TextContent.cs" />
-    <Compile Include="Migrations\201502141145560_TextContent.Designer.cs">
-      <DependentUpon>201502141145560_TextContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502141244246_TextContent-TextType.cs" />
-    <Compile Include="Migrations\201502141244246_TextContent-TextType.Designer.cs">
-      <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502181042424_AddedDiagramType.cs" />
-    <Compile Include="Migrations\201502181042424_AddedDiagramType.Designer.cs">
-      <DependentUpon>201502181042424_AddedDiagramType.cs</DependentUpon>
+    <Compile Include="Migrations\201502201133382_PageScreen-Page.cs" />
+    <Compile Include="Migrations\201502201133382_PageScreen-Page.Designer.cs">
+      <DependentUpon>201502201133382_PageScreen-Page.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PageScreenService.cs" />
+    <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenService.cs" />
     <Compile Include="ServiceBase.cs" />
@@ -114,32 +91,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502021042444_initialcreate.resx">
-      <DependentUpon>201502021042444_initialcreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502201112033_Recreated.resx">
+      <DependentUpon>201502201112033_Recreated.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502091207084_ScreenAndLayoutScreen.resx">
-      <DependentUpon>201502091207084_ScreenAndLayoutScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502111137473_PartialBase.resx">
-      <DependentUpon>201502111137473_PartialBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502111143420_partials-property.resx">
-      <DependentUpon>201502111143420_partials-property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502141044513_UpdatedTextProp.resx">
-      <DependentUpon>201502141044513_UpdatedTextProp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502141145560_TextContent.resx">
-      <DependentUpon>201502141145560_TextContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502141244246_TextContent-TextType.resx">
-      <DependentUpon>201502141244246_TextContent-TextType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502181042424_AddedDiagramType.resx">
-      <DependentUpon>201502181042424_AddedDiagramType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502201133382_PageScreen-Page.resx">
+      <DependentUpon>201502201133382_PageScreen-Page.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

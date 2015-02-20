@@ -8,40 +8,40 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface ILayoutService : IService<Layout>
+    public interface ILayoutService : IService<Page>
     {
-        IEnumerable<string> GetAllLayoutNames();
+        IEnumerable<string> GetAllPageNames();
     }
-    public class LayoutService : ServiceBase, ILayoutService
+    public class PageService : ServiceBase, ILayoutService
     {
         private IDiagramService _diagramService;
-        public LayoutService()
+        public PageService()
             : this(new UnitOfWork())
         { }
-        public LayoutService(IUnitOfWork unitOfWork)
+        public PageService(IUnitOfWork unitOfWork)
             : this(new UnitOfWork(), new DiagramService())
         { }
-        public LayoutService(IUnitOfWork unitOfWork, IDiagramService diagramService)
+        public PageService(IUnitOfWork unitOfWork, IDiagramService diagramService)
         {
             _unitOfWork = unitOfWork;
             _diagramService = diagramService; 
         }
-        public IEnumerable<string> GetAllLayoutNames()
+        public IEnumerable<string> GetAllPageNames()
         {
-            return _unitOfWork.LayoutRepository
+            return _unitOfWork.PageRepository
                .Get()
                .Select(l => l.Name)
                .OrderBy(s => s)
                .ToList();
         }
-        public Layout GetById(int id)
+        public Page GetById(int id)
         {
-            var layout = _unitOfWork.LayoutRepository.Get(l => l.Id == id, null, "Partials").FirstOrDefault();
+            var page = _unitOfWork.PageRepository.Get(l => l.Id == id, null, "Partials").FirstOrDefault();
 
             //Får inte ut textContent utan måste explecit hämta de objekten 
-            if (layout != null && layout.Partials != null)
+            if (page != null && page.Partials != null)
             {
-                var partials = layout.Partials.ToList();
+                var partials = page.Partials.ToList();
                 for (int i = 0; i < partials.Count; i++)
                 {
                     var partial = partials[i]; //Gillar inte att man användare paritals[i]
@@ -58,14 +58,14 @@ namespace _1dv411.Domain
                     }
                     
                 }
-                layout.Partials = partials;
+                page.Partials = partials;
             }
-            return layout;
+            return page;
         }
 
-        public IEnumerable<Layout> GetAll()
+        public IEnumerable<Page> GetAll()
         {
-            return _unitOfWork.LayoutRepository.Get();
+            return _unitOfWork.PageRepository.Get();
         }
 
 
