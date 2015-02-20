@@ -36,38 +36,6 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
             $scope.s = ($scope.s != screen) ? screen : null;    
         }
     }]);
-screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
-    function ($scope, LayoutScreenService, $routeParams, appConfig) {
-
-        var layouts = LayoutScreenService.getLayouts().success(function(data){
-            $scope.layouts = data;
-        });
-        $scope.selectLayout = function (layout) {
-            $scope.templatePath = '/Views/App/Templates/' + layout.templateUrl + '.html';
-            $scope.layout = ($scope.layout != layout) ? layout : null;
-        };
-        $scope.selectPartial = function (e) {
-            var partialPos = getPartialPos(e.target);
-            var partial = getPartialFromPos(partialPos);
-            $scope.partial = ($scope.partial != partial) ? partial : null;
-        };
-
-        var getPartialPos = function(t){
-            if ($(t).hasClass('partial')) {
-                return parseInt($(t).attr('id').replace('p', ''));
-            }
-            return 0;
-        };
-
-        var getPartialFromPos = function(pp){
-            for (var i = 0; i < $scope.layout.partials.length; i++) {
-                if (pp === parseInt($scope.layout.partials[i].position)) {
-                    return $scope.layout.partials[i];
-                }
-            }
-            return null;
-        };
-    }]);
 screenModule.controller('AdminDesignsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 

@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="layout-form">
+        <div class="row">
+            <div class="col w25"><label for="label-name">Layout Name</label></div>
+            <div class="col w25"><input type="text" id="label-name" name="label-name" ng-model="layout.name" /></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col w50">
+        <h3>Template: {{layout.templateUrl}}</h3>
+        <p>Id: {{layout.id}}</p>
+        <div ng-click="selectPartial($event)" class="layout-thumb big-thumb">
+            <ng-include src="templatePath"></ng-include>
+        </div>
+    </div>
+    <div class="col w50">
+        <div ng-show="partial">
+            <ng-include src="partialPath"></ng-include>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <button>Save</button>
+</div>

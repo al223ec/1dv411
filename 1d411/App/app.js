@@ -4,6 +4,7 @@ var app = angular.module('AppName', [
 	'appRoutes',
     'Main',
     'Screen',
+    'Layout',
     'Partial',
     'Diagram',
     'AppService',

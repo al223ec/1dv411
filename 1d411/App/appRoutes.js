@@ -15,8 +15,8 @@ angular.module('appRoutes', ['ngRoute'])
                     controller: 'AdminScreensController'
                 })
                 .when('/app/admin/layouts', {
-                    templateUrl: 'Views/App/Admin/layouts.html',
-                    controller: 'AdminLayoutsController'
+                    templateUrl: 'Views/App/Admin/Layout/layouts.html',
+                    controller: 'AdminLayoutController'
                 })
                 .when('/app/admin/designs', {
                     templateUrl: 'Views/App/Admin/designs.html',

@@ -1,8 +1,8 @@
-<div style="padding:20px;">
+<div class="partial-container">
     <div>
         <h4>{{diagram.type}}</h4>
     </div>
-    <div>
+    <div class="diagram-container">
         <div ng-controller="DiagramController">
             <angularchart dataset="dataset" schema="schema" options="options"></angularchart>
             <a ng-click="add()">Add -</a>
