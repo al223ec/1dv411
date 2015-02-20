@@ -83,7 +83,7 @@
     <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenService.cs" />
-    <Compile Include="ServiceBase.cs" />
+    <Compile Include="ServiceFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,4 +1,5 @@
-﻿using _1dv411.Domain.DbEntities;
+﻿using _1dv411.Domain.DAL;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,16 @@ namespace _1dv411.Domain
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
 
     }
-    public class ScreenService : ServiceBase, IScreenService
+    public class ScreenService : IScreenService
     {
+        private IUnitOfWork _unitOfWork;
+        private IPageService _pageService;
+        public ScreenService(IUnitOfWork unitOfWork, IPageService pageService)
+        {
+            _unitOfWork = unitOfWork;
+            _pageService = pageService; 
+        }
+
         public IEnumerable<Screen> GetAll()
         {
             return _unitOfWork.ScreenRepository.Get();

@@ -11,23 +11,22 @@ namespace _1d411.Controllers
     [RoutePrefix("diagrams")]
     public class DiagramController : ApiController
     {
-        private IDiagramService _service;
-
+        private IServiceFacade _service;
+        
         public DiagramController()
-            : this(new DiagramService())
+            : this(new ServiceFacade())
         { }
-        public DiagramController(IDiagramService service)
+        public DiagramController(IServiceFacade service)
         {
             _service = service;
         }
-
+        
         [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult GetDataWithDiagramId(int id)
         {
-            return Ok(_service.GetDataWithDiagramId(id));
+            return Ok(_service.DiagramService.GetDataWithDiagramId(id));
         }
-
 
         #region IDisposable
 

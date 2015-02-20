@@ -160,6 +160,7 @@
     <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

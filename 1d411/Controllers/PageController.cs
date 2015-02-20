@@ -11,12 +11,12 @@ namespace _1d411.Controllers
     [RoutePrefix("pages")]
     public class PageController : ApiController
     {
-        private ILayoutService _service;
+        private IServiceFacade _service;
         
         public PageController()
-            : this(new PageService())
+            : this(new ServiceFacade())
         { }
-        public PageController(ILayoutService service)
+        public PageController(IServiceFacade service)
         {
             _service = service;
         }
@@ -25,21 +25,21 @@ namespace _1d411.Controllers
         [Route("")]
         public IHttpActionResult GetAllPages()
         {
-            return Ok(_service.GetAll());
+            return Ok(_service.PageService.GetAll());
         }
 
         [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult FindById(int id)
         {
-            return Ok(_service.GetById(id));
+            return Ok(_service.PageService.GetById(id));
         }
 
         [Route("names")]
         [HttpGet]
         public IHttpActionResult GetAllPageNames()
         {
-            return Ok(_service.GetAllPageNames());
+            return Ok(_service.PageService.GetAllPageNames());
         }
 
 

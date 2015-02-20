@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface IDiagramService : IDisposable
+    public interface IDiagramService
     {
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
 
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
     }
-    public class DiagramService : ServiceBase, IDiagramService
+    public class DiagramService : IDiagramService
     {
+        private IUnitOfWork _unitOfWork; 
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
             date = date.Date; 
@@ -59,6 +60,12 @@ namespace _1dv411.Domain
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
             return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+        }
+
+        public DiagramService(IUnitOfWork _unitOfWork)
+        {
+            // TODO: Complete member initialization
+            this._unitOfWork = _unitOfWork;
         }
     }
 }
