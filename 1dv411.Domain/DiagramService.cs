@@ -16,10 +16,14 @@ namespace _1dv411.Domain
     }
     public class DiagramService : IDiagramService
     {
-        private IUnitOfWork _unitOfWork; 
+        private IUnitOfWork _unitOfWork;
+        public DiagramService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
-            date = date.Date; 
+            date = date.Date; //Tar bort time delen av datumet, eller nollställer den
             //TODO:DENNA METOD 
             //Denna metod returnerar i nuläget inte riktigt korrekt data, måste se till att man hämtar rätt dag från förra året. 
             var diagramData = new List<DiagramData>();
@@ -60,12 +64,6 @@ namespace _1dv411.Domain
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
             return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
-        }
-
-        public DiagramService(IUnitOfWork _unitOfWork)
-        {
-            // TODO: Complete member initialization
-            this._unitOfWork = _unitOfWork;
         }
     }
 }

@@ -12,11 +12,11 @@ namespace _1dv411.Domain.DbEntities
         [ForeignKey("Screen")]
         [Column(Order = 2)]
         public int ScreenId { get; set; }
-        public Screen Screen { get; set; }
+        public virtual Screen Screen { get; set; }
         
         [ForeignKey("Page")]
         [Column(Order = 3)]
         public int PageId { get; set; }
-        public Page Page { get; set; }
+        public virtual Page Page { get; set; }
     }
 }

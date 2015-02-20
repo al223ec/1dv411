@@ -35,14 +35,12 @@ namespace _1d411.Controllers
             return Ok(_service.ScreenService.GetAll());
         }
 
-
         [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult FindById(int id)
         {
             return Ok(_service.ScreenService.GetById(id));
         }
-
 
         #region IDisposable
 

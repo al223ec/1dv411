@@ -11,8 +11,8 @@ namespace _1dv411.Domain
     public interface IScreenService : IService<Screen>
     {
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
-
     }
+
     public class ScreenService : IScreenService
     {
         private IUnitOfWork _unitOfWork;
@@ -36,9 +36,10 @@ namespace _1dv411.Domain
         {
             List<Page> pages = new List<Page>();
             //Hämta alla relationsobjekt
-            var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Page").ToList();
+            var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId).ToList();
             //Lägg till all layouts till listan layouts 
-            layoutScreens.ForEach(ls => pages.Add(ls.Page));
+            layoutScreens.ForEach(ls => pages.Add(_pageService.GetById(ls.PageId)));
+            
             return pages.Count() > 0 ? pages : null;
         }
     }
