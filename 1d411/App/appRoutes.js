@@ -11,20 +11,16 @@ angular.module('appRoutes', ['ngRoute'])
                     controller: 'ScreenController'
                 })
                 .when('/app/admin/screens', {
-                    templateUrl: 'Views/App/Admin/screens.html',
+                    templateUrl: 'Views/App/Admin/Screen/screens.html',
                     controller: 'AdminScreensController'
                 })
-                .when('/app/admin/layouts', {
-                    templateUrl: 'Views/App/Admin/Layout/layouts.html',
-                    controller: 'AdminLayoutController'
+                .when('/app/admin/pages', {
+                    templateUrl: 'Views/App/Admin/Page/pages.html',
+                    controller: 'AdminPagesController'
                 })
-                .when('/app/admin/designs', {
-                    templateUrl: 'Views/App/Admin/designs.html',
-                    controller: 'AdminDesignsController'
-                })
-                .when('/app/admin/diagrams', {
-                    templateUrl: 'Views/App/Admin/diagrams.html',
-                    controller: 'AdminDiagramsController'
+                .when('/app/admin/templates', {
+                    templateUrl: 'Views/App/Admin/Template/templates.html',
+                    controller: 'AdminTemplatesController'
                 })
                 //TODO: implementera felhantering
             

@@ -1,87 +1,112 @@
 ﻿"use strict";
 
-var screenModule = angular.module('Admin', [])
+var adminModule = angular.module('Admin', [])
 
-screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
+adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
         });
 
-
         $scope.selectScreen = function (screen) {
-            console.log(screen);
-            $scope.s = ($scope.s != screen) ? screen : null;
-            if ($scope.s === null) {
-                $scope.layouts = null;
-                $scope.screenLayouts = null;
+            $scope.newScreen = null; //Hide new if present
+            $scope.screen = ($scope.screen != screen) ? screen : null;
+            if ($scope.screen === null) {
+                $scope.pages = null;
+                $scope.screenPages = null;
             } else {
-                getLayouts();
-                getScreenLayouts();
+                getPages();
+                getScreenPages();
             }
 
         }
 
-        var getLayouts = function () {
-
-            LayoutScreenService.getLayouts().success(function (data) {
-                $scope.layouts = data;
+        var getPages = function () {
+            LayoutScreenService.getPages().success(function (data) {
+                $scope.pages = data;
             });
         }
 
-        var getScreenLayouts = function () {
-            LayoutScreenService.getLayoutsWithScreenId($scope.s.id).success(function (data) {
-                //console.log(data);
-                $scope.screenLayouts = data;
+        var getScreenPages = function () {
+            LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
+                $scope.screenPages = data;
             })
 
         }
 
-        $scope.addLayout = function (layout) {
-            $scope.screenLayouts.push(layout);
-            //should call the api to add the layout
+        $scope.addPage = function (page) {
+            $scope.screenPages.push(page);
         }
 
-        
+        $scope.createScreen = function () {
+            $scope.screen = null; //Hide selected if present
+            $scope.newScreen = ($scope.newScreen != null) ? null : {};
+        };
     }]);
-screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
-    function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        var layouts = LayoutScreenService.getLayouts().success(function (data) {
-            $scope.layouts = data;
-        });
-        $scope.selectLayout = function (layout) {
-            $scope.templatePath = '/Views/App/Templates/' + layout.templateUrl + '.html';
-            $scope.layout = ($scope.layout != layout) ? layout : null;
-        };
-        $scope.selectPartial = function (e) {
-            var partialPos = getPartialPos(e.target);
-            var partial = getPartialFromPos(partialPos);
-            $scope.partial = ($scope.partial != partial) ? partial : null;
-        };
+adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig', function ($scope, LayoutScreenService, $routeParams, appConfig) {
+    $scope.newPage = null;
 
-        var getPartialPos = function (t) {
-            if ($(t).hasClass('partial')) {
-                return parseInt($(t).attr('id').replace('p', ''));
+    LayoutScreenService.getPages().success(function (data) {
+        $scope.pages = data;
+    });
+    LayoutScreenService.getTemplates().success(function (data) {
+        data = [
+                { name: "Default layout", fileName: "default_template.html" },
+                { name: "Hero", fileName: "hero.html" },
+                { name: "Horizontal layout", fileName: "horizontal.html" }
+        ];
+        $scope.templates = data;
+    });
+
+    $scope.selectPage = function (page) {
+        $scope.newPage = null; //Hide new if present
+        $scope.templatePath = '/Views/App/Templates/' + page.templateUrl + '.html';
+        $scope.page = ($scope.page != page) ? page : null;
+    };
+
+    $scope.selectPartial = function (e) {
+        var partialPos = getPartialPos(e.target);
+        var partial = getPartialFromPos(partialPos);
+        $scope.partialPath = (partial != null) ? '/Views/App/Admin/Page/_partial_' + partial.partialType.toLowerCase() + '.html' : '';
+        $scope.partial = ($scope.partial != partial) ? partial : null;
+    };
+
+    $scope.createPage = function () {
+        $scope.page = null; //Hide selected if present
+        $('.light-blue').removeClass('light-blue');
+        $scope.newPage = ($scope.newPage != null) ? null : {};
+    };
+
+    $scope.selectTemplate = function (e, t) {
+        $(e.currentTarget).closest('ul').eq(0).find('.light-blue').removeClass('light-blue');
+        if (!$(e.currentTarget).hasClass('light-blue')) {
+            $(e.currentTarget).addClass('light-blue');
+        }
+        $scope.newPage.template = t.name;
+    };
+
+    $scope.savePage = function (p) {
+        console.log(p);
+    };
+
+    var getPartialPos = function (target) {
+        if ($(target).hasClass('partial')) {
+            return parseInt($(target).attr('id').replace('p', ''));
+        }
+        return 0;
+    };
+
+    var getPartialFromPos = function (pp) {
+        for (var i = 0; i < $scope.page.partials.length; i++) {
+            if (pp === parseInt($scope.page.partials[i].position)) {
+                return $scope.page.partials[i];
             }
-            return 0;
-        };
+        }
+        return null;
+    };
+}]);
 
-        var getPartialFromPos = function (pp) {
-            for (var i = 0; i < $scope.layout.partials.length; i++) {
-                if (pp === parseInt($scope.layout.partials[i].position)) {
-                    return $scope.layout.partials[i];
-                }
-            }
-            return null;
-        };
-    }]);
-screenModule.controller('AdminDesignsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
-    function ($scope, LayoutScreenService, $routeParams, appConfig) {
+adminModule.controller('AdminTemplatesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-    }]);
-screenModule.controller('AdminDiagramsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
-    function ($scope, LayoutScreenService, $routeParams, appConfig) {
-
-    }]);
-
+}]);

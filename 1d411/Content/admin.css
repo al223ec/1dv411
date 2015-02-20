@@ -1,6 +1,9 @@
 ﻿/*
     Navigation
 */
+#nav{
+    height:auto;
+}
 #nav ul{
     width:100%;
     float:left;
@@ -28,45 +31,52 @@
 }
 
 /* Layout Admin */
-.layout-list{
+
+.page-list,
+.screen-list{
     overflow-y:scroll;
     cursor:pointer;
 }
-.layout-list ul{
+.page-list ul,
+.screen-list ul{
     margin:0;
 }
 
-.layout-list li{
+.page-list li,
+.screen-list li{
     display:block;
     padding:10px;
     text-align:center;
     background-color:#f6f6f6;
 }
-.layout-list li:nth-child(odd){
+.page-list li:nth-child(odd),
+.screen-list li:nth-child(odd){
     background-color:#e6e6e6;
 }
-.layout-list li:hover{
+.page-list li:hover,
+.screen-list li:hover{
     background-color:#fff;
 }
-.layout-thumb{
+.template-thumb{
     display:inline-block;
     border:1px solid #000;
 }
 
-.layout-thumb.small-thumb{
+.template-thumb.small-thumb{
     width:120px;
     height:90px;
 }
-.layout-thumb.big-thumb{
+.template-thumb.big-thumb{
     width:360px;
     height:270px;
 }
 
-.layout-thumb .partial{
+.template-thumb .partial{
     outline:1px solid #000;
 }
 
-.layout-details{
+.page-details,
+.screen-details{
     padding:20px;
     background-color:#f6fff6;
 }
