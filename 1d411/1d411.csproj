@@ -168,7 +168,6 @@
   <ItemGroup>
     <Content Include="App\controllers\AdminCtrl.js" />
     <Content Include="App\controllers\DiagramCtrl.js" />
-    <Content Include="App\controllers\LayoutCtrl.js" />
     <Content Include="App\controllers\ScreenCtrl.js" />
     <Content Include="App\directives\angular-chart.js" />
     <Content Include="App\directives\partial.js" />
@@ -999,15 +998,16 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\App\Admin\Layout\layouts.html" />
-    <Content Include="Views\App\Admin\designs.html" />
-    <Content Include="Views\App\Admin\diagrams.html" />
-    <Content Include="Views\App\Admin\Layout\_layout.html" />
-    <Content Include="Views\App\Admin\Layout\_new_layout.html" />
-    <Content Include="Views\App\Admin\Layout\_partial_diagram.html" />
-    <Content Include="Views\App\Admin\Layout\_partial_text.html" />
+    <Content Include="Views\App\Admin\Page\pages.html" />
+    <Content Include="Views\App\Admin\Screen\_pages.html" />
+    <Content Include="Views\App\Admin\Screen\_screen_pages.html" />
+    <Content Include="Views\App\Admin\Template\templates.html" />
+    <Content Include="Views\App\Admin\Page\_page.html" />
+    <Content Include="Views\App\Admin\Page\_new_page.html" />
+    <Content Include="Views\App\Admin\Page\_partial_diagram.html" />
+    <Content Include="Views\App\Admin\Page\_partial_text.html" />
     <Content Include="Views\App\Admin\_nav.html" />
-    <Content Include="Views\App\Admin\_screen.html" />
+    <Content Include="Views\App\Admin\Screen\_screen.html" />
     <Content Include="Views\App\Layout\h-1-down-v-2.html" />
     <Content Include="Views\App\Layout\h-1-up-v-2.html" />
     <Content Include="Views\App\Layout\h-2-v-1-left.html" />
@@ -1020,7 +1020,7 @@
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\Partials\_diagram.html" />
     <Content Include="Views\App\Partials\_text.html" />
-    <Content Include="Views\App\Admin\screens.html" />
+    <Content Include="Views\App\Admin\Screen\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
     <Content Include="Views\App\Templates\hero.html" />

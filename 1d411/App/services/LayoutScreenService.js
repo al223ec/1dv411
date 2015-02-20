@@ -9,17 +9,17 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
         getScreen: function(id){
             return $http.get('/screens/' + id);
         },
-        getLayoutsWithScreenId: function (screenId) {
-            return $http.get('/screens/' + screenId + '/layouts');
+        getPagesWithScreenId: function (screenId) {
+            return $http.get('/screens/' + screenId + '/pages');
         },
-        getLayouts: function () {
-            return $http.get('/layouts/'); 
+        getPages: function () {
+            return $http.get('/pages/');
         },
-        getLayout: function (id) {
-            return $http.get('/layouts/' + id); 
+        getPage: function (id) {
+            return $http.get('/pages/' + id);
         },
-        getAllLayoutNames: function () {
-            return $http.get('/layouts/names'); 
+        getTemplates: function () {
+            return $http.get('/templates/'); 
         }
     }; 
 }]);

@@ -1,11 +1,11 @@
-﻿<h3>New Layout</h3>
+﻿<h3>New Page</h3>
 <form>
     <div class="row">
         <div class="col w25">
             <label>Name</label>
         </div>
         <div class="col w25">
-            <input type="text" ng-model="newLayout.name" />
+            <input type="text" ng-model="newPage.name" />
         </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
         <div class="col w50">
             <ul style="list-style:none;">
                 <li ng-repeat="t in templates">
-                    <div ng-click="selectTemplate($event, t)" class="layout-thumb small-thumb">
+                    <div ng-click="selectTemplate($event, t)" class="template-thumb small-thumb">
                         <ng-include src="'/Views/App/Templates/' + t.fileName"></ng-include>
                     </div>
                 </li>
@@ -23,6 +23,6 @@
         </div>
     </div>
     <div class="row">
-        <button ng-click="saveLayout(newLayout)">Save</button>
+        <button ng-click="savePage(newPage)">Save</button>
     </div>
 </form>

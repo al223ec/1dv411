@@ -1,0 +1,11 @@
+﻿<h3>Add page to: {{screen.name}}</h3>
+<ul class="item-list">
+    <li ng-repeat="p in pages">
+        <p>{{p.name}}</p>
+        <a href="" ng-click="addPage(p)">
+            <div class="template-thumb small-thumb">
+                <ng-include src="'/Views/App/Templates/' + p.templateUrl + '.html'"></ng-include>
+            </div>
+        </a>
+    </li>
+</ul>

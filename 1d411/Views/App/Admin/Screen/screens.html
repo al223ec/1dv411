@@ -1,0 +1,30 @@
+﻿<div class="row h100">
+    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+    <div class="col w25">
+        <div class="screen-list">
+            <ul>
+                <li>
+                    <div class="button block dark-green" ng-click="createScreen()">New Screen</div>
+                </li>
+                <li ng-repeat="s in screens" ng-click="selectScreen(s)">
+                    <div>{{s.name}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col w75">
+
+        <div class="screen-details" ng-show="screen">
+            <ng-include src="'/Views/App/Admin/Screen/_screen.html'"></ng-include>
+        </div>
+
+        
+
+        <div class="screen-details" ng-show="newScreen">
+            <ng-include src="'/Views/App/Admin/Screen/_new_screen.html'"></ng-include>
+        </div>
+
+    </div>
+</div>

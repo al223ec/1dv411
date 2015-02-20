@@ -5,7 +5,6 @@ var app = angular.module('AppName', [
     'Main',
     'Admin',
     'Screen',
-    'Layout',
     'Partial',
     'Diagram',
     'AppService',
