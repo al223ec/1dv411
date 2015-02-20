@@ -7,13 +7,13 @@ namespace _1dv411.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class TextContent : IMigrationMetadata
+    public sealed partial class Recreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TextContent));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Recreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201502141145560_TextContent"; }
+            get { return "201502201112033_Recreated"; }
         }
         
         string IMigrationMetadata.Source

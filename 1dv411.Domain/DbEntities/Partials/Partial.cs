@@ -11,12 +11,12 @@ namespace _1dv411.Domain.DbEntities
     public abstract class Partial : BaseDto
     {
         [JsonIgnore]
-        [ForeignKey("Layout")]
+        [ForeignKey("Page")]
         [Column(Order = 2)]
-        public int LayoutId { get; set; }
+        public int PageId { get; set; }
 
         [JsonIgnore]
-        public virtual Layout Layout { get; set; }
+        public virtual Page Page { get; set; }
 
         public int Position { get; set; }
 

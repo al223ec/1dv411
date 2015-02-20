@@ -9,7 +9,8 @@ namespace _1dv411.Domain
 {
     public interface IScreenService : IService<Screen>
     {
-        IEnumerable<Layout> GetLayoutsWithScreenId(int screenId);
+        IEnumerable<Page> GetPagesWithScreenId(int screenId);
+
     }
     public class ScreenService : ServiceBase, IScreenService
     {
@@ -22,14 +23,14 @@ namespace _1dv411.Domain
             return _unitOfWork.ScreenRepository.Get(s => s.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Layout> GetLayoutsWithScreenId(int screenId)
+        public IEnumerable<Page> GetPagesWithScreenId(int screenId)
         {
-            List<Layout> layouts = new List<Layout>();
+            List<Page> pages = new List<Page>();
             //Hämta alla relationsobjekt
-            var layoutScreens = _unitOfWork.LayoutScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Layout").ToList();
+            var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Page").ToList();
             //Lägg till all layouts till listan layouts 
-            layoutScreens.ForEach(ls => layouts.Add(ls.Layout));
-            return layouts;
+            layoutScreens.ForEach(ls => pages.Add(ls.Page));
+            return pages;
         }
     }
 }

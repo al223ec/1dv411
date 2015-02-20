@@ -7,13 +7,13 @@ namespace _1dv411.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class PartialBase : IMigrationMetadata
+    public sealed partial class PageScreenPage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PartialBase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PageScreenPage));
         
         string IMigrationMetadata.Id
         {
-            get { return "201502111137473_PartialBase"; }
+            get { return "201502201133382_PageScreen-Page"; }
         }
         
         string IMigrationMetadata.Source

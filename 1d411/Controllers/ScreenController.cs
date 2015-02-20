@@ -21,11 +21,11 @@ namespace _1d411.Controllers
             _service = service;
         }
 
-        [Route("{screenId:int}/layouts")]
+        [Route("{screenId:int}/pages")]
         [HttpGet]
-        public IHttpActionResult FindLayoutsByScreenId(int screenId)
+        public IHttpActionResult FindPagesByScreenId(int screenId)
         {
-            return Ok(_service.GetLayoutsWithScreenId(screenId));
+            return Ok(_service.GetPagesWithScreenId(screenId));
         }
 
         [HttpGet]

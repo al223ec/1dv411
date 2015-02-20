@@ -9,14 +9,23 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public class Layout : BaseDto
+    public class Page : BaseDto
     {
+        [JsonIgnore]
+        [ForeignKey("Template")]
+        [Column(Order = 2)]
+        public int TemplateId { get; set; }
+
+        [JsonIgnore]
+        public virtual Template Template { get; set; }
+
         public string Name { get; set; }
-        public string TemplateUrl { get; set; }
+
+
         public virtual ICollection<Partial> Partials { get; set; }
 
         [JsonIgnore]
         //Json kan inte hantera detta just nu, därav jsonIgnore, leder till ett StackOverflow exception antagligen problem med att definera relation layout screen
-        public virtual ICollection<LayoutScreen> LayoutScreens { get; set; }
+        public virtual ICollection<PageScreen> PageScreens { get; set; }
     }
 }

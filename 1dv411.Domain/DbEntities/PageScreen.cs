@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain.DbEntities
 {
-    public class LayoutScreen : BaseDto
+    public class PageScreen : BaseDto
     {
         [ForeignKey("Screen")]
         [Column(Order = 2)]
         public int ScreenId { get; set; }
         public Screen Screen { get; set; }
         
-        [ForeignKey("Layout")]
+        [ForeignKey("Page")]
         [Column(Order = 3)]
-        public int LayoutId { get; set; }
-        public Layout Layout { get; set; }
+        public int PageId { get; set; }
+        public Page Page { get; set; }
     }
 }
