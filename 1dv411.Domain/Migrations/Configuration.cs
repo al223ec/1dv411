@@ -28,12 +28,12 @@ namespace _1dv411.Domain.Migrations
             {
                  Name = "Lager"
             };
-            PageScreen layoutScreenHero = new PageScreen
+            PageScreen pageScreenHero = new PageScreen
             {
                 Page = hero,
                 Screen = screen,
             };
-            PageScreen layoutScreenDef = new PageScreen
+            PageScreen pageScreenDef = new PageScreen
             {
                 Page = def,
                 Screen = screen,
@@ -42,15 +42,15 @@ namespace _1dv411.Domain.Migrations
             {
                 Name = "Fika"
             };
-            PageScreen layoutScreenHor = new PageScreen
+            PageScreen pageScreenHor = new PageScreen
             {
                 Page = hor,
                 Screen = fika,
             };
 
-            context.PageScreens.Add(layoutScreenHor);
-            context.PageScreens.Add(layoutScreenHero);
-            context.PageScreens.Add(layoutScreenDef);
+            context.PageScreens.Add(pageScreenHor);
+            context.PageScreens.Add(pageScreenHero);
+            context.PageScreens.Add(pageScreenDef);
             context.SaveChanges();
                        
             /**** För att seeda ordrar               */  
@@ -150,17 +150,17 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedDefault(DAL.ApplicationContext context)
         {
-            Page defaultLayout = CreatePage("Default layout", "default_template");
+            Page defaultPage = CreatePage("Default page", "default_template");
             var partials = new List<Partial>
             {
-                CreateText(defaultLayout, 1, "Default layout text", new string[] {
+                CreateText(defaultPage, 1, "Default page text", new string[] {
                     "Usually what you choose will depend on which methods you need access to. In general - IEnumerable<> (MSDN: http://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx) for a list of objects that only needs to be iterated through, ICollection<> (MSDN: http://msdn.microsoft.com/en-us/library/92t2ye13.aspx) for a list of objects that needs to be iterated through and modified, List<> for a list of objects that needs to be iterated through, modified, sorted, etc (See here for a full list: http://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)."
                 }),
-                CreateDiagram (defaultLayout, 2, 222),
+                CreateDiagram (defaultPage, 2, 222),
             };
 
-            defaultLayout.Partials = partials;
-            return AddOrUpdatePage(context, defaultLayout);
+            defaultPage.Partials = partials;
+            return AddOrUpdatePage(context, defaultPage);
         }
         private void SeedVertical(DAL.ApplicationContext context)
         {
@@ -168,7 +168,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedHorizontal(DAL.ApplicationContext context)
         {
-            Page horizontal = CreatePage("Horizontal layout", "horizontal");
+            Page horizontal = CreatePage("Horizontal page", "horizontal");
 
             var partials = new List<Partial>
             {
