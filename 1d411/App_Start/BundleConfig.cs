@@ -30,7 +30,7 @@ namespace _1d411
                         "~/App/controllers/MainCtrl.js",
                         "~/App/controllers/DiagramCtrl.js",
                         "~/App/controllers/ScreenCtrl.js",
-                        "~/App/controllers/AdminCtrl.js"
+                        "~/App/controllers/LayoutCtrl.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/app/directives").Include(
