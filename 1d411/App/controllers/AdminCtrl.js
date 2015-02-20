@@ -6,11 +6,11 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
-            console.log($scope.screens);
         });
 
 
         $scope.selectScreen = function (screen) {
+            console.log(screen);
             $scope.s = ($scope.s != screen) ? screen : null;
             if ($scope.s === null) {
                 $scope.layouts = null;
@@ -31,7 +31,7 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
 
         var getScreenLayouts = function () {
             LayoutScreenService.getLayoutsWithScreenId($scope.s.id).success(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.screenLayouts = data;
             })
 
@@ -41,6 +41,8 @@ screenModule.controller('AdminScreensController', ['$scope', 'LayoutScreenServic
             $scope.screenLayouts.push(layout);
             //should call the api to add the layout
         }
+
+        
     }]);
 screenModule.controller('AdminLayoutsController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
