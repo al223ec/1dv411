@@ -5,7 +5,7 @@ var diagramModule = angular.module('Diagram', []);
 //Denna kontroller ska även uppdatera diagrammet i ett vist tidsintervall
 diagramModule.controller('DiagramController', ['$scope', function ($scope) {
     console.log($scope.diagram);
-    var data = $scope.diagram.data; 
+    var data = $scope.partial.data; 
     for (var i = 0; i < data.length; i++) {
         data[i].budget = data[i].ordersLastYear * 1.25; 
     }
