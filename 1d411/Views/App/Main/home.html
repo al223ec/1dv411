@@ -1,15 +1,20 @@
 <div class="row">
-    <div class="col-md-6">
-        <h4>Screens</h4>
-        <ul>
-            <li ng-repeat="l in layouts">
-                <a href="/app/screen/{{l.id}}"> {{l.name}}</a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-6">
-        <h3>Admin</h3>
-        <a href="/app/admin/screens/">Admin!</a>
+    <div class="col w50 middle">
+
+        <div class="row">
+            <div class="col w50">
+                <h4>Screens</h4>
+                <ul>
+                    <li ng-repeat="l in layouts">
+                        <a href="/app/screen/{{l.id}}"> {{l.name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col w50">
+                <h3>Admin</h3>
+                <a href="/app/admin/screens/">Admin!</a>
+            </div>
+        </div>
+
     </div>
 </div>
-

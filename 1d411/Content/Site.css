@@ -22,6 +22,9 @@ h1,h2,h3,h4,h5,h6{
 p{
     margin:1em 0;
 }
+div{
+    height:inherit;
+}
 
 /* 
     Classes
@@ -36,10 +39,68 @@ p{
     float: right;
 }
 
+/* Colors */
+.red{background-color:#ee1010;}
+.light-red{background-color:#ee4040;}
+.dark-red{background-color:#bb1010;}
 
+.green{background-color:#10ee10;}
+.light-green{background-color:#40ee40;}
+.dark-green{background-color:#10bb10;}
+
+.blue{background-color:#1010ee;}
+.light-blue{background-color:#4040ee;}
+.dark-blue{background-color:#1010bb;}
+
+.yellow{background-color:#eeee10;}
+.light-yellow{background-color:#eeee40;}
+.dark-yellow{background-color:#bbbb10;}
+
+.purple{background-color:#ee10ee;}
+.light-purple{background-color:#ee40ee;}
+.dark-purple{background-color:#bb10bb;}
+
+.teal{background-color:#10eeee;}
+.light-teal{background-color:#40eeee;}
+.dark-teal{background-color:#10bbbb;}
+
+/*
+    Forms
+*/
+label.block,
+input[type="text"].block,
+input[type="submit"].block,
+button.block
+.button.block{
+    display:block;
+}
+label{
+    display:inline-block;
+}
+
+input[type="text"]{
+    display:inline-block;
+    padding:.25em .5em;
+    font-size:1em;
+}
+
+button,
+input[type="submit"],
+.button{
+    padding:.5em 2em;
+    border:1px solid #333;
+}
+button:hover,
+input[type="submit"]:hover,
+.button:hover{
+}
+form>.row{
+    padding:5px 0;
+}
 /*
     Columns and rows for design
 */
+
 .row{
     width:100%;
     float:left;
@@ -54,6 +115,11 @@ p{
 .row .col{
     float:left;
     height:100%;
+}
+
+.row .col.middle{
+    float:none;
+    margin:0 auto;
 }
 
 .row.h100{height:100%}
@@ -90,5 +156,12 @@ p{
 .row .col.w2{width:2%;}
 
 /*
-    
+    Partials
 */
+.partial-container{
+    padding:0 20px;
+}
+
+.partial-container .diagram-container{
+    padding:10px 0;
+}
