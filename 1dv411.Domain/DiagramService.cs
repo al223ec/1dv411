@@ -8,34 +8,22 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface IDiagramService : IDisposable
+    public interface IDiagramService
     {
-        IEnumerable<DiagramData> GetDiagramData(int numberOfDays);
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
-        IEnumerable<DiagramData> GetDiagramDataThisWeek();
-        IEnumerable<DiagramData> GetDiagramDataThisMonth();
+
+        IEnumerable<DiagramData> GetDataWithDiagramId(int id);
     }
-    public class DiagramService : ServiceBase, IDiagramService
+    public class DiagramService : IDiagramService
     {
-        public IEnumerable<DiagramData> GetDiagramData(int numberOfDays)
+        private IUnitOfWork _unitOfWork;
+        public DiagramService(IUnitOfWork unitOfWork)
         {
-            return GetDiagramData(numberOfDays, DateTime.Today); 
+            _unitOfWork = unitOfWork;
         }
-        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisWeek()
-        {
-            //TODO:Ordna detta 
-            return GetDiagramData(7, DateTime.Today); 
-        }
-
-        IEnumerable<DiagramData> IDiagramService.GetDiagramDataThisMonth()
-        {
-            //TODO:Ordna detta 
-            return GetDiagramData(30, DateTime.Today);
-        }
-
         private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date)
         {
-            date = date.Date; 
+            date = date.Date; //Tar bort time delen av datumet, eller nollställer den
             //TODO:DENNA METOD 
             //Denna metod returnerar i nuläget inte riktigt korrekt data, måste se till att man hämtar rätt dag från förra året. 
             var diagramData = new List<DiagramData>();
@@ -54,7 +42,7 @@ namespace _1dv411.Domain
             return diagramData;
         }
 
-
+        //TODO: Fixa
         public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
         {
             switch (diagramType)
@@ -70,6 +58,12 @@ namespace _1dv411.Domain
             }
 
             return GetDiagramData(7, DateTime.Now);
+        }
+
+        public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
+        {
+            var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
+            return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
         }
     }
 }

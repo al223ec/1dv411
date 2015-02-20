@@ -1,4 +1,5 @@
-﻿using _1dv411.Domain.DbEntities;
+﻿using _1dv411.Domain.DAL;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,18 @@ namespace _1dv411.Domain
     public interface IScreenService : IService<Screen>
     {
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
-
     }
-    public class ScreenService : ServiceBase, IScreenService
+
+    public class ScreenService : IScreenService
     {
+        private IUnitOfWork _unitOfWork;
+        private IPageService _pageService;
+        public ScreenService(IUnitOfWork unitOfWork, IPageService pageService)
+        {
+            _unitOfWork = unitOfWork;
+            _pageService = pageService; 
+        }
+
         public IEnumerable<Screen> GetAll()
         {
             return _unitOfWork.ScreenRepository.Get();
@@ -27,30 +36,11 @@ namespace _1dv411.Domain
         {
             List<Page> pages = new List<Page>();
             //Hämta alla relationsobjekt
-            var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId, null, "Page").ToList();
+            var layoutScreens = _unitOfWork.PageScreenRepository.Get(ls => ls.ScreenId == screenId).ToList();
             //Lägg till all layouts till listan layouts 
-            layoutScreens.ForEach(ls => pages.Add(PopulatePage(ls.Page)));
-            return pages;
-        }
-
-        private Page PopulatePage(Page page)
-        {
-            if (page != null && page.Partials != null)
-            {
-                var partials = page.Partials.ToList();
-                for (int i = 0; i < partials.Count; i++)
-                {
-                    var partial = partials[i]; //Gillar inte att man användare paritals[i]
-
-                    if (partial.PartialType == "Text")
-                    {
-                        partials[i] = _unitOfWork.TextRepository.Get(t => t.Id == partial.Id, null, "TextContents").FirstOrDefault();
-                    }
-
-                }
-                page.Partials = partials;
-            }
-            return page;
+            layoutScreens.ForEach(ls => pages.Add(_pageService.GetById(ls.PageId)));
+            
+            return pages.Count() > 0 ? pages : null;
         }
     }
 }

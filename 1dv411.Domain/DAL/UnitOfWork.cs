@@ -15,6 +15,7 @@ namespace _1dv411.Domain.DAL
         IRepository<PageScreen> PageScreenRepository { get; }
         IRepository<Page> PageRepository { get; }
         IRepository<Text> TextRepository { get; }
+        IRepository<Diagram> DiagramRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
@@ -50,6 +51,12 @@ namespace _1dv411.Domain.DAL
         public IRepository<Text> TextRepository
         {
             get { return _textRepository ?? (_textRepository = new Repository<Text>(_context)); }
+        }
+
+        private IRepository<Diagram> _diagramRepository;
+        public IRepository<Diagram> DiagramRepository
+        {
+            get { return _diagramRepository ?? (_diagramRepository = new Repository<Diagram>(_context)); }
         }
 
         public UnitOfWork()

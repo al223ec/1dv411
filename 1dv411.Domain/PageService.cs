@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface ILayoutService : IService<Page>
+    public interface IPageService : IService<Page>
     {
         IEnumerable<string> GetAllPageNames();
     }
-    public class PageService : ServiceBase, ILayoutService
+    public class PageService : IPageService
     {
+        private IUnitOfWork _unitOfWork; 
+
         private IDiagramService _diagramService;
-        public PageService()
-            : this(new UnitOfWork())
-        { }
-        public PageService(IUnitOfWork unitOfWork)
-            : this(new UnitOfWork(), new DiagramService())
-        { }
         public PageService(IUnitOfWork unitOfWork, IDiagramService diagramService)
         {
             _unitOfWork = unitOfWork;
@@ -67,22 +63,5 @@ namespace _1dv411.Domain
         {
             return _unitOfWork.PageRepository.Get();
         }
-
-
-        #region IDisposable
-
-        protected override void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _diagramService.Dispose();
-                    _unitOfWork.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-        #endregion
     }
 }

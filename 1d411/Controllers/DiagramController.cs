@@ -8,40 +8,25 @@ using System.Web.Http;
 
 namespace _1d411.Controllers
 {
-    [RoutePrefix("pages")]
-    public class PageController : ApiController
+    [RoutePrefix("diagrams")]
+    public class DiagramController : ApiController
     {
         private IServiceFacade _service;
         
-        public PageController()
+        public DiagramController()
             : this(new ServiceFacade())
         { }
-        public PageController(IServiceFacade service)
+        public DiagramController(IServiceFacade service)
         {
             _service = service;
         }
-
-        [HttpGet]
-        [Route("")]
-        public IHttpActionResult GetAllPages()
-        {
-            return Ok(_service.PageService.GetAll());
-        }
-
+        
         [Route("{id:int}")]
         [HttpGet]
-        public IHttpActionResult FindById(int id)
+        public IHttpActionResult GetDataWithDiagramId(int id)
         {
-            return Ok(_service.PageService.GetById(id));
+            return Ok(_service.DiagramService.GetDataWithDiagramId(id));
         }
-
-        [Route("names")]
-        [HttpGet]
-        public IHttpActionResult GetAllPageNames()
-        {
-            return Ok(_service.PageService.GetAllPageNames());
-        }
-
 
         #region IDisposable
 

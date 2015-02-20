@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Domain
 {
-    public interface IService<T> : IDisposable where T :class
+    public interface IService<T> where T :class
     {
         IEnumerable<T> GetAll();
-        T GetById(int id);
-        //void AddOrUpdate(T entity); vet inte om denna kan användas
+        T GetById(int id);       
     }
+
 }

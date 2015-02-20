@@ -11,12 +11,12 @@ namespace _1d411.Controllers
     [RoutePrefix("screens")]
     public class ScreenController : ApiController
     {
-        private IScreenService _service;
+        private IServiceFacade _service;
         
         public ScreenController()
-            : this(new ScreenService())
+            : this(new ServiceFacade())
         { }
-        public ScreenController(IScreenService service)
+        public ScreenController(IServiceFacade service)
         {
             _service = service;
         }
@@ -25,24 +25,22 @@ namespace _1d411.Controllers
         [HttpGet]
         public IHttpActionResult FindPagesByScreenId(int screenId)
         {
-            return Ok(_service.GetPagesWithScreenId(screenId));
+            return Ok(_service.ScreenService.GetPagesWithScreenId(screenId));
         }
 
         [HttpGet]
         [Route("")]
         public IHttpActionResult GetAllScreens()
         {
-            return Ok(_service.GetAll());
+            return Ok(_service.ScreenService.GetAll());
         }
-
 
         [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult FindById(int id)
         {
-            return Ok(_service.GetById(id));
+            return Ok(_service.ScreenService.GetById(id));
         }
-
 
         #region IDisposable
 

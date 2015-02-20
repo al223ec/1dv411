@@ -157,9 +157,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppController.cs" />
-    <Compile Include="Controllers\DiagramDataController.cs" />
+    <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
