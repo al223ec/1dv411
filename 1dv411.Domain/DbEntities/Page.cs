@@ -16,7 +16,6 @@ namespace _1dv411.Domain.DbEntities
         [Column(Order = 2)]
         public int TemplateId { get; set; }
 
-        [JsonIgnore]
         public virtual Template Template { get; set; }
 
         public string Name { get; set; }

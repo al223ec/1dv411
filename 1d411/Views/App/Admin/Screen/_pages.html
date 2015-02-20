@@ -4,7 +4,7 @@
         <p>{{p.name}}</p>
         <a href="" ng-click="addPage(p)">
             <div class="template-thumb small-thumb">
-                <ng-include src="'/Views/App/Templates/' + p.templateUrl + '.html'"></ng-include>
+                <ng-include src="'/Views/App/Templates/' + p.template.fileName + '.html'"></ng-include>
             </div>
         </a>
     </li>

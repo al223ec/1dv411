@@ -19,7 +19,7 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
             return $http.get('/pages/' + id);
         },
         getTemplates: function () {
-            return $http.get('/templates/'); 
+            return $http.get('/pages/');
         }
     }; 
 }]);

@@ -48,8 +48,10 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
     $scope.newPage = null;
 
     LayoutScreenService.getPages().success(function (data) {
+        console.log(data);
         $scope.pages = data;
     });
+    
     LayoutScreenService.getTemplates().success(function (data) {
         data = [
                 { name: "Default layout", fileName: "default_template.html" },
@@ -58,10 +60,11 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         ];
         $scope.templates = data;
     });
+    
 
     $scope.selectPage = function (page) {
         $scope.newPage = null; //Hide new if present
-        $scope.templatePath = '/Views/App/Templates/' + page.templateUrl + '.html';
+        $scope.templatePath = '/Views/App/Templates/' + page.template.fileName + '.html';
         $scope.page = ($scope.page != page) ? page : null;
     };
 
