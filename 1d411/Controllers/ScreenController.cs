@@ -1,4 +1,5 @@
 ﻿using _1dv411.Domain;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,14 @@ namespace _1d411.Controllers
         public IHttpActionResult FindById(int id)
         {
             return Ok(_service.ScreenService.GetById(id));
+        }
+
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult PostScreen(Screen screen)
+        {
+            _service.ScreenService.Save(screen);
+            return Ok(screen);
         }
 
         #region IDisposable
