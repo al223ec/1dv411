@@ -1,1 +1,14 @@
 ﻿<h2>New Screen</h2>
+<form name="newScreenForm" ng-submit="newScreenForm.$valid" novalidate>
+    <div>
+        <input type="text" title="name" class="form-control" placeholder="screen name" ng-model="screen.name" />
+    </div>
+
+    <div>
+        <input type="text" title="timer" class="form-control" placeholder="page timer in seconds" ng-model="screen.timer" />
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary" value="Submit sceen" ng-click="post(screen)"></input>
+    </div>
+</form>

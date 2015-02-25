@@ -7,6 +7,14 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
         });
+        
+        $scope.post = function (screen) {
+            console.log(screen);
+            console.log(LayoutScreenService);
+            var screen = LayoutScreenService.postScreen(screen).success(function (resp) {
+                console.log(resp);
+            });
+        }
 
         $scope.selectScreen = function (screen) {
             $scope.newScreen = null; //Hide new if present
