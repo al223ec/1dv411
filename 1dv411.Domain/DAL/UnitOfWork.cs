@@ -21,7 +21,7 @@ namespace _1dv411.Domain.DAL
     }
     public class UnitOfWork : IUnitOfWork
     {
-        private DbContext _context;
+        private IApplicationContext _context;
 
         private IRepository<Order> _orderRepository;
         private IRepository<Screen> _screenRepository; 
@@ -65,7 +65,7 @@ namespace _1dv411.Domain.DAL
         public UnitOfWork()
             : this(new ApplicationContext())
         { }
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(IApplicationContext dbContext)
         {
             _context = dbContext; 
         }
