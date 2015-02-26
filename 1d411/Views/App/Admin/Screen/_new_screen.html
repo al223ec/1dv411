@@ -1,7 +1,11 @@
 ﻿<h2>New Screen</h2>
-<form name="newScreenForm" class="new-screen-form" ng-submit="newScreenForm.$valid && postScreen(newScreen)" novalidate>
+<form name="newScreenForm"
+      class="new-screen-form"
+      ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+      ng-submit="newScreenForm.$valid && postScreen(newScreen)"
+      novalidate>
     <div>
-        <input  title="name" type="text" name="screenName" class="form-control" placeholder="screen name" ng-model="newScreen.name" required />
+        <input title="name" type="text" name="screenName" class="form-control" placeholder="screen name" ng-model="newScreen.name" required />
     </div>
 
     <div>
