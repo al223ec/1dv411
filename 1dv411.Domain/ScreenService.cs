@@ -11,6 +11,8 @@ namespace _1dv411.Domain
     public interface IScreenService : IService<Screen>
     {
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
+
+        bool Save(Screen screen);
     }
 
     public class ScreenService : IScreenService
@@ -44,6 +46,14 @@ namespace _1dv411.Domain
             layoutScreens.ForEach(ls => pages.Add(_pageService.GetById(ls.PageId)));
             
             return pages.Count() > 0 ? pages : null;
+        }
+
+
+        public bool Save(Screen screen)
+        {
+            _unitOfWork.ScreenRepository.AddOrUpdate(screen);
+            _unitOfWork.Save();
+            return true;
         }
     }
 }

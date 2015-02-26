@@ -1,1 +1,18 @@
 ﻿<h2>New Screen</h2>
+<form name="newScreenForm"
+      class="new-screen-form"
+      ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+      ng-submit="newScreenForm.$valid && postScreen(newScreen)"
+      novalidate>
+    <div>
+        <input title="name" type="text" name="screenName" class="form-control" placeholder="screen name" ng-model="newScreen.name" required />
+    </div>
+
+    <div>
+        <input title="timer" type="number" min=10000 name="timer" class="form-control" placeholder="page timer in seconds" ng-model="newScreen.timer" required />
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary" value="Submit sceen" ng-click="newScreenForm.$setPristine()"></input>
+    </div>
+</form>

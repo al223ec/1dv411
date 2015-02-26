@@ -80,3 +80,17 @@
     padding:20px;
     background-color:#f6fff6;
 }
+
+input[type="number"] {
+    display: inline-block;
+    padding: .25em .5em;
+    font-size: 1em;
+}
+
+input.ng-invalid.ng-dirty {
+    border-color: #FA787E
+}
+
+input.ng-valid.ng-dirty {
+    border-color: #10bb10;
+}

@@ -14,6 +14,7 @@ namespace _1d411
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-animate.js",
+                        "~/Scripts/angular-messages.js",
                         "~/Scripts/angular-mock.js",
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-resource.js",
