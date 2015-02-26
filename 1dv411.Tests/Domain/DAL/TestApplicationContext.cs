@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,9 +24,23 @@ namespace _1dv411.Tests.Domain.DAL
         public DbSet<Template> Templates { get; set; }
         public DbSet<TextContent> TextContents { get; set; }
         public DbSet<Text> Texts { get; set; }
+
+        public TestApplicationContext()
+        {
+            this.Screens = new TestScreenDbSet();
+        }
+
+        
         public DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
-            throw new NotImplementedException();
+            foreach (PropertyInfo property in typeof(TestApplicationContext).GetProperties())
+            {
+                if (property.PropertyType == typeof(DbSet<TEntity>))
+                {
+                    return property.GetValue(this, null) as DbSet<TEntity>;
+                }
+            }
+            throw new Exception("Type collection not found");
         }
 
         public DbSet Set(Type entityType)
@@ -54,8 +69,6 @@ namespace _1dv411.Tests.Domain.DAL
         }
 
         public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        { }
     }
 }

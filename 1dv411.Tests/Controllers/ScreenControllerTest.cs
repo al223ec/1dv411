@@ -4,27 +4,29 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using _1d411.Controllers;
+using _1dv411.Domain;
+using _1dv411.Domain.DAL;
+using _1dv411.Tests.Domain.DAL;
 
 namespace _1dv411.Tests.Controllers
 {
     [TestClass]
-    public class ValuesControllerTest
+    public class ScreenControllerTest
     {
-        //[TestMethod]
-        //public void Get()
-        //{
-        //    // Arrange
-        //    ValuesController controller = new ValuesController();
+        private IServiceFacade _service = new ServiceFacade(new UnitOfWork(new TestApplicationContext()));
+        [TestMethod]
+        public void Get()
+        {
+            ScreenController controller = new ScreenController(_service);
+            var result = controller.GetAllScreens();
 
-        //    // Act
-        //    IEnumerable<string> result = controller.Get();
-
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(2, result.Count());
-        //    Assert.AreEqual("value1", result.ElementAt(0));
-        //    Assert.AreEqual("value2", result.ElementAt(1));
-        //}
+              // Assert
+            Assert.IsNotNull(result);
+              //Assert.AreEqual(2, result.Count());
+              //Assert.AreEqual("value1", result.ElementAt(0));
+              //Assert.AreEqual("value2", result.ElementAt(1));
+        }
 
         //[TestMethod]
         //public void GetById()

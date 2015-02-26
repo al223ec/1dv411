@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace _1dv411.Tests.Domain.DAL
 {
-    //Detta ska vara repositoriet
-    class TestDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T>
+    public class TestDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T>
         where T : class
         {
             ObservableCollection<T> _data;
@@ -78,6 +77,6 @@ namespace _1dv411.Tests.Domain.DAL
             {
                 return _data.GetEnumerator();
             }
-        }
+        
     }
 }
