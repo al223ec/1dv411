@@ -74,7 +74,7 @@ namespace _1dv411.Domain.DAL
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         #region IDisposable

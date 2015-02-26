@@ -1,4 +1,5 @@
 ﻿using _1dv411.Domain;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,15 @@ namespace _1d411.Controllers
         {
             return Ok(_service.PageService.GetAllPageNames());
         }
-
+        
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult CreatePage(Page page)
+        {
+            
+            _service.PageService.CreatePage(page);
+            return Ok(page);
+        }
 
         #region IDisposable
 

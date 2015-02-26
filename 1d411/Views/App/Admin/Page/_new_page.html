@@ -5,14 +5,14 @@
             <label>Name</label>
         </div>
         <div class="col w25">
-            <input type="text" ng-model="newPage.name" />
+            <input type="text" ng-model="createdPage.Name" />
         </div>
     </div>
     <div class="row">
         <div class="col w25">
             <label>Template</label>
         </div>
-        <div class="col w50">
+        <div class="col w20">
             <ul style="list-style:none;">
                 <li ng-repeat="t in templates">
                     <div ng-click="selectTemplate($event, t)" class="template-thumb small-thumb">
@@ -21,8 +21,29 @@
                 </li>
             </ul>
         </div>
+        <div ng-show="template" class="col w55">
+            <div ng-click="createPartial($event)" class="template-thumb big-thumb">
+                <ng-include src="path"></ng-include>
+            </div>
+            <div ng-if="showDropdownPartitalType">
+                <select ng-model="createdPartial.selectedPartialType" ng-change="checkChoosenType()">
+                    <option value="Text">Text</option>
+                    <option value="Diagram">Diagram</option>
+                </select>
+                <input ng-if="choosedText" ng-change="setText()" ng-model="createdPartial.text" type="text" />
+                <select ng-if="choosedDiagram" ng-model="createdPartial.selectedDiagramType" ng-change="setChoosenDiagramType()">
+                    <option value="Week">Week</option>
+                    <option value="Year">Year</option>
+                    <option value="Month">Month</option>
+                    <option value="Quarter">Quarter</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <button ng-click="savePage(newPage)">Save</button>
+
+   
+       
+        <div class="row">
+        <button ng-click="savePage(createdPage)">Save</button>
     </div>
 </form>

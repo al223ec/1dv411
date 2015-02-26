@@ -11,6 +11,8 @@ namespace _1dv411.Domain
     public interface IPageService : IService<Page>
     {
         IEnumerable<string> GetAllPageNames();
+
+        bool CreatePage(Page page);
     }
     public class PageService : IPageService
     {
@@ -65,6 +67,14 @@ namespace _1dv411.Domain
         public IEnumerable<Page> GetAll()
         {
             return _unitOfWork.PageRepository.Get();
+        }
+
+
+        public bool CreatePage(Page page)
+        {
+            _unitOfWork.PageRepository.AddOrUpdate(page);
+            _unitOfWork.Save();
+            return true;
         }
     }
 }
