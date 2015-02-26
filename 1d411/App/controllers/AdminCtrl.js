@@ -71,11 +71,11 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
     LayoutScreenService.getTemplates().success(function (data) {
         console.log(data);
-        //data = [
-        //        { name: "Default layout", fileName: "default_template.html", numberOfPartials: 2 },
-        //        { name: "Hero", fileName: "hero.html", numberOfPartials: 3 },
-        //        { name: "Horizontal layout", fileName: "horizontal.html", numberOfPartials: 3 }
-        //];
+        data = [
+                { name: "Default layout", fileName: "default_template.html"},
+                { name: "Hero", fileName: "hero.html", numberOfPartials: 3 },
+                { name: "Horizontal layout", fileName: "horizontal.html" }
+        ];
         $scope.templates = data;
     });
 
