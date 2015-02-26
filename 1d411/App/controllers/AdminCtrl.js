@@ -4,15 +4,25 @@ var adminModule = angular.module('Admin', [])
 
 adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
         });
         
-        $scope.post = function (screen) {
+        var resetCreateScreenForm = function () {
+            $scope.newScreen = {
+                name: '',
+                timer: ''
+            };
+        };
+
+        $scope.postScreen = function (screen) {
             console.log(screen);
             console.log(LayoutScreenService);
             var screen = LayoutScreenService.postScreen(screen).success(function (resp) {
+                resetCreateScreenForm();
                 console.log(resp);
+                $scope.screens.push(resp);
             });
         }
 
@@ -39,7 +49,6 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
                 $scope.screenPages = data;
             })
-
         }
 
         $scope.addPage = function (page) {
