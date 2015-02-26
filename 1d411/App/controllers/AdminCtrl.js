@@ -21,6 +21,8 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             console.log(LayoutScreenService);
             var screen = LayoutScreenService.postScreen(screen).success(function (resp) {
                 resetCreateScreenForm();
+                console.log(resp);
+                $scope.screens.push(resp);
             });
         }
 
