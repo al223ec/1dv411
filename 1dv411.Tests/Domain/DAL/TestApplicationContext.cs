@@ -1,5 +1,6 @@
 ﻿using _1dv411.Domain.DAL;
 using _1dv411.Domain.DbEntities;
+using _1dv411.Tests.Domain.DAL.TestDbSet;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -28,6 +29,8 @@ namespace _1dv411.Tests.Domain.DAL
         public TestApplicationContext()
         {
             this.Screens = new TestScreenDbSet();
+            this.Pages = new TestPageDbSet();
+            this.PageScreens = new TestPageScreenDbSet();
         }
 
         
