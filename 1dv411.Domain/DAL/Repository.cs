@@ -11,10 +11,10 @@ namespace _1dv411.Domain.DAL
 {
     public class Repository<T> : IRepository<T> where T : BaseDto
     {
-        private DbContext _context;
+        private IApplicationContext _context;
         private DbSet<T> _set;
 
-        public Repository(DbContext context)
+        public Repository(IApplicationContext context)
         {
             _context = context;
             _set = _context.Set<T>();
