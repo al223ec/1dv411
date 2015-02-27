@@ -1,4 +1,5 @@
-﻿using _1dv411.Domain;
+﻿using System.Web;
+using _1dv411.Domain;
 using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using _1d411.ViewModel;
+using Newtonsoft.Json;
 
 namespace _1d411.Controllers
 {
@@ -44,14 +47,15 @@ namespace _1d411.Controllers
         {
             return Ok(_service.PageService.GetAllPageNames());
         }
-        
+
         [HttpPost]
         [Route("")]
-        public IHttpActionResult CreatePage(Page page)
+        public IHttpActionResult CreatePage(PartialViewModel data)
         {
-            
-            _service.PageService.CreatePage(page);
-            return Ok(page);
+            //TODO: Fetch partials
+            Page newPage = data.page;
+           _service.PageService.CreatePage(newPage);
+            return Ok(data);
         }
 
         #region IDisposable

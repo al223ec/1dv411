@@ -24,10 +24,9 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
         postScreen: function (screen) {
             return $http.post('/screens', screen);
         },
-        createPage: function (page) {
-       
-            console.log(page);
-           // return $http.post('/pages', page, partials);
+        createPage: function (newpage, pagePartials) {
+            var data = JSON.stringify({ page: newpage, partials: pagePartials });
+           return $http.post('/pages', data);
         }
     }; 
 }]);

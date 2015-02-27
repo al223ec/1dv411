@@ -208,8 +208,8 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
    
     //on new page save
     $scope.savePage = function (p) {
-        p.Partials = $scope.createdPartials;
-        LayoutScreenService.createPage(p);
+        var newPartials = {"Partials": $scope.createdPartials};
+        LayoutScreenService.createPage(p, newPartials);
     };
 
     var getPartialPos = function (target) {
