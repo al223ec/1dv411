@@ -53,6 +53,8 @@
     <Compile Include="DAL\ApplicationContext.cs" />
     <Compile Include="DAL\DiagramDbContext.cs" />
     <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\LiveOrderRepository.cs" />
+    <Compile Include="DAL\LiveOrdersContext.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />

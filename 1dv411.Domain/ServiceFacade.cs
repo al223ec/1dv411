@@ -16,6 +16,7 @@ namespace _1dv411.Domain
         IPageService PageService { get; }
         IPageScreenService PageScreenService { get; }
         IService<Template> TemplateService { get; }
+        IEnumerable<Order> GetLiveOrders();
     }
     public class ServiceFacade : IServiceFacade
     {
@@ -46,6 +47,13 @@ namespace _1dv411.Domain
         public IService<Template> TemplateService
         {
             get { return _templateService ?? (_templateService = new TemplateService(_unitOfWork)); }
+        }
+
+
+        /*testning av live data*/
+        public IEnumerable<Order> GetLiveOrders()
+        {
+            return _unitOfWork.LiveOrderRepository.GetAllLiveOrders();
         }
 
         #region Construct
