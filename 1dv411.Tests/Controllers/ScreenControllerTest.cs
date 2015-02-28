@@ -87,10 +87,9 @@ namespace _1dv411.Tests.Controllers
             _context.PageScreens.Add(new PageScreen { Id = id, PageId = id, ScreenId = id, Screen = screen, Page = page });
 
             var controller = new ScreenController(_service);
-            var result = controller.FindPagesByScreenId(id) as OkNegotiatedContentResult<Page>;
+            var result = controller.FindPagesByScreenId(id) as OkNegotiatedContentResult<IEnumerable<Page>>;
 
             Assert.IsNotNull(result);
-            //Assert.AreEqual(result.Content.Id, id);
         }
 
         //[TestMethod]
