@@ -10,8 +10,10 @@ namespace _1dv411.Domain
 {
     public interface ILiveOrderService
     {
-        IEnumerable<LiveOrder> GetAll();
+        //För många poster för att ta alla på en gång?
+        //IEnumerable<LiveOrder> GetAll();
         IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime date);
+        IEnumerable<LiveOrder> Get(int offset = 0, int limit = 1000);
 
     }
     public class LiveOrderService : ILiveOrderService
@@ -23,12 +25,18 @@ namespace _1dv411.Domain
         }
         public IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime date)
         {
-            return _unitOfWork.LiveOrderRepository.GetNewLiveOrders(date);
+            return _unitOfWork.LiveOrderRepository.Get(lo => lo.Created < date);
         }
-
+        
+        /*//För många poster för att ta alla på en gång?
         public IEnumerable<LiveOrder> GetAll()
         {
-            return _unitOfWork.LiveOrderRepository.GetAllLiveOrders();
+            return _unitOfWork.LiveOrderRepository.Get();
+        }
+        */
+        public IEnumerable<LiveOrder> Get(int offset = 0, int limit = 1000)
+        {
+            return _unitOfWork.LiveOrderRepository.Get().OrderBy(lo => lo.Created).Skip(offset).Take(limit).ToList();
         }
     }
 }

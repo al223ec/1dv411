@@ -12,15 +12,19 @@ namespace _1dv411.Domain
     {
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
+
+        int SeedLiveOrders();
     }
     public class DiagramService : IDiagramService
     {
         private IUnitOfWork _unitOfWork;
+        private ILiveOrderService _liveOrderService;
 
         #region Constructor
-        public DiagramService(IUnitOfWork unitOfWork)
+        public DiagramService(IUnitOfWork unitOfWork, ILiveOrderService liveOrderService)
         {
             _unitOfWork = unitOfWork;
+            _liveOrderService = liveOrderService;
         }
         #endregion
 
@@ -67,6 +71,36 @@ namespace _1dv411.Domain
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
             return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+        }
+
+
+        public int SeedLiveOrders()
+        {
+            int count = 0;
+            IEnumerable<LiveOrder> liveorders = _liveOrderService.Get(0, 100);
+            foreach (var lo in liveorders)
+            {
+                if (!_unitOfWork.OrderRepository.Get(o => o.OrderGroupId == lo.OrderGroupId).Any())
+                {
+                    _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
+                    count++;
+                }
+            }
+            /*//Nästan 300.000 poster i databasen, går inte köra alla på en request... skulle ta timmar
+            while (liveorders.Count() > 0)
+            {
+                foreach (var lo in liveorders)
+                {
+                    if (_unitOfWork.OrderRepository.Get(o => o.OrderGroupId == lo.OrderGroupId).Any())
+                    {
+                        _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
+                        count++;
+                    }
+                }
+            }
+             * */
+            _unitOfWork.Save();
+            return count;
         }
     }
 }

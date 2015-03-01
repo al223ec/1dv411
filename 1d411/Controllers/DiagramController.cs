@@ -30,6 +30,14 @@ namespace _1d411.Controllers
             return Ok(_service.DiagramService.GetDataWithDiagramId(id));
         }
 
+        /* Testmetod för att seeda databsen med några äkta ordrar.*/
+        [Route("seed-order-table-from-live-orders")]
+        [HttpGet]
+        public IHttpActionResult SeedOrdersFromLiveOrders()
+        {
+            return Ok("number of orders added: " + _service.DiagramService.SeedLiveOrders());
+        }
+
         #region IDisposable
 
         protected override void Dispose(bool disposing)

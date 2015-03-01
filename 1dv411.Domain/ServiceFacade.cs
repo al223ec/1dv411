@@ -35,7 +35,7 @@ namespace _1dv411.Domain
         }
         public IDiagramService DiagramService
         {
-            get { return _diagramService ?? (_diagramService = new DiagramService(_unitOfWork)); }
+            get { return _diagramService ?? (_diagramService = new DiagramService(_unitOfWork, this.LiveOrderService)); }
         }
         public IPageService PageService
         {

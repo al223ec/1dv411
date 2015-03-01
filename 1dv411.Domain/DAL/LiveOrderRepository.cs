@@ -11,8 +11,10 @@ namespace _1dv411.Domain.DAL
 {
     public interface ILiveOrderRepository
     {
-        IEnumerable<LiveOrder> GetAllLiveOrders();
-        IEnumerable<LiveOrder> GetNewLiveOrders(DateTime lastLiveOrderDate);
+        IEnumerable<LiveOrder> Get(
+            Expression<Func<LiveOrder, bool>> filter = null,
+            Func<IQueryable<LiveOrder>, IOrderedQueryable<LiveOrder>> orderBy = null,
+            string includeProperties = "");
     }
     public class LiveOrderRepository : ILiveOrderRepository
     {
@@ -24,16 +26,15 @@ namespace _1dv411.Domain.DAL
             _set = _context.Set<LiveOrder>();
         }
 
-        public IEnumerable<LiveOrder> GetAllLiveOrders()
+        public IEnumerable<LiveOrder> Get(Expression<Func<LiveOrder, bool>> filter = null, Func<IQueryable<LiveOrder>, IOrderedQueryable<LiveOrder>> orderBy = null, string includeProperties = "")
         {
             IQueryable<LiveOrder> query = _set;
-            return query.ToList();
-        }
-
-        public IEnumerable<LiveOrder> GetNewLiveOrders(DateTime lastLiveOrderDate)
-        {
-            IQueryable<LiveOrder> query = _set;
-            return query.Where(lo => lo.Created > lastLiveOrderDate); ;
+            if (filter != null) { query = query.Where(filter); }
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+            return orderBy == null ? query.ToList() : orderBy(query).ToList();
         }
     }
 }
