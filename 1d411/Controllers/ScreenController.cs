@@ -53,14 +53,6 @@ namespace _1d411.Controllers
             return Ok(screen);
         }
 
-        /* Testar hämta ordrar från live servern */
-        [HttpGet]
-        [Route("liveordertest")]
-        public IHttpActionResult LiveOrderTest()
-        {
-            return Ok(_service.GetLiveOrders());
-        }
-
         #region IDisposable
 
         protected override void Dispose(bool disposing)

@@ -16,7 +16,7 @@ namespace _1dv411.Domain
         IPageService PageService { get; }
         IPageScreenService PageScreenService { get; }
         IService<Template> TemplateService { get; }
-        IEnumerable<Order> GetLiveOrders();
+        ILiveOrderService LiveOrderService { get; }
     }
     public class ServiceFacade : IServiceFacade
     {
@@ -26,7 +26,8 @@ namespace _1dv411.Domain
         private IPageScreenService _pageScreenService;
         private IService<Template> _templateService;
         private IDiagramService _diagramService;
-        private IPageService _pageService; 
+        private IPageService _pageService;
+        private ILiveOrderService _liveOrderService;
 
         public IScreenService ScreenService 
         {
@@ -49,11 +50,9 @@ namespace _1dv411.Domain
             get { return _templateService ?? (_templateService = new TemplateService(_unitOfWork)); }
         }
 
-
-        /*testning av live data*/
-        public IEnumerable<Order> GetLiveOrders()
+        public ILiveOrderService LiveOrderService
         {
-            return _unitOfWork.LiveOrderRepository.GetAllLiveOrders();
+            get { return _liveOrderService ?? (_liveOrderService = new LiveOrderService(_unitOfWork)); }
         }
 
         #region Construct
@@ -87,7 +86,5 @@ namespace _1dv411.Domain
             GC.SuppressFinalize(this);
         }
         #endregion
-
-
     }
 }

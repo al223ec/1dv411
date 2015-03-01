@@ -12,7 +12,7 @@ namespace _1dv411.Domain.DAL
 {
     public interface ILiveOrdersContext : IDisposable
     {
-        DbSet<Order> Orders { get; set; }
+        DbSet<LiveOrder> LiveOrders { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbSet Set(Type entityType);
@@ -23,7 +23,7 @@ namespace _1dv411.Domain.DAL
     }
     public class LiveOrdersContext : DbContext, ILiveOrdersContext
     {
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<LiveOrder> LiveOrders { get; set; }
         public LiveOrdersContext()
             : base("OrdersDbContext")
         { }

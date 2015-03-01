@@ -11,28 +11,29 @@ namespace _1dv411.Domain.DAL
 {
     public interface ILiveOrderRepository
     {
-        IEnumerable<Order> GetAllLiveOrders();
-        IEnumerable<Order> GetNewLiveOrders();
+        IEnumerable<LiveOrder> GetAllLiveOrders();
+        IEnumerable<LiveOrder> GetNewLiveOrders(DateTime lastLiveOrderDate);
     }
     public class LiveOrderRepository : ILiveOrderRepository
     {
         private ILiveOrdersContext _context;
-        private DbSet<Order> _set;
+        private DbSet<LiveOrder> _set;
         public LiveOrderRepository(ILiveOrdersContext context)
         {
             _context = context;
-            _set = _context.Set<Order>();
+            _set = _context.Set<LiveOrder>();
         }
 
-        public IEnumerable<Order> GetAllLiveOrders()
+        public IEnumerable<LiveOrder> GetAllLiveOrders()
         {
-            IQueryable<Order> query = _set;
+            IQueryable<LiveOrder> query = _set;
             return query.ToList();
         }
 
-        public IEnumerable<Order> GetNewLiveOrders()
+        public IEnumerable<LiveOrder> GetNewLiveOrders(DateTime lastLiveOrderDate)
         {
-            throw new NotImplementedException();
+            IQueryable<LiveOrder> query = _set;
+            return query.Where(lo => lo.Created > lastLiveOrderDate); ;
         }
     }
 }
