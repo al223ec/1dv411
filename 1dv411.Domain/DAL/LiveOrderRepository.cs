@@ -14,7 +14,8 @@ namespace _1dv411.Domain.DAL
         IEnumerable<LiveOrder> Get(
             Expression<Func<LiveOrder, bool>> filter = null,
             Func<IQueryable<LiveOrder>, IOrderedQueryable<LiveOrder>> orderBy = null,
-            string includeProperties = "");
+            int? offset = 0,
+            int? limit = 1000);
     }
     public class LiveOrderRepository : ILiveOrderRepository
     {
@@ -26,15 +27,18 @@ namespace _1dv411.Domain.DAL
             _set = _context.Set<LiveOrder>();
         }
 
-        public IEnumerable<LiveOrder> Get(Expression<Func<LiveOrder, bool>> filter = null, Func<IQueryable<LiveOrder>, IOrderedQueryable<LiveOrder>> orderBy = null, string includeProperties = "")
+        public IEnumerable<LiveOrder> Get(
+            Expression<Func<LiveOrder,bool>> filter = null,
+            Func<IQueryable<LiveOrder>, IOrderedQueryable<LiveOrder>> orderBy = null,
+            int? offset = 0,
+            int? limit = 1000)
         {
             IQueryable<LiveOrder> query = _set;
             if (filter != null) { query = query.Where(filter); }
-            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-            return orderBy == null ? query.ToList() : orderBy(query).ToList();
+            if (orderBy != null) { query = orderBy(query); }
+            if (offset != null ) { query = query.Skip(offset.Value); }
+            if (limit != null) { query = query.Take(limit.Value); }
+            return query.ToList();
         }
     }
 }

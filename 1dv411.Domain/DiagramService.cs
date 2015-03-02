@@ -13,7 +13,7 @@ namespace _1dv411.Domain
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
 
-        int SeedLiveOrders();
+        int SeedLiveOrders(DateTime? limitSince = null);
     }
     public class DiagramService : IDiagramService
     {
@@ -74,33 +74,34 @@ namespace _1dv411.Domain
         }
 
 
-        public int SeedLiveOrders()
+        public int SeedLiveOrders(DateTime? limitSince = null)
         {
-            int count = 0;
-            IEnumerable<LiveOrder> liveorders = _liveOrderService.Get(0, 100);
-            foreach (var lo in liveorders)
+            
+            IEnumerable<LiveOrder> liveorders = _liveOrderService.GetLiveOrdersSince(limitSince.Value);
+            
+            int addedCount = 0;
+            //If DB is empty just run without checking for doubles
+            if (!_unitOfWork.OrderRepository.Get().Any())
             {
-                if (!_unitOfWork.OrderRepository.Get(o => o.OrderGroupId == lo.OrderGroupId).Any())
+                foreach (var lo in liveorders)
                 {
                     _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
-                    count++;
+                    addedCount++;
                 }
             }
-            /*//Nästan 300.000 poster i databasen, går inte köra alla på en request... skulle ta timmar
-            while (liveorders.Count() > 0)
+            else //Check every order before saving to prevent doubles
             {
                 foreach (var lo in liveorders)
                 {
                     if (_unitOfWork.OrderRepository.Get(o => o.OrderGroupId == lo.OrderGroupId).Any())
                     {
                         _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
-                        count++;
+                        addedCount++;
                     }
                 }
             }
-             * */
             _unitOfWork.Save();
-            return count;
+            return addedCount;
         }
     }
 }

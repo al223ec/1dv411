@@ -3,6 +3,7 @@ using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace _1dv411.Domain
     {
         //För många poster för att ta alla på en gång?
         //IEnumerable<LiveOrder> GetAll();
-        IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime date);
+        IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime? limitByDate = null);
         IEnumerable<LiveOrder> Get(int offset = 0, int limit = 1000);
 
     }
@@ -23,20 +24,20 @@ namespace _1dv411.Domain
         {
             _unitOfWork = unitOfWork;
         }
-        public IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime date)
+        public IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime? limitByDate = null)
         {
-            return _unitOfWork.LiveOrderRepository.Get(lo => lo.Created < date);
+            Expression<Func<LiveOrder, bool>> dateFilter = null;
+            if (limitByDate != null)
+            {
+                dateFilter = lo => lo.Created >= limitByDate.Value;
+            }
+            return _unitOfWork.LiveOrderRepository.Get(dateFilter, null, null, null);
         }
         
-        /*//För många poster för att ta alla på en gång?
-        public IEnumerable<LiveOrder> GetAll()
-        {
-            return _unitOfWork.LiveOrderRepository.Get();
-        }
-        */
         public IEnumerable<LiveOrder> Get(int offset = 0, int limit = 1000)
         {
-            return _unitOfWork.LiveOrderRepository.Get().OrderBy(lo => lo.Created).Skip(offset).Take(limit).ToList();
+            
+            return _unitOfWork.LiveOrderRepository.Get(null, q => q.OrderBy(lo => lo.Created), offset, limit);
         }
     }
 }
