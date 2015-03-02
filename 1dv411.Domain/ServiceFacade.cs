@@ -14,7 +14,6 @@ namespace _1dv411.Domain
         IScreenService ScreenService { get; }
         IDiagramService DiagramService { get; }
         IPageService PageService { get; }
-        IPageScreenService PageScreenService { get; }
         IService<Template> TemplateService { get; }
         ILiveOrderService LiveOrderService { get; }
     }

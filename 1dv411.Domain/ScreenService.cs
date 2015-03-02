@@ -51,6 +51,14 @@ namespace _1dv411.Domain
 
         public bool Save(Screen screen)
         {
+            if (screen.PageScreens != null)
+            {
+                foreach (var pageScreen in screen.PageScreens)
+                {
+                    _unitOfWork.PageScreenRepository.AddOrUpdate(pageScreen);
+                    _unitOfWork.PageRepository.AddOrUpdate(pageScreen.Page);
+                }
+            }   
             _unitOfWork.ScreenRepository.AddOrUpdate(screen);
             _unitOfWork.Save();
             return true;
