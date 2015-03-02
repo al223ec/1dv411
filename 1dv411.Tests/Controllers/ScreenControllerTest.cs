@@ -41,15 +41,18 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void GetScreens_ShouldReturnAllScreens()
         {
-            _context.Screens.Add(new Screen { Id = 1, Name = "Demo1" });
-            _context.Screens.Add(new Screen { Id = 2, Name = "Demo2" });
-            _context.Screens.Add(new Screen { Id = 3, Name = "Demo3" });
+            var demo0 = _context.Screens.Add(new Screen { Id = 1, Name = "Demo1" });
+            var demo1 = _context.Screens.Add(new Screen { Id = 2, Name = "Demo2" });
+            var demo2 = _context.Screens.Add(new Screen { Id = 3, Name = "Demo3" });
 
             var controller = new ScreenController(_service);
             var result = controller.GetAllScreens() as OkNegotiatedContentResult<IEnumerable<Screen>>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Content.Count());
+            Assert.AreEqual(result.Content.ElementAt(0), demo0);
+            Assert.AreEqual(result.Content.ElementAt(1), demo1);
+            Assert.AreEqual(result.Content.ElementAt(2), demo2);
         }
         [TestMethod]
         public void GetScreens_GetScreenById()
@@ -76,6 +79,7 @@ namespace _1dv411.Tests.Controllers
             var result = controller.PostScreen(screen) as OkNegotiatedContentResult<Screen>;
 
             Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content, screen);
         }
 
         [TestMethod]
@@ -90,6 +94,7 @@ namespace _1dv411.Tests.Controllers
             var result = controller.FindPagesByScreenId(id) as OkNegotiatedContentResult<IEnumerable<Page>>;
 
             Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content.ElementAt(0), page);
         }
 
         //[TestMethod]
