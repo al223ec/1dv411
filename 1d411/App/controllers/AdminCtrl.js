@@ -43,6 +43,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         var getPages = function () {
+
             LayoutScreenService.getPages().success(function (data) {
                 $scope.pages = data;
             });
@@ -52,11 +53,18 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         var getScreenPages = function () {
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
                 $scope.screenPages = data;
-            })
+            });
         }
 
+
         $scope.addPage = function (page) {
-            
+            $scope.screen.pages = [page];
+
+            LayoutScreenService.postScreen($scope.screen).success(function (resp) {
+
+                console.log(resp);
+            });
+
             $scope.screenPages.push(page);
         }
 

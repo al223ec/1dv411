@@ -1,4 +1,5 @@
-﻿using _1dv411.Domain;
+﻿using _1d411.ViewModel;
+using _1dv411.Domain;
 using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
@@ -47,9 +48,22 @@ namespace _1d411.Controllers
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult PostScreen(Screen screen)
+        public IHttpActionResult PostScreen(ScreenViewModel screenViewModel)
         {
-            _service.ScreenService.Save(screen);
+            var screen = screenViewModel.Screen;
+            screen.PageScreens = screen.PageScreens != null ? screen.PageScreens : new List<PageScreen>();
+
+            if( screenViewModel.Pages != null)
+            { 
+                foreach (var page in screenViewModel.Pages)
+	            {
+			        screen.PageScreens.Add(new PageScreen{
+                        Screen = screen,
+                        Page = page,
+                    });
+			    }
+            }
+            _service.ScreenService.Save(screenViewModel.Screen);
             return Ok(screen);
         }
 
