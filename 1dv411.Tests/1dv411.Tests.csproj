@@ -104,9 +104,6 @@
     <Compile Include="Controllers\PageControllerTest.cs" />
     <Compile Include="Domain\DAL\TestApplicationContext.cs" />
     <Compile Include="Domain\DAL\TestDbSet\TestDbSet.cs" />
-    <Compile Include="Domain\DAL\TestDbSet\TestPageDbSet.cs" />
-    <Compile Include="Domain\DAL\TestDbSet\TestPageScreenDbSet.cs" />
-    <Compile Include="Domain\DAL\TestDbSet\TestScreenDbSet.cs" />
     <Compile Include="Domain\DAL\TestRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
