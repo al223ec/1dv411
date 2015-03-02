@@ -25,10 +25,10 @@ namespace _1dv411.Tests.Controllers
             _service = new ServiceFacade(new UnitOfWork(_context));
         }
         
-        
         [TestMethod]
         public void Get()
         {
+
             ScreenController controller = new ScreenController(_service);
             var result = controller.GetAllScreens();
 
@@ -66,6 +66,30 @@ namespace _1dv411.Tests.Controllers
         private Screen GetTestScreen(int id = 1)
         {
             return new Screen() { Id = 3, Name = "Test namn" };
+        }
+
+        [TestMethod]
+        public void PostScreen_CreateScreen()
+        {
+            var screen = _context.Screens.Add(new Screen {Name = "Demo1", Timer = 10000 });
+            var controller = new ScreenController(_service);
+            var result = controller.PostScreen(screen) as OkNegotiatedContentResult<Screen>;
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void GetScreens_FindPagesByScreenId()
+        {
+            int id = 1;
+            var screen = _context.Screens.Add(new Screen { Id = id, Name = "Demo1", Timer = 10000 });
+            var page = _context.Pages.Add(new Page { Id = id, Name = "Page1" });
+            _context.PageScreens.Add(new PageScreen { Id = id, PageId = id, ScreenId = id, Screen = screen, Page = page });
+
+            var controller = new ScreenController(_service);
+            var result = controller.FindPagesByScreenId(id) as OkNegotiatedContentResult<IEnumerable<Page>>;
+
+            Assert.IsNotNull(result);
         }
 
         //[TestMethod]

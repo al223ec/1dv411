@@ -17,11 +17,14 @@ namespace _1dv411.Domain.DAL
         IRepository<Text> TextRepository { get; }
         IRepository<Diagram> DiagramRepository { get; }
         IRepository<Template> TemplateRepository { get; }
+
+        ILiveOrderRepository LiveOrderRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
     {
         private IApplicationContext _context;
+        private ILiveOrdersContext _liveOrdersContext;
 
         private IRepository<Order> _orderRepository;
         private IRepository<Screen> _screenRepository; 
@@ -30,6 +33,8 @@ namespace _1dv411.Domain.DAL
         private IRepository<Text> _textRepository;
         private IRepository<Diagram> _diagramRepository;
         private IRepository<Template> _templateRepository;
+
+        private ILiveOrderRepository _liveOrderRepository;
         
 
         public IRepository<Order> OrderRepository
@@ -61,13 +66,25 @@ namespace _1dv411.Domain.DAL
             get { return _templateRepository ?? (_templateRepository = new Repository<Template>(_context)); }
         }
 
+        public ILiveOrderRepository LiveOrderRepository
+        {
+            get { return _liveOrderRepository ?? (_liveOrderRepository = new LiveOrderRepository(_liveOrdersContext)); }
+        }
+
+
         #region Constructor
         public UnitOfWork()
-            : this(new ApplicationContext())
+            : this(new ApplicationContext(), new LiveOrdersContext())
         { }
         public UnitOfWork(IApplicationContext dbContext)
         {
-            _context = dbContext; 
+            _context = dbContext;
+            _liveOrdersContext = null;
+        }
+        public UnitOfWork(IApplicationContext dbContext, ILiveOrdersContext liveOrdersContext)
+        {
+            _context = dbContext;
+            _liveOrdersContext = liveOrdersContext;
         }
 
         #endregion

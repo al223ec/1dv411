@@ -12,15 +12,19 @@ namespace _1dv411.Domain
     {
         IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
+
+        int SeedLiveOrders(DateTime? limitSince = null);
     }
     public class DiagramService : IDiagramService
     {
         private IUnitOfWork _unitOfWork;
+        private ILiveOrderService _liveOrderService;
 
         #region Constructor
-        public DiagramService(IUnitOfWork unitOfWork)
+        public DiagramService(IUnitOfWork unitOfWork, ILiveOrderService liveOrderService)
         {
             _unitOfWork = unitOfWork;
+            _liveOrderService = liveOrderService;
         }
         #endregion
 
@@ -67,6 +71,37 @@ namespace _1dv411.Domain
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
             return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+        }
+
+
+        public int SeedLiveOrders(DateTime? limitSince = null)
+        {
+            
+            IEnumerable<LiveOrder> liveorders = _liveOrderService.GetLiveOrdersSince(limitSince.Value);
+            
+            int addedCount = 0;
+            //If DB is empty just run without checking for doubles
+            if (!_unitOfWork.OrderRepository.Get().Any())
+            {
+                foreach (var lo in liveorders)
+                {
+                    _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
+                    addedCount++;
+                }
+            }
+            else //Check every order before saving to prevent doubles
+            {
+                foreach (var lo in liveorders)
+                {
+                    if (_unitOfWork.OrderRepository.Get(o => o.OrderGroupId == lo.OrderGroupId).Any())
+                    {
+                        _unitOfWork.OrderRepository.AddOrUpdate(new Order { OrderGroupId = lo.OrderGroupId, Date = lo.Created });
+                        addedCount++;
+                    }
+                }
+            }
+            _unitOfWork.Save();
+            return addedCount;
         }
     }
 }

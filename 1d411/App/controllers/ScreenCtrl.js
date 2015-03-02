@@ -21,7 +21,7 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
                         var nextSlide = function (page) {
                             $scope.page = page;
                             var templateName = page.template.fileName == null ? "default_template" : page.template.fileName;
-                            var templateUrl = appConfig.templateUrlRoot + templateName + ".html";
+                            var templateUrl = appConfig.templateUrlRoot + templateName;
                             $scope.pageTemplate = templateUrl;
 
                             var sortedPartials = []; 

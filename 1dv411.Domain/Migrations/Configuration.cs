@@ -198,7 +198,7 @@ namespace _1dv411.Domain.Migrations
                     orders.Add(
                       new Order
                       {
-                          OrderGroupId = "StringIdFromDb",
+                          OrderGroupId = Guid.NewGuid(),
                           Date = date,
                       });
                 }
