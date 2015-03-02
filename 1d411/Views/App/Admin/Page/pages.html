@@ -25,6 +25,9 @@
         <div class="page-details" ng-show="createdPage">
             <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
         </div>
+        <div class="page-details" ng-if="savedPage">
+            <h3>The page was saved!</h3>
+        </div>
 
     </div>
 </div>

@@ -65,6 +65,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
 
 adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig', function ($scope, LayoutScreenService, $routeParams, appConfig) {
     $scope.createdPage = null;
+    
 
     LayoutScreenService.getPages().success(function (data) {
         console.log(data);
@@ -83,6 +84,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
 
     $scope.selectPage = function (page) {
+        $scope.savedPage = false; //hide the saved page alert
         $scope.createdPage = null; //Hide new if present
         $scope.templatePath = '/Views/App/Templates/' + page.template.fileName;
         $scope.page = ($scope.page != page) ? page : null;
@@ -125,6 +127,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
     //on new page click
     $scope.createPage = function () {
+        $scope.savedPage = false; //hide the saved page alert
         $scope.createdPage = {};
         $scope.createdPartials = [];
         $scope.createdPartial = {};
@@ -169,7 +172,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $scope.checkChoosenType();
 
 
-        $scope.createdPartial.text = $scope.createdPartial[position].Content;
+        $scope.createdPartial.text = $scope.createdPartial[position].textContents.content;
     }
 
     //check choosed partialtype in new page
@@ -201,15 +204,26 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
     //on new page created partial with text
     $scope.setText = function () {
-        $scope.createdPartial[$scope.currentChoosedPartialPosition].Content = $scope.createdPartial.text;
+        $scope.createdPartial[$scope.currentChoosedPartialPosition].textContents = [];
+        var text = {};
+        text.content = $scope.createdPartial.text;
+        text.textType = "Header";
+        $scope.createdPartial[$scope.currentChoosedPartialPosition].textContents.push(text);
+        //console.log($scope.createdPartial[$scope.currentChoosedPartialPosition]);
     }
 
 
    
     //on new page save
     $scope.savePage = function (p) {
-        var newPartials = {"Partials": $scope.createdPartials};
-        LayoutScreenService.createPage(p, newPartials);
+        var newPartials = $scope.createdPartials;
+        //console.log(newPartials);
+        LayoutScreenService.createPage(p, newPartials).success(function (data) {
+            console.log(data);
+            $scope.createdPage = null;
+            $scope.savedPage = true; 
+            $scope.pages.push(data);
+        })
     };
 
     var getPartialPos = function (target) {

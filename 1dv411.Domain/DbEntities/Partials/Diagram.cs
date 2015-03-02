@@ -24,5 +24,8 @@ namespace _1dv411.Domain.DbEntities
         public virtual IEnumerable<DiagramData> Data { get; set; }
         [JsonIgnore]
         public DiagramType? DiagramType { get; set; }
+
+
+        public override string PartialType { get { return "Diagram"; } }
     }
 }
