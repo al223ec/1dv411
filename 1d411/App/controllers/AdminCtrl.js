@@ -53,10 +53,8 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         var getScreenPages = function () {
             console.log($scope.screen.id);
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
-                console.log('running');
+
                 $scope.screenPages = data === null ? [] : data;
-                console.log(data);
-                console.log($scope.screenPages);
             });
         }
 
