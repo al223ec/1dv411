@@ -20,9 +20,7 @@ namespace _1dv411.Domain.DbEntities
 
         public int Position { get; set; }
 
-        public string PartialType
-        { 
-            get { return this.GetType().Name.Substring(0, this.GetType().Name.IndexOf('_')); }
-        }
+        public abstract string PartialType { get; }
+
     }
 }

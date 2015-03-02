@@ -50,12 +50,42 @@ namespace _1d411.Controllers
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult CreatePage(PartialViewModel data)
+        public IHttpActionResult CreatePage(PageViewModel pageViewModel)
         {
             //TODO: Fetch partials
-            Page newPage = data.page;
-           _service.PageService.CreatePage(newPage);
-            return Ok(data);
+           // Page newPage = data.page;
+           //_service.PageService.CreatePage(newPage);
+            var page = pageViewModel.Page;
+            page.Partials = new List<Partial>();
+            for (int i = 0; i < pageViewModel.Partials.Count; i++)
+            {
+                if (pageViewModel.Partials[i].PartialType == "Diagram")
+                {
+                    Diagram diagram = new Diagram
+                    {
+                        DiagramType = pageViewModel.Partials[i].DiagramType,
+                        Position = pageViewModel.Partials[i].Position
+                    };
+                    page.Partials.Add(diagram);
+                }
+                else if (pageViewModel.Partials[i].PartialType == "Text")
+                {
+                    Text text = new Text 
+                    {
+                        TextContents = pageViewModel.Partials[i].TextContents,
+                        Position = pageViewModel.Partials[i].Position
+                    };
+                   
+                    
+                    page.Partials.Add(text);
+
+                }
+
+            }
+
+            _service.PageService.CreatePage(page);
+            
+            return Ok(page);
         }
 
         #region IDisposable
