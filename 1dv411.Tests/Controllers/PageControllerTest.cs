@@ -19,69 +19,84 @@ namespace _1dv411.Tests.Controllers
     {
         private IApplicationContext _context;
         private IServiceFacade _service;
-        
+
         public PageControllerTest()
         {
             _context = new TestApplicationContext();
             _service = new ServiceFacade(new UnitOfWork(_context));
         }
-        
+
         [TestMethod]
         public void Get()
         {
             PageController controller = new PageController(_service);
             var result = controller.GetAllPages();
+
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
         public void GetPages_GetAllPages()
         {
-            _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo1"});
-            _context.Pages.Add(new Page { Id = 2, TemplateId = 1, Name = "Demo2"});
-            _context.Pages.Add(new Page { Id = 3, TemplateId = 1, Name = "Demo3"});
+            var demo0 = _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo1"});
+            var demo1 = _context.Pages.Add(new Page { Id = 2, TemplateId = 1, Name = "Demo2" });
+            var demo2 = _context.Pages.Add(new Page { Id = 3, TemplateId = 1, Name = "Demo3" });
             
+
             var controller = new PageController(_service);
             var result = controller.GetAllPages() as OkNegotiatedContentResult<IEnumerable<Page>>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Content.Count());
+            Assert.AreEqual(result.Content.ElementAt(0), demo0);
+            Assert.AreEqual(result.Content.ElementAt(1), demo1);
+            Assert.AreEqual(result.Content.ElementAt(2), demo2);
         }
 
         [TestMethod]
         public void GetPage_GetPageById()
         {
             int id = 1;
-            _context.Pages.Add(new Page { Id = id, Name = "Demo1" });
+            var demo0 = _context.Pages.Add(new Page { Id = id, Name = "Demo1" });
 
             var controller = new PageController(_service);
             var result = controller.FindById(id) as OkNegotiatedContentResult<Page>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Content.Id, id);
+            Assert.AreEqual(result.Content.Name, demo0.Name);
         }
 
         [TestMethod]
         public void GetPage_GetAllPageNames()
         {
-            _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo1" });
-            _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo2" });
-            _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo3" });
+            var demo0 = _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo1" });
+            var demo1 = _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo2" });
+            var demo2 = _context.Pages.Add(new Page { Id = 1, TemplateId = 1, Name = "Demo3" });
 
             var controller = new PageController(_service);
             var result = controller.GetAllPageNames() as OkNegotiatedContentResult<IEnumerable<string>>;
 
             Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content.ElementAt(0), demo0.Name);
+            Assert.AreEqual(result.Content.ElementAt(1), demo1.Name);
+            Assert.AreEqual(result.Content.ElementAt(2), demo2.Name);
         }
 
         [TestMethod]
         public void PostPage_CreatePage()
         {
             var page = _context.Pages.Add(new Page { TemplateId = 1, Name = "Demo1"});
-            var controller = new PageController(_service);
-            var result = controller.CreatePage(page) as OkNegotiatedContentResult<Page>;
 
-            Assert.IsNotNull(result);
+            
+            Diagram text = new Diagram();
+
+            page.Partials.Add(text);
+            var controller = new PageController(_service);
+            
+           // var result = controller.CreatePage(page) as OkNegotiatedContentResult<Page>;
+            
+            //Assert.IsNotNull(result);
         }
     }
 }

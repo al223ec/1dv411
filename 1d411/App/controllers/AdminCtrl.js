@@ -16,10 +16,13 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             };
         };
 
-        $scope.postScreen = function (screen) {
-            console.log(screen);
-            console.log(LayoutScreenService);
-            var screen = LayoutScreenService.postScreen(screen).success(function (resp) {
+        var screen = {};
+        $scope.postScreen = function (screenObj) {
+
+            screen.name = screenObj.name;
+            // Convert minutes and seconds to milliseconds.
+            screen.timer = 1000 * ((screenObj.minutes * 60) + (screenObj.seconds));
+            LayoutScreenService.postScreen(screen).success(function (resp) {
                 resetCreateScreenForm();
                 console.log(resp);
                 $scope.screens.push(resp);
@@ -40,6 +43,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         var getPages = function () {
+
             LayoutScreenService.getPages().success(function (data) {
                 $scope.pages = data;
             });
@@ -49,11 +53,18 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         var getScreenPages = function () {
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
                 $scope.screenPages = data;
-            })
+            });
         }
 
+
         $scope.addPage = function (page) {
-            
+            $scope.screen.pages = [page];
+
+            LayoutScreenService.postScreen($scope.screen).success(function (resp) {
+
+                console.log(resp);
+            });
+
             $scope.screenPages.push(page);
         }
 

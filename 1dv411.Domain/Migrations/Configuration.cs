@@ -124,7 +124,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedHero(DAL.ApplicationContext context)
         {
-            Page hero = CreatePage("Hero", "hero");
+            Page hero = CreatePage("Hero", "hero.html");
 
             var partials = new List<Partial>
             {
@@ -150,7 +150,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedDefault(DAL.ApplicationContext context)
         {
-            Page defaultPage = CreatePage("Default page", "default_template");
+            Page defaultPage = CreatePage("Default page", "default_template.html");
             var partials = new List<Partial>
             {
                 CreateText(defaultPage, 1, "Default page text", new string[] {
@@ -168,7 +168,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedHorizontal(DAL.ApplicationContext context)
         {
-            Page horizontal = CreatePage("Horizontal page", "horizontal");
+            Page horizontal = CreatePage("Horizontal page", "horizontal.html");
 
             var partials = new List<Partial>
             {
@@ -198,7 +198,7 @@ namespace _1dv411.Domain.Migrations
                     orders.Add(
                       new Order
                       {
-                          OrderGroupId = "StringIdFromDb",
+                          OrderGroupId = Guid.NewGuid(),
                           Date = date,
                       });
                 }

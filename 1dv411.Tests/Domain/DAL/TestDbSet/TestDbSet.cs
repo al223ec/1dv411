@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1dv411.Domain.DbEntities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace _1dv411.Tests.Domain.DAL
 {
     public class TestDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T>
-        where T : class
+        where T : BaseDto
         {
             ObservableCollection<T> _data;
             IQueryable _query;
@@ -76,6 +77,11 @@ namespace _1dv411.Tests.Domain.DAL
             IEnumerator<T> IEnumerable<T>.GetEnumerator()
             {
                 return _data.GetEnumerator();
+            }
+
+            public override T Find(params object[] keyValues)
+            {
+                return this.SingleOrDefault(t => t.Id == (int)keyValues.Single());
             }
         
     }

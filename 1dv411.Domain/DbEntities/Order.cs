@@ -9,7 +9,8 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Order : BaseDto
     {
-        public string OrderGroupId { get; set; }
+        [Index]
+        public Guid OrderGroupId { get; set; }
 
         [Column(TypeName = "DateTime2")]
         public DateTime Date { get; set; }

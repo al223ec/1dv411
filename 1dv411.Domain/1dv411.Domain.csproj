@@ -53,9 +53,12 @@
     <Compile Include="DAL\ApplicationContext.cs" />
     <Compile Include="DAL\DiagramDbContext.cs" />
     <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\LiveOrderRepository.cs" />
+    <Compile Include="DAL\LiveOrdersContext.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />
+    <Compile Include="DbEntities\LiveOrders.cs" />
     <Compile Include="DbEntities\Partials\Diagram.cs" />
     <Compile Include="DbEntities\Partials\Image.cs" />
     <Compile Include="DbEntities\Page.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="LiveOrderService.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.Designer.cs">
       <DependentUpon>201502201112033_Recreated.cs</DependentUpon>
@@ -77,6 +81,14 @@
     <Compile Include="Migrations\201502201133382_PageScreen-Page.cs" />
     <Compile Include="Migrations\201502201133382_PageScreen-Page.Designer.cs">
       <DependentUpon>201502201133382_PageScreen-Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503011811199_ChangeOrderGroupOrderIdToGUID.cs" />
+    <Compile Include="Migrations\201503011811199_ChangeOrderGroupOrderIdToGUID.Designer.cs">
+      <DependentUpon>201503011811199_ChangeOrderGroupOrderIdToGUID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503021226316_IX_Order_OrderGroupId.cs" />
+    <Compile Include="Migrations\201503021226316_IX_Order_OrderGroupId.Designer.cs">
+      <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PageScreenService.cs" />
@@ -97,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502201133382_PageScreen-Page.resx">
       <DependentUpon>201502201133382_PageScreen-Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503011811199_ChangeOrderGroupOrderIdToGUID.resx">
+      <DependentUpon>201503011811199_ChangeOrderGroupOrderIdToGUID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503021226316_IX_Order_OrderGroupId.resx">
+      <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
