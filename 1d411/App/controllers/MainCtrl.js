@@ -1,9 +1,10 @@
 /// <reference path="MainCtrl.js" />
 angular.module('Main', [])
-    .controller('MainController', ['$scope', 'appService', 'LayoutScreenService', function ($scope, appService, LayoutScreenService) {
+    .controller('MainController', ['$scope', 'appService', 'LayoutScreenService',
+        function ($scope, appService, LayoutScreenService) {
 
         LayoutScreenService.getScreens().success(function (data) {
-            $scope.screens = data; 
+            $scope.screens = data;
         });
         appService.getApplicationStats().success(function (data) {
             console.log(data);
@@ -22,6 +23,5 @@ angular.module('Main', [])
             $(e.target).closest('.button').eq(0).hide();
             appService.seedAllLiveOrders().success(function (data) {
                 console.log(data);
-            });
         };
     }]);
