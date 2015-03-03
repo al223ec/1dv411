@@ -26,8 +26,8 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
             console.log(screen);
             return $http.post('/screens', {screen: screen, pages: screen.pages});
         },
-        createPage: function (newpage, pagePartials) {
-            var data = { page: newpage, partials: pagePartials }
+        createPage: function (newpage) {
+            var data = { page: newpage, partials: newpage.partials }
             return $http.post('/pages', data );
         }
     }; 

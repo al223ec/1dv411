@@ -1,58 +1,66 @@
-﻿<h3>New Page</h3>
-<form>
-    <div class="row">
-        <div class="col w25">
-            <label>Enter a pagename</label>
-        </div>
-        <div class="col w25">
-            <input type="text" ng-model="createdPage.Name" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col w25">
-            <label>Choose a Template</label>
-        </div>
-        <div class="col w20">
-            <ul style="list-style:none;">
-                <li ng-repeat="t in templates">
-                    <h3>{{t.name}}</h3>
-                    <a href="" ng-click="selectTemplate($event, t)" class="template-thumb small-thumb">
-                        <div ng-include src="'/Views/App/Templates/' + t.fileName"></div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div ng-show="template" class="col w55">
-            <h3>Choose content of the partials by clicking on a partial</h3>
-            <div ng-click="createPartial($event)" class="template-thumb big-thumb">
-                <ng-include src="path"></ng-include>
-            </div>
-            <div ng-if="showDropdownPartitalType">
-                <label>Choose a partialtype</label>
-                <select ng-model="createdPartial.selectedPartialType" ng-change="checkChoosenType()">
-                    <option value="Text">Text</option>
-                    <option value="Diagram">Diagram</option>
-                </select>
-                <div ng-if="choosedText">
-                    <p>Enter a text</p>
-                    <textarea ng-change="setText()" ng-model="createdPartial.text" />
-                </div>
-                <div ng-if="choosedDiagram">
-                    <label>Choose a diagramtype</label>
-                    <select ng-model="createdPartial.selectedDiagramType" ng-change="setChoosenDiagramType()">
-                        <option value="Week">Week</option>
-                        <option value="Year">Year</option>
-                        <option value="Month">Month</option>
-                        <option value="Quarter">Quarter</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+﻿<div ng-controller="AdminCreatePagesController">
+    <!--<div class="page-details" ng-if="savedPage">
+        <h3>The page was saved!</h3>
+    </div>-->
 
-   
-       
+    <h3>New Page</h3>
+    <form>
         <div class="row">
-        <button ng-click="savePage(createdPage)">Save</button>
-    </div>
-</form>
+            <div class="col w25">
+                <label>Enter a pagename</label>
+            </div>
+            <div class="col w25">
+                <input type="text" ng-model="createdPage.Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col w25">
+                <label>Choose a Template</label>
+            </div>
+            <div class="col w20">
+                <ul style="list-style:none;">
+                    <li ng-repeat="t in templates">
+                        <h3>{{t.name}}</h3>
+                        <a href="" ng-click="selectTemplate($event, t)" class="template-thumb small-thumb">
+                            <div ng-include src="'/Views/App/Templates/' + t.fileName"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="createdPage.template" class="col w55">
+                <h3>Choose content of the partials by clicking on a partial</h3>
+
+                <!--ng-click="setCurrentPartialPos($event)"--> 
+                <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
+                    <ng-include src="path" />
+                </div>
+
+                <div ng-if="currentPartialPos != 0">
+                    <label>Choose a partialtype</label>
+                    <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
+                        <option value="Text">Text</option>
+                        <option value="Diagram">Diagram</option>
+                    </select>
+
+                    <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
+                        <p>Enter a text</p>
+                        <textarea ng-model="createdPage.partials[currentPartialPos -1].text.textContent" />
+                    </div>
+
+                    <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
+                        <label>Choose a diagramtype</label>
+                        <select ng-model="createdPage.partials[currentPartialPos -1].diagramType">
+                            <option value="Week">Week</option>
+                            <option value="Year">Year</option>
+                            <option value="Month">Month</option>
+                            <option value="Quarter">Quarter</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button ng-click="savePage()">Save</button>
+        </div>
+    </form>
+</div>

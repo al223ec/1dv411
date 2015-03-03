@@ -1,25 +1,28 @@
-﻿<div class="row">
-    <div class="page-form">
-        <div class="row">
-            <div class="col w25"><label>Page Name</label></div>
-            <div class="col w25"><input type="text" ng-model="page.name" /></div>
+﻿<div ng-controller="AdminViewPageController">
+    <div class="row">
+        <div class="page-form">
+            <div class="row">
+                <div class="col w25"><label>Page Name</label></div>
+                <div class="col w25"><input type="text" ng-model="page.name" /></div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col w50">
-        <h3>Template: {{page.templateUrl}}</h3>
-        <p>Id: {{page.id}}</p>
-        <div ng-click="selectPartial($event)" class="template-thumb big-thumb">
-            <ng-include src="templatePath"></ng-include>
+    <div class="row">
+        <div class="col w50">
+            <h3>Template: {{page.templateUrl}}</h3>
+            <p>Id: {{page.id}}</p>
+
+            <div data-my-position-finder ng-click="calculateParitalPos($event, selectPartial)" class="template-thumb big-thumb">
+                <ng-include src="templatePath" /></ng-include>
+            </div>
+        </div>
+        <div class="col w50">
+            <div ng-show="partial">
+                <ng-include src="partialPath" /></ng-include>
+            </div>
         </div>
     </div>
-    <div class="col w50">
-        <div ng-show="partial">
-            <ng-include src="partialPath"></ng-include>
-        </div>
+    <div class="row">
+        <button>Save</button>
     </div>
-</div>
-<div class="row">
-    <button>Save</button>
 </div>

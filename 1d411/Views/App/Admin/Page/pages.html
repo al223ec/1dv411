@@ -1,7 +1,6 @@
 ﻿<div class="row h100">
     <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
     <div class="col w25 page-list">
-
         <div>
             <ul>
                 <li><div class="button block dark-green" ng-click="createPage()">New Page</div></li>
@@ -9,7 +8,7 @@
                     <div>{{p.name}}</div>
 
                     <div class="template-thumb small-thumb">
-                        <ng-include src="'/Views/App/Templates/' + p.template.fileName"></ng-include>
+                        <ng-include src="'/Views/App/Templates/' + p.template.fileName" ></ng-include>
                     </div>
                 </li>
             </ul>
@@ -17,17 +16,12 @@
     </div>
 
     <div class="col w75">
-
         <div class="page-details" ng-show="page">
             <ng-include src="'/Views/App/Admin/Page/_page.html'"></ng-include>
         </div>
 
-        <div class="page-details" ng-show="createdPage">
+        <div class="page-details" ng-show="createdPageSelected">
             <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
         </div>
-        <div class="page-details" ng-if="savedPage">
-            <h3>The page was saved!</h3>
-        </div>
-
     </div>
 </div>
