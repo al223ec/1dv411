@@ -12,8 +12,9 @@ namespace _1dv411.Domain.DbEntities
     public enum DiagramType
     {
         Week,
-        Day,
-        Month
+        Month,
+        Quarter,
+        Year
     }
     public class Diagram : Partial
     {

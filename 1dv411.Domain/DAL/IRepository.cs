@@ -16,7 +16,11 @@ namespace _1dv411.Domain.DAL
             string includeProperties = "");
 
         T GetById(object id);
+        T GetOne(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null);
         void Remove(object id);
-        void AddOrUpdate(T entity); 
+        void AddOrUpdate(T entity);
+        int Count(Expression<Func<T, bool>> filter = null);
     }
 }

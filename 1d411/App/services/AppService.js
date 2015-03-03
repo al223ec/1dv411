@@ -13,5 +13,14 @@ appServiceModule.factory('appService', ['$http', function ($http) {
         getDiagramDataByMonth: function () {
             return $http.get('/diagramData/month/');
         },
+        getApplicationStats: function () {
+            return $http.get('/diagrams/appliaction-stats/')
+        },
+        seedOrdersSinceLastYear: function () {
+            return $http.post('/diagrams/seed-orders-since-last-year/');
+        },
+        seedAllLiveOrders: function(){
+            return $http.post('/diagrams/seed-all-live-orders/');
+        }
     }       
 }]);
