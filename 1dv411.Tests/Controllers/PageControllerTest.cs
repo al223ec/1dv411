@@ -10,6 +10,7 @@ using _1dv411.Domain.DAL;
 using _1dv411.Tests.Domain.DAL;
 using _1dv411.Domain.DbEntities;
 using System.Web.Http.Results;
+using _1d411.ViewModel;
 
 
 namespace _1dv411.Tests.Controllers
@@ -86,17 +87,40 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void PostPage_CreatePage()
         {
-            var page = _context.Pages.Add(new Page { TemplateId = 1, Name = "Demo1"});
-
-            
-            Diagram text = new Diagram();
-
-            page.Partials.Add(text);
             var controller = new PageController(_service);
+            var page = _context.Pages.Add(new Page { TemplateId = 1, Name = "page1" });
             
-           // var result = controller.CreatePage(page) as OkNegotiatedContentResult<Page>;
+            List<TextContent> listText = new List<TextContent>();            
+            Text text = new Text
+            {
+                TextContents = listText
+            };
             
-            //Assert.IsNotNull(result);
+            var textContent = _context.TextContents.Add(new TextContent { Content = "hej", TextId = 1, Text = text, TextType = TextType.Heading });
+            listText.Add(textContent);
+            
+            PartialViewModel pvm = new PartialViewModel
+            {
+                PartialType = "Text",
+                Position = 1,
+                TextContents = listText
+
+            };
+            
+            List<PartialViewModel> partialViewModelList = new List<PartialViewModel>();
+            partialViewModelList.Add(pvm);
+            
+            PageViewModel svm = new PageViewModel
+            {
+                Page = page,
+                Partials = partialViewModelList
+            };
+
+            var result = controller.CreatePage(svm) as OkNegotiatedContentResult<Page>;
+            
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content, page);
+            Assert.AreEqual(result.Content.Name, page.Name);
         }
     }
 }

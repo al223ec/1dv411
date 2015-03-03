@@ -10,6 +10,7 @@ using _1dv411.Domain.DAL;
 using _1dv411.Tests.Domain.DAL;
 using _1dv411.Domain.DbEntities;
 using System.Web.Http.Results;
+using _1d411.ViewModel;
 
 namespace _1dv411.Tests.Controllers
 {
@@ -74,9 +75,17 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void PostScreen_CreateScreen()
         {
-            var screen = _context.Screens.Add(new Screen {Name = "Demo1", Timer = 10000 });
+            var screen = _context.Screens.Add(new Screen { Name = "Demo1", Timer = 10000 });
             var controller = new ScreenController(_service);
-            var result = controller.PostScreen(screen) as OkNegotiatedContentResult<Screen>;
+            var page = _context.Pages.Add(new Page { TemplateId = 1, Name = "page1"});
+            List<Page> listpages = new List<Page>();
+            listpages.Add(page);
+            ScreenViewModel svm = new ScreenViewModel
+            {
+                Screen = screen,
+                Pages = listpages
+            };
+            var result = controller.PostScreen(svm) as OkNegotiatedContentResult<Screen>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Content, screen);
