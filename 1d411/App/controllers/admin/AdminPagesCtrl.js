@@ -26,7 +26,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $scope.createPage = function () {
             $scope.createdPageSelected = true;
             $scope.page = null; //Hide selected if present
-            $('.light-blue').removeClass('light-blue');
+           // $('.light-blue').removeClass('light-blue');
         };
     }]);
 
