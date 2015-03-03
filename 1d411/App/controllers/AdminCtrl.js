@@ -87,6 +87,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
     LayoutScreenService.getTemplates().success(function (data) {
         console.log(data);
+        //This is hardcode, should get templates from the db
         data = [
                 { name: "Default layout", fileName: "default_template.html", numberOfPartials: 2},
                 { name: "Hero", fileName: "hero.html", numberOfPartials: 3 },
@@ -125,25 +126,26 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $scope.template = t;
         $scope.path = '/Views/App/Templates/' + t.fileName;
 
+        //loop number of partials and set each partial as an object
         for (var i = 1; i <= $scope.template.numberOfPartials; i++) {
-            $scope.createdPartial[i] = {"Position": i};
-            $scope.createdPartials.push($scope.createdPartial[i]);
+            $scope.createdPage.createdPartial[i] = {"Position": i};
+            $scope.createdPage.createdPartials.push($scope.createdPage.createdPartial[i]);
 
         }
         console.log($scope.createdPartials);
         //delete form data
-        $scope.createdPartial.selectedPartialType = null;
-        $scope.createdPartial.text = null;
+        $scope.createdPage.createdPartial.selectedPartialType = null;
+        $scope.createdPage.createdPartial.text = null;
 
 
     };
 
     //on new page click
     $scope.createPage = function () {
-        $scope.savedPage = false; //hide the saved page alert
         $scope.createdPage = {};
-        $scope.createdPartials = [];
-        $scope.createdPartial = {};
+        $scope.createdPage.savedPage = false; //hide the saved page alert
+        $scope.createdPage.createdPartials = [];
+        $scope.createdPage.createdPartial = {};
         $scope.page = null; //Hide selected if present
         $('.light-blue').removeClass('light-blue');
        // console.log($scope.createdPage);
@@ -159,69 +161,70 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $(e.currentTarget).closest('div').eq(0).find('.light-blue').removeClass('light-blue');
         $(e.target).addClass('light-blue');
 
-        $scope.selectedDiagramType = {};
-        $scope.currentChoosedPartialPosition = partialPos;
-        console.log($scope.createdPartial);
+        $scope.createdPage.selectedDiagramType = {};
+        $scope.createdPage.createdPartial[partialPos].textContents = [];
+        $scope.createdPage.currentChoosedPartialPosition = partialPos;
+        console.log($scope.createdPage.createdPartial);
        
        // $scope.createdPartial[partialPos].Position = partialPos;
 
-        console.log($scope.createdPartials);
+        console.log($scope.createdPage.createdPartials);
 
-        $scope.showDropdownPartitalType = true;
-        $scope.choosedDiagram = false;
-        $scope.choosedText = false;
+        $scope.createdPage.showDropdownPartitalType = true;
+        $scope.createdPage.choosedDiagram = false;
+        $scope.createdPage.choosedText = false;
         getCurrentNewPageData(partialPos);
     }
 
     var getCurrentNewPageData = function (position) {
         //delete scope data
-        $scope.createdPartial.selectedPartialType = null;
-        $scope.createdPartial.text = null;
+        $scope.createdPage.createdPartial.selectedPartialType = null;
+        $scope.createdPage.createdPartial.text = null;
 
 
-        $scope.createdPartial.selectedPartialType = $scope.createdPartial[position].PartialType;
-        $scope.createdPartial.selectedDiagramType = $scope.createdPartial[position].DiagramType;
+        $scope.createdPage.createdPartial.selectedPartialType = $scope.createdPage.createdPartial[position].PartialType;
+        $scope.createdPage.createdPartial.selectedDiagramType = $scope.createdPage.createdPartial[position].DiagramType;
 
         $scope.checkChoosenType();
 
 
-        $scope.createdPartial.text = $scope.createdPartial[position].textContents.content;
+        $scope.createdPage.createdPartial.text = $scope.createdPage.createdPartial[position].textContents.content;
     }
 
     //check choosed partialtype in new page
     $scope.checkChoosenType = function () {
-        switch ($scope.createdPartial.selectedPartialType) {
+        switch ($scope.createdPage.createdPartial.selectedPartialType) {
             case "Text":
-                $scope.createdPartial[$scope.currentChoosedPartialPosition].PartialType = $scope.createdPartial.selectedPartialType;
-                $scope.choosedDiagram = false;
-                $scope.choosedText = true;
-                console.log($scope.currentChoosedPartialPosition);
+                $scope.createdPage.createdPartial[$scope.createdPage.currentChoosedPartialPosition].PartialType = $scope.createdPage.createdPartial.selectedPartialType;
+                $scope.createdPage.choosedDiagram = false;
+                $scope.createdPage.choosedText = true;
+                console.log($scope.createdPage.currentChoosedPartialPosition);
                 break;
 
             case "Diagram":
-                $scope.createdPartial[$scope.currentChoosedPartialPosition].PartialType = $scope.createdPartial.selectedPartialType;
-                $scope.choosedText = false;
-                $scope.choosedDiagram = true;
+                $scope.createdPage.createdPartial[$scope.createdPage.currentChoosedPartialPosition].PartialType = $scope.createdPage.createdPartial.selectedPartialType;
+                $scope.createdPage.choosedText = false;
+                $scope.createdPage.choosedDiagram = true;
                 break;
 
 
         }
-        console.log($scope.createdPartials);
+        console.log($scope.createdPage.createdPartials);
     }
 
     //on new page created partial with diagram
     $scope.setChoosenDiagramType = function () {
-        $scope.createdPartial[$scope.currentChoosedPartialPosition].DiagramType = $scope.createdPartial.selectedDiagramType;
+        $scope.createdPage.createdPartial[$scope.createdPage.currentChoosedPartialPosition].DiagramType = $scope.createdPage.createdPartial.selectedDiagramType;
         console.log($scope.createdPage);
     }
 
     //on new page created partial with text
     $scope.setText = function () {
-        $scope.createdPartial[$scope.currentChoosedPartialPosition].textContents = [];
+        $scope.createdPage.createdPartial[$scope.createdPage.currentChoosedPartialPosition].textContents = [];
         var text = {};
-        text.content = $scope.createdPartial.text;
+        text.content = $scope.createdPage.createdPartial.text;
         text.textType = "Header";
-        $scope.createdPartial[$scope.currentChoosedPartialPosition].textContents.push(text);
+        $scope.createdPage.createdPartial[$scope.createdPage.currentChoosedPartialPosition].textContents.push(text);
         //console.log($scope.createdPartial[$scope.currentChoosedPartialPosition]);
     }
 
@@ -229,13 +232,14 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
    
     //on new page save
     $scope.savePage = function (p) {
-        var newPartials = $scope.createdPartials;
+        var newPartials = $scope.createdPage.createdPartials;
         //console.log(newPartials);
         LayoutScreenService.createPage(p, newPartials).success(function (data) {
             console.log(data);
+            $scope.createdPage.savedPage = true;
             $scope.createdPage = null;
-            $scope.savedPage = true; 
-            $scope.pages.push(data);
+           
+            $scope.pages.unshift(data);
         })
     };
 

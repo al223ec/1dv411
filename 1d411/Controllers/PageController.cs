@@ -73,14 +73,13 @@ namespace _1d411.Controllers
                     Text text = new Text 
                     {
                         TextContents = pageViewModel.Partials[i].TextContents,
-                        Position = pageViewModel.Partials[i].Position
+                        Position = pageViewModel.Partials[i].Position,
+                       
                     };
-                   
-                    
+                      
                     page.Partials.Add(text);
-
+                    
                 }
-
             }
 
             _service.PageService.CreatePage(page);

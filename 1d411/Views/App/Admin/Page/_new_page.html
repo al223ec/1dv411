@@ -27,19 +27,19 @@
             <div ng-click="createPartial($event)" class="template-thumb big-thumb">
                 <ng-include src="path"></ng-include>
             </div>
-            <div ng-if="showDropdownPartitalType">
+            <div ng-if="createdPage.showDropdownPartitalType">
                 <label>Choose a partialtype</label>
-                <select ng-model="createdPartial.selectedPartialType" ng-change="checkChoosenType()">
+                <select ng-model="createdPage.createdPartial.selectedPartialType" ng-change="checkChoosenType()">
                     <option value="Text">Text</option>
                     <option value="Diagram">Diagram</option>
                 </select>
-                <div ng-if="choosedText">
+                <div ng-if="createdPage.choosedText">
                     <p>Enter a text</p>
                     <textarea ng-change="setText()" ng-model="createdPartial.text" />
                 </div>
-                <div ng-if="choosedDiagram">
+                <div ng-if="createdPage.choosedDiagram">
                     <label>Choose a diagramtype</label>
-                    <select ng-model="createdPartial.selectedDiagramType" ng-change="setChoosenDiagramType()">
+                    <select ng-model="createdPage.createdPartial.selectedDiagramType" ng-change="setChoosenDiagramType()">
                         <option value="Week">Week</option>
                         <option value="Year">Year</option>
                         <option value="Month">Month</option>
