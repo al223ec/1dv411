@@ -20,8 +20,7 @@ namespace _1dv411.Domain.DAL
             _set = _context.Set<T>();
         }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, 
-            string includeProperties = "")
+        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,  string includeProperties = "")
         {
             IQueryable<T> query = _set;
 
@@ -30,14 +29,22 @@ namespace _1dv411.Domain.DAL
                 query = query.Where(filter);
             }
 
-            foreach (var includeProperty in includeProperties.Split(
-                new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
             }
 
             return orderBy == null ? query.ToList() : orderBy(query).ToList();
+        }
 
+        public T GetOne(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
+        {
+            IQueryable<T> query = _set;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            return orderBy == null ? query.FirstOrDefault() : orderBy(query).FirstOrDefault();
         }
 
         public T GetById(object id)
@@ -65,5 +72,17 @@ namespace _1dv411.Domain.DAL
                 _context.Entry(entity).State = EntityState.Modified;
             }
         }
+
+
+        public int Count(Expression<Func<T, bool>> filter = null)
+        {
+            IQueryable<T> query = _set;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            return query.Count();
+        }
+
     }
 }

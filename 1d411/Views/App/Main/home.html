@@ -6,13 +6,37 @@
                 <h4>Screens</h4>
                 <ul>
                     <li ng-repeat="s in screens">
-                        <a href="/app/screen/{{s.id}}"> {{s.name}}</a>
+                        <a href="/app/screen/{{s.id}}">{{s.name}}</a>
                     </li>
                 </ul>
             </div>
             <div class="col w50">
-                <h3>Admin</h3>
-                <a href="/app/admin/screens/">Admin!</a>
+                <div class="row">
+                    <h3>Admin</h3>
+                    <a href="/app/admin/screens/">Till administrationsverktyget</a>
+                </div>
+                <div class="row">
+                    <h3>Statistik</h3>
+                    <div class="row">
+                        <div class="col w50">Total antal ordrar</div>
+                        <div class="col w50">{{stats.totalOrders}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col w50">Från</div>
+                        <div class="col w50">{{stats.startDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col w50">Till</div>
+                        <div class="col w50">{{stats.endDate}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>Fyll databasen</h4>
+                    <p>Obs! Detta kan ta lång tid då det är flera hundra tusen order-rader, Körs endast vid publicering!</p>
+                    <p class="button light-green" ng-click="seedOrdersSinceLastYear($event)">Fyll ordrar från ett år tillbaka.</p>
+                    <p class="button light-green" ng-click="seedAllLiveOrders($event)">Fyll med ALLA ordrar, från 2007 fram till nu.</p>
+                </div>
+
             </div>
         </div>
 

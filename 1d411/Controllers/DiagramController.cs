@@ -32,21 +32,28 @@ namespace _1d411.Controllers
 
         /* Metoder för att seeda databsen med diagram-data.*/
         [Route("seed-orders-since-last-year")]
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult SeedLiveOrdersSinceLastYear()
         {
-            DateTime now = new DateTime();
-            DateTime lastYear = new DateTime(now.Year-1,1,1);
-            return Ok("number of orders added: " + _service.DiagramService.SeedLiveOrders(lastYear));
+            DateTime now = DateTime.Now;
+            //DateTime lastYear = new DateTime(now.Year - 1, now.Month, now.Day);
+            DateTime lastYear = new DateTime(now.Year, now.Month, now.Day-1);
+            return Ok(_service.DiagramService.SeedLiveOrders(lastYear));
         }
 
         [Route("seed-all-live-orders")]
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult SeedAllLiveOrders()
         {
-            return Ok("number of orders added: " + _service.DiagramService.SeedLiveOrders(null));
+            return Ok(_service.DiagramService.SeedLiveOrders(null));
         }
 
+        [Route("appliaction-stats")]
+        [HttpGet]
+        public IHttpActionResult GetApplicationStats()
+        {
+            return Ok(_service.DiagramService.GetApplicationStats());
+        }
         #region IDisposable
 
         protected override void Dispose(bool disposing)
