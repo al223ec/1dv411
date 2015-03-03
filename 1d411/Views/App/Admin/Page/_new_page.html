@@ -1,8 +1,7 @@
-﻿
-<div ng-controller="AdminCreatePagesController">
-    <div class="page-details" ng-if="savedPage">
+﻿<div ng-controller="AdminCreatePagesController">
+    <!--<div class="page-details" ng-if="savedPage">
         <h3>The page was saved!</h3>
-    </div>
+    </div>-->
 
     <h3>New Page</h3>
     <form>
@@ -31,13 +30,13 @@
             <div ng-show="createdPage.template" class="col w55">
                 <h3>Choose content of the partials by clicking on a partial</h3>
 
-                <div ng-click="setCurrentPartialPos($event)" class="template-thumb big-thumb">
+                <!--ng-click="setCurrentPartialPos($event)"--> 
+                <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
                     <ng-include src="path" />
                 </div>
 
                 <div ng-if="currentPartialPos != 0">
                     <label>Choose a partialtype</label>
-
                     <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
                         <option value="Text">Text</option>
                         <option value="Diagram">Diagram</option>

@@ -1,11 +1,12 @@
 ﻿"use strict";
 
+//Detta är egentligen bara en meny
 var adminModule = angular.module('AdminPages', []);
 adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
         $scope.createdPageSelected = false;
-        $scope.page;
+        $scope.page; // om man vill visa en eskild page visas denna här
 
         LayoutScreenService.getPages().success(function (data) {
             $scope.pages = data;
@@ -16,7 +17,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         });
 
         $scope.selectPage = function (page) {
-            $scope.createdPage = null; //Hide new if present
+            $scope.createdPageSelected = false;
             $scope.templatePath = '/Views/App/Templates/' + page.template.fileName;
             $scope.page = ($scope.page != page) ? page : null;
         };
@@ -27,48 +28,34 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
             $scope.page = null; //Hide selected if present
             $('.light-blue').removeClass('light-blue');
         };
-
-        $scope.selectPartial = function (e) {
-            var partialPos = $scope.getPartialPos(e.target);
-            var partial = getPartialFromPos(partialPos);
-
-            $scope.partialPath = (partial != null) ? '/Views/App/Admin/Page/_partial_' + partial.partialType.toLowerCase() + '.html' : '';
-            $scope.partial = ($scope.partial != partial) ? partial : null;
-        };
-
-        var getPartialFromPos = function (pp) {
-            for (var i = 0; i < $scope.page.partials.length; i++) {
-                if (pp === parseInt($scope.page.partials[i].position)) {
-                    return $scope.page.partials[i];
-                }
-            }
-            return null;
-        };
-
-        $scope.getPartialPos = function (target) {
-            if ($(target).hasClass('partial')) {
-                return parseInt($(target).attr('id').replace('p', ''));
-            }
-            return 0;
-        };
     }]);
 
-
-
-
-//app.controller('ChildCtrl', function ($scope, $controller) {
-//    $controller('ParentCtrl', { $scope: $scope }); //This works
-//});
-
+// Visa en enskild page
 adminModule.controller('AdminViewPageController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
+            $scope.selectPartial = function (position) {
+                var partial = getPartialFromPos(position);
+
+                $scope.partialPath = (partial != null) ? '/Views/App/Admin/Page/_partial_' + partial.partialType.toLowerCase() + '.html' : '';
+                $scope.partial = ($scope.partial != partial) ? partial : null;
+            };
+
+            var getPartialFromPos = function (pp) {
+                for (var i = 0; i < $scope.page.partials.length; i++) {
+                    if (pp === parseInt($scope.page.partials[i].position)) {
+                        return $scope.page.partials[i];
+                    }
+                }
+                return null;
+            };
+        }]);
 
 
-    }]);
+// Skapa en ny page
 adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
             $scope.currentPartialPos = 0;
-            // $scope.currentPartialIndex = 
+            $scope.currentPartialIndex = $scope.currentPartialPos -= 1;
 
             $scope.savedPage = false;
             $scope.createdPage = {};
@@ -87,11 +74,8 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                 }
             };
 
-            $scope.setCurrentPartialPos = function (e) {
-                //getPartialPos defineras i AdminPagesController
-                $scope.currentPartialPos = $scope.getPartialPos(e.target);
-                $(e.currentTarget).closest('div').eq(0).find('.light-blue').removeClass('light-blue');
-                $(e.target).addClass('light-blue');
+            $scope.setCurrentPartialPos = function (position) {
+                $scope.currentPartialPos = position; 
             };
 
             $scope.savePage = function () {
@@ -101,4 +85,31 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                     $scope.pages.push(data);
                 });
             };
-    }]);
+        }]);
+
+
+//Detta direktiv används för att ta fram vilken position en viss partial bör läggas i en egen fil vid tillfälle
+adminModule.directive("myPositionFinder", [
+      function () {
+
+          var getPartialPos = function (target) {
+              if ($(target).hasClass('partial')) {
+                  return parseInt($(target).attr('id').replace('p', ''));
+              }
+              return 0;
+          };
+
+          return {
+              restrict: "A",
+              link: function (scope, element, attrs) {
+                  scope.calculateParitalPos = function (e, callback) {
+                      $(e.currentTarget).closest('div').eq(0).find('.light-blue').removeClass('light-blue');
+                      $(e.target).addClass('light-blue');
+                      callback(getPartialPos(e.target));
+                  };
+              }
+          };
+
+
+      }
+]);
