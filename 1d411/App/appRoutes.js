@@ -21,7 +21,7 @@ angular.module('appRoutes', ['ngRoute'])
                 .when('/app/admin/templates', {
                     templateUrl: 'Views/App/Admin/Template/templates.html',
                     controller: 'AdminTemplatesController',
-                    controllerAs: ''
+                    controllerAs: 'adminTemplateCtrl'
                 })
                 //TODO: implementera felhantering
             
