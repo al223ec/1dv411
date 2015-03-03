@@ -73,7 +73,7 @@ namespace _1dv411.Domain
         //TODO: Fixa
         public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
         {
-            /* Uppdaterar Order-data om det behövs */
+            /* Uppdaterar Order-data om det behövs 
             UpdateOrderData();
             /**/
 

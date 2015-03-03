@@ -53,13 +53,13 @@ namespace _1dv411.Domain.Migrations
             context.PageScreens.Add(pageScreenHero);
             context.PageScreens.Add(pageScreenDef);
             context.SaveChanges();
-                       
-            /**** För att seeda ordrar      */
+
+            /**** För att seeda ordrar     
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
-                context.SaveChanges(); 
+                context.SaveChanges();  */
             /**/
         }
 

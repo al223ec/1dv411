@@ -23,5 +23,6 @@ angular.module('Main', [])
             $(e.target).closest('.button').eq(0).hide();
             appService.seedAllLiveOrders().success(function (data) {
                 console.log(data);
-        };
+            });
+        }
     }]);

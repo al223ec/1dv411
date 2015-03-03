@@ -8,7 +8,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         var screens = LayoutScreenService.getScreens().success(function (data) {
             $scope.screens = data;
         });
-        
+
         var resetCreateScreenForm = function () {
             $scope.newScreen = {
                 name: '',
