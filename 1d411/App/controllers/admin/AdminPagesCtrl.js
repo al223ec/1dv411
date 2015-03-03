@@ -26,7 +26,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $scope.createPage = function () {
             $scope.createdPageSelected = true;
             $scope.page = null; //Hide selected if present
-           // $('.light-blue').removeClass('light-blue');
+           // $('.light-blue').removeClass('light-blue'); oklart om denna behövs
         };
     }]);
 
@@ -54,8 +54,7 @@ adminModule.controller('AdminViewPageController', ['$scope', 'LayoutScreenServic
 // Skapa en ny page
 adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
-            $scope.currentPartialPos = 0;
-            $scope.currentPartialIndex = $scope.currentPartialPos -= 1;
+            $scope.currentPartialPos = 0; //Detta är ej nollindex
 
             $scope.savedPage = false;
             $scope.createdPage = {};
@@ -79,11 +78,12 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
             $scope.savePage = function () {
-                LayoutScreenService.createPage($scope.createdPage).success(function (data) {
-                    $scope.createdPage = null;
-                    $scope.savedPage = true;
-                    $scope.pages.push(data);
-                });
+                console.log($scope.createdPage); 
+                //LayoutScreenService.createPage($scope.createdPage).success(function (data) {
+                //    $scope.createdPage = null;
+                //    $scope.savedPage = true;
+                //    $scope.pages.push(data);
+                //});
             };
         }]);
 

@@ -44,7 +44,7 @@
 
                     <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
                         <p>Enter a text</p>
-                        <textarea ng-model="createdPage.partials[currentPartialPos].text.textContent" />
+                        <textarea ng-model="createdPage.partials[currentPartialPos -1].text.textContent" />
                     </div>
 
                     <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
