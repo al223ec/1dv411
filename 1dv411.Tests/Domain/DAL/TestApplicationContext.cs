@@ -30,6 +30,7 @@ namespace _1dv411.Tests.Domain.DAL
             this.Screens = new TestDbSet<Screen>();
             this.Pages = new TestDbSet<Page>();
             this.PageScreens = new TestDbSet<PageScreen>();
+            this.TextContents = new TestDbSet<TextContent>();
         }
 
         
