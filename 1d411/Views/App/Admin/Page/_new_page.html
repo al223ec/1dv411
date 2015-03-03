@@ -22,24 +22,29 @@
                 </li>
             </ul>
         </div>
-        <div ng-show="template" class="col w55">
+        <div ng-show="createdPage.template" class="col w55">
             <h3>Choose content of the partials by clicking on a partial</h3>
-            <div ng-click="createPartial($event)" class="template-thumb big-thumb">
-                <ng-include src="path"></ng-include>
+
+            <div ng-click="setCurrentPartialPos($event)" class="template-thumb big-thumb">
+                <ng-include src="path" />
             </div>
-            <div ng-if="showDropdownPartitalType">
+
+            <div ng-if="currentPartialPos != 0">
                 <label>Choose a partialtype</label>
-                <select ng-model="createdPartial.selectedPartialType" ng-change="checkChoosenType()">
+
+                <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
                     <option value="Text">Text</option>
                     <option value="Diagram">Diagram</option>
                 </select>
-                <div ng-if="choosedText">
+
+                <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
                     <p>Enter a text</p>
-                    <textarea ng-change="setText()" ng-model="createdPartial.text" />
+                    <textarea ng-model="createdPage.partials[currentPartialPos].text.textContent" />
                 </div>
-                <div ng-if="choosedDiagram">
+
+                <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
                     <label>Choose a diagramtype</label>
-                    <select ng-model="createdPartial.selectedDiagramType" ng-change="setChoosenDiagramType()">
+                    <select ng-model="createdPage.partials[currentPartialPos -1].diagramType">
                         <option value="Week">Week</option>
                         <option value="Year">Year</option>
                         <option value="Month">Month</option>
@@ -53,6 +58,6 @@
    
        
         <div class="row">
-        <button ng-click="savePage(createdPage)">Save</button>
+        <button ng-click="savePage()">Save</button>
     </div>
 </form>
