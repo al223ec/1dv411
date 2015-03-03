@@ -32,7 +32,9 @@ namespace _1d411
                         "~/App/controllers/DiagramCtrl.js",
                         "~/App/controllers/ScreenCtrl.js",
                         "~/App/controllers/LayoutCtrl.js",
-                         "~/App/controllers/AdminCtrl.js"
+                         "~/App/controllers/admin/AdminPagesCtrl.js",
+                         "~/App/controllers/admin/AdminScreensCtrl.js",
+                         "~/App/controllers/admin/AdminTemplatesCtrl.js"
 
                         ));
 
