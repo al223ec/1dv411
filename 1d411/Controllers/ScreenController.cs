@@ -67,6 +67,13 @@ namespace _1d411.Controllers
             return Ok(screen);
         }
 
+        [Route("{id:int}/delete")]
+        [HttpPost]
+        public IHttpActionResult DeleteScreen(int id)
+        {
+            return Ok(_service.ScreenService.Delete(id));
+        }
+
         #region IDisposable
 
         protected override void Dispose(bool disposing)

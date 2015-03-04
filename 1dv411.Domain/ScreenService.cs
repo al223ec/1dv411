@@ -13,6 +13,8 @@ namespace _1dv411.Domain
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
 
         bool Save(Screen screen);
+
+        bool Delete(int id);
     }
 
     public class ScreenService : IScreenService
@@ -60,6 +62,13 @@ namespace _1dv411.Domain
                 }
             }   
             _unitOfWork.ScreenRepository.AddOrUpdate(screen);
+            _unitOfWork.Save();
+            return true;
+        }
+
+        public bool Delete(int id)
+        {
+            _unitOfWork.ScreenRepository.Remove(id);
             _unitOfWork.Save();
             return true;
         }

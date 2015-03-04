@@ -29,6 +29,9 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
         createPage: function (newpage) {
             var data = { page: newpage, partials: newpage.partials }
             return $http.post('/pages', data );
+        },
+        deleteScreen: function (screenId) {
+            return $http.post('/screens/'+ screenId +'/delete');
         }
     }; 
 }]);

@@ -74,4 +74,11 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             $scope.screen = null; //Hide selected if present
             $scope.newScreen = ($scope.newScreen != null) ? null : {};
         };
+
+        $scope.deleteScreen = function () {
+            LayoutScreenService.deleteScreen($scope.screen.id).success(function (resp) {
+                var index = $scope.screens.indexOf($scope.screen.id)
+                $scope.screens.splice(index, 1);
+            });
+        };
     }]);
