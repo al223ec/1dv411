@@ -15,6 +15,10 @@
 
     
     <div class="col w75">
+        
+        <div class="page-details" ng-if="removeScreen">
+            <h3>Skärmen har tagits bort!</h3>
+        </div>
 
         <div class="screen-details" ng-show="screen">
             <ng-include src="'/Views/App/Admin/Screen/_screen.html'"></ng-include>
