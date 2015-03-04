@@ -1,4 +1,8 @@
-﻿<div class="row">
+﻿<div class="page-details" ng-if="removeScreen">
+    <h3>The screen was successfully removed</h3>
+</div>
+
+<div class="row">
     <h3>{{screen.name}} (timer: {{screen.timer}})</h3>
     <p></p>
     <input type="submit" class="btn btn-primary" value="Delete {{screen.name}} page" ng-click="deleteScreen()" />
@@ -16,4 +20,6 @@
         <p>Här finns alls sidor, lägg till de som ska användas på skärmen.</p>
         <ng-include src="'/Views/App/Admin/Screen/_pages.html'"></ng-include>
     </div>
+    
+
 </div>
