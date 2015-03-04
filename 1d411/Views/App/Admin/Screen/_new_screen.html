@@ -1,4 +1,4 @@
-﻿<h2>New Screen</h2>
+﻿<h2>Ny skärm</h2>
 <form name="newScreenForm"
       class="new-screen-form"
       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
@@ -6,25 +6,27 @@
       novalidate>
     <div class="row">
         <label>
-            Screen name<br/>
+            Namn<br/>
             <input title="name" type="text" name="screenName" class="form-control" ng-model="newScreen.name" required />
         </label>
     </div>
     <div class="row">
+        <h3>Uppdateringsintervall</h3>
+        <p>Bestämmer hur länge varje sida på skärmen ska visas.</p>
         <label>
-             Minutes<br/>
+             Minuter<br/>
             <input title="minutesTimer" type="number" min="0" max="15" name="timer" class="form-control" ng-model="newScreen.minutes" required />
         </label>
     </div>
 
     <div class="row">
         <label>
-             Seconds<br/>
+             Sekunder<br/>
             <input title="secondsTimer" type="number" min="5" max="50" name="timer" class="form-control" ng-model="newScreen.seconds" required />
         </label>
     </div>
 
     <div>
-        <input type="submit" class="btn btn-primary" value="Submit sceen" ng-click="newScreenForm.$setPristine()"></input>
+        <input type="submit" class="btn btn-primary" value="Submit sceen" ng-click="newScreenForm.$setPristine()" />
     </div>
 </form>

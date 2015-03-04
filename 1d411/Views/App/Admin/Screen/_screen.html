@@ -1,10 +1,18 @@
-﻿<h3>{{screen.name}}</h3>
-<p>timer: {{screen.timer}}</p>
-
-<div class="screen-details" ng-show="screenPages">
-    <ng-include src="'/Views/App/Admin/Screen/_screen_pages.html'"></ng-include>
+﻿<div class="row">
+    <h3>{{screen.name}} (timer: {{screen.timer}})</h3>
+    <p></p>
 </div>
 
-<div class="screen-details" ng-show="pages">
-    <ng-include src="'/Views/App/Admin/Screen/_pages.html'"></ng-include>
+<div class="row">
+    <div ng-show="screenPages">
+        <ng-include src="'/Views/App/Admin/Screen/_screen_pages.html'"></ng-include>
+    </div>
+</div>
+
+<div class="row">
+    <h3>Lägg till sida:</h3>
+    <div ng-show="pages">
+        <p>Här finns alls sidor, lägg till de som ska användas på skärmen.</p>
+        <ng-include src="'/Views/App/Admin/Screen/_pages.html'"></ng-include>
+    </div>
 </div>

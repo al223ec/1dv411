@@ -66,6 +66,10 @@
     width:120px;
     height:90px;
 }
+.template-thumb.medium-thumb{
+    width:240px;
+    height:180px;
+}
 .template-thumb.big-thumb{
     width:360px;
     height:270px;
@@ -78,7 +82,7 @@
 .page-details,
 .screen-details{
     padding:20px;
-    background-color:#f6fff6;
+    background-color:#fff;
 }
 
 input[type="number"] {
@@ -93,4 +97,52 @@ input.ng-invalid.ng-dirty {
 
 input.ng-valid.ng-dirty {
     border-color: #10bb10;
+}
+
+
+/*page list on screen*/
+.screen-page-list{
+    width:100%;
+    background-color:#fcf;
+}
+
+.screen-page-list li{
+    list-style:none;
+    height:auto;
+    float:left;
+    margin:0 25px;
+}
+.screen-page-list a{
+    display:block;
+    text-decoration:none;
+}
+.screen-page-list p{
+    margin: .2em 0;
+    text-align:center;
+}
+
+
+/*template list in create new page*/
+.template-list{
+    width:100%;
+    background-color:#fcf;
+}
+
+.template-list li{
+    list-style:none;
+    height:auto;
+    float:left;
+    margin:0;
+}
+.template-list a{
+    display:block;
+    padding:10px 25px;
+    text-decoration:none;
+}
+.template-list a:hover{
+    background-color:#f6f6f6;
+}
+.template-list p{
+    margin: .2em 0;
+    text-align:center;
 }
