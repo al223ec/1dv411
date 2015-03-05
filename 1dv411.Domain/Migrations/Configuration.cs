@@ -21,7 +21,7 @@ namespace _1dv411.Domain.Migrations
                         * TODO: Fixa mer och bättre testdata 
                         * kommentera bort detta som default, kör endast en gång */
             
-          /*  var hero = SeedHero(context);
+          /**/  var hero = SeedHero(context);
             var def = SeedDefault(context);
             var hor = SeedHorizontal(context);
 
@@ -54,12 +54,12 @@ namespace _1dv411.Domain.Migrations
             context.PageScreens.Add(pageScreenDef);
             context.SaveChanges();
 
-            /**** För att seeda ordrar     
+            /**** För att seeda ordrar   */  
                 var ordersThisYear = GetTestOrders(DateTime.Today);
                 ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
                 var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
                 ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
-                context.SaveChanges();  */
+                context.SaveChanges();  /* */
             /**/
         }
 
