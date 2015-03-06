@@ -13,15 +13,24 @@ adminModule.controller('AdminTemplatesController', ['$scope', 'LayoutScreenServi
 
         vm.validateTemplateName = function (name) {
 
+            // retrieve all template names from the template folder.
             vm.templates.filter(function (template) {
 
                 console.log(!name === template.name);
             });
+
+            // temporary way to say ok.
+            return true;
         };
 
         vm.postTemplate = function (template, form) {
 
             console.log(template);
             form.$setPristine();
+
+            LayoutScreenService.postTemplate(template).success(function (resp) {
+                // resetCreateScreenForm();
+                console.log(resp);
+            });
         };
 }]);

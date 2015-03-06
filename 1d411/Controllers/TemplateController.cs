@@ -1,4 +1,5 @@
 ﻿using _1dv411.Domain;
+using _1dv411.Domain.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,15 @@ namespace _1d411.Controllers
         public IHttpActionResult GetAllTemplates()
         {
             return Ok(_service.TemplateService.GetAll());
+        }
+
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult PostTemplate(Template template)
+        {
+            // IHttpActionResult
+            _service.PageService.SaveTemplate(template);
+            return Ok(template);
         }
     }
 }
