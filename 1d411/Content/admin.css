@@ -32,18 +32,22 @@
 
 /* Layout Admin */
 
+.screen-list,
 .page-list,
-.screen-list{
+.template-list{
     overflow-y:scroll;
     cursor:pointer;
 }
+
+.screen-list ul,
 .page-list ul,
-.screen-list ul{
+.template-list{
     margin:0;
 }
 
+.screen-list li,
 .page-list li,
-.screen-list li{
+.template-list li{
     display:block;
     padding:10px;
     text-align:center;
