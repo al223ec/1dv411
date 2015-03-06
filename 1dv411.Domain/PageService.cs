@@ -13,6 +13,8 @@ namespace _1dv411.Domain
         IEnumerable<string> GetAllPageNames();
 
         bool CreatePage(Page page);
+
+        bool SaveTemplate(Template template);
     }
     public class PageService : IPageService
     {
@@ -74,6 +76,13 @@ namespace _1dv411.Domain
         {
             _unitOfWork.TemplateRepository.AddOrUpdate(page.Template);
             _unitOfWork.PageRepository.AddOrUpdate(page);
+            _unitOfWork.Save();
+            return true;
+        }
+
+        public bool SaveTemplate(Template template)
+        {
+            _unitOfWork.TemplateRepository.AddOrUpdate(template);
             _unitOfWork.Save();
             return true;
         }

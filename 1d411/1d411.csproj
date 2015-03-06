@@ -1033,6 +1033,7 @@
     <Content Include="Views\App\Admin\Screen\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
+    <Content Include="Views\App\Templates\good_guy.html" />
     <Content Include="Views\App\Templates\hero.html" />
     <Content Include="Views\App\Templates\horizontal.html" />
     <Content Include="Web.config">

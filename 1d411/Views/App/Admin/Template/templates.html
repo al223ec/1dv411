@@ -1,3 +1,25 @@
-﻿
-<ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
-<h3>Templates</h3>
+﻿<div class="row h100">
+    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+
+    <div class="col w25">
+        <div class="template-list">
+            <ul>
+                <li>
+                    <div class="button block dark-green" ng-click="">New Template</div>
+                </li>
+                <li ng-repeat="t in adminTemplateCtrl.templates" ng-click="">
+                    <div ng-click="" class="template-thumb small-thumb">
+                        <ng-include src="'/Views/App/Templates/' + t.fileName"></ng-include>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col w75">
+        <div class="screen-details">
+            <ng-include src="'/Views/App/Admin/Template/_new_template.html'"></ng-include>
+        </div>
+    </div>
+</div>
+
