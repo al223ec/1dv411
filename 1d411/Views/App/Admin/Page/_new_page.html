@@ -32,49 +32,24 @@
         </div>
 
         <div class="row">
-            <div ng-show="createdPage.template" class="col w50">
+            <div class="col w30">
+                <div ng-if="currentPartialPos != 0">
+                    <div class="row">
+                        <div class="col w50">
+                            <div data-my-partial-creator partial="createdPage.partials[currentPartialPos -1]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="createdPage.template" class="col w40">
                 <h4>Klicka på en del i mallen för att redigera dess innehåll</h4>
-
-                <!--ng-click="setCurrentPartialPos($event)"--> 
                 <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
                     <ng-include src="path" />
                 </div>
             </div>
-            <div class="col w50">
-                <div ng-if="currentPartialPos != 0">
-                    <div class="row">
-                        <div class="col w50">
-                            <label>Innehållstyp</label>
-                        </div>
-                        <div class="col w50">
-                            <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
-                                <option value="Text">Text</option>
-                                <option value="Diagram">Diagram</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
-                            <p>Enter a text</p>
-                            <textarea ng-model="createdPage.partials[currentPartialPos -1].text.textContent" />
-                        </div>
-
-                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
-                            <label>Välj diagramtyp</label>
-                            <select ng-model="createdPage.partials[currentPartialPos -1].diagramType">
-                                <option value="Week">Vecka</option>
-                                <option value="Month">Månad</option>
-                                <option value="Quarter">Kvartal</option>
-                                <option value="Year">År</option>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
+      
             </div>
-        </div>
-
+  
         <div class="row">
             <button ng-click="savePage()">Spara</button>
         </div>

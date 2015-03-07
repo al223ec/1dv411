@@ -78,7 +78,8 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
             $scope.savePage = function () {
-                console.log($scope.createdPage); 
+                console.log($scope.createdPage);
+                // Här sker posten till servern
                 //LayoutScreenService.createPage($scope.createdPage).success(function (data) {
                 //    $scope.createdPage = null;
                 //    $scope.savedPage = true;
@@ -107,6 +108,48 @@ adminModule.directive("myPositionFinder", [
                       $(e.target).addClass('light-blue');
                       callback(getPartialPos(e.target));
                   };
+              }
+          };
+      }
+]);
+
+adminModule.directive("myPartialCreator", ['$compile',
+      function ($compile) {
+
+           //Obs desssa bör serveras ist likt partial.js
+          var createTextTemplate = '<p>Enter a text</p><textarea ng-model="partial.text.textContent" />';
+          var createDiagramTemplate = '<label>Välj diagramtyp</label><select ng-model="partial.diagramType"> <option value="Week">Vecka</option><option value="Month">Månad</option><option value="Quarter">Kvartal</option><option value="Year">År</option></select>';
+          var partialTypeSelector = '<h4>Välj vilket innehåll du vill ha</h4><label>Innehållstyp</label><select ng-change="setPartialType(partial.partialType)" ng-model="partial.partialType"><option value="Text">Text</option><option value="Diagram">Diagram</option></select>';
+
+          return {
+              restrict: "A",
+              link: function (scope, element, attrs) {
+                 
+                  scope.setPartialType = function (type) {
+                      console.log(type); 
+                      var template = partialTypeSelector;
+                      switch (type) {
+                          case "Text":
+                              template += createTextTemplate;
+                              break;
+                          case "Diagram":
+                              template += createDiagramTemplate;
+                              break;
+                          default:
+                              template += "";
+                      }
+                      console.log(scope.$parent);
+
+                      element.html(template);
+                      $compile(element.contents())(scope);
+                  };
+
+                  if(scope.partial){
+                       scope.setPartialType(scope.partial.partialType);
+                  }
+              },
+              scope: {
+                  partial: '=',
               }
           };
 
