@@ -27,23 +27,26 @@ namespace _1dv411.Domain
     {
         private IUnitOfWork _unitOfWork;
         private ILiveOrderService _liveOrderService;
+        private ILiveShipmentService _liveShipmentService;
 
         #region Constructor
-        public DiagramService(IUnitOfWork unitOfWork, ILiveOrderService liveOrderService)
+        public DiagramService(IUnitOfWork unitOfWork, ILiveOrderService liveOrderService, ILiveShipmentService liveShipmentService)
         {
             _unitOfWork = unitOfWork;
             _liveOrderService = liveOrderService;
+            _liveShipmentService = liveShipmentService;
         }
         #endregion
 
-        private IEnumerable<DiagramData> GetDiagramData(int numberOfDays, DateTime date, DateTime lastYear)
+        private IEnumerable<DiagramData> GetOrderDiagramData(int numberOfDays, DateTime date, DateTime lastYear)
         {
-            
+
             /* LINQ löser inte datum-formatering, får hämta all data inom ett intervall och manuellt sortera*/
             var diagramData = new List<DiagramData>();
             for (int i = 0; i < numberOfDays; i++)
             {
-                diagramData.Add(new DiagramData{
+                diagramData.Add(new DiagramData
+                {
                     //Kan inte använda datum alls med TEntity i linq. Måste jämföra år, månad och dag
                     Orders = _unitOfWork.OrderRepository.Count(o => o.Date.Year == date.Year && o.Date.Month == date.Month && o.Date.Day == date.Day),
                     OrdersLastYear = _unitOfWork.OrderRepository.Count(o => o.Date.Year == lastYear.Year && o.Date.Month == lastYear.Month && o.Date.Day == lastYear.Day),
@@ -55,6 +58,53 @@ namespace _1dv411.Domain
             return diagramData;
         }
 
+        public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
+        {
+            /* Uppdaterar Order-data om det behövs 
+            UpdateOrderData();
+            /**/
+
+            DateTime startDate = DateTime.Now;
+            DateTime lastYear = DateTime.Now.AddYears(-1);
+            int numberOfDays = 0;
+            switch (diagramType)
+            {
+                case DiagramType.WeekyOrders:
+                    numberOfDays = 7;
+                    startDate = TransformDateToMondayOfSameWeek(startDate);
+                    lastYear = TransformDateToMondayOfSameWeekLastYear(startDate);
+                    break;
+                case DiagramType.MonthlyOrders:
+                    numberOfDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    startDate = DateTime.Now.AddDays(1 - DateTime.Now.Day);
+                    lastYear = startDate.AddYears(-1);
+                    break;
+                case DiagramType.QuarterlyOrders:
+                    numberOfDays = CalculateDaysOfQuarter(startDate);
+                    startDate = GetStartDateOfQuarter(startDate);
+                    lastYear = startDate.AddYears(-1);
+                    break;
+                case DiagramType.YearlyOrders:
+                    numberOfDays = new DateTime(DateTime.Now.Year, 12, 31).DayOfYear;
+                    startDate = new DateTime(DateTime.Now.Year, 1, 1);
+                    lastYear = startDate.AddYears(-1);
+                    break;
+            }
+
+            return GetOrderDiagramData(numberOfDays, startDate, lastYear);
+        }
+
+        public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
+        {
+            var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
+            return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+        }
+
+
+        /*
+         * NYA DIAGRAMDATAMETODER
+         * 
+        */
         private void UpdateOrderData()
         {
             Order lastOrder = _unitOfWork.OrderRepository.GetOne(null, q => q.OrderByDescending(o => o.Date));
@@ -69,55 +119,20 @@ namespace _1dv411.Domain
                 _unitOfWork.Save();
             }
         }
-
-        //TODO: Fixa
-        public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
+        private void UpdateShipmentData()
         {
-            /* Uppdaterar Order-data om det behövs 
-            UpdateOrderData();
-            /**/
-
-            DateTime startDate = DateTime.Now;
-            DateTime lastYear = DateTime.Now.AddYears(-1);
-            int numberOfDays = 0;
-            switch (diagramType)
+            Shipment lastShipment = _unitOfWork.ShipmentRepository.GetOne(null, q => q.OrderByDescending(o => o.PostingDate));
+            TimeSpan diffCheck = DateTime.Now - lastShipment.CreatedAt;
+            if (diffCheck.Minutes > 5)
             {
-                case DiagramType.Week:
-                    numberOfDays = 7;
-                    startDate = TransformDateToMondayOfSameWeek(startDate);
-                    lastYear = TransformDateToMondayOfSameWeekLastYear(startDate);
-                    break;
-                case DiagramType.Month:
-                    numberOfDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                    startDate = DateTime.Now.AddDays(1 - DateTime.Now.Day);
-                    lastYear = startDate.AddYears(-1);
-                    break;
-                case DiagramType.Quarter:
-                    numberOfDays = CalculateDaysOfQuarter(startDate);
-                    startDate = GetStartDateOfQuarter(startDate);
-                    lastYear = startDate.AddYears(-1);
-                    break;
-                case DiagramType.Year:
-                    numberOfDays = new DateTime(DateTime.Now.Year, 12, 31).DayOfYear;
-                    startDate = new DateTime(DateTime.Now.Year, 1, 1);
-                    lastYear = startDate.AddYears(-1);
-                    break;
+                IEnumerable<LiveShipment> liveshipments = _liveShipmentService.GetLiveShipmentsSince(lastShipment.PostingDate);
+                foreach (var ls in liveshipments)
+                {
+                    _unitOfWork.ShipmentRepository.AddOrUpdate(new Shipment { No_ = ls.No_, PostingDate = ls.PostingDate});
+                }
+                _unitOfWork.Save();
             }
-
-            return GetDiagramData(numberOfDays, startDate, lastYear);
         }
-
-        public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
-        {
-            var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
-            return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
-        }
-
-
-        /*
-         * NYA DIAGRAMDATAMETODER
-         * 
-        */
         private DateTime TransformDateToMondayOfSameWeek(DateTime date)
         {
             var dayOfWeek = (int)date.DayOfWeek;

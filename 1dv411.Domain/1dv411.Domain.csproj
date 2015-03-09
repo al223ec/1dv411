@@ -55,10 +55,13 @@
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\LiveOrderRepository.cs" />
     <Compile Include="DAL\LiveOrdersContext.cs" />
+    <Compile Include="DAL\LiveShipmentRepository.cs" />
+    <Compile Include="DAL\LiveShipmentsContext.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />
     <Compile Include="DbEntities\LiveOrders.cs" />
+    <Compile Include="DbEntities\LiveShipment.cs" />
     <Compile Include="DbEntities\Partials\Diagram.cs" />
     <Compile Include="DbEntities\Partials\Image.cs" />
     <Compile Include="DbEntities\Page.cs" />
@@ -68,11 +71,13 @@
     <Compile Include="DbEntities\Partials\TextContent.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
+    <Compile Include="DbEntities\Shipment.cs" />
     <Compile Include="DbEntities\Template.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="LiveShipmentService.cs" />
     <Compile Include="LiveOrderService.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.Designer.cs">
