@@ -1,11 +1,11 @@
-﻿http://localhost:30447/layouts/names
+﻿http://localhost:30447/pages/names
 var layoutNames = [
     "Default layout",
     "Hero",
     "Horizontal layout"
 ]
 
-//http://localhost:30447/layouts/
+//http://localhost:30447/pages/
 var layouts = [
     {
         "partials": [
@@ -83,7 +83,7 @@ var layouts = [
     }
 ]
 
-//http://localhost:30447/layouts/1
+//http://localhost:30447/pages/1
 var layout = {
     "partials": [
     {
@@ -191,7 +191,7 @@ var screen =
 }
 
 
-http://localhost:30447/screens/1/laouts/
+http://localhost:30447/screens/1/pages/
 var layoutsWithScreenId = [
     {
         "partials": [

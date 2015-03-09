@@ -19,7 +19,8 @@ namespace _1dv411.Domain.Migrations
         {
             /*
                         * TODO: Fixa mer och bättre testdata 
-                        * kommentera bort detta som default, kör endast en gång */
+                        * kommentera bort detta som default, kör endast en gång 
+            */
 
             var hero = SeedHero(context);
             var def = SeedDefault(context);
@@ -63,13 +64,14 @@ namespace _1dv411.Domain.Migrations
             /**/
         }
 
-        private Page CreatePage(string name, string templateFileName)
+        private Page CreatePage(string name, string templateFileName, int numberOfPartials)
         {
             Template template = new Template
             {
                 Name = string.Format("Template name for {0}", templateFileName),
                 FileName = templateFileName,
-            };
+                NumberOfPartials = numberOfPartials
+            }; 
             Page page = new Page
             {
                 Name = name,
@@ -98,19 +100,25 @@ namespace _1dv411.Domain.Migrations
             };
         }
 
-        private Image CreateImage()
+        private Image CreateImage(Page page, int position, string filename = null)
         {
-            throw new NotImplementedException();
+            var url = string.Format("/Views/App/Partials/Images/{0}", filename == null ? "" : filename); 
+            return new Image
+            {
+                Page = page,
+                Position = position,
+                Url = url
+            };
         }
         private Page SeedHero(DAL.ApplicationContext context)
         {
-            Page hero = CreatePage("Hero", "hero.html");
+            Page hero = CreatePage("Hero", "hero.html", 3);
 
             var partials = new List<Partial>
             {
                 CreateText(hero, 1, "Hero heading"),
                 CreateDiagram (hero, 2, DiagramType.WeeklyOrders),
-                CreateText(hero, 3, "Flying Daggers"),
+                CreateImage(hero, 3, "dodge.jpg"),
             };
 
             hero.Partials = partials;
@@ -119,7 +127,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedDefault(DAL.ApplicationContext context)
         {
-            Page defaultPage = CreatePage("Default page", "default_template.html");
+            Page defaultPage = CreatePage("Default page", "default_template.html", 2);
             var partials = new List<Partial>
             {
                 CreateText(defaultPage, 1, "Default page text"),
@@ -135,7 +143,7 @@ namespace _1dv411.Domain.Migrations
         }
         private Page SeedHorizontal(DAL.ApplicationContext context)
         {
-            Page horizontal = CreatePage("Horizontal page", "horizontal.html");
+            Page horizontal = CreatePage("Horizontal page", "horizontal.html", 3);
 
             var partials = new List<Partial>
             {
