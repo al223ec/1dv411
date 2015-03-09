@@ -11,6 +11,7 @@ namespace _1dv411.Domain.DAL
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Order> OrderRepository { get; }
+        IRepository<Shipment> ShipmentRepository { get; }
         IRepository<Screen> ScreenRepository { get; }
         IRepository<PageScreen> PageScreenRepository { get; }
         IRepository<Page> PageRepository { get; }
@@ -19,14 +20,17 @@ namespace _1dv411.Domain.DAL
         IRepository<Template> TemplateRepository { get; }
 
         ILiveOrderRepository LiveOrderRepository { get; }
+        ILiveShipmentRepository LiveShipmentRepository { get; }
         void Save();
     }
     public class UnitOfWork : IUnitOfWork
     {
         private IApplicationContext _context;
         private ILiveOrdersContext _liveOrdersContext;
+        private ILiveShipmentsContext _liveShipmentsContext;
 
         private IRepository<Order> _orderRepository;
+        private IRepository<Shipment> _shipmentRepository;
         private IRepository<Screen> _screenRepository; 
         private IRepository<PageScreen> _pageScreenRepository;
         private IRepository<Page> _pageRepository;
@@ -35,11 +39,16 @@ namespace _1dv411.Domain.DAL
         private IRepository<Template> _templateRepository;
 
         private ILiveOrderRepository _liveOrderRepository;
-        
+        private ILiveShipmentRepository _liveShipmentRepository;
+
 
         public IRepository<Order> OrderRepository
         {
             get { return _orderRepository ?? (_orderRepository = new Repository<Order>(_context)); }
+        }
+        public IRepository<Shipment> ShipmentRepository
+        {
+            get { return _shipmentRepository ?? (_shipmentRepository = new Repository<Shipment>(_context)); }
         }
         public IRepository<Screen> ScreenRepository
         {
@@ -70,21 +79,27 @@ namespace _1dv411.Domain.DAL
         {
             get { return _liveOrderRepository ?? (_liveOrderRepository = new LiveOrderRepository(_liveOrdersContext)); }
         }
+        public ILiveShipmentRepository LiveShipmentRepository
+        {
+            get { return _liveShipmentRepository ?? (_liveShipmentRepository = new LiveShipmentRepository(_liveShipmentsContext)); }
+        }
 
 
         #region Constructor
         public UnitOfWork()
-            : this(new ApplicationContext(), new LiveOrdersContext())
+            : this(new ApplicationContext(), new LiveOrdersContext(), new LiveShipmentsContext())
         { }
         public UnitOfWork(IApplicationContext dbContext)
         {
             _context = dbContext;
             _liveOrdersContext = null;
+            _liveShipmentsContext = null;
         }
-        public UnitOfWork(IApplicationContext dbContext, ILiveOrdersContext liveOrdersContext)
+        public UnitOfWork(IApplicationContext dbContext, ILiveOrdersContext liveOrdersContext, ILiveShipmentsContext liveShipmentsContext)
         {
             _context = dbContext;
             _liveOrdersContext = liveOrdersContext;
+            _liveShipmentsContext = liveShipmentsContext;
         }
 
         #endregion

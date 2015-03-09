@@ -115,7 +115,7 @@ namespace _1dv411.Domain.Migrations
                 Page = page,
                 Position = position,
                 DiagramInfo = info,
-                DiagramType = DiagramType.Week
+                DiagramType = DiagramType.WeekyOrders
             };
         }
 

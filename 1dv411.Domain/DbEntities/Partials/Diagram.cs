@@ -11,10 +11,14 @@ namespace _1dv411.Domain.DbEntities
 {
     public enum DiagramType
     {
-        Week,
-        Month,
-        Quarter,
-        Year
+        WeekyOrders,
+        MonthlyOrders,
+        QuarterlyOrders,
+        YearlyOrders,
+        WeeklyShipments,
+        MontlyShipments,
+        QuarterlyShipments,
+        YearlyShipments
     }
     public class Diagram : Partial
     {
