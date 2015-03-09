@@ -16,6 +16,7 @@ namespace _1dv411.Domain.DAL
         DbSet<Diagram> Diagrams { get; set; }
         DbSet<Image> Images { get; set; }
         DbSet<Order> Orders { get; set; }
+        DbSet<Shipment> Shipments { get; set; }
         DbSet<Page> Pages { get; set; }
         DbSet<PageScreen> PageScreens { get; set; }
         DbSet<Partial> Partials { get; set; }
@@ -36,6 +37,7 @@ namespace _1dv411.Domain.DAL
         public DbSet<Template> Templates { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Shipment> Shipments { get; set; }
 
         public DbSet<Screen> Screens { get; set; }
         public DbSet<Partial> Partials { get; set;  }

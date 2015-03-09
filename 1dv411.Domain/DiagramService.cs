@@ -11,13 +11,13 @@ namespace _1dv411.Domain
 {
     public interface IDiagramService
     {
-        IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
+        //IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
 
-        //IEnumerable<DiagramData> GetWeekDiagramData();
-        //IEnumerable<DiagramData> GetMonthDiagramData();
-        //IEnumerable<DiagramData> GetQuarterDiagramData();
-        //IEnumerable<DiagramData> GetYearDiagramData();
+        IEnumerable<DiagramData> GetWeekDiagramData(Diagram diagram);
+        IEnumerable<DiagramData> GetMonthDiagramData(Diagram diagram);
+        IEnumerable<DiagramData> GetQuarterDiagramData(Diagram diagram);
+        IEnumerable<DiagramData> GetYearDiagramData(Diagram diagram);
 
         object SeedLiveOrders(DateTime? limitSince = null);
 
@@ -38,10 +38,11 @@ namespace _1dv411.Domain
         }
         #endregion
 
+        /*
         private IEnumerable<DiagramData> GetOrderDiagramData(int numberOfDays, DateTime date, DateTime lastYear)
         {
 
-            /* LINQ löser inte datum-formatering, får hämta all data inom ett intervall och manuellt sortera*/
+            //LINQ löser inte datum-formatering, får hämta all data inom ett intervall och manuellt sortera
             var diagramData = new List<DiagramData>();
             for (int i = 0; i < numberOfDays; i++)
             {
@@ -60,9 +61,9 @@ namespace _1dv411.Domain
 
         public IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType)
         {
-            /* Uppdaterar Order-data om det behövs 
-            UpdateOrderData();
-            /**/
+            //Uppdaterar Order-data om det behövs 
+            //UpdateOrderData();
+            
 
             DateTime startDate = DateTime.Now;
             DateTime lastYear = DateTime.Now.AddYears(-1);
@@ -98,6 +99,124 @@ namespace _1dv411.Domain
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
             return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+        }
+*/
+
+        public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
+        {
+            var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault();
+            if (diagram.DiagramType == DiagramType.WeeklyOrders || diagram.DiagramType == DiagramType.WeeklyShipments)
+            {
+                return GetWeekDiagramData(diagram);
+            }
+            if (diagram.DiagramType == DiagramType.MonthlyOrders || diagram.DiagramType == DiagramType.MontlyShipments)
+            {
+                return GetMonthDiagramData(diagram);
+            }
+            if (diagram.DiagramType == DiagramType.QuarterlyOrders || diagram.DiagramType == DiagramType.QuarterlyShipments)
+            {
+                return GetQuarterDiagramData(diagram);
+            }
+            if (diagram.DiagramType == DiagramType.YearlyOrders || diagram.DiagramType == DiagramType.YearlyShipments)
+            {
+                return GetYearDiagramData(diagram);
+            }
+            return null;
+        }
+
+        public IEnumerable<DiagramData> GetWeekDiagramData(Diagram diagram)
+        {
+            var thisYear = TransformDateToMondayOfSameWeek(DateTime.Now);
+            var lastYear = TransformDateToMondayOfSameWeekLastYear(thisYear);
+            var diagramData = new List<DiagramData>();
+            for (int i = 0; i < 7; i++)
+            {
+                if (diagram.DiagramType == DiagramType.WeeklyOrders)
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.OrderRepository.Count(o => o.Date.Year == thisYear.Year && o.Date.Month == thisYear.Month && o.Date.Day == thisYear.Day),
+                        OrdersLastYear = _unitOfWork.OrderRepository.Count(o => o.Date.Year == lastYear.Year && o.Date.Month == lastYear.Month && o.Date.Day == lastYear.Day),
+                        Date = thisYear.DayOfWeek.ToString()
+                    });
+                }
+                else
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == thisYear.Year && o.PostingDate.Month == thisYear.Month && o.PostingDate.Day == thisYear.Day),
+                        OrdersLastYear = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == lastYear.Year && o.PostingDate.Month == lastYear.Month && o.PostingDate.Day == lastYear.Day),
+                        Date = thisYear.DayOfWeek.ToString()
+                    });
+                }
+                thisYear = thisYear.AddDays(1);
+                lastYear = lastYear.AddDays(1);
+            }
+            return diagramData;
+        }
+
+        public IEnumerable<DiagramData> GetMonthDiagramData(Diagram diagram)
+        {
+            var numberOfDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            var thisYear = DateTime.Now.AddDays(1 - DateTime.Now.Day);
+            var lastYear = thisYear.AddYears(-1);
+            var diagramData = new List<DiagramData>();
+            for (int i = 0; i < numberOfDays; i++)
+            {
+                if (diagram.DiagramType == DiagramType.MonthlyOrders)
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.OrderRepository.Count(o => o.Date.Year == thisYear.Year && o.Date.Month == thisYear.Month && o.Date.Day == thisYear.Day),
+                        OrdersLastYear = _unitOfWork.OrderRepository.Count(o => o.Date.Year == lastYear.Year && o.Date.Month == lastYear.Month && o.Date.Day == lastYear.Day),
+                        Date = thisYear.Day.ToString()
+                    });
+                }
+                else
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == thisYear.Year && o.PostingDate.Month == thisYear.Month && o.PostingDate.Day == thisYear.Day),
+                        OrdersLastYear = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == lastYear.Year && o.PostingDate.Month == lastYear.Month && o.PostingDate.Day == lastYear.Day),
+                        Date = thisYear.Day.ToString()
+                    });
+                }
+                thisYear = thisYear.AddDays(1);
+                lastYear = lastYear.AddDays(1);
+            }
+            return diagramData;
+        }
+
+        public IEnumerable<DiagramData> GetQuarterDiagramData(Diagram diagram)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<DiagramData> GetYearDiagramData(Diagram diagram)
+        {
+            var thisYear = new DateTime(DateTime.Now.Year, 1, 1);
+            var lastYear = thisYear.AddYears(-1);
+            var diagramData = new List<DiagramData>();
+
+            for (int i = 1; i <= 12; i++)
+            {
+                if (diagram.DiagramType == DiagramType.YearlyOrders)
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.OrderRepository.Count(o => o.Date.Year == thisYear.Year && o.Date.Month == thisYear.Month),
+                        OrdersLastYear = _unitOfWork.OrderRepository.Count(o => o.Date.Year == lastYear.Year && o.Date.Month == lastYear.Month),
+                        Date = thisYear.Month.ToString()
+                    });
+                }
+                else
+                {
+                    diagramData.Add(new DiagramData{
+                        Orders = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == thisYear.Year && o.PostingDate.Month == thisYear.Month),
+                        OrdersLastYear = _unitOfWork.ShipmentRepository.Count(o => o.PostingDate.Year == lastYear.Year && o.PostingDate.Month == lastYear.Month),
+                        Date = thisYear.Month.ToString()
+                    });
+                }
+                thisYear = thisYear.AddMonths(1);
+                lastYear = lastYear.AddMonths(1);
+            }
+
+            return diagramData;
         }
 
 
@@ -275,5 +394,7 @@ namespace _1dv411.Domain
             };
             return stats;
         }
+
+        
     }
 }
