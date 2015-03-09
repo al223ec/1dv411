@@ -20,7 +20,7 @@ namespace _1dv411.Domain.Migrations
             /*
                         * TODO: Fixa mer och bättre testdata 
                         * kommentera bort detta som default, kör endast en gång 
-            */
+            
 
             var hero = SeedHero(context);
             var def = SeedDefault(context);
@@ -55,12 +55,18 @@ namespace _1dv411.Domain.Migrations
             context.PageScreens.Add(pageScreenDef);
             context.SaveChanges();
 
-            /**** För att seeda ordrar     */
-                var ordersThisYear = GetTestOrders(DateTime.Today);
-                ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
-                var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
-                ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
-                context.SaveChanges(); 
+            /**** För att seeda ordrar och shipments
+            var ordersThisYear = GetTestOrders(DateTime.Today);
+            ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
+            ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
+
+            var shipmentsThisYear = GetTestShipments(DateTime.Today);
+            shipmentsThisYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            var shipmentsLastYear = GetTestShipments(DateTime.Today.AddYears(-1));
+            shipmentsLastYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            
+            context.SaveChanges(); 
             /**/
         }
 
@@ -180,6 +186,26 @@ namespace _1dv411.Domain.Migrations
                 date = date.AddDays(1);
             }
             return orders;
+        }
+        private List<Shipment> GetTestShipments(DateTime date)
+        {
+            Random rnd = new Random();
+            List<Shipment> shipments = new List<Shipment>();
+            for (int i = 0; i < 150; i++)
+            {
+                int numberOfOrders = rnd.Next(1, 13);
+                for (int j = 0; j < numberOfOrders; j++)
+                {
+                    shipments.Add(
+                      new Shipment
+                      {
+                          No_ = "some-id",
+                          PostingDate = date,
+                      });
+                }
+                date = date.AddDays(1);
+            }
+            return shipments;
         }
     }
 }
