@@ -15,6 +15,8 @@ namespace _1dv411.Domain
         bool CreatePage(Page page);
 
         bool SaveTemplate(Template template);
+
+        bool Delete(int id);
     }
     public class PageService : IPageService
     {
@@ -79,6 +81,14 @@ namespace _1dv411.Domain
         public bool SaveTemplate(Template template)
         {
             _unitOfWork.TemplateRepository.AddOrUpdate(template);
+            _unitOfWork.Save();
+            return true;
+        }
+
+
+        public bool Delete(int id)
+        {
+            _unitOfWork.PageRepository.Remove(id);
             _unitOfWork.Save();
             return true;
         }
