@@ -33,21 +33,23 @@
 /* Layout Admin */
 
 .screen-list,
-.page-list,
-.template-list{
+.page-list{
     overflow-y:scroll;
     cursor:pointer;
+}
+.create-template-list {
+    overflow-y:scroll;
 }
 
 .screen-list ul,
 .page-list ul,
-.template-list{
+.create-template-list ul{
     margin:0;
 }
 
 .screen-list li,
 .page-list li,
-.template-list li{
+.create-template-list li{
     display:block;
     padding:10px;
     text-align:center;

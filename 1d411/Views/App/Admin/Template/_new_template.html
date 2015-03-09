@@ -2,7 +2,7 @@
 <form name="adminTemplateCtrl.newTemplateForm"
       class="new-template-form"
       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
-      ng-submit="adminTemplateCtrl.validateTemplateName(adminTemplateCtrl.newTemplate.name) && adminTemplateCtrl.newTemplateForm.$valid && adminTemplateCtrl.postTemplate(adminTemplateCtrl.newTemplate, adminTemplateCtrl.newTemplateForm)"
+      ng-submit="adminTemplateCtrl.newTemplateForm.$valid && adminTemplateCtrl.postTemplate(adminTemplateCtrl.newTemplate, adminTemplateCtrl.newTemplateForm)"
       novalidate>
     <div class="row">
         <label>
@@ -21,7 +21,7 @@
     <div class="row">
         <label>
             Number of partials<br />
-            <input title="numberOfPartials" type="number" name="numberOfPartials" minlength="1" class="form-control" ng-model="adminTemplateCtrl.newTemplate.numberOfPartials" required />
+            <input title="numberOfPartials" type="number" name="numberOfPartials" min="1" minlength="0" class="form-control" ng-model="adminTemplateCtrl.newTemplate.numberOfPartials" required />
         </label>
     </div>
 
