@@ -20,7 +20,7 @@ namespace _1dv411.Domain.Migrations
             /*
                         * TODO: Fixa mer och bättre testdata 
                         * kommentera bort detta som default, kör endast en gång */
-            /*
+
             var hero = SeedHero(context);
             var def = SeedDefault(context);
             var hor = SeedHorizontal(context);
@@ -67,13 +67,13 @@ namespace _1dv411.Domain.Migrations
         {
             Template template = new Template
             {
+                Name = string.Format("Template name for {0}", templateFileName),
                 FileName = templateFileName,
             };
             Page page = new Page
             {
                 Name = name,
                 Template = template,
-
             };
             return page;
         }

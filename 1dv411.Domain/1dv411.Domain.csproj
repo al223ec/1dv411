@@ -68,6 +68,7 @@
     <Compile Include="DbEntities\PageScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Partials\Partial.cs" />
+    <Compile Include="DbEntities\Partials\PartialTypes.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
     <Compile Include="DbEntities\Shipment.cs" />
@@ -109,6 +110,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagramDbEntities.cd" />
+    <None Include="ClassDiagramServices.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
