@@ -13,6 +13,8 @@ namespace _1dv411.Domain
         IEnumerable<string> GetAllPageNames();
 
         bool CreatePage(Page page);
+
+        bool SaveTemplate(Template template);
     }
     public class PageService : IPageService
     {
@@ -47,11 +49,7 @@ namespace _1dv411.Domain
                 {
                     var partial = partials[i]; //Linq till databas gillar inte att man användare paritals[i]
 
-                    if (partial.PartialType == "Text")
-                    {
-                        partials[i] = _unitOfWork.TextRepository.Get(t => t.Id == partial.Id, null, "TextContents").FirstOrDefault();
-                    }
-                    else if (partial.PartialType == "Diagram")
+                   if (partial.PartialType == "Diagram")
                     {
                         var diagram = partial as Diagram; 
                         diagram.Data = _diagramService.GetDiagramData(diagram.DiagramType);
@@ -74,6 +72,13 @@ namespace _1dv411.Domain
         {
             _unitOfWork.TemplateRepository.AddOrUpdate(page.Template);
             _unitOfWork.PageRepository.AddOrUpdate(page);
+            _unitOfWork.Save();
+            return true;
+        }
+
+        public bool SaveTemplate(Template template)
+        {
+            _unitOfWork.TemplateRepository.AddOrUpdate(template);
             _unitOfWork.Save();
             return true;
         }

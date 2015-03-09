@@ -16,6 +16,7 @@ namespace _1dv411.Domain
         IPageService PageService { get; }
         IService<Template> TemplateService { get; }
         ILiveOrderService LiveOrderService { get; }
+        ILiveShipmentService LiveShipmentService { get; }
     }
     public class ServiceFacade : IServiceFacade
     {
@@ -27,6 +28,7 @@ namespace _1dv411.Domain
         private IDiagramService _diagramService;
         private IPageService _pageService;
         private ILiveOrderService _liveOrderService;
+        private ILiveShipmentService _liveShipmentService;
 
         public IScreenService ScreenService 
         {
@@ -34,7 +36,7 @@ namespace _1dv411.Domain
         }
         public IDiagramService DiagramService
         {
-            get { return _diagramService ?? (_diagramService = new DiagramService(_unitOfWork, this.LiveOrderService)); }
+            get { return _diagramService ?? (_diagramService = new DiagramService(_unitOfWork, this.LiveOrderService, this.LiveShipmentService)); }
         }
         public IPageService PageService
         {
@@ -52,6 +54,10 @@ namespace _1dv411.Domain
         public ILiveOrderService LiveOrderService
         {
             get { return _liveOrderService ?? (_liveOrderService = new LiveOrderService(_unitOfWork)); }
+        }
+        public ILiveShipmentService LiveShipmentService
+        {
+            get { return _liveShipmentService ?? (_liveShipmentService = new LiveShipmentService(_unitOfWork)); }
         }
 
         #region Construct

@@ -1,13 +1,3 @@
 <div class="partial-container">
-    <h1 ng-repeat="textContent in text.textContents" ng-if="textContent.type == 'Heading'">
-        {{textContent.content}}
-    </h1>
-    <p ng-repeat="textContent in text.textContents" ng-if="textContent.type == 'Paragraph'">
-        {{textContent.content}}
-    </p>
-    <footer ng-repeat="textContent in text.textContents" ng-if="textContent.type == 'Footer'">
-        <p>
-            {{textContent.content}}
-        </p>
-    </footer>
+   {{text.content}}
 </div>

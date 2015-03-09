@@ -55,24 +55,29 @@
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\LiveOrderRepository.cs" />
     <Compile Include="DAL\LiveOrdersContext.cs" />
+    <Compile Include="DAL\LiveShipmentRepository.cs" />
+    <Compile Include="DAL\LiveShipmentsContext.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DbEntities\BaseDto.cs" />
     <Compile Include="DbEntities\LiveOrders.cs" />
+    <Compile Include="DbEntities\LiveShipment.cs" />
     <Compile Include="DbEntities\Partials\Diagram.cs" />
     <Compile Include="DbEntities\Partials\Image.cs" />
     <Compile Include="DbEntities\Page.cs" />
     <Compile Include="DbEntities\PageScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Partials\Partial.cs" />
-    <Compile Include="DbEntities\Partials\TextContent.cs" />
+    <Compile Include="DbEntities\Partials\PartialTypes.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
+    <Compile Include="DbEntities\Shipment.cs" />
     <Compile Include="DbEntities\Template.cs" />
     <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="LiveShipmentService.cs" />
     <Compile Include="LiveOrderService.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.cs" />
     <Compile Include="Migrations\201502201112033_Recreated.Designer.cs">
@@ -90,6 +95,10 @@
     <Compile Include="Migrations\201503021226316_IX_Order_OrderGroupId.Designer.cs">
       <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503091000264_removed-TextContents.cs" />
+    <Compile Include="Migrations\201503091000264_removed-TextContents.Designer.cs">
+      <DependentUpon>201503091000264_removed-TextContents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PageScreenService.cs" />
     <Compile Include="PageService.cs" />
@@ -101,6 +110,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagramDbEntities.cd" />
+    <None Include="ClassDiagramServices.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503021226316_IX_Order_OrderGroupId.resx">
       <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091000264_removed-TextContents.resx">
+      <DependentUpon>201503091000264_removed-TextContents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

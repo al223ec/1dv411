@@ -78,8 +78,8 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
             $scope.savePage = function () {
+                // console.log($scope.createdPage); 
                 LayoutScreenService.createPage($scope.createdPage).success(function (data) {
-                    console.log(data);
                     $scope.createdPage = null;
                     $scope.savedPage = true;
                     $scope.pages.unshift(data);

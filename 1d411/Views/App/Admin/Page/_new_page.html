@@ -63,10 +63,14 @@
                         <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
                             <label>Välj diagramtyp</label>
                             <select ng-model="createdPage.partials[currentPartialPos -1].diagramType">
-                                <option value="Week">Vecka</option>
-                                <option value="Month">Månad</option>
-                                <option value="Quarter">Kvartal</option>
-                                <option value="Year">År</option>
+                                <option value="WeeklyOrders">WeeklyOrders</option>
+                                <option value="MonthlyOrders">MonthlyOrders</option>
+                                <option value="QuarterlyOrders">QuarterlyOrders</option>
+                                <option value="YearlyOrders">YearlyOrders</option>
+                                <option value="WeeklyShipments">WeeklyShipments</option>
+                                <option value="MontlyShipments">MontlyShipments</option>
+                                <option value="QuarterlyShipments">QuarterlyShipments</option>
+                                <option value="YearlyShipments">YearlyShipments</option>
                             </select>
                         </div>
                     </div>

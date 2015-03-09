@@ -21,7 +21,6 @@ namespace _1dv411.Domain.DAL
         DbSet<Partial> Partials { get; set; }
         DbSet<Screen> Screens { get; set; }
         DbSet<Template> Templates { get; set; }
-        DbSet<TextContent> TextContents { get; set; }
         DbSet<Text> Texts { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
@@ -45,7 +44,6 @@ namespace _1dv411.Domain.DAL
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Text> Texts { get; set; }
-        public DbSet<TextContent> TextContents { get; set; }
         public DbSet<PageScreen> PageScreens { get; set; }
         //TODO:Hur ser databasen ut??
 

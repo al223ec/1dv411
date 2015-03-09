@@ -172,7 +172,6 @@
     <Compile Include="ViewModel\ScreenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\controllers\AdminCtrl.js" />
     <Content Include="App\controllers\admin\AdminScreensCtrl.js" />
     <Content Include="App\controllers\admin\AdminTemplatesCtrl.js" />
     <Content Include="App\controllers\admin\AdminPagesCtrl.js" />
@@ -1033,6 +1032,7 @@
     <Content Include="Views\App\Admin\Screen\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
     <Content Include="Views\App\Templates\default_template.html" />
+    <Content Include="Views\App\Templates\good_guy.html" />
     <Content Include="Views\App\Templates\hero.html" />
     <Content Include="Views\App\Templates\horizontal.html" />
     <Content Include="Web.config">

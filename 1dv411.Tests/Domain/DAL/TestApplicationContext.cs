@@ -22,7 +22,6 @@ namespace _1dv411.Tests.Domain.DAL
         public DbSet<Partial> Partials { get; set; }
         public DbSet<Screen> Screens { get; set; }
         public DbSet<Template> Templates { get; set; }
-        public DbSet<TextContent> TextContents { get; set; }
         public DbSet<Text> Texts { get; set; }
 
         public TestApplicationContext()
@@ -30,7 +29,6 @@ namespace _1dv411.Tests.Domain.DAL
             this.Screens = new TestDbSet<Screen>();
             this.Pages = new TestDbSet<Page>();
             this.PageScreens = new TestDbSet<PageScreen>();
-            this.TextContents = new TestDbSet<TextContent>();
         }
 
         
