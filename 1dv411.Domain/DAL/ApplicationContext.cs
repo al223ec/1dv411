@@ -22,12 +22,11 @@ namespace _1dv411.Domain.DAL
         DbSet<Screen> Screens { get; set; }
         DbSet<Template> Templates { get; set; }
         DbSet<Text> Texts { get; set; }
-
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbSet Set(Type entityType);
         int SaveChanges();
         IEnumerable<DbEntityValidationResult> GetValidationErrors();
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        void SetModified(object entity);
         DbEntityEntry Entry(object entity);
     }
 
@@ -36,16 +35,12 @@ namespace _1dv411.Domain.DAL
         public DbSet<Template> Templates { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Order> Orders { get; set; }
-
         public DbSet<Screen> Screens { get; set; }
         public DbSet<Partial> Partials { get; set;  }
-
         public DbSet<Diagram> Diagrams { get; set; }
         public DbSet<Image> Images { get; set; }
-
         public DbSet<Text> Texts { get; set; }
         public DbSet<PageScreen> PageScreens { get; set; }
-        //TODO:Hur ser databasen ut??
 
         public ApplicationContext() : base("LocalApplicationDbContext") { }
         /*// Connection string mot skarp databas
@@ -59,6 +54,11 @@ namespace _1dv411.Domain.DAL
             //modelBuilder.Entity<User>().HasMany<Tweet>(t => t.Tweets).WithRequired(t => t.User).HasForeignKey(t => t.UserId);
 
             base.OnModelCreating(modelBuilder);
+        }
+    
+        public void SetModified(object entity)
+        {
+ 	        Entry(entity).State = EntityState.Modified;
         }
     }
 }

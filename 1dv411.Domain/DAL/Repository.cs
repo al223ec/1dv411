@@ -69,7 +69,7 @@ namespace _1dv411.Domain.DAL
             {
                 entity.ModifiedAt = DateTime.Now; 
                 _set.Attach(entity);
-                _context.Entry(entity).State = EntityState.Modified;
+                _context.SetModified(entity);
             }
         }
 

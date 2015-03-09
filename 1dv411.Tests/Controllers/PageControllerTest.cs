@@ -85,42 +85,44 @@ namespace _1dv411.Tests.Controllers
         }
 
         [TestMethod]
-        public void PostPage_CreatePage()
+        public void PostPage_CreatePage_WithTextPartial()
         {
-            //var controller = new PageController(_service);
-            //var page = _context.Pages.Add(new Page { TemplateId = 1, Name = "page1" });
-            
-            //List<TextContent> listText = new List<TextContent>();            
-            //Text text = new Text
-            //{
-            //    TextContents = listText
-            //};
-            
-            //var textContent = _context.TextContents.Add(new TextContent { Content = "hej", TextId = 1, Text = text, TextType = TextType.Heading });
-            //listText.Add(textContent);
-            
-            //PartialViewModel pvm = new PartialViewModel
-            //{
-            //    PartialType = "Text",
-            //    Position = 1,
-            //    TextContents = listText
+            var controller = new PageController(_service);
+            var template = new Template
+            {
+                Id = 1,
+                FileName = "FileName",
+                Name = "templateName",
+            };
+            _context.Templates.Add(template); 
+            var page = _context.Pages.Add(new Page { TemplateId = template.Id, Name = "page", Template = template });
+            PartialViewModel pvm = new PartialViewModel
+            {
+                PartialType = "Text",
+                Position = 1,
+                TextContent = "content"
+            };
 
-            //};
-            
-            //List<PartialViewModel> partialViewModelList = new List<PartialViewModel>();
-            //partialViewModelList.Add(pvm);
-            
-            //PageViewModel svm = new PageViewModel
-            //{
-            //    Page = page,
-            //    Partials = partialViewModelList
-            //};
+            List<PartialViewModel> partialViewModelList = new List<PartialViewModel>();
+            partialViewModelList.Add(pvm);
 
-            //var result = controller.CreatePage(svm) as OkNegotiatedContentResult<Page>;
-            
-            //Assert.IsNotNull(result);
-            //Assert.AreEqual(result.Content, page);
-            //Assert.AreEqual(result.Content.Name, page.Name);
+            PageViewModel svm = new PageViewModel
+            {
+                Page = page,
+                Partials = partialViewModelList
+            };
+
+            var result = controller.CreatePage(svm) as OkNegotiatedContentResult<Page>;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content, page);
+            Assert.AreEqual(result.Content.Name, page.Name);
+            Assert.AreEqual((result.Content.Partials.FirstOrDefault() as Text).Content, "content");
+        }
+        [TestMethod]
+        public void PostPage_CreatePage_WithDiagramPartial()
+        {
+ 
         }
     }
 }
