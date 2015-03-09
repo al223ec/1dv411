@@ -21,7 +21,7 @@
                 <ul class="template-list">
                     <li ng-repeat="t in templates">
                         <a href="" ng-click="selectTemplate($event, t)">
-                            <p>{{t.name}}name</p>
+                            <p>{{t.name}}</p>
                             <div class="template-thumb small-thumb">
                                 <div ng-include src="'/Views/App/Templates/' + t.fileName"></div>
                             </div>
@@ -41,6 +41,7 @@
                 </div>
             </div>
             <div class="col w50">
+                {{createdPage.partials}}
                 <div ng-if="currentPartialPos != 0">
                     <div class="row">
                         <div class="col w50">
@@ -57,7 +58,7 @@
                     <div class="row">
                         <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
                             <p>Enter a text</p>
-                            <textarea ng-model="createdPage.partials[currentPartialPos -1].text.textContent" />
+                            <textarea ng-model="createdPage.partials[currentPartialPos -1].content" />
                         </div>
 
                         <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">

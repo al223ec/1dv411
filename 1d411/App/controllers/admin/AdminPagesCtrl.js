@@ -69,6 +69,7 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
 
                 $scope.createdPage.partials = [];
                 for (var i = 1; i <= t.numberOfPartials; i++) {
+                
                     $scope.createdPage.partials.push({ position: i });
                 }
             };
@@ -78,7 +79,7 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
             $scope.savePage = function () {
-                // console.log($scope.createdPage); 
+                 //console.log($scope.createdPage); 
                 LayoutScreenService.createPage($scope.createdPage).success(function (data) {
                     $scope.createdPage = null;
                     $scope.savedPage = true;

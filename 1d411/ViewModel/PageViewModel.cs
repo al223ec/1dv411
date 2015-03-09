@@ -23,6 +23,6 @@ namespace _1d411.ViewModel
 
         public int Position { get; set; }
 
-        public string TextContent { get; set; }
+        public string Content { get; set; }
     }
 }
