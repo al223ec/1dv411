@@ -92,6 +92,22 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
         }]);
 
 
+adminModule.controller('AdminRemovePagesController', ['$scope', 'LayoutScreenService',
+    function ($scope, LayoutScreenService) {
+        $scope.removePage = function (pageId) {
+            LayoutScreenService.deletePage(pageId);
+           
+            for (var i = 0; i < $scope.pages.length; i++) {
+
+                if ($scope.pages[i].id === pageId) {
+                    $scope.screens.splice(i, 1);
+                }
+            }
+        }
+        
+    }]);
+
+
 //Detta direktiv används för att ta fram vilken position en viss partial bör läggas i en egen fil vid tillfälle
 adminModule.directive("myPositionFinder", [
       function () {

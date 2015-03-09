@@ -30,6 +30,9 @@ angular.module('LayoutScreenService', []).factory('LayoutScreenService', ['$http
             var data = { page: newpage, partials: newpage.partials }
             return $http.post('/pages', data);
         },
+        deletePage: function(pageId){
+            return $http.post('/pages/' + pageId + '/delete');
+        },
         postTemplate: function (template) {
             return $http.post('/templates', template);
         },
