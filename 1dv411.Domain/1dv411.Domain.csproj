@@ -68,7 +68,6 @@
     <Compile Include="DbEntities\PageScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Partials\Partial.cs" />
-    <Compile Include="DbEntities\Partials\TextContent.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
     <Compile Include="DbEntities\Shipment.cs" />
@@ -95,6 +94,10 @@
     <Compile Include="Migrations\201503021226316_IX_Order_OrderGroupId.Designer.cs">
       <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503091000264_removed-TextContents.cs" />
+    <Compile Include="Migrations\201503091000264_removed-TextContents.Designer.cs">
+      <DependentUpon>201503091000264_removed-TextContents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PageScreenService.cs" />
     <Compile Include="PageService.cs" />
@@ -120,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503021226316_IX_Order_OrderGroupId.resx">
       <DependentUpon>201503021226316_IX_Order_OrderGroupId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091000264_removed-TextContents.resx">
+      <DependentUpon>201503091000264_removed-TextContents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

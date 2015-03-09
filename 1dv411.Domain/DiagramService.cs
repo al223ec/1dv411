@@ -69,7 +69,7 @@ namespace _1dv411.Domain
             int numberOfDays = 0;
             switch (diagramType)
             {
-                case DiagramType.WeekyOrders:
+                case DiagramType.WeeklyOrders:
                     numberOfDays = 7;
                     startDate = TransformDateToMondayOfSameWeek(startDate);
                     lastYear = TransformDateToMondayOfSameWeekLastYear(startDate);

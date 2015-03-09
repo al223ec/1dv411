@@ -20,8 +20,8 @@ namespace _1dv411.Domain.Migrations
             /*
                         * TODO: Fixa mer och bättre testdata 
                         * kommentera bort detta som default, kör endast en gång */
-            
-          /*  var hero = SeedHero(context);
+            /*
+            var hero = SeedHero(context);
             var def = SeedDefault(context);
             var hor = SeedHorizontal(context);
 
@@ -78,44 +78,23 @@ namespace _1dv411.Domain.Migrations
             return page;
         }
 
-        private Text CreateText(Page page, int position, string heading, string[] paragraphs, string footer = null)
+        private Text CreateText(Page page, int position, string content)
         {
-            var textContents = new List<_1dv411.Domain.DbEntities.TextContent>{
-                    new _1dv411.Domain.DbEntities.TextContent {
-                        TextType = TextType.Heading,
-                        Content = heading,
-                    },
-                    new _1dv411.Domain.DbEntities.TextContent {
-                        TextType = TextType.Footer,
-                        Content = footer,
-                    }
-                };
-
-            for (int i = 0; i < paragraphs.Count(); i++)
-            {
-                textContents.Add(new _1dv411.Domain.DbEntities.TextContent
-                {
-                    TextType = TextType.Paragraph,
-                    Content = paragraphs[i],
-                });
-            }
-
             return new Text
             {
                 Page = page,
                 Position = position,
-                TextContents = textContents,
+                Content = content,
             };
         }
 
-        private Diagram CreateDiagram(Page page, int position, int info)
+        private Diagram CreateDiagram(Page page, int position, DiagramType type)
         {
             return new Diagram
             {
                 Page = page,
                 Position = position,
-                DiagramInfo = info,
-                DiagramType = DiagramType.WeekyOrders
+                DiagramType = type
             };
         }
 
@@ -129,20 +108,9 @@ namespace _1dv411.Domain.Migrations
 
             var partials = new List<Partial>
             {
-                CreateText(hero, 1, "Hero heading", new string[] {
-                    "A defense officer, Nameless, was summoned by the King of Qin regarding his success of terminating three warriors.",
-                    "In ancient China, before the reign of the first emperor, warring factions throughout the Six Kingdoms plot to assassinate the most powerful ruler, Qin. When a minor official defeats Qin's three principal enemies, he is summoned to the palace to tell Qin the story of his surprising victory",
-                },
-                "Footer ska max finnas en gång per text"),
-                CreateDiagram (hero, 2, 666),
-                CreateText(hero, 3, "Flying Daggers", new string[] {
-                    "A romantic police captain breaks a beautiful member of a rebel group out of prison to help her rejoin her fellows, but things are not what they seem.",
-                    "During the reign of the Tang dynasty in China, a secret organization called 'The House of the Flying Daggers' rises and opposes the government. A police officer called Leo sends officer Jin to investigate a young dancer named Mei, claiming that she has ties to the 'Flying Daggers'. Leo arrests Mei, only to have Jin breaking her free in a plot to gain her trust and lead the police to the new leader of the secret organization. But things are far more complicated than they seem...",
-                    "To prepare for her role, Ziyi Zhang lived with a blind girl for two months. The blind girl became blind at the age of 12 because of a brain tumor.",
-                    "Towards the end of the 'Echo Game', Leo throws the entire bowl of beans into the drums. They fall the floor, but when Leo moves to Mei, they have all disappeared."
-                },
-                "Footer ska max finnas en gång per text"
-                ),
+                CreateText(hero, 1, "Hero heading"),
+                CreateDiagram (hero, 2, DiagramType.WeeklyOrders),
+                CreateText(hero, 3, "Flying Daggers"),
             };
 
             hero.Partials = partials;
@@ -154,10 +122,8 @@ namespace _1dv411.Domain.Migrations
             Page defaultPage = CreatePage("Default page", "default_template.html");
             var partials = new List<Partial>
             {
-                CreateText(defaultPage, 1, "Default page text", new string[] {
-                    "Usually what you choose will depend on which methods you need access to. In general - IEnumerable<> (MSDN: http://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx) for a list of objects that only needs to be iterated through, ICollection<> (MSDN: http://msdn.microsoft.com/en-us/library/92t2ye13.aspx) for a list of objects that needs to be iterated through and modified, List<> for a list of objects that needs to be iterated through, modified, sorted, etc (See here for a full list: http://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)."
-                }),
-                CreateDiagram (defaultPage, 2, 222),
+                CreateText(defaultPage, 1, "Default page text"),
+                CreateDiagram (defaultPage, 2, DiagramType.WeeklyOrders),
             };
 
             defaultPage.Partials = partials;
@@ -173,9 +139,9 @@ namespace _1dv411.Domain.Migrations
 
             var partials = new List<Partial>
             {
-                CreateDiagram (horizontal, 1, 111),
-                CreateDiagram (horizontal, 2, 222),
-                CreateDiagram (horizontal, 3, 333),
+                CreateDiagram (horizontal, 1, DiagramType.WeeklyOrders),
+                CreateDiagram (horizontal, 2, DiagramType.MonthlyOrders),
+                CreateDiagram (horizontal, 3, DiagramType.YearlyOrders),
             };
 
             horizontal.Partials = partials;
