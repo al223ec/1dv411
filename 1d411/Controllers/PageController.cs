@@ -84,6 +84,13 @@ namespace _1d411.Controllers
             return Ok(page);
         }
 
+        [Route("{id:int}/delete")]
+        [HttpPost]
+        public IHttpActionResult DeletePage(int id)
+        {
+            return Ok(_service.PageService.Delete(id));
+        }
+
         #region IDisposable
 
         protected override void Dispose(bool disposing)

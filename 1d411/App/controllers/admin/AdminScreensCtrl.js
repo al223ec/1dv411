@@ -44,11 +44,28 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         var getPages = function () {
+            var count = 0;
+            LayoutScreenService.getPages().success(function (pages) {
 
-            LayoutScreenService.getPages().success(function (data) {
-                $scope.pages = data;
+                LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (screenPages) {
+                    console.log(screenPages);
+
+                    for (var i = 0; i < pages.length; i++) {
+
+                        for (var m = 0; m < screenPages.length; m++) {
+
+                            if(pages[i].id == screenPages[m].id){
+
+                                var test = document.getElementsByClassName("template-thumb small-thumb");
+                                test[i].setAttribute("class", "template-thumb small-thumb light-blue");
+                            }
+                        }
+                    }
+                });
+
+                $scope.pages = pages;
+                console.log($scope.pages);
             });
-            console.log($scope.pages);
         }
 
         var getScreenPages = function () {
@@ -84,7 +101,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
 
                 for (var i = 0; i < $scope.screens.length; i++) {
 
-                    if($scope.screens[i].id === index){
+                    if ($scope.screens[i].id === index) {
                         $scope.screens.splice(i, 1);
                     }
                 }
