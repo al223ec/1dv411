@@ -5,32 +5,30 @@ adminModule.controller('AdminTemplatesController', ['$scope', 'LayoutScreenServi
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
         var vm = this;
+        vm.templates = [];
 
         LayoutScreenService.getTemplates().success(function (data) {
 
             vm.templates = data;
         });
 
-        vm.validateTemplateName = function (name) {
+        vm.resetCreateTemplateForm = function (template) {
 
-            // retrieve all template names from the template folder.
-            vm.templates.filter(function (template) {
-
-                console.log(!name === template.name);
-            });
-
-            // temporary way to say ok.
-            return true;
+            template.name = '';
+            template.fileName = '';
+            template.numberOfPartials = '';
         };
 
         vm.postTemplate = function (template, form) {
 
-            console.log(template);
             form.$setPristine();
 
             LayoutScreenService.postTemplate(template).success(function (resp) {
-                // resetCreateScreenForm();
+
+                vm.resetCreateTemplateForm(template);
                 console.log(resp);
+                vm.templates.push(resp);
+
             });
         };
 }]);
