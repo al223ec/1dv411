@@ -64,6 +64,7 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                 if (!$(e.currentTarget).hasClass('light-blue')) {
                     $(e.currentTarget).addClass('light-blue');
                 }
+
                 $scope.createdPage.template = t;
                 $scope.path = '/Views/App/Templates/' + t.fileName;
 
@@ -78,7 +79,6 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
             $scope.savePage = function () {
-                // console.log($scope.createdPage); 
                 LayoutScreenService.createPage($scope.createdPage).success(function (data) {
                     $scope.createdPage = null;
                     $scope.savedPage = true;

@@ -49,7 +49,7 @@ namespace _1dv411.Domain
                 {
                     var partial = partials[i]; //Linq till databas gillar inte att man användare paritals[i]
 
-                   if (partial.PartialType == "Diagram")
+                    if (partial.PartialType == "Diagram")
                     {
                         var diagram = partial as Diagram; 
                         diagram.Data = _diagramService.GetDiagramData(diagram.DiagramType);
