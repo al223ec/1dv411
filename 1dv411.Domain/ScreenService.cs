@@ -11,9 +11,7 @@ namespace _1dv411.Domain
     public interface IScreenService : IService<Screen>
     {
         IEnumerable<Page> GetPagesWithScreenId(int screenId);
-
         bool Save(Screen screen);
-
         bool Delete(int id);
     }
 
@@ -68,9 +66,12 @@ namespace _1dv411.Domain
 
         public bool Delete(int id)
         {
-            _unitOfWork.ScreenRepository.Remove(id);
-            _unitOfWork.Save();
-            return true;
+            if (_unitOfWork.ScreenRepository.Remove(id)) 
+            {
+                _unitOfWork.Save();
+                return true;
+            }
+            return false;           
         }
     }
 }

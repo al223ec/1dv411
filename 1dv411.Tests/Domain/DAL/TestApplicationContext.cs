@@ -57,6 +57,7 @@ namespace _1dv411.Tests.Domain.DAL
 
         public int SaveChanges()
         {
+            _modified = false; 
             return 0;
         }
 
@@ -74,9 +75,10 @@ namespace _1dv411.Tests.Domain.DAL
         { }
 
 
+        private bool _modified = false; 
         public void SetModified(object entity)
         {
-            // faked modified
+            _modified = true; 
         }
     }
 }

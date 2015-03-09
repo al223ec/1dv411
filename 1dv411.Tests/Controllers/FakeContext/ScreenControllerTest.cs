@@ -11,6 +11,7 @@ using _1dv411.Tests.Domain.DAL;
 using _1dv411.Domain.DbEntities;
 using System.Web.Http.Results;
 using _1d411.ViewModel;
+using System.Net;
 
 namespace _1dv411.Tests.Controllers
 {
@@ -29,11 +30,9 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void Get()
         {
-
             ScreenController controller = new ScreenController(_service);
             var result = controller.GetAllScreens();
-
-              // Assert
+            
             Assert.IsNotNull(result);
               //Assert.AreEqual(2, result.Count());
               //Assert.AreEqual("value1", result.ElementAt(0));
@@ -58,14 +57,26 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void GetScreens_GetScreenById()
         {
-            int id = 1; 
-            _context.Screens.Add(new Screen { Id = id, Name = "Demo1" });
+            var screen = GetTestScreen(); 
+            _context.Screens.Add(screen);
 
             var controller = new ScreenController(_service);
-            var result = controller.FindById(id) as OkNegotiatedContentResult<Screen>;
+            var result = controller.FindById(screen.Id) as OkNegotiatedContentResult<Screen>;
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Content.Id, id);
+            Assert.AreEqual(result.Content.Id, screen.Id);
+        }
+
+        [TestMethod]
+        public void GetScreens_GetScreenById_ShouldFail()
+        {
+            var screen = GetTestScreen();
+            _context.Screens.Add(screen);
+
+            var controller = new ScreenController(_service);
+            var result = controller.FindById(9999) as OkNegotiatedContentResult<Screen>;
+
+            Assert.IsNull(result);
         }
         private Screen GetTestScreen(int id = 1)
         {
@@ -105,7 +116,31 @@ namespace _1dv411.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Content.ElementAt(0), page);
         }
+        [TestMethod]
+        public void DeleteScreen_ShouldReturnOK()
+        {
+            var screen = GetDemoScreen();
+            _context.Screens.Add(screen);
+            _context.SaveChanges();
 
+            var controller = new ScreenController(_service);
+
+            var result = controller.DeleteScreen(screen.Id) as OkNegotiatedContentResult<Boolean>;
+
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void DeleteScreen_ShouldFail()
+        {
+            var controller = new ScreenController(_service);
+            var badresult = controller.DeleteScreen(999);
+
+            Assert.IsInstanceOfType(badresult, typeof(BadRequestResult));
+        }
+        private Screen GetDemoScreen(int id = 0)
+        {
+            return new Screen { Id = id, Name = "Test screen name", Timer = 100 };
+        }
         //[TestMethod]
         //public void PostProduct_ShouldReturnSameProduct()
         //{
