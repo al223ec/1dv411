@@ -1027,7 +1027,9 @@
     <Content Include="Views\App\Layout\diagram.html" />
     <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
+    <Content Include="Views\App\Partials\Images\dodge.jpg" />
     <Content Include="Views\App\Partials\_diagram.html" />
+    <Content Include="Views\App\Partials\_image.html" />
     <Content Include="Views\App\Partials\_text.html" />
     <Content Include="Views\App\Admin\Screen\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
