@@ -51,6 +51,7 @@
                             <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
                                 <option value="Text">Text</option>
                                 <option value="Diagram">Diagram</option>
+                                <option value="Image">Image</option>
                             </select>
                         </div>
                     </div>
@@ -73,6 +74,11 @@
                                 <option value="QuarterlyShipments">QuarterlyShipments</option>
                                 <option value="YearlyShipments">YearlyShipments</option>
                             </select>
+                        </div>
+                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Image'">
+                            <p>Ange bildens filnamn ex. bild.png</p>
+                            <input type="text" ng-model="createdPage.partials[currentPartialPos -1].url"/>
+
                         </div>
                     </div>
 

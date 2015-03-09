@@ -77,6 +77,15 @@ namespace _1d411.Controllers
                     };
                     page.Partials.Add(text);
                 }
+                else if (pageViewModel.Partials[i].PartialType == "Image")
+                {
+                    Image image = new Image
+                    {
+                        Url = pageViewModel.Partials[i].Url,
+                        Position = pageViewModel.Partials[i].Position
+                    };
+                    page.Partials.Add(image);
+                }
             }
 
             _service.PageService.CreatePage(page);

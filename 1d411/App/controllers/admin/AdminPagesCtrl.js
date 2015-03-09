@@ -79,11 +79,10 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                 $scope.currentPartialPos = position; 
             };
 
+
             $scope.savePage = function () {
-<<<<<<< HEAD
-                 //console.log($scope.createdPage); 
-=======
->>>>>>> 2f667594b3061b392cae8aa74a65d4e288834a8d
+                //sets the path to the choosed image. maybe should to this on the serverside instead
+                $scope.createdPage.partials[$scope.currentPartialPos - 1].url = 'Views/App/Partials/Images/' + $scope.createdPage.partials[$scope.currentPartialPos - 1].url;
                 LayoutScreenService.createPage($scope.createdPage).success(function (data) {
                     $scope.createdPage = null;
                     $scope.savedPage = true;
