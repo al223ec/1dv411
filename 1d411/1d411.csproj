@@ -172,7 +172,6 @@
     <Compile Include="ViewModel\ScreenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\controllers\AdminCtrl.js" />
     <Content Include="App\controllers\admin\AdminScreensCtrl.js" />
     <Content Include="App\controllers\admin\AdminTemplatesCtrl.js" />
     <Content Include="App\controllers\admin\AdminPagesCtrl.js" />
