@@ -30,7 +30,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         $scope.selectScreen = function (screen) {
-            $scope.removeScreen = false;
+            $scope.removeScreen = false; // Hide delete screen message
             $scope.newScreen = null; //Hide new if present
             $scope.screen = ($scope.screen != screen) ? screen : null;
             if ($scope.screen === null) {
@@ -72,16 +72,24 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         $scope.createScreen = function () {
+            $scope.removeScreen = false; // Hide delete screen message
             $scope.screen = null; //Hide selected if present
             $scope.newScreen = ($scope.newScreen != null) ? null : {};
         };
 
         $scope.deleteScreen = function () {
             LayoutScreenService.deleteScreen($scope.screen.id).success(function (resp) {
-                var index = $scope.screens.indexOf($scope.screen.id)
-                $scope.screens.splice(index, 1);
+
+                var index = $scope.screen.id;
+
+                for (var i = 0; i < $scope.screens.length; i++) {
+
+                    if($scope.screens[i].id === index){
+                        $scope.screens.splice(i, 1);
+                    }
+                }
                 $scope.screen = null;
-                $scope.removeScreen = true;
+                $scope.removeScreen = true; // show delete screen message
             });
         };
     }]);
