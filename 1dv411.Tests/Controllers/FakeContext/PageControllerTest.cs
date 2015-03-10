@@ -58,7 +58,13 @@ namespace _1dv411.Tests.Controllers
         public void GetPage_GetPageById()
         {
             int id = 1;
-            var demo0 = _context.Pages.Add(new Page { Id = id, Name = "Demo1" });
+            List<Partial> partials = new List<Partial>{
+                new Diagram{
+                    Id = 1,
+                    DiagramType = DiagramType.WeeklyOrders,
+                }
+            }; 
+            var demo0 = _context.Pages.Add(new Page { Id = id, Name = "Demo1", Partials = partials });
 
             var controller = new PageController(_service);
             var result = controller.FindById(id) as OkNegotiatedContentResult<Page>;

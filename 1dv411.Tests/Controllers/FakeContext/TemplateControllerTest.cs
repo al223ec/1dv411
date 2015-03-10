@@ -65,7 +65,6 @@ namespace _1dv411.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Content, template);
             Assert.AreEqual(numberOfTemplates + 1, _context.Templates.Count()); 
-
         }
 
         private Template GetDemoTemplate(int id = 1)

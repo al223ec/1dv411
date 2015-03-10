@@ -64,7 +64,7 @@ namespace _1dv411.Tests.Controllers
             var result = controller.GetDataWithDiagramId(diagram.Id) as OkNegotiatedContentResult<IEnumerable<DiagramData>>;
 
             Assert.IsNotNull(result);
-            // Oklart hur bra detta test egentligen är
+            // Oklart hur bra detta test egentligen är bör testas mer ingående
             for (int i = 0; i < result.Content.Count(); i++)
             {
                 var orders = _orders.Where(o => o.Date == result.Content.ElementAt(i).Date).Count();

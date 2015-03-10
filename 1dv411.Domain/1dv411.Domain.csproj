@@ -100,7 +100,6 @@
       <DependentUpon>201503091000264_removed-TextContents.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PageScreenService.cs" />
     <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenService.cs" />
