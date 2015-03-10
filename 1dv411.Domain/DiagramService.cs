@@ -11,16 +11,14 @@ namespace _1dv411.Domain
 {
     public interface IDiagramService
     {
-        //IEnumerable<DiagramData> GetDiagramData(DiagramType? diagramType);
         IEnumerable<DiagramData> GetDataWithDiagramId(int id);
-
         IEnumerable<DiagramData> GetWeekDiagramData(Diagram diagram);
         IEnumerable<DiagramData> GetMonthDiagramData(Diagram diagram);
         IEnumerable<DiagramData> GetQuarterDiagramData(Diagram diagram);
         IEnumerable<DiagramData> GetYearDiagramData(Diagram diagram);
 
-        object SeedLiveOrders(DateTime? limitSince = null);
-
+        object SeedLiveOrders(int year, int month);
+        object SeedLiveShipments(int year, int month);
         object GetApplicationStats();
     }
     public class DiagramService : IDiagramService
@@ -104,6 +102,10 @@ namespace _1dv411.Domain
 
         public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
         {
+
+            //UpdateOrderData();
+            //UpdateShipmentData();
+
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault();
             if (diagram.DiagramType == DiagramType.WeeklyOrders || diagram.DiagramType == DiagramType.WeeklyShipments)
             {
@@ -329,10 +331,10 @@ namespace _1dv411.Domain
          *  SEED FRÅN SKARP DATABAS MED ORDRAR
          *  flytta?
         */
-        public object SeedLiveOrders(DateTime? limitSince = null)
+        public object SeedLiveOrders(int year, int month)
         {
 
-            IEnumerable<LiveOrder> liveorders = _liveOrderService.GetLiveOrdersSince(limitSince.Value);
+            IEnumerable<LiveOrder> liveorders = _liveOrderService.GetLiveOrdersFor(year, month);
 
             int addedCount = 0;
             int skippedCount = 0;
@@ -368,7 +370,50 @@ namespace _1dv411.Domain
             {
                 Added = addedCount,
                 Skipped = skippedCount.ToString(),
-                StartDate = limitSince,
+                StartDate = year + " " + month
+            };
+            return result;
+        }
+
+        public object SeedLiveShipments(int year, int month)
+        {
+            IEnumerable<LiveShipment> liveshipments = _liveShipmentService.GetLiveShipmentsFor(year, month);
+
+            int addedCount = 0;
+            int skippedCount = 0;
+            string LastCreated = "";
+
+            if (!_unitOfWork.ShipmentRepository.Get().Any()) //If DB is empty just run without checking for doubles
+            {
+                foreach (var ls in liveshipments)
+                {
+                    _unitOfWork.ShipmentRepository.AddOrUpdate(new Shipment { No_ = ls.No_, PostingDate= ls.PostingDate});
+                    addedCount++;
+                    LastCreated = ls.PostingDate.ToString();
+                }
+            }
+            else //Check every order before saving to prevent doubles
+            {
+                foreach (var ls in liveshipments)
+                {
+                    if (!_unitOfWork.ShipmentRepository.Get(s => s.No_== ls.No_).Any())
+                    {
+                        _unitOfWork.ShipmentRepository.AddOrUpdate(new Shipment { No_ = ls.No_, PostingDate = ls.PostingDate});
+                        addedCount++;
+                        LastCreated = ls.PostingDate.ToString();
+                    }
+                    else
+                    {
+                        skippedCount++;
+                    }
+                }
+            }
+            _unitOfWork.Save();
+            var result = new
+            {
+                Added = addedCount,
+                Skipped = skippedCount.ToString(),
+                StartDate = year + " " + month
             };
             return result;
         }
