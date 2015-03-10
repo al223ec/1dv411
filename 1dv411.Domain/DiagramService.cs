@@ -425,17 +425,25 @@ namespace _1dv411.Domain
         public object GetApplicationStats()
         {
             int totalOrders = _unitOfWork.OrderRepository.Count();
-            
-            Order first= _unitOfWork.OrderRepository.GetOne(null, q => q.OrderBy(o => o.Date));
-            string startDate = (first != null) ? first.Date.ToString("yyyy-MM-dd hh:mm:ss") : "";
-            
-            Order last = _unitOfWork.OrderRepository.GetOne(null, q => q.OrderByDescending(o => o.Date));
-            string endDate = (last != null) ? last.Date.ToString("yyyy-MM-dd hh:mm:ss") : "";
+            int totalShipments = _unitOfWork.ShipmentRepository.Count();
+
+            Order firstOrder = _unitOfWork.OrderRepository.GetOne(null, q => q.OrderBy(o => o.Date));
+            string startDateOrders = (firstOrder != null) ? firstOrder.Date.ToString("yyyy-MM-dd hh:mm:ss") : "";
+            Order lastOrder = _unitOfWork.OrderRepository.GetOne(null, q => q.OrderByDescending(o => o.Date));
+            string endDateOrders = (lastOrder != null) ? lastOrder.Date.ToString("yyyy-MM-dd hh:mm:ss") : "";
+
+            Shipment firstShipment = _unitOfWork.ShipmentRepository.GetOne(null, q => q.OrderBy(s => s.PostingDate));
+            string startDateShipments = (firstShipment != null) ? firstShipment.PostingDate.ToString("yyyy-mm-dd hh:mm:ss") : "";
+            Shipment last = _unitOfWork.ShipmentRepository.GetOne(null, q => q.OrderByDescending(s => s.PostingDate));
+            string endDateShipments = (last != null) ? last.PostingDate.ToString("yyyy-mm-dd hh:mm:ss") : "";
             
             var stats = new {
                 totalOrders = totalOrders,
-                startDate = startDate,
-                endDate = endDate
+                startDateOrders = startDateOrders,
+                endDateOrders = endDateOrders,
+                totalShipments = totalShipments,
+                startDateShipments = startDateShipments,
+                endDateShipments = endDateShipments
             };
             return stats;
         }

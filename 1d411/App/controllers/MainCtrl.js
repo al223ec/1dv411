@@ -1,4 +1,3 @@
-/// <reference path="MainCtrl.js" />
 angular.module('Main', [])
     .controller('MainController', ['$scope', 'appService', 'LayoutScreenService',
         function ($scope, appService, LayoutScreenService) {
@@ -7,7 +6,6 @@ angular.module('Main', [])
             $scope.screens = data;
         });
         appService.getApplicationStats().success(function (data) {
-            console.log(data);
             $scope.stats = data;
         });
 

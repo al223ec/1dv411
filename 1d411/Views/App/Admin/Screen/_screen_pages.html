@@ -1,6 +1,9 @@
-﻿<ul class="screen-page-list">
+﻿<div ng-show="screenPagesEmpty">
+    <p>No pages on this Screen</p>
+</div>
+
+<ul class="screen-page-list">
     <li ng-repeat="sp in screenPages">
-        
         <a ng-click="selectPage(sp)">
             <p>{{sp.name}}</p>
             <div class="template-thumb medium-thumb">
