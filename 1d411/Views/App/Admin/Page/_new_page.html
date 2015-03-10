@@ -19,7 +19,7 @@
                         <a href="" ng-click="selectTemplate($event, t)">
                             <p>{{t.name}}</p>
                             <div class="template-thumb small-thumb">
-                                <div ng-include src="'/Views/App/Templates/' + t.fileName"></div>
+                                <ng-include src="'/Views/App/Templates/' + t.fileName"></ng-include>
                             </div>
                         </a>
                     </li>
@@ -33,7 +33,7 @@
 
                 <!--ng-click="setCurrentPartialPos($event)"--> 
                 <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
-                    <ng-include src="path" />
+                    <ng-include src="path"></ng-include>
                 </div>
             </div>
             <div class="col w50">

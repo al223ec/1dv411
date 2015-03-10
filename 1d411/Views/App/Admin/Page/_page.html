@@ -12,12 +12,12 @@
             <h4>Click a content-area to display its details.</h4>
 
             <div data-my-position-finder ng-click="calculateParitalPos($event, selectPartial)" class="template-thumb big-thumb">
-                <ng-include src="templatePath" />
+                <ng-include src="templatePath"></ng-include>
             </div>
         </div>
         <div class="col w50">
             <div ng-show="partial">
-                <ng-include src="partialPath" />
+                <ng-include src="partialPath"></ng-include>
             </div>
         </div>
     </div>

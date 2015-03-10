@@ -1,5 +1,5 @@
 ﻿<div class="row h100">
-    <ng-include src="'/Views/App/Admin/_nav.html'" />
+    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
     <div class="col w25 page-list">
         <div>
             <ul>
@@ -9,7 +9,7 @@
                 <li ng-repeat="p in pages" ng-click="selectPage(p)">
                     <div>{{p.name}}</div>
                     <div class="template-thumb small-thumb">
-                        <ng-include src="'/Views/App/Templates/' + p.template.fileName" />
+                        <ng-include src="'/Views/App/Templates/' + p.template.fileName"></ng-include>
                     </div>
                 </li>
             </ul>
@@ -18,7 +18,7 @@
 
     <div class="col w75">
         <div class="page-details" ng-show="viewPage.page">
-            <ng-include src="'/Views/App/Admin/Page/_page.html'" />
+            <ng-include src="'/Views/App/Admin/Page/_page.html'"></ng-include>
         </div>
 
         <div ng-show="viewPage.savedPage">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="page-details" ng-show="viewPage.createdPageSelected">
-            <ng-include src="'/Views/App/Admin/Page/_new_page.html'" />
+            <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
         </div>
     </div>
 </div>

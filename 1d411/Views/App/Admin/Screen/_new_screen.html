@@ -1,8 +1,9 @@
 ﻿<h2>New Screen</h2>
+
 <form name="newScreenForm"
       class="new-screen-form"
       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
-      ng-submit="newScreenForm.$valid && postScreen(newScreen)"
+      ng-submit="postScreen(newScreen, newScreenForm)"
       novalidate>
     <div class="row">
         <label>Name</label><br />
@@ -11,12 +12,12 @@
     <div class="row">
         <h3>Interval</h3>
         <p>The time a screen displays each page before swapping.</p>
-        <label>Minutes</label><br/>
+        <label>Minutes</label><br />
         <input title="minutesTimer" type="number" min="0" max="15" name="timer" class="form-control" ng-model="newScreen.minutes" required />
     </div>
 
     <div class="row">
-        <label>Seconds</label><br/>
+        <label>Seconds</label><br />
         <input title="secondsTimer" type="number" min="5" max="50" name="timer" class="form-control" ng-model="newScreen.seconds" required />
     </div>
 

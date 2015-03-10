@@ -3,7 +3,7 @@
         <a href="" ng-click="addPage(p)" class="{{p.id}}">
             <p>{{p.name}}</p>
             <div class="template-thumb small-thumb">
-                <ng-include src="'/Views/App/Templates/' + p.template.fileName" />
+                <ng-include src="'/Views/App/Templates/' + p.template.fileName"></ng-include>
             </div>
         </a>
     </li>

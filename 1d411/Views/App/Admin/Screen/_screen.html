@@ -1,23 +1,24 @@
-﻿<div class="page-details" ng-if="removeScreen">
-    <h3>The screen was successfully removed</h3>
-</div>
-
-<div class="row">
-    <h3>{{screen.name}} (timer: {{screen.timer}})</h3>
-    <p></p>
-    <input type="submit" class="btn btn-primary" value="Delete {{screen.name}} page" ng-click="deleteScreen()" />
-</div>
-
-<div class="row">
-    <div ng-show="screenPages">
-        <ng-include src="'/Views/App/Admin/Screen/_screen_pages.html'" />
+﻿<div class="row">
+    <div class="col w50">
+        <h3>{{screen.name}} (interval: {{screen.timer}} seconds)</h3>
+    </div>
+    <div class="col w50">
+        <input type="submit" class="red right" value="Delete Screen" ng-click="deleteScreen()" />
     </div>
 </div>
 
 <div class="row">
-    <h3>Add page to Screen:</h3>
+    <div id="screen-pages-loading" class="loading"></div>
+    <div ng-show="screenPages">
+        <ng-include src="'/Views/App/Admin/Screen/_screen_pages.html'"></ng-include>
+    </div>
+</div>
+
+<div class="row">
+    <h3>Add page to Screen</h3>
+    <div id="screen-all-pages-list-loading" class="loading"></div>
     <div ng-show="pages">
         <p>All pages are listed here, click the pages you want to add to the screen.</p>
-        <ng-include src="'/Views/App/Admin/Screen/_pages.html'" />
+        <ng-include src="'/Views/App/Admin/Screen/_pages.html'"></ng-include>
     </div>
 </div>
