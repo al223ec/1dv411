@@ -44,29 +44,14 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         }
 
         var getPages = function () {
-            var count = 0;
             LayoutScreenService.getPages().success(function (pages) {
 
-                LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (screenPages) {
-                    console.log(screenPages);
-
-                    for (var i = 0; i < pages.length; i++) {
-
-                        for (var m = 0; m < screenPages.length; m++) {
-
-                            if(pages[i].id == screenPages[m].id){
-
-                                var test = document.getElementsByClassName("template-thumb small-thumb");
-                                test[i].setAttribute("class", "template-thumb small-thumb light-blue");
-                            }
-                        }
-                    }
-                });
-
                 $scope.pages = pages;
-                console.log($scope.pages);
+                activePageForScreen($scope.pages);
             });
         }
+
+
 
         var getScreenPages = function () {
             console.log($scope.screen.id);
@@ -78,15 +63,46 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
 
 
         $scope.addPage = function (page) {
-            $scope.screen.pages = [page];
 
-            LayoutScreenService.postScreen($scope.screen).success(function (resp) {
+            LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (screenPages) {
+                for (var i = 0; i < screenPages.length; i++) {
+                    if (page.id == screenPages[i].id) {
+                        return false;
+                    }
+                }
 
-                console.log(resp);
+                $scope.screen.pages = [page];
+                LayoutScreenService.postScreen($scope.screen).success(function (resp) { });
+
+                LayoutScreenService.getPages().success(function (pages) {
+
+                    $scope.pages = pages;
+                    activePageForScreen($scope.pages);
+                });
+
+                $scope.screenPages.push(page);
             });
-
-            $scope.screenPages.push(page);
         }
+
+        var activePageForScreen = function (pages) {
+            LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (screenPages) {
+
+                for (var i = 0; i < pages.length; i++) {
+
+                    for (var m = 0; m < screenPages.length; m++) {
+
+                        if (pages[i].id == screenPages[m].id) {
+
+                            var href = document.getElementsByClassName(i + 1);
+                            href[0].removeAttribute('href');
+                            var active = document.getElementsByClassName("template-thumb small-thumb");
+
+                            active[i].setAttribute("class", "template-thumb small-thumb light-blue");
+                        }
+                    }
+                }
+            });
+        };
 
         $scope.createScreen = function () {
             $scope.removeScreen = false; // Hide delete screen message
