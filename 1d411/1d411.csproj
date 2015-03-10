@@ -172,6 +172,7 @@
     <Compile Include="ViewModel\ScreenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\controllers\AdminCtrl.js" />
     <Content Include="App\controllers\admin\AdminScreensCtrl.js" />
     <Content Include="App\controllers\admin\AdminTemplatesCtrl.js" />
     <Content Include="App\controllers\admin\AdminPagesCtrl.js" />
@@ -265,7 +266,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\App\Admin\Page\pages.html" />
-    <Content Include="Views\App\Admin\Page\_partial_image.html" />
     <Content Include="Views\App\Admin\Screen\_new_screen.html" />
     <Content Include="Views\App\Admin\Screen\_pages.html" />
     <Content Include="Views\App\Admin\Screen\_screen_pages.html" />
@@ -274,6 +274,7 @@
     <Content Include="Views\App\Admin\Page\_new_page.html" />
     <Content Include="Views\App\Admin\Page\_partial_diagram.html" />
     <Content Include="Views\App\Admin\Page\_partial_text.html" />
+    <Content Include="Views\App\Admin\Template\_new_template.html" />
     <Content Include="Views\App\Admin\_nav.html" />
     <Content Include="Views\App\Admin\Screen\_screen.html" />
     <Content Include="Views\App\Layout\h-1-down-v-2.html" />
@@ -286,7 +287,6 @@
     <Content Include="Views\App\Layout\diagram.html" />
     <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
-    <Content Include="Views\App\Partials\Images\dodge.jpg" />
     <Content Include="Views\App\Partials\_diagram.html" />
     <Content Include="Views\App\Partials\_image.html" />
     <Content Include="Views\App\Partials\_text.html" />

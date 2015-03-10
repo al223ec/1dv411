@@ -58,6 +58,10 @@ namespace _1dv411.Domain
                 foreach (var pageScreen in screen.PageScreens)
                 {
                     _unitOfWork.PageScreenRepository.AddOrUpdate(pageScreen);
+                    if (pageScreen.Page.Template != null)
+                    {
+                        _unitOfWork.TemplateRepository.AddOrUpdate(pageScreen.Page.Template);
+                    } 
                     _unitOfWork.PageRepository.AddOrUpdate(pageScreen.Page);
                 }
             }   
