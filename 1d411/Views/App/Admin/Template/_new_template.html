@@ -1,31 +1,31 @@
-﻿<h2>Save Template</h2>
+﻿<h2>Skapa Mall</h2>
+<div class="admin-message">
+
+</div>
 <form name="adminTemplateCtrl.newTemplateForm"
       class="new-template-form"
       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
-      ng-submit="adminTemplateCtrl.newTemplateForm.$valid && adminTemplateCtrl.postTemplate(adminTemplateCtrl.newTemplate, adminTemplateCtrl.newTemplateForm)"
+      ng-submit="adminTemplateCtrl.postTemplate(adminTemplateCtrl.newTemplate, adminTemplateCtrl.newTemplateForm)"
       novalidate>
     <div class="row">
-        <label>
-            Template name<br />
-            <input title="name" type="text" name="name" class="form-control" ng-model="adminTemplateCtrl.newTemplate.name" required />
-        </label>
+        <label>Namn</label><br />
+        <input title="name" type="text" name="name" class="form-control" ng-model="adminTemplateCtrl.newTemplate.name" required />
     </div>
 
     <div class="row">
-        <label>
-            File name<br />
-            <input title="timer" type="text" name="fileName" min=10000 class="form-control" ng-model="adminTemplateCtrl.newTemplate.fileName" required />
-        </label>
+        <label>Filnamn</label><br />
+        <input title="timer" type="text" name="fileName" min=10000 class="form-control" ng-model="adminTemplateCtrl.newTemplate.fileName" required />
     </div>
 
     <div class="row">
-        <label>
-            Number of partials<br />
-            <input title="numberOfPartials" type="number" name="numberOfPartials" min="1" minlength="0" class="form-control" ng-model="adminTemplateCtrl.newTemplate.numberOfPartials" required />
-        </label>
+        <label>Antal fält/delar</label><br />
+        <input title="numberOfPartials" type="number" name="numberOfPartials" min="1" minlength="0" class="form-control" ng-model="adminTemplateCtrl.newTemplate.numberOfPartials" required />
     </div>
 
     <div class="row">
-        <input type="submit" class="btn btn-primary" value="Submit sceen"></input>
+        <input type="submit" value="Submit sceen" />
+    </div>
+    <div class="row">
+        <div id="submit-template-loading" class="loading"></div>
     </div>
 </form>

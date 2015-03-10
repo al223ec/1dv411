@@ -63,9 +63,11 @@
 .screen-list li:hover{
     background-color:#fff;
 }
+
+/* Template boxes */
 .template-thumb{
     display:inline-block;
-    border:1px solid #000;
+    outline:1px solid #000;
 }
 
 .template-thumb.small-thumb{
@@ -105,25 +107,47 @@ input.ng-valid.ng-dirty {
     border-color: #10bb10;
 }
 
-
-/*page list on screen*/
+/*pages currently in screen*/
 .screen-page-list{
     width:100%;
-    background-color:#fcf;
+    list-style:none;
+}
+.screen-page-list li {
+    float:left;
+    margin:0 25px;
+    height:auto;
+}
+.screen-page-list li p{
+    text-align:center;
+}
+/*all pages list on screen page*/
+.screen-all-pages-list{
+    width:100%;
+    height:170px;
+    overflow:scroll;
+    border:1px solid #666;
+    background-color:#f6f6f6;
 }
 
-.screen-page-list li{
+.screen-all-pages-list li{
     list-style:none;
     height:auto;
     float:left;
-    margin:0 25px;
+    margin:0;
+    overflow:hidden;
 }
-.screen-page-list a{
+.screen-all-pages-list a{
     display:block;
+    padding:10px 25px;
     text-decoration:none;
+    width:120px;
 }
-.screen-page-list p{
+.screen-all-pages-list a:hover{
+    background-color:#eee;
+}
+.screen-all-pages-list p{
     margin: .2em 0;
+    font-size:.8em;
     text-align:center;
 }
 
@@ -131,7 +155,10 @@ input.ng-valid.ng-dirty {
 /*template list in create new page*/
 .template-list{
     width:100%;
-    background-color:#fcf;
+    height:170px;
+    overflow:scroll;
+    border:1px solid #666;
+    background-color:#f6f6f6;
 }
 
 .template-list li{
@@ -139,16 +166,32 @@ input.ng-valid.ng-dirty {
     height:auto;
     float:left;
     margin:0;
+    overflow:hidden;
 }
 .template-list a{
     display:block;
     padding:10px 25px;
     text-decoration:none;
+    width:120px;
 }
 .template-list a:hover{
     background-color:#f6f6f6;
 }
 .template-list p{
     margin: .2em 0;
+    font-size:.8em;
     text-align:center;
+}
+
+/* Admin messages */
+.admin-message{
+    display:none;
+    background-color:#2980B9;
+    padding:.5em 1em;
+    text-align:center;
+    color:#fff;
+    cursor:pointer;
+}
+.admin-message.warning {
+    background-color:#8C0303;
 }
