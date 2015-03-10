@@ -1,32 +1,26 @@
-﻿<h2>Ny skärm</h2>
+﻿<h2>New Screen</h2>
 <form name="newScreenForm"
       class="new-screen-form"
       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
       ng-submit="newScreenForm.$valid && postScreen(newScreen)"
       novalidate>
     <div class="row">
-        <label>
-            Namn<br/>
-            <input title="name" type="text" name="screenName" class="form-control" ng-model="newScreen.name" required />
-        </label>
+        <label>Name</label><br />
+        <input title="name" type="text" name="screenName" class="form-control" ng-model="newScreen.name" required />
     </div>
     <div class="row">
-        <h3>Uppdateringsintervall</h3>
-        <p>Bestämmer hur länge varje sida på skärmen ska visas.</p>
-        <label>
-             Minuter<br/>
-            <input title="minutesTimer" type="number" min="0" max="15" name="timer" class="form-control" ng-model="newScreen.minutes" required />
-        </label>
+        <h3>Interval</h3>
+        <p>The time a screen displays each page before swapping.</p>
+        <label>Minutes</label><br/>
+        <input title="minutesTimer" type="number" min="0" max="15" name="timer" class="form-control" ng-model="newScreen.minutes" required />
     </div>
 
     <div class="row">
-        <label>
-             Sekunder<br/>
-            <input title="secondsTimer" type="number" min="5" max="50" name="timer" class="form-control" ng-model="newScreen.seconds" required />
-        </label>
+        <label>Seconds</label><br/>
+        <input title="secondsTimer" type="number" min="5" max="50" name="timer" class="form-control" ng-model="newScreen.seconds" required />
     </div>
 
     <div>
-        <input type="submit" class="btn btn-primary" value="Submit sceen" ng-click="newScreenForm.$setPristine()" />
+        <input type="submit" class="btn btn-primary" value="Create Sceen" ng-click="newScreenForm.$setPristine()" />
     </div>
 </form>

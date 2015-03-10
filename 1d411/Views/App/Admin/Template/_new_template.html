@@ -1,4 +1,7 @@
-﻿<h2>Skapa Mall</h2>
+﻿<h2>Create template</h2>
+<p>
+    First create a html-template and save it in Views/Templates, to make it accessable to pages save the template in the system using this form.
+</p>
 <div class="admin-message">
 
 </div>
@@ -8,22 +11,22 @@
       ng-submit="adminTemplateCtrl.postTemplate(adminTemplateCtrl.newTemplate, adminTemplateCtrl.newTemplateForm)"
       novalidate>
     <div class="row">
-        <label>Namn</label><br />
+        <label>Name</label><br />
         <input title="name" type="text" name="name" class="form-control" ng-model="adminTemplateCtrl.newTemplate.name" required />
     </div>
 
     <div class="row">
-        <label>Filnamn</label><br />
+        <label>File name</label><br />
         <input title="timer" type="text" name="fileName" min=10000 class="form-control" ng-model="adminTemplateCtrl.newTemplate.fileName" required />
     </div>
 
     <div class="row">
-        <label>Antal fält/delar</label><br />
+        <label>Amount of content-areas</label><br />
         <input title="numberOfPartials" type="number" name="numberOfPartials" min="1" minlength="0" class="form-control" ng-model="adminTemplateCtrl.newTemplate.numberOfPartials" required />
     </div>
 
     <div class="row">
-        <input type="submit" value="Submit sceen" />
+        <input type="submit" value="Create template" />
     </div>
     <div class="row">
         <div id="submit-template-loading" class="loading"></div>

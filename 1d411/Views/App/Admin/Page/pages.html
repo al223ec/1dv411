@@ -1,14 +1,15 @@
 ﻿<div class="row h100">
-    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+    <ng-include src="'/Views/App/Admin/_nav.html'" />
     <div class="col w25 page-list">
         <div>
             <ul>
-                <li><div class="button block dark-green" ng-click="createPage()">New Page</div></li>
+                <li>
+                    <div class="button block" ng-click="createPage()">New Page</div>
+                </li>
                 <li ng-repeat="p in pages" ng-click="selectPage(p)">
                     <div>{{p.name}}</div>
-
                     <div class="template-thumb small-thumb">
-                        <ng-include src="'/Views/App/Templates/' + p.template.fileName" ></ng-include>
+                        <ng-include src="'/Views/App/Templates/' + p.template.fileName" />
                     </div>
                 </li>
             </ul>
@@ -17,19 +18,19 @@
 
     <div class="col w75">
         <div class="page-details" ng-show="viewPage.page">
-            <ng-include src="'/Views/App/Admin/Page/_page.html'"></ng-include>
+            <ng-include src="'/Views/App/Admin/Page/_page.html'" />
         </div>
 
         <div ng-show="viewPage.savedPage">
-            <h3 class="savedAlert">Sidan sparades!</h3>
+            <h3 class="savedAlert">Page saved!</h3>
         </div>
 
         <div ng-show="viewPage.deletedPage">
-            <h3 class="savedAlert">Sidan togs bort!</h3>
+            <h3 class="savedAlert">Page deleted!</h3>
         </div>
 
         <div class="page-details" ng-show="viewPage.createdPageSelected">
-            <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
+            <ng-include src="'/Views/App/Admin/Page/_new_page.html'" />
         </div>
     </div>
 </div>

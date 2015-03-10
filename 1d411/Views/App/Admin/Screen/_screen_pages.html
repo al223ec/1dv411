@@ -1,10 +1,9 @@
 ﻿<ul class="screen-page-list">
     <li ng-repeat="sp in screenPages">
-        
         <a ng-click="selectPage(sp)">
             <p>{{sp.name}}</p>
             <div class="template-thumb medium-thumb">
-                <ng-include src="'/Views/App/Templates/' + sp.template.fileName"></ng-include>
+                <ng-include src="'/Views/App/Templates/' + sp.template.fileName" />
             </div>
         </a>
     </li>

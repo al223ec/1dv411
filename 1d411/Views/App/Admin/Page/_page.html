@@ -1,15 +1,15 @@
 ﻿<div ng-controller ="AdminRemovePagesController" class="row">
     <div class="page-form">
         <div class="row">
-            <button ng-click="removePage(page.id)">Ta bort sidan {{page.name}}</button>
+            <button class="red" ng-click="removePage(page.id)">Delete Page {{page.name}}</button>
         </div>
     </div>
 </div>
 <div ng-controller="AdminViewPageController">
     <div class="row">
         <div class="col w50">
-            <h3>Mall: {{page.template.name}}</h3>
-            <h4>Klicka på en del av mallen för att se vad den innehåller</h4>
+            <h3>Template: {{page.template.name}}</h3>
+            <h4>Click a content-area to display its details.</h4>
 
             <div data-my-position-finder ng-click="calculateParitalPos($event, selectPartial)" class="template-thumb big-thumb">
                 <ng-include src="templatePath" />
