@@ -16,11 +16,19 @@ appServiceModule.factory('appService', ['$http', function ($http) {
         getApplicationStats: function () {
             return $http.get('/diagrams/appliaction-stats/')
         },
-        seedOrdersSinceLastYear: function () {
-            return $http.post('/diagrams/seed-orders-since-last-year/');
+
+        seedOrdersFrom: function (year, month) {
+            return $http.get('/diagrams/seed-orders-from/' + year + '/' + month);
         },
-        seedAllLiveOrders: function(){
-            return $http.post('/diagrams/seed-all-live-orders/');
-        }
+        //seedAllLiveOrders: function(){
+        //    return $http.get('/diagrams/seed-all-live-orders/');
+        //},
+
+        seedShipmentsFrom: function (year, month) {
+            return $http.get('/diagrams/seed-shipments-for/' + year + '/' + month);
+        },
+        //seedAllLiveShipments: function () {
+        //    return $http.get('/diagrams/seed-all-live-shipments/');
+        //}
     }       
 }]);

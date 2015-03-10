@@ -12,6 +12,7 @@ namespace _1dv411.Domain
     public interface ILiveShipmentService
     {
         IEnumerable<LiveShipment> GetLiveShipmentsSince(DateTime? limitByDate = null);
+        IEnumerable<LiveShipment> GetLiveShipmentsFor(int year, int month);
         IEnumerable<LiveShipment> Get(int offset = 0, int limit = 1000);
 
     }
@@ -29,6 +30,12 @@ namespace _1dv411.Domain
             {
                 dateFilter = ls => ls.PostingDate >= limitByDate.Value;
             }
+            return _unitOfWork.LiveShipmentRepository.Get(dateFilter, null, null, null);
+        }
+
+        public IEnumerable<LiveShipment> GetLiveShipmentsFor(int year, int month)
+        {
+            Expression<Func<LiveShipment, bool>> dateFilter = ls => ls.PostingDate.Year == year && ls.PostingDate.Month == month;
             return _unitOfWork.LiveShipmentRepository.Get(dateFilter, null, null, null);
         }
 

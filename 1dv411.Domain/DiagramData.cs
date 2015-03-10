@@ -9,7 +9,7 @@ namespace _1dv411.Domain
 {
     public class DiagramData 
     {
-        public DateTime Date { get; set; }
+        public String Date { get; set; }
         public int Orders { get; set; }
         public int OrdersLastYear { get; set; }
     }
