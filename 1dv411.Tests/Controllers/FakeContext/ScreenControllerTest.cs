@@ -76,7 +76,7 @@ namespace _1dv411.Tests.Controllers
             var controller = new ScreenController(_service);
             var result = controller.FindById(9999) as OkNegotiatedContentResult<Screen>;
 
-            Assert.IsNull(result);
+            Assert.IsNull(result.Content);
         }
         private Screen GetTestScreen(int id = 1)
         {

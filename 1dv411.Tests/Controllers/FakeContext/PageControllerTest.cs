@@ -108,8 +108,8 @@ namespace _1dv411.Tests.Controllers
             var result = PostPage(pvm); 
             Assert.AreEqual((result.Content.Partials.FirstOrDefault() as Diagram).DiagramType, DiagramType.MonthlyOrders);
         }
-
-        private OkNegotiatedContentResult<Page> PostPage(PartialViewModel partialViewModel)
+        [TestMethod]
+        public void PostPage_CreatePage_ShouldNotEffectNumberOfTemplatesInDatabase()
         {
             var controller = new PageController(_service);
             var template = new Template
@@ -119,7 +119,14 @@ namespace _1dv411.Tests.Controllers
                 Name = "templateName",
             };
             _context.Templates.Add(template);
+
             var page = _context.Pages.Add(new Page { TemplateId = template.Id, Name = "page", Template = template });
+            var partialViewModel = new PartialViewModel
+            {
+                PartialType = "Diagram",
+                Position = 1,
+                DiagramType = DiagramType.MonthlyOrders
+            };
 
             List<PartialViewModel> partialViewModelList = new List<PartialViewModel>
             {
@@ -131,11 +138,45 @@ namespace _1dv411.Tests.Controllers
                 Page = page,
                 Partials = partialViewModelList
             };
+
+            var result = controller.CreatePage(pageViewModel) as OkNegotiatedContentResult<Page>;
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content, page);
+            Assert.AreEqual(result.Content.Name, page.Name);
+        }
+
+        private OkNegotiatedContentResult<Page> PostPage(PartialViewModel partialViewModel)
+        {
+            var controller = new PageController(_service);
+            var template = new Template
+            {
+                Id = 1,
+                FileName = "FileName",
+                Name = "templateName",
+            };
+            _context.Templates.Add(template);
+            var page = new Page { TemplateId = template.Id, Name = "page"};
+
+            List<PartialViewModel> partialViewModelList = new List<PartialViewModel>
+            {
+                partialViewModel
+            };
+
+            PageViewModel pageViewModel = new PageViewModel
+            {
+                Page = page,
+                Partials = partialViewModelList
+            };
+
+            int numberOfPages = _context.Pages.Count();
+            int numberOfTemplates = _context.Templates.Count(); 
             var result = controller.CreatePage(pageViewModel) as OkNegotiatedContentResult<Page>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Content, page);
             Assert.AreEqual(result.Content.Name, page.Name);
+            Assert.AreEqual(numberOfPages += 1, _context.Pages.Count());
+            Assert.AreEqual(numberOfTemplates, _context.Templates.Count());
 
             return result;
         }

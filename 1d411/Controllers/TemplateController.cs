@@ -35,9 +35,18 @@ namespace _1d411.Controllers
         [Route("")]
         public IHttpActionResult PostTemplate(Template template)
         {
-            // IHttpActionResult
             _service.PageService.SaveTemplate(template);
             return Ok(template);
         }
+
+        #region IDisposable
+
+        protected override void Dispose(bool disposing)
+        {
+            _service.Dispose();
+            base.Dispose(disposing);
+        }
+
+        #endregion
     }
 }

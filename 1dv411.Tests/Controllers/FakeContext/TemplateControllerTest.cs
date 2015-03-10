@@ -33,6 +33,45 @@ namespace _1dv411.Tests.Controllers
             TemplateController controller = new TemplateController(_service);
             var result = controller.GetAllTemplates();
             Assert.IsNotNull(result);
-        }       
+        }
+        [TestMethod]
+        public void GetAll()
+        {
+            var template1 = GetDemoTemplate(1);
+            var template2 = GetDemoTemplate(2);
+            var template3 = GetDemoTemplate(3); 
+            
+            _context.Templates.Add(template1);
+            _context.Templates.Add(template2);
+            _context.Templates.Add(template3);
+ 
+            TemplateController controller = new TemplateController(_service);
+            var result = controller.GetAllTemplates() as OkNegotiatedContentResult<IEnumerable<Template>>;
+            Assert.IsNotNull(result);
+
+            Assert.AreEqual(result.Content.ElementAt(0), template1);
+            Assert.AreEqual(result.Content.ElementAt(1), template2);
+            Assert.AreEqual(result.Content.ElementAt(2), template3);
+        }
+
+        [TestMethod]
+        public void PostTemplate_CreateTemplate()
+        {
+            var template = GetDemoTemplate();  
+            var controller = new TemplateController(_service);
+            int numberOfTemplates = _context.Templates.Count(); 
+            var result = controller.PostTemplate(template) as OkNegotiatedContentResult<Template>;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Content, template);
+            Assert.AreEqual(numberOfTemplates + 1, _context.Templates.Count()); 
+
+        }
+
+        private Template GetDemoTemplate(int id = 1)
+        {
+            return new Template { Name = "Demo1", Id = id, NumberOfPartials = 3, FileName = "filename.html" };
+        }
+
     }
 }
