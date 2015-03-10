@@ -1,6 +1,6 @@
 ﻿<ul class="screen-all-pages-list">
     <li ng-repeat="p in pages">
-        <a href="" ng-click="addPage(p)">
+        <a href="" ng-click="addPage(p)" class="{{p.id}}">
             <p>{{p.name}}</p>
             <div class="template-thumb small-thumb">
                 <ng-include src="'/Views/App/Templates/' + p.template.fileName"></ng-include>
