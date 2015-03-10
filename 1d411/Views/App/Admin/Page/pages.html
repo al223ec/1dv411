@@ -16,11 +16,19 @@
     </div>
 
     <div class="col w75">
-        <div class="page-details" ng-show="page">
+        <div class="page-details" ng-show="viewPage.page">
             <ng-include src="'/Views/App/Admin/Page/_page.html'"></ng-include>
         </div>
 
-        <div class="page-details" ng-show="createdPageSelected">
+        <div ng-show="viewPage.savedPage">
+            <h3 class="savedAlert">Sidan sparades!</h3>
+        </div>
+
+        <div ng-show="viewPage.deletedPage">
+            <h3 class="savedAlert">Sidan togs bort!</h3>
+        </div>
+
+        <div class="page-details" ng-show="viewPage.createdPageSelected">
             <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
         </div>
     </div>

@@ -193,5 +193,11 @@ input.ng-valid.ng-dirty {
     cursor:pointer;
 }
 .admin-message.warning {
-    background-color:#8C0303;
+    background-color: #8C0303;
+}
+.savedAlert{
+    background-color: lightgreen;
+    padding: 7px;
+    text-align: center;
+    margin-top: 7px;
 }
