@@ -58,11 +58,15 @@ namespace _1dv411.Tests.Controllers
         public void GetPage_GetPageById()
         {
             int id = 1;
+            var diagram = new Diagram
+            {
+                Id = 1,
+                DiagramType = DiagramType.WeeklyOrders,
+            };
+            _context.Diagrams.Add(diagram); 
+
             List<Partial> partials = new List<Partial>{
-                new Diagram{
-                    Id = 1,
-                    DiagramType = DiagramType.WeeklyOrders,
-                }
+                diagram
             }; 
             var demo0 = _context.Pages.Add(new Page { Id = id, Name = "Demo1", Partials = partials });
 
@@ -97,7 +101,7 @@ namespace _1dv411.Tests.Controllers
             {
                 PartialType = "Text",
                 Position = 1,
-                TextContent = "content"
+                Content = "content"
             };
             var result = PostPage(pvm); 
             Assert.AreEqual((result.Content.Partials.FirstOrDefault() as Text).Content, "content");

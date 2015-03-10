@@ -31,8 +31,10 @@ namespace _1dv411.Tests.Controllers
         [TestMethod]
         public void Get()
         {
+            var diagram = GetDemoDiagram();
+            _context.Diagrams.Add(diagram); 
             DiagramController controller = new DiagramController(_service);
-            var result = controller.GetDataWithDiagramId(1) as OkNegotiatedContentResult<IEnumerable<DiagramData>>;
+            var result = controller.GetDataWithDiagramId(diagram.Id) as OkNegotiatedContentResult<IEnumerable<DiagramData>>;
             Assert.IsNotNull(result);
         }
 
@@ -67,7 +69,7 @@ namespace _1dv411.Tests.Controllers
             // Oklart hur bra detta test egentligen är bör testas mer ingående
             for (int i = 0; i < result.Content.Count(); i++)
             {
-                var orders = _orders.Where(o => o.Date == result.Content.ElementAt(i).Date).Count();
+                var orders = _orders.Where(o => o.Date.Equals(result.Content.ElementAt(i).Date)).Count();
                 Assert.AreEqual(result.Content.ElementAt(i).Orders, orders);
             }
             return result; 
