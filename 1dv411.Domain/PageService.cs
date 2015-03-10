@@ -53,8 +53,8 @@ namespace _1dv411.Domain
 
                     if (partial.PartialType == "Diagram")
                     {
-                        var diagram = partial as Diagram; 
-                        diagram.Data = _diagramService.GetDiagramData(diagram.DiagramType);
+                        var diagram = partial as Diagram;
+                        diagram.Data = _diagramService.GetDataWithDiagramId(diagram.Id);
                         partials[i] = diagram; 
                     }
                     

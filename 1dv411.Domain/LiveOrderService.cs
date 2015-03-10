@@ -11,9 +11,8 @@ namespace _1dv411.Domain
 {
     public interface ILiveOrderService
     {
-        //För många poster för att ta alla på en gång?
-        //IEnumerable<LiveOrder> GetAll();
         IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime? limitByDate = null);
+        IEnumerable<LiveOrder> GetLiveOrdersFor(int year, int month);
         IEnumerable<LiveOrder> Get(int offset = 0, int limit = 1000);
 
     }
@@ -24,6 +23,7 @@ namespace _1dv411.Domain
         {
             _unitOfWork = unitOfWork;
         }
+
         public IEnumerable<LiveOrder> GetLiveOrdersSince(DateTime? limitByDate = null)
         {
             Expression<Func<LiveOrder, bool>> dateFilter = null;
@@ -31,6 +31,12 @@ namespace _1dv411.Domain
             {
                 dateFilter = lo => lo.Created >= limitByDate.Value;
             }
+            return _unitOfWork.LiveOrderRepository.Get(dateFilter, null, null, null);
+        }
+
+        public IEnumerable<LiveOrder> GetLiveOrdersFor(int year, int month)
+        {
+            Expression<Func<LiveOrder, bool>> dateFilter = lo => lo.Created.Year == year && lo.Created.Month == month;
             return _unitOfWork.LiveOrderRepository.Get(dateFilter, null, null, null);
         }
         

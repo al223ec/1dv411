@@ -29,31 +29,43 @@ namespace _1d411.Controllers
         {
             return Ok(_service.DiagramService.GetDataWithDiagramId(id));
         }
-
-        /* Metoder för att seeda databsen med diagram-data.*/
-        [Route("seed-orders-since-last-year")]
-        [HttpPost]
-        public IHttpActionResult SeedLiveOrdersSinceLastYear()
-        {
-            DateTime now = DateTime.Now;
-            //DateTime lastYear = new DateTime(now.Year - 1, now.Month, now.Day);
-            DateTime lastYear = new DateTime(now.Year, now.Month, now.Day-1);
-            return Ok(_service.DiagramService.SeedLiveOrders(lastYear));
-        }
-
-        [Route("seed-all-live-orders")]
-        [HttpPost]
-        public IHttpActionResult SeedAllLiveOrders()
-        {
-            return Ok(_service.DiagramService.SeedLiveOrders(null));
-        }
-
         [Route("appliaction-stats")]
         [HttpGet]
         public IHttpActionResult GetApplicationStats()
         {
             return Ok(_service.DiagramService.GetApplicationStats());
         }
+
+        /* Metoder för att seeda databsen med diagram-data.*/
+        [Route("seed-orders-for/{year:int}/{month:int}")]
+        [HttpGet]
+        public IHttpActionResult SeedLiveOrdersFor(int year, int month)
+        {
+            return Ok(_service.DiagramService.SeedLiveOrders(year, month));
+        }
+        
+        //[Route("seed-all-live-orders")]
+        //[HttpGet]
+        //public IHttpActionResult SeedAllLiveOrders()
+        //{
+        //    return Ok(_service.DiagramService.SeedLiveOrders(null));
+        //}
+        
+        [Route("seed-shipments-for/{year:int}/{month:int}")]
+        [HttpGet]
+        public IHttpActionResult SeedLiveShipmentsSinceLastYear(int year, int month)
+        {
+            return Ok(_service.DiagramService.SeedLiveShipments(year, month));
+        }
+
+        //[Route("seed-all-live-shipments")]
+        //[HttpGet]
+        //public IHttpActionResult SeedAllLiveShipments()
+        //{
+        //    return Ok(_service.DiagramService.SeedLiveShipments(null));
+        //}
+
+        
         #region IDisposable
 
         protected override void Dispose(bool disposing)

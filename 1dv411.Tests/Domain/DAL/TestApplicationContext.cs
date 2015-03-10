@@ -17,6 +17,7 @@ namespace _1dv411.Tests.Domain.DAL
         public DbSet<Diagram> Diagrams { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Shipment> Shipments { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<PageScreen> PageScreens { get; set; }
         public DbSet<Partial> Partials { get; set; }

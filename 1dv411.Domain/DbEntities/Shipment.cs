@@ -9,7 +9,6 @@ namespace _1dv411.Domain.DbEntities
 {
     public class Shipment : BaseDto
     {
-        [Index]
         public String No_ { get; set; }
         [Column(TypeName = "DateTime2")]
         public DateTime PostingDate { get; set; }
