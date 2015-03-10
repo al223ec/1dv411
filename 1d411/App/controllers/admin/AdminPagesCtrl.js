@@ -5,7 +5,11 @@ var adminModule = angular.module('AdminPages', []);
 adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        $scope.createdPageSelected = false;
+        $scope.viewPage = {};
+        $scope.viewPage.page = false;
+        $scope.viewPage.savedPage = false;
+        $scope.viewPage.createdPageSelected = false;
+        $scope.viewPage.deletedPage = false;
         $scope.page; // om man vill visa en eskild page visas denna här
 
         LayoutScreenService.getPages().success(function (data) {
@@ -17,16 +21,22 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         });
 
         $scope.selectPage = function (page) {
-            $scope.createdPageSelected = false;
+            $scope.viewPage.page = true;
+            $scope.viewPage.savedPage = false;
+            $scope.viewPage.deletedPage = false;
+            $scope.viewPage.createdPageSelected = false;
             $scope.templatePath = '/Views/App/Templates/' + page.template.fileName;
             $scope.page = ($scope.page != page) ? page : null;
         };
 
         //on new page click
         $scope.createPage = function () {
-            $scope.createdPageSelected = true;
+            $scope.viewPage.savedPage = false;
+            $scope.viewPage.deletedPage = false;
+            $scope.viewPage.page = false;
+            $scope.viewPage.createdPageSelected = true;
             $scope.page = null; //Hide selected if present
-           // $('.light-blue').removeClass('light-blue'); oklart om denna behövs
+            $('.light-blue').removeClass('light-blue'); //oklart om denna behövs
         };
     }]);
 
@@ -55,8 +65,6 @@ adminModule.controller('AdminViewPageController', ['$scope', 'LayoutScreenServic
 adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
             $scope.currentPartialPos = 0; //Detta är ej nollindex
-
-            $scope.savedPage = false;
             $scope.createdPage = {};
 
             $scope.selectTemplate = function (e, t) {
@@ -80,12 +88,14 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             };
 
 
-            $scope.savePage = function () {
+            $scope.savePage = function () {   
+               
                 //sets the path to the choosed image. maybe should to this on the serverside instead
                 $scope.createdPage.partials[$scope.currentPartialPos - 1].url = 'Views/App/Partials/Images/' + $scope.createdPage.partials[$scope.currentPartialPos - 1].url;
                 LayoutScreenService.createPage($scope.createdPage).success(function (data) {
                     $scope.createdPage = null;
-                    $scope.savedPage = true;
+                    $scope.viewPage.createdPageSelected = false;
+                    $scope.viewPage.savedPage = true;
                     $scope.pages.unshift(data);
                 });
             };
@@ -96,11 +106,13 @@ adminModule.controller('AdminRemovePagesController', ['$scope', 'LayoutScreenSer
     function ($scope, LayoutScreenService) {
         $scope.removePage = function (pageId) {
             LayoutScreenService.deletePage(pageId);
-           
+            $scope.viewPage.page = false;
+            $scope.viewPage.deletedPage = true;
             for (var i = 0; i < $scope.pages.length; i++) {
 
-                if ($scope.pages[i].id === pageId) {
-                    $scope.screens.splice(i, 1);
+                if ($scope.pages[i].id === pageId){
+                    $scope.pages.splice(i, 1);
+                  
                 }
             }
         }

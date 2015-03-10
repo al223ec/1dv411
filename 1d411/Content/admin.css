@@ -152,3 +152,10 @@ input.ng-valid.ng-dirty {
     margin: .2em 0;
     text-align:center;
 }
+
+.savedAlert {
+    background-color: lightgreen;
+    padding:7px;
+    text-align:center;
+    margin-top:7px;
+}
