@@ -71,7 +71,10 @@ namespace _1d411.Controllers
         [HttpPost]
         public IHttpActionResult DeleteScreen(int id)
         {
-            return Ok(_service.ScreenService.Delete(id));
+            if(_service.ScreenService.Delete(id)){
+                return Ok(true);
+            }
+            return BadRequest();
         }
 
         #region IDisposable

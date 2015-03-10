@@ -23,7 +23,6 @@ namespace _1dv411.Domain
         private IUnitOfWork _unitOfWork;
 
         private IScreenService _screenService;
-        private IPageScreenService _pageScreenService;
         private IService<Template> _templateService;
         private IDiagramService _diagramService;
         private IPageService _pageService;
@@ -41,10 +40,6 @@ namespace _1dv411.Domain
         public IPageService PageService
         {
             get { return _pageService ?? (_pageService = new PageService(_unitOfWork, this.DiagramService)); }
-        }
-        public IPageScreenService PageScreenService
-        {
-            get { return _pageScreenService ?? (_pageScreenService = new PageScreenService(_unitOfWork)); }
         }
         public IService<Template> TemplateService
         {

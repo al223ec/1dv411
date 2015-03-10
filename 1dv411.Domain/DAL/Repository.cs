@@ -51,10 +51,11 @@ namespace _1dv411.Domain.DAL
         {
             return _set.Find(id);
         }
-        public void Remove(object id)
+        public bool Remove(object id)
         {
             T entityToDelete = _set.Find(id);
             _set.Remove(entityToDelete);
+            return entityToDelete != null;
         }
 
         public void AddOrUpdate(T entity)
@@ -69,7 +70,7 @@ namespace _1dv411.Domain.DAL
             {
                 entity.ModifiedAt = DateTime.Now; 
                 _set.Attach(entity);
-                _context.Entry(entity).State = EntityState.Modified;
+                _context.SetModified(entity);
             }
         }
 

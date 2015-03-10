@@ -19,7 +19,7 @@ namespace _1dv411.Domain.DAL
         T GetOne(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null);
-        void Remove(object id);
+        bool Remove(object id);
         void AddOrUpdate(T entity);
         int Count(Expression<Func<T, bool>> filter = null);
     }

@@ -72,7 +72,10 @@ namespace _1dv411.Domain
 
         public bool CreatePage(Page page)
         {
-            _unitOfWork.TemplateRepository.AddOrUpdate(page.Template);
+            if (page.Template != null)
+            {
+                _unitOfWork.TemplateRepository.AddOrUpdate(page.Template); 
+            }
             _unitOfWork.PageRepository.AddOrUpdate(page);
             _unitOfWork.Save();
             return true;

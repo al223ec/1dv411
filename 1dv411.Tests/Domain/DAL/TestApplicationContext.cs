@@ -30,6 +30,12 @@ namespace _1dv411.Tests.Domain.DAL
             this.Screens = new TestDbSet<Screen>();
             this.Pages = new TestDbSet<Page>();
             this.PageScreens = new TestDbSet<PageScreen>();
+            this.Diagrams = new TestDbSet<Diagram>();
+            this.Images = new TestDbSet<Image>();
+            this.Orders = new TestDbSet<Order>();
+            this.Partials = new TestDbSet<Partial>();
+            this.Templates = new TestDbSet<Template>();
+            this.Texts = new TestDbSet<Text>(); 
         }
 
         
@@ -52,15 +58,11 @@ namespace _1dv411.Tests.Domain.DAL
 
         public int SaveChanges()
         {
+            _modified = false; 
             return 0;
         }
 
         public IEnumerable<DbEntityValidationResult> GetValidationErrors()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class
         {
             throw new NotImplementedException();
         }
@@ -72,5 +74,12 @@ namespace _1dv411.Tests.Domain.DAL
 
         public void Dispose()
         { }
+
+
+        private bool _modified = false; 
+        public void SetModified(object entity)
+        {
+            _modified = true; 
+        }
     }
 }

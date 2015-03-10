@@ -96,7 +96,7 @@ namespace _1dv411.Domain
         public IEnumerable<DiagramData> GetDataWithDiagramId(int id)
         {
             var diagram = _unitOfWork.DiagramRepository.Get(d => d.Id == id).FirstOrDefault(); 
-            return diagram != null ? GetDiagramData(diagram.DiagramType)  : null; 
+            return diagram != null ? GetDiagramData(diagram.DiagramType) : null; 
         }
 */
 
