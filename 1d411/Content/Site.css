@@ -40,6 +40,19 @@ p{
 .right {
     float: right;
 }
+.hidden{
+    display:none;
+}
+.loading{
+    display:none;
+    min-height:30px;
+    background-image: url('/Content/loading.gif');
+    background-position:center;
+    background-repeat:no-repeat;
+}
+.selected{
+    background-color:#;
+}
 
 /* Colors */
 .red{background-color:#ee1010;}
@@ -72,7 +85,7 @@ p{
 label.block,
 input[type="text"].block,
 input[type="submit"].block,
-button.block
+button.block,
 .button.block{
     display:block;
 }
@@ -90,11 +103,26 @@ button,
 input[type="submit"],
 .button{
     padding:.5em 2em;
+    background-color:#2980B9;
+    color:#fff;
     border:1px solid #333;
+    cursor:pointer;
 }
 button:hover,
 input[type="submit"]:hover,
 .button:hover{
+    background-color:#3498DB;
+}
+
+button.red,
+input[type="submit"].red,
+.button.red{
+    background-color:#8C0303;
+}
+button.red:hover,
+input[type="submit"].red:hover,
+.button.red:hover{
+    background-color:#BF0404;
 }
 form>.row{
     padding:5px 0;
@@ -162,8 +190,37 @@ form>.row{
 */
 .partial-container{
     padding:0 20px;
+    height:inherit;
 }
 
-.partial-container .diagram-container{
+.center{
+    text-align:center;
+}
+
+.middle{
+    height:100%;
+    vertical-align:middle;
+}
+.bold{
+    font-weight:bold;
+}
+.italic{
+    font-style:italic;
+}
+.size1{font-size:1em;}
+.size2{font-size:2em;}
+.size3{font-size:3em;}
+.size4{font-size:4em;}
+.size5{font-size:5em;}
+.size6{font-size:6em;}
+
+.diagram-container{
     padding:10px 0;
+}
+.text-content{  
+}
+
+.partial,
+.partial>*{
+    position:relative;
 }
