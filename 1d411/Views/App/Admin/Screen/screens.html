@@ -1,6 +1,5 @@
-﻿<div class="row h100">
-    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
-
+﻿<ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+<div class="row h100">
     <div class="col w25 screen-list">
         <div>
             <div class="button block create-button" ng-click="createScreen()">New Screen</div>
@@ -8,7 +7,6 @@
         <div>
             <div id="screen-list-loading" class="loading"></div>
             <ul>
-                
                 <li ng-repeat="s in screens" ng-click="selectScreen(s)">
                     <div>{{s.name}}</div>
                 </li>

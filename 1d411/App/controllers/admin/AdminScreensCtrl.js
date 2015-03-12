@@ -28,7 +28,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             else {
                 screen.name = screenObj.name;
                 // Convert minutes and seconds to milliseconds.
-                screen.timer = 1000 * ((screenObj.minutes * 60) + (screenObj.seconds));
+                screen.timer = ((screenObj.minutes * 60) + (screenObj.seconds));
                 LayoutScreenService.postScreen(screen).success(function (resp) {
                     resetCreateScreenForm();
                     $scope.screens.push(resp);
@@ -75,7 +75,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         };
 
         $scope.addPage = function (page) {
-            $('#screen-all-pages-list-loading').show();
+            $('#screen-all-pages-list-loading').show();//uses the same loading box as the list of all pages
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (screenPages) {
                 $scope.screenPagesEmpty = false;//remove no-pages message
                 if (screenPages != null) {
@@ -109,7 +109,6 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
         };
 
         $scope.createScreen = function () {
-            $scope.removeScreen = false; // Hide delete screen message
             $scope.screen = null; //Hide selected if present
             $scope.newScreen = ($scope.newScreen != null) ? null : {};
         };

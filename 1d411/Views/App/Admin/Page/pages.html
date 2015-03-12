@@ -1,12 +1,13 @@
-﻿<div class="row h100">
-    <ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+﻿<ng-include src="'/Views/App/Admin/_nav.html'"></ng-include>
+<div class="row h100">
     <div class="col w25 page-list">
         <div>
+            <div class="button block create-button" ng-click="showCreate()">New Page</div>
+        </div>
+        <div>
+            <div id="page-list-loading" class="loading"></div>
             <ul>
-                <li>
-                    <div class="button block" ng-click="createPage()">New Page</div>
-                </li>
-                <li ng-repeat="p in pages" ng-click="selectPage(p)">
+                <li ng-repeat="p in pages" ng-click="showPage(p)">
                     <div>{{p.name}}</div>
                     <div class="template-thumb small-thumb">
                         <ng-include src="'/Views/App/Templates/' + p.template.fileName"></ng-include>
@@ -17,19 +18,13 @@
     </div>
 
     <div class="col w75">
-        <div class="page-details" ng-show="viewPage.page">
+        <div class="admin-message"></div>
+
+        <div class="page-details" ng-show="page">
             <ng-include src="'/Views/App/Admin/Page/_page.html'"></ng-include>
         </div>
-
-        <div ng-show="viewPage.savedPage">
-            <h3 class="savedAlert">Page saved!</h3>
-        </div>
-
-        <div ng-show="viewPage.deletedPage">
-            <h3 class="savedAlert">Page deleted!</h3>
-        </div>
-
-        <div class="page-details" ng-show="viewPage.createdPageSelected">
+        
+        <div class="page-details" ng-show="newPage">
             <ng-include src="'/Views/App/Admin/Page/_new_page.html'"></ng-include>
         </div>
     </div>
