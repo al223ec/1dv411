@@ -5,47 +5,41 @@ var adminModule = angular.module('AdminPages', []);
 adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        $scope.viewPage = {};
-        $scope.viewPage.page = false;
-        $scope.viewPage.savedPage = false;
-        $scope.viewPage.createdPageSelected = false;
-        $scope.viewPage.deletedPage = false;
-        $scope.page; // om man vill visa en eskild page visas denna här
+        $scope.newPage = null;//ej nödvändigt?
+        $scope.page = null;//ej nödvändigt?
 
+        $('#page-list-loading').show();
         LayoutScreenService.getPages().success(function (data) {
             $scope.pages = data;
+            $('#page-list-loading').hide();
         });
 
+        $('#template-list-loading').show();
         LayoutScreenService.getTemplates().success(function (data) {
             $scope.templates = data;
+            $('#template-list-loading').hide();
         });
 
-        $scope.selectPage = function (page) {
-            $scope.viewPage.page = true;
-            $scope.viewPage.savedPage = false;
-            $scope.viewPage.deletedPage = false;
-            $scope.viewPage.createdPageSelected = false;
-            $scope.templatePath = '/Views/App/Templates/' + page.template.fileName;
+        $scope.showPage = function (page) {
+            $('.admin-message').hide().html('').removeClass('warning');//hide messages
+            $scope.newPage = null;
             $scope.page = ($scope.page != page) ? page : null;
+            $scope.pageTemplatePath = '/Views/App/Templates/' + page.template.fileName;
         };
 
-        //on new page click
-        $scope.createPage = function () {
-            $scope.viewPage.savedPage = false;
-            $scope.viewPage.deletedPage = false;
-            $scope.viewPage.page = false;
-            $scope.viewPage.createdPageSelected = true;
+        $scope.showCreate = function () {
+            $('.admin-message').hide().html('').removeClass('warning');//hide messages
             $scope.page = null; //Hide selected if present
-            $('.light-blue').removeClass('light-blue'); //oklart om denna behövs
+            $scope.newPage = ($scope.newPage != null) ? null : {};
         };
     }]);
 
 // Visa en enskild page
 adminModule.controller('AdminViewPageController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
+
             $scope.selectPartial = function (position) {
                 var partial = getPartialFromPos(position);
-
                 $scope.partialPath = (partial != null) ? '/Views/App/Admin/Page/_partial_' + partial.partialType.toLowerCase() + '.html' : '';
                 $scope.partial = ($scope.partial != partial) ? partial : null;
             };
@@ -64,25 +58,19 @@ adminModule.controller('AdminViewPageController', ['$scope', 'LayoutScreenServic
 // Skapa en ny page
 adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
         function ($scope, LayoutScreenService, $routeParams, appConfig) {
-            $scope.createdPage = {};
             $scope.currentPartialPos = 0; //Detta är ej nollindex
+
             $scope.selectTemplate = function (e, t) {
-                if ($scope.createdPage === undefined) {
-                    $scope.createdPage = {};
-                }
-                console.log(t);
+                $scope.newPage.template = t;
+
                 $(e.currentTarget).closest('ul').eq(0).find('.light-blue').removeClass('light-blue');
                 if (!$(e.currentTarget).hasClass('light-blue')) {
                     $(e.currentTarget).addClass('light-blue');
                 }
-                console.log($scope.createdPage);
-                $scope.createdPage.template = t;
-                $scope.path = '/Views/App/Templates/' + t.fileName;
-
-                $scope.createdPage.partials = [];
+                $scope.newPageTemplatePath = '/Views/App/Templates/' + t.fileName;
+                $scope.newPage.partials = [];
                 for (var i = 1; i <= t.numberOfPartials; i++) {
-                
-                    $scope.createdPage.partials.push({ position: i });
+                    $scope.newPage.partials.push({ position: i });
                 }
             };
 
@@ -90,17 +78,21 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                 $scope.currentPartialPos = position; 
             };
 
-
-            $scope.savePage = function () {   
-               
+            $scope.createPage = function () {
+                $('#create-page-loading').show();
+                $('.admin-message').hide().html('').removeClass('warning');//hide messages
+                //FIXA...
                 //sets the path to the choosed image. maybe should to this on the serverside instead
-                $scope.createdPage.partials[$scope.currentPartialPos - 1].url = 'Views/App/Partials/Images/' + $scope.createdPage.partials[$scope.currentPartialPos - 1].url;
-                LayoutScreenService.createPage($scope.createdPage).success(function (data) {
-                    $scope.createdPage = null;
-                    $scope.viewPage.createdPageSelected = false;
-                    $scope.viewPage.savedPage = true;
+                //$scope.newPage.partials[$scope.currentPartialPos - 1].url = $scope.newPage.partials[$scope.currentPartialPos - 1].url;
+                LayoutScreenService.createPage($scope.newPage).success(function (data) {
+                    console.log($scope);
+                    $scope.newPage = null;
                     $scope.pages.unshift(data);
                     $scope.currentPartialPos = 0;
+                    $('.admin-message').html('Page created!').show();
+                    $('#create-page-loading').hide();
+                }).error(function () {
+                    $('.admin-message').html('Could not create Page.').addClass('warning').show();
                 });
             };
         }]);
@@ -108,17 +100,20 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
 
 adminModule.controller('AdminRemovePagesController', ['$scope', 'LayoutScreenService',
     function ($scope, LayoutScreenService) {
-        $scope.removePage = function (pageId) {
-            LayoutScreenService.deletePage(pageId);
-            $scope.viewPage.page = false;
-            $scope.viewPage.deletedPage = true;
-            for (var i = 0; i < $scope.pages.length; i++) {
+        $scope.deletePage = function () {
+            $('.admin-message').hide().html('').removeClass('warning');//hide messages
 
-                if ($scope.pages[i].id === pageId){
-                    $scope.pages.splice(i, 1);
-                  
+            LayoutScreenService.deletePage($scope.page.id).success(function () {
+                for (var i = 0; i < $scope.pages.length; i++) {
+                    if ($scope.pages[i].id === $scope.page.id){
+                        $scope.pages.splice(i, 1);
+                    }
                 }
-            }
+                $scope.page = null;
+                $('.admin-message').html('Page deleted!').show();
+            }).error(function () {
+                $('.admin-message').html('Could not delete Page.').addClass('warning').show();
+            });
         }
         
     }]);

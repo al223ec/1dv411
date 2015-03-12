@@ -1,18 +1,19 @@
-﻿<div ng-controller ="AdminRemovePagesController" class="row">
-    <div class="page-form">
-        <div class="row">
-            <button class="red" ng-click="removePage(page.id)">Delete Page {{page.name}}</button>
-        </div>
+﻿<div class="row">
+    <div class="col w50">
+        <h3>{{page.name}}</h3>
+    </div>
+    <div class="col w50" ng-controller="AdminRemovePagesController">
+        <button class="red right" ng-click="deletePage()">Delete Page</button>
     </div>
 </div>
+
 <div ng-controller="AdminViewPageController">
     <div class="row">
         <div class="col w50">
             <h3>Template: {{page.template.name}}</h3>
-            <h4>Click a content-area to display its details.</h4>
-
+            <p>Click a content-area to display its details.</p>
             <div data-my-position-finder ng-click="calculateParitalPos($event, selectPartial)" class="template-thumb big-thumb">
-                <ng-include src="templatePath"></ng-include>
+                <ng-include src="pageTemplatePath"></ng-include>
             </div>
         </div>
         <div class="col w50">

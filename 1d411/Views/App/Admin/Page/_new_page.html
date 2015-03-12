@@ -1,89 +1,87 @@
 ﻿<div ng-controller="AdminCreatePagesController">
-    <h3>New Page</h3>
-    <form>
+<h3>New Page</h3>
 
-        <div class="row">
-            <div class="col w10">
-                <h4>Name</h4>
-            </div>
-            <div class="col w25">
-                <input type="text" ng-model="createdPage.Name" />
+    <div class="row">
+        <div class="col w10">
+            <h4>Name</h4>
+        </div>
+        <div class="col w25">
+            <input type="text" ng-model="newPage.Name" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col w100">
+            <h4>Choose Template</h4>
+            <div id="template-list-loading" class="loading"></div>
+            <ul class="template-list">
+                <li ng-repeat="t in templates">
+                    <a href="" ng-click="selectTemplate($event, t)">
+                        <p>{{t.name}}</p>
+                        <div class="template-thumb small-thumb">
+                            <ng-include src="'/Views/App/Templates/' + t.fileName"></ng-include>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-show="newPage.template" class="col w50">
+            <h4>Click on a content-area to edit its content.</h4>
+
+            <!--ng-click="setCurrentPartialPos($event)"-->
+            <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
+                <ng-include src="newPageTemplatePath"></ng-include>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col w100">
-                <h4>Choose Template</h4>
-                <ul class="template-list">
-                    <li ng-repeat="t in templates">
-                        <a href="" ng-click="selectTemplate($event, t)">
-                            <p>{{t.name}}</p>
-                            <div class="template-thumb small-thumb">
-                                <ng-include src="'/Views/App/Templates/' + t.fileName"></ng-include>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
-            <div ng-show="createdPage.template" class="col w50">
-                <h4>Click on a content-area to edit its content.</h4>
-
-                <!--ng-click="setCurrentPartialPos($event)"--> 
-                <div data-my-position-finder ng-click="calculateParitalPos($event, setCurrentPartialPos)" class="template-thumb big-thumb">
-                    <ng-include src="path"></ng-include>
+        <div class="col w50">
+            <div ng-if="currentPartialPos != 0">
+                <div class="row">
+                    <div class="col w50">
+                        <label>Content type</label>
+                    </div>
+                    <div class="col w50">
+                        <select ng-model="newPage.partials[currentPartialPos -1].partialType">
+                            <option value="Text">Text</option>
+                            <option value="Diagram">Diagram</option>
+                            <option value="Image">Image</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col w50">
-                <div ng-if="currentPartialPos != 0">
-                    <div class="row">
-                        <div class="col w50">
-                            <label>Content type</label>
-                        </div>
-                        <div class="col w50">
-                            <select ng-model="createdPage.partials[currentPartialPos -1].partialType">
-                                <option value="Text">Text</option>
-                                <option value="Diagram">Diagram</option>
-                                <option value="Image">Image</option>
-                            </select>
-                        </div>
+
+                <div class="row">
+                    <div ng-if="newPage.partials[currentPartialPos -1].partialType == 'Text'">
+                        <p>Text content</p>
+                        <textarea ng-model="newPage.partials[currentPartialPos -1].content"></textarea>
                     </div>
 
-                    <div class="row">
-                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Text'">
-                            <p>Text content</p>
-                            <textarea ng-model="createdPage.partials[currentPartialPos -1].content"></textarea>
-                        </div>
-
-                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Diagram'">
-                            <label>Choose Diagram type</label>
-                            <select ng-model="createdPage.partials[currentPartialPos -1].diagramType">
-                                <option value="WeeklyOrders">Orders by Week</option>
-                                <option value="MonthlyOrders">Orders by Month</option>
-                                <option value="QuarterlyOrders">Orders by Quarter</option>
-                                <option value="YearlyOrders">Orders by Year</option>
-                                <option value="WeeklyShipments">Shipments by Week</option>
-                                <option value="MontlyShipments">Shipments by Month</option>
-                                <option value="QuarterlyShipments">Shipments by Quarter</option>
-                                <option value="YearlyShipments">Shipments by Year</option>
-                            </select>
-                        </div>
-                        <div ng-if="createdPage.partials[currentPartialPos -1].partialType == 'Image'">
-                            <p>Full Image URL</p>
-                            <input type="text" ng-model="createdPage.partials[currentPartialPos -1].url"/>
-
-                        </div>
+                    <div ng-if="newPage.partials[currentPartialPos -1].partialType == 'Diagram'">
+                        <label>Choose Diagram type</label>
+                        <select ng-model="newPage.partials[currentPartialPos -1].diagramType">
+                            <option value="WeeklyOrders">Orders by Week</option>
+                            <option value="MonthlyOrders">Orders by Month</option>
+                            <option value="QuarterlyOrders">Orders by Quarter</option>
+                            <option value="YearlyOrders">Orders by Year</option>
+                            <option value="WeeklyShipments">Shipments by Week</option>
+                            <option value="MontlyShipments">Shipments by Month</option>
+                            <option value="QuarterlyShipments">Shipments by Quarter</option>
+                            <option value="YearlyShipments">Shipments by Year</option>
+                        </select>
                     </div>
+                    <div ng-if="newPage.partials[currentPartialPos -1].partialType == 'Image'">
+                        <p>Full Image URL</p>
+                        <input type="text" ng-model="newPage.partials[currentPartialPos -1].url" />
 
+                    </div>
                 </div>
+
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <button ng-click="savePage($event)">Save Page</button>
-        </div>
-
-    </form>
-</div>
+    <div class="row">
+        <button ng-click="createPage($event)">Create Page</button>
+        <div id="create-page-loading" class="loading"></div>
+    </div>
