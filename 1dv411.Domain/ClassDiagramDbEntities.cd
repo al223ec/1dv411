@@ -1,88 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="_1dv411.Domain.DbEntities.Diagram">
-    <Position X="6.25" Y="5.5" Width="1.5" />
+  <Class Name="_1dv411.Domain.DbEntities.Text">
+    <Position X="10" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAgABAAAQAAAAAAAAA=</HashCode>
-      <FileName>DbEntities\Partials\Diagram.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="_1dv411.Domain.DbEntities.Image">
-    <Position X="8" Y="5.5" Width="1.5" />
-    <InheritanceLine Type="_1dv411.Domain.DbEntities.Partial" FixedToPoint="true">
-      <Path>
-        <Point X="8.75" Y="4.31" />
-        <Point X="8.75" Y="5.125" />
-        <Point X="9.25" Y="5.125" />
-        <Point X="9.25" Y="5.5" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>DbEntities\Partials\Image.cs</FileName>
+      <HashCode>AAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\Text.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.Partial">
-    <Position X="8" Y="2.5" Width="1.5" />
+    <Position X="10.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAQAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Partials\Partial.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="_1dv411.Domain.DbEntities.Text">
-    <Position X="9.75" Y="5.5" Width="1.5" />
+  <Class Name="_1dv411.Domain.DbEntities.Diagram">
+    <Position X="12" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>DbEntities\Partials\Text.cs</FileName>
+      <HashCode>AAAAAAAAAABAAgAAAAAAAAAAAAAAABAAAQAAAAAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\Diagram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_1dv411.Domain.DbEntities.Image">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="_1dv411.Domain.DbEntities.Partial" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="4.31" />
+        <Point X="11.25" Y="5.375" />
+        <Point X="14.5" Y="5.375" />
+        <Point X="14.5" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\Image.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.BaseDto">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\BaseDto.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="_1dv411.Domain.DbEntities.Screen">
-    <Position X="1.75" Y="2.5" Width="1.5" />
+  <Class Name="_1dv411.Domain.DbEntities.LiveOrder">
+    <Position X="15.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>DbEntities\Screen.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DbEntities\LiveOrders.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="_1dv411.Domain.DbEntities.TextContent">
-    <Position X="11.5" Y="5.5" Width="1.5" />
-    <InheritanceLine Type="_1dv411.Domain.DbEntities.BaseDto" ManuallyRouted="true" FixedFromPoint="true">
-      <Path>
-        <Point X="5.75" Y="1.125" />
-        <Point X="12.25" Y="1.125" />
-        <Point X="12.25" Y="5.5" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="_1dv411.Domain.DbEntities.LiveShipment">
+    <Position X="17.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAgAAAAAAAAAEAAAAAAAAAAAAAQAACAAAAAA=</HashCode>
-      <FileName>DbEntities\Partials\TextContent.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>DbEntities\LiveShipment.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="_1dv411.Domain.DbEntities.PageScreen">
-    <Position X="3.75" Y="2.5" Width="1.5" />
+  <Class Name="_1dv411.Domain.DbEntities.Order">
+    <Position X="8.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>DbEntities\PageScreen.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DbEntities\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1dv411.Domain.DbEntities.Page">
-    <Position X="6" Y="2.5" Width="1.5" />
+    <Position X="4.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAkAAAAAAAAAAAAQAACAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>DbEntities\Page.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="_1dv411.Domain.DbEntities.TextType" Collapsed="true">
-    <Position X="13.25" Y="5.5" Width="1.5" />
+  <Class Name="_1dv411.Domain.DbEntities.PageScreen">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="_1dv411.Domain.DbEntities.BaseDto" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="3.988" />
+        <Point X="5.75" Y="5.386" />
+        <Point X="3.75" Y="5.386" />
+        <Point X="3.75" Y="5.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>BBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
-      <FileName>DbEntities\Partials\TextContent.cs</FileName>
+      <HashCode>AAACAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DbEntities\PageScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_1dv411.Domain.DbEntities.Screen">
+    <Position X="1.25" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="_1dv411.Domain.DbEntities.BaseDto" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="3.988" />
+        <Point X="5.75" Y="5.375" />
+        <Point X="1.75" Y="5.375" />
+        <Point X="1.75" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DbEntities\Screen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_1dv411.Domain.DbEntities.Shipment">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>DbEntities\Shipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_1dv411.Domain.DbEntities.Template">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAQAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>DbEntities\Template.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="_1dv411.Domain.DbEntities.DiagramType">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAFAAAAABAAAAAABCAEAQAAA=</HashCode>
+      <FileName>DbEntities\Partials\Diagram.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_1dv411.Domain.DbEntities.Partials.PartialTypes">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAABAAAAAACAAAAAA=</HashCode>
+      <FileName>DbEntities\Partials\PartialTypes.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

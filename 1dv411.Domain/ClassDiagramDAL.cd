@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="_1dv411.Domain.DAL.ApplicationContext" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAQAAAkAAABAgAAAAAAAAECAAABAAAIAAAAAQAAA=</HashCode>
+      <FileName>DAL\ApplicationContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.LiveOrdersContext" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveOrdersContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.LiveOrderRepository" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveOrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.LiveShipmentRepository" BaseTypeListCollapsed="true">
+    <Position X="6" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveShipmentRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.LiveShipmentsContext" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveShipmentsContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.Repository&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBgBAAAAABAQAAAAAAAAAAAAAAAAgAIA=</HashCode>
+      <FileName>DAL\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_1dv411.Domain.DAL.UnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAoACOCAAKgABAAAEAAQAAQBAAAQAACAQCABABAAQMA=</HashCode>
+      <FileName>DAL\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="_1dv411.Domain.DAL.IApplicationContext">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAEQAQAAAkAABBAgAAAAABAAACAAABAAAIAAAAAQAAA=</HashCode>
+      <FileName>DAL\ApplicationContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.IRepository&lt;T&gt;">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAABAQAAAAAAAAAAAAAAAAgAIA=</HashCode>
+      <FileName>DAL\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.ILiveOrdersContext">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAAAAAABAAAAAAAABAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveOrdersContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.ILiveOrderRepository">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.ILiveShipmentRepository">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveShipmentRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.ILiveShipmentsContext">
+    <Position X="9.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAAAAAABAAAAAEAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\LiveShipmentsContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_1dv411.Domain.DAL.IUnitOfWork">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACMCAAAAAAAAAEAAQAAQBAAAAAAAAACAAAAAAQIA=</HashCode>
+      <FileName>DAL\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

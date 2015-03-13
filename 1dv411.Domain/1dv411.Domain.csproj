@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ApplicationContext.cs" />
-    <Compile Include="DAL\DiagramDbContext.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\LiveOrderRepository.cs" />
     <Compile Include="DAL\LiveOrdersContext.cs" />
@@ -113,6 +112,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagramDbEntities.cd" />
+    <None Include="ClassDiagramDAL.cd" />
     <None Include="ClassDiagramServices.cd" />
     <None Include="packages.config" />
   </ItemGroup>
