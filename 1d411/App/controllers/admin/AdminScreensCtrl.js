@@ -28,7 +28,7 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             else {
                 screen.name = screenObj.name;
                 // Convert minutes and seconds to milliseconds.
-                screen.timer = ((screenObj.minutes * 60) + (screenObj.seconds));
+                screen.timer = 1000 * ((screenObj.minutes * 60) + (screenObj.seconds));
                 LayoutScreenService.postScreen(screen).success(function (resp) {
                     resetCreateScreenForm();
                     $scope.screens.push(resp);

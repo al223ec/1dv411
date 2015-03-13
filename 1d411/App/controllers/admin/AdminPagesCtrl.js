@@ -5,9 +5,6 @@ var adminModule = angular.module('AdminPages', []);
 adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService', '$routeParams', 'appConfig',
     function ($scope, LayoutScreenService, $routeParams, appConfig) {
 
-        $scope.newPage = null;//ej nödvändigt?
-        $scope.page = null;//ej nödvändigt?
-
         $('#page-list-loading').show();
         LayoutScreenService.getPages().success(function (data) {
             $scope.pages = data;
@@ -31,6 +28,10 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
             $('.admin-message').hide().html('').removeClass('warning');//hide messages
             $scope.page = null; //Hide selected if present
             $scope.newPage = ($scope.newPage != null) ? null : {};
+        };
+        $scope.nullPage = function () {
+            $scope.page = null;
+            $scope.newPage = null;
         };
     }]);
 
@@ -86,7 +87,8 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
                 //$scope.newPage.partials[$scope.currentPartialPos - 1].url = $scope.newPage.partials[$scope.currentPartialPos - 1].url;
                 LayoutScreenService.createPage($scope.newPage).success(function (data) {
                     console.log($scope);
-                    $scope.newPage = null;
+                    $scope.nullPage();//clear page objects to hide forms/view
+                    $('.template-list .light-blue').removeClass('light-blue');
                     $scope.pages.unshift(data);
                     $scope.currentPartialPos = 0;
                     $('.admin-message').html('Page created!').show();
@@ -109,7 +111,7 @@ adminModule.controller('AdminRemovePagesController', ['$scope', 'LayoutScreenSer
                         $scope.pages.splice(i, 1);
                     }
                 }
-                $scope.page = null;
+                $scope.nullPage();//clear page objects to hide forms/view
                 $('.admin-message').html('Page deleted!').show();
             }).error(function () {
                 $('.admin-message').html('Could not delete Page.').addClass('warning').show();
