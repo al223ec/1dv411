@@ -7,7 +7,6 @@ html *{
 }
 body{
     font-family:"Open Sans", sans-serif;
-    line-height:1.25em;
 }
 
 html, body{
@@ -201,6 +200,15 @@ partial,
     position:relative;
     height:inherit;
 }
+.partial img{
+    max-height:100%;
+    max-width:100%;
+}
+.text-content p{
+    margin:0;
+    height:100%;
+}
+
 .partial-container{
     height:inherit;
 }
