@@ -30,14 +30,13 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
             var current = 0;
             nextSlide($scope.pages[current]);
 
-
             var sliderFunc = function () {
                 timer = $timeout(function () {
                     nextSlide($scope.pages[current]);
                     current = (current + 1 >= $scope.pages.length) ? 0 : current + 1;
 
-                    timer = $timeout(sliderFunc, $scope.pages[current].timer);
-                }, $scope.pages[current].timer);
+                    timer = $timeout(sliderFunc, $scope.screen.timer);
+                }, $scope.screen.timer);
             };
             sliderFunc();
             var timer;
