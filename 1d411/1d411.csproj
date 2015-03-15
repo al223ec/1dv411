@@ -284,10 +284,20 @@
     <Content Include="Views\App\Partials\_text.html" />
     <Content Include="Views\App\Admin\Screen\screens.html" />
     <Content Include="Views\App\Screen\index.html" />
-    <Content Include="Views\App\Templates\default_template.html" />
-    <Content Include="Views\App\Templates\good_guy.html" />
-    <Content Include="Views\App\Templates\hero.html" />
-    <Content Include="Views\App\Templates\horizontal.html" />
+    <Content Include="Views\App\Templates\default.html" />
+    <Content Include="Views\App\Templates\horizontal_1.html" />
+    <Content Include="Views\App\Templates\horizontal_4.html" />
+    <Content Include="Views\App\Templates\horizontal_3.html" />
+    <Content Include="Views\App\Templates\mixed_5.html" />
+    <Content Include="Views\App\Templates\mixed_4.html" />
+    <Content Include="Views\App\Templates\mixed_3.html" />
+    <Content Include="Views\App\Templates\mixed_2.html" />
+    <Content Include="Views\App\Templates\vertical_3.html" />
+    <Content Include="Views\App\Templates\vertical_2.html" />
+    <Content Include="Views\App\Templates\vertical_1.html" />
+    <Content Include="Views\App\Templates\horizontal_5.html" />
+    <Content Include="Views\App\Templates\mixed_1.html" />
+    <Content Include="Views\App\Templates\horizontal_2.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
