@@ -45,9 +45,9 @@ namespace _1dv411.Domain.DAL
         public DbSet<PageScreen> PageScreens { get; set; }
 
         public ApplicationContext() : base("LocalApplicationDbContext") { }
-        /*// Connection string mot skarp databas
-        public ApplicationContext() : base("ApplicationDbContext") { }
-        */
+        // Connection string mot skarp databas
+        //public ApplicationContext() : base("ApplicationDbContext") { }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

@@ -4,46 +4,38 @@ var diagramModule = angular.module('Diagram', []);
 //http://maxklenk.github.io/angular-chart/index.html Angular chart, verkar vettigare än google chart tycker jag
 //Denna kontroller ska även uppdatera diagrammet i ett vist tidsintervall
 diagramModule.controller('DiagramController', ['$scope', function ($scope) {
-    var data = $scope.partial.data; 
+    console.log($scope);
+    var data = $scope.partial.data;
     for (var i = 0; i < data.length; i++) {
-        data[i].budget = data[i].ordersLastYear * 1.25; 
+        data[i].budget = data[i].ordersLastYear * 1.10; 
     }
 
     $scope.dataset = $scope.diagram.data;
-    $scope.schema = {
-        day: {
-            type: 'datetime',
-            format: '%Y-%m-%d',
-            name: 'Date'
-        }
-    };
 
     $scope.options = {
-        rows: [{
-            key: 'orders',
-            type: 'bar'
-        }, {
-            key: 'ordersLastYear',
-            type: 'bar'
-        },
-        {
-          key: "budget",
-          type: "spline",
-          axis : "y",
-          color: "#ff000e"
-        },
+        rows: [
+            {
+                key: 'orders',
+                name: 'This year',
+                type: 'bar'
+            },
+            {
+                key: 'ordersLastYear',
+                name: 'Last Year',
+                type: 'bar'
+            },
+            {
+                key: 'budget',
+                name: 'Budget',
+                type: 'spline',
+                axis : 'y',
+                color: '#000000'
+            },
         ],
         xAxis: {
-            key: 'date',
-            displayFormat: '%Y-%m-%d %H:%M:%S'
+            key: 'date'
         }
     };
-
-    $scope.add = function () {
-        console.log("add"); 
-        $scope.dataset[1].orders += 1; 
-        console.log($scope.dataset[1].orders);
-    }
 }]);
 /**
 Use controllers to:

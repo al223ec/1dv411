@@ -188,12 +188,20 @@ form>.row{
 /*
     Partials
 */
-
+.chart-height{height:100%; !important}
+.c3-axis-y text tspan{
+    display:none; !important
+}
 .page-content{
     height:100%;
 }
+partial,
+.partial,
+.partial>*{
+    position:relative;
+    height:inherit;
+}
 .partial-container{
-    padding:0 20px;
     height:inherit;
 }
 
@@ -219,12 +227,21 @@ form>.row{
 .size6{font-size:6em;}
 
 .diagram-container{
-    padding:10px 0;
+    height:100%
 }
-.text-content{  
+#slider-top{
+    height:10%;
+    background:#fff;
+}
+.slider{
+    height:80%;
+    overflow:hidden;
 }
 
-.partial,
-.partial>*{
-    position:relative;
+#slider-bottom{
+    height:10%;
+    background:#000;
+    color:#fff;
+    font-size:.75em;
+    text-align:center;
 }

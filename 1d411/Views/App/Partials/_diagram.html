@@ -1,10 +1,7 @@
 <div class="partial-container">
-    <div>
-        <h4>{{diagram.type}}</h4>
-    </div>
     <div class="diagram-container">
         <div ng-controller="DiagramController">
-            <angularchart dataset="dataset" schema="schema" options="options" />
+           <div angularchart dataset="dataset" schema="schema" options="options" class="chart-height"></div>
         </div>
     </div>
 </div>

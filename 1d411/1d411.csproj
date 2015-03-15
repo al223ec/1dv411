@@ -180,7 +180,6 @@
     <Content Include="App\controllers\ScreenCtrl.js" />
     <Content Include="App\directives\angular-chart.js" />
     <Content Include="App\directives\partial.js" />
-    <Content Include="App\services\json_example.js" />
     <Content Include="App\services\LayoutScreenService.js" />
     <Content Include="App\services\PartialHtmlService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -279,15 +278,6 @@
     <Content Include="Views\App\Admin\Template\_new_template.html" />
     <Content Include="Views\App\Admin\_nav.html" />
     <Content Include="Views\App\Admin\Screen\_screen.html" />
-    <Content Include="Views\App\Layout\h-1-down-v-2.html" />
-    <Content Include="Views\App\Layout\h-1-up-v-2.html" />
-    <Content Include="Views\App\Layout\h-2-v-1-left.html" />
-    <Content Include="Views\App\Layout\h-2-v-1-right.html" />
-    <Content Include="Views\App\Layout\h-2-v-2.html" />
-    <Content Include="Views\App\Layout\h-2.html" />
-    <Content Include="Views\App\Layout\layout.html" />
-    <Content Include="Views\App\Layout\diagram.html" />
-    <Content Include="Views\App\Layout\v-2.html" />
     <Content Include="Views\App\Main\home.html" />
     <Content Include="Views\App\Partials\_diagram.html" />
     <Content Include="Views\App\Partials\_image.html" />
