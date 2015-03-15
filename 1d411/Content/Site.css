@@ -213,8 +213,23 @@ partial,
     height:inherit;
 }
 
-.center{
+.center-text{
     text-align:center;
+}
+.right-text{
+    text-align:right;
+}
+.left-text{
+    text-align:left;
+}
+.valign-top{
+    vertical-align:top;
+}
+.valign-middle{
+    vertical-align:middle;
+}
+.valign-bottom{
+    vertical-align:bottom;
 }
 
 .middle{
@@ -240,6 +255,13 @@ partial,
 #slider-top{
     height:10%;
     background:#fff;
+    text-align:center;
+}
+#slider-top img{
+    max-height:100%;
+    max-width:100%;
+    padding:0;
+    margin:0;
 }
 .slider{
     height:80%;
@@ -252,4 +274,8 @@ partial,
     color:#fff;
     font-size:.75em;
     text-align:center;
+}
+#slider-bottom p{
+    margin:0;
+    padding:0;
 }

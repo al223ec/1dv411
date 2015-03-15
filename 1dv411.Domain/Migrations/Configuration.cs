@@ -86,22 +86,22 @@ namespace _1dv411.Domain.Migrations
             };
             Page p2 = _pages[1];
             p2.Partials = new List<Partial>{
-                CreateText(p2, 1, "Example Text"),
+                CreateText(p2, 1, "Example Text", "center", "middle", false, true, 5),
                 CreateDiagram (p2, 2, DiagramType.WeeklyOrders),
                 CreateImage(p2, 3, "http://i.imgur.com/ReWjLO1.jpg"),
             };
             Page p3 = _pages[2];
             p3.Partials = new List<Partial>
             {
-                CreateText(p3, 1, "Example Text"),
+                CreateText(p3, 1, "Example Text", "right", "bottom", true, false, 3),
                 CreateDiagram (p3, 2, DiagramType.WeeklyOrders),
                 CreateImage(p3, 3, "http://i.imgur.com/ReWjLO1.jpg"),
             };
             Page p4 = _pages[3];
             p4.Partials = new List<Partial>
             {
-                CreateText(p4, 1, "Example Text"),
-                CreateText(p4, 2, "Example Text")
+                CreateText(p4, 1, "Example Text", "left", "top", true, true, 6),
+                CreateText(p4, 2, "Example Text", "center", "bottom", false, false, 2)
             };
             context.Pages.AddOrUpdate(p1);
             context.Pages.AddOrUpdate(p2);
@@ -142,13 +142,18 @@ namespace _1dv411.Domain.Migrations
             context.SaveChanges();
         }
 
-        private Text CreateText(Page page, int position, string content)
+        private Text CreateText(Page page, int position, string content, string align = "center", string valign = "middle", bool bold = false, bool italic = false, int fontSize = 4)
         {
             return new Text
             {
                 Page = page,
                 Position = position,
                 Content = content,
+                Align = align,
+                Valign = valign,
+                Bold = bold,
+                Italic = italic,
+                FontSize = fontSize
             };
         }
 

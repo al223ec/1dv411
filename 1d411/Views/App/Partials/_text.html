@@ -1,6 +1,10 @@
-<div class="partial-container text-content">
-    <p class="center bold size4">
-        <span style="height:100%;display: inline-block; vertical-align:middle;">&nbsp;</span>
-        <span>{{text.content}}</span>
-    </p>
+<!--Using Tables to be able to easily vertically align content-->
+<div class="partial-container">
+    <table style="height:100%; width:100%;">
+        <tr>
+            <td class="valign-{{ text.valign }}">
+                <div class="{{text.align}}-text {{text.bold ? 'bold' : ''}} {{text.italic ? 'italic' : ''}} size{{text.fontSize}}">{{text.content}}</div>
+            </td>
+        </tr>
+    </table>
 </div>
