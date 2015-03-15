@@ -21,22 +21,22 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
-            SeedTemplates(context);
-            SeedScreens(context);
-            SeedPages(context);
-            SeedPagePartials(context);
-            SeedPageScreens(context);
+            //SeedTemplates(context);
+            //SeedScreens(context);
+            //SeedPages(context);
+            //SeedPagePartials(context);
+            //SeedPageScreens(context);
 
-            /*För att seeda ordrar och shipments*/
-            var ordersThisYear = GetTestOrders(DateTime.Today);
-            ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
-            var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
-            ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
-            var shipmentsThisYear = GetTestShipments(DateTime.Today);
-            shipmentsThisYear.ForEach(s => context.Shipments.AddOrUpdate(s));
-            var shipmentsLastYear = GetTestShipments(DateTime.Today.AddYears(-1));
-            shipmentsLastYear.ForEach(s => context.Shipments.AddOrUpdate(s));
-            context.SaveChanges(); 
+            /*För att seeda fakeade ordrar och shipments*/
+            //var ordersThisYear = GetTestOrders(DateTime.Today);
+            //ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            //var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
+            //ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            //var shipmentsThisYear = GetTestShipments(DateTime.Today);
+            //shipmentsThisYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            //var shipmentsLastYear = GetTestShipments(DateTime.Today.AddYears(-1));
+            //shipmentsLastYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            //context.SaveChanges(); 
         }
 
         private void SeedTemplates(_1dv411.Domain.DAL.ApplicationContext context)
@@ -113,9 +113,9 @@ namespace _1dv411.Domain.Migrations
         private void SeedScreens(_1dv411.Domain.DAL.ApplicationContext context)
         {
             _screens = new List<Screen> {
-                new Screen{Name = "Scrren 1", Timer = 5000},
-                new Screen{Name = "Scrren 2", Timer = 6000},
-                new Screen{Name = "Scrren 3", Timer = 7000}
+                new Screen{Name = "Screen 1", Timer = 5000},
+                new Screen{Name = "Screen 2", Timer = 6000},
+                new Screen{Name = "Screen 3", Timer = 7000}
             };
             foreach (Screen s in _screens)
             {
