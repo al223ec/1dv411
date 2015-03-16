@@ -106,6 +106,10 @@
     <Compile Include="Migrations\201503152303383_AddingTextOptionsToText.Designer.cs">
       <DependentUpon>201503152303383_AddingTextOptionsToText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503162041052_AddDefaultValuesToText.cs" />
+    <Compile Include="Migrations\201503162041052_AddDefaultValuesToText.Designer.cs">
+      <DependentUpon>201503162041052_AddDefaultValuesToText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503152303383_AddingTextOptionsToText.resx">
       <DependentUpon>201503152303383_AddingTextOptionsToText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503162041052_AddDefaultValuesToText.resx">
+      <DependentUpon>201503162041052_AddDefaultValuesToText.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
