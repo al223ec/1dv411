@@ -110,6 +110,10 @@
     <Compile Include="Migrations\201503162041052_AddDefaultValuesToText.Designer.cs">
       <DependentUpon>201503162041052_AddDefaultValuesToText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503162127043_AddDefaultValueToFontSizeOnPartial.cs" />
+    <Compile Include="Migrations\201503162127043_AddDefaultValueToFontSizeOnPartial.Designer.cs">
+      <DependentUpon>201503162127043_AddDefaultValueToFontSizeOnPartial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503162041052_AddDefaultValuesToText.resx">
       <DependentUpon>201503162041052_AddDefaultValuesToText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503162127043_AddDefaultValueToFontSizeOnPartial.resx">
+      <DependentUpon>201503162127043_AddDefaultValueToFontSizeOnPartial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
