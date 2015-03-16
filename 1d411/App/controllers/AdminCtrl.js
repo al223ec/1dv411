@@ -24,7 +24,6 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             screen.timer = 1000 * ((screenObj.minutes * 60) + (screenObj.seconds));
             LayoutScreenService.postScreen(screen).success(function (resp) {
                 resetCreateScreenForm();
-                console.log(resp);
                 $scope.screens.push(resp);
             });
         }
@@ -47,11 +46,9 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             LayoutScreenService.getPages().success(function (data) {
                 $scope.pages = data;
             });
-            console.log($scope.pages);
         }
 
         var getScreenPages = function () {
-            console.log($scope.screen.id);
             LayoutScreenService.getPagesWithScreenId($scope.screen.id).success(function (data) {
 
                 $scope.screenPages = data === null ? [] : data;
@@ -63,8 +60,6 @@ adminModule.controller('AdminScreensController', ['$scope', 'LayoutScreenService
             $scope.screen.pages = [page];
 
             LayoutScreenService.postScreen($scope.screen).success(function (resp) {
-
-                console.log(resp);
             });
 
             $scope.screenPages.push(page);
@@ -81,12 +76,10 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
     
 
     LayoutScreenService.getPages().success(function (data) {
-        console.log(data);
         $scope.pages = data;
     });
 
     LayoutScreenService.getTemplates().success(function (data) {
-        console.log(data);
         data = [
                 { name: "Default layout", fileName: "default_template.html", numberOfPartials: 2},
                 { name: "Hero", fileName: "hero.html", numberOfPartials: 3 },
@@ -108,7 +101,6 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         var partialPos = getPartialPos(e.target);
 
         var partial = getPartialFromPos(partialPos);
-        console.log(partial);
         $scope.partialPath = (partial != null) ? '/Views/App/Admin/Page/_partial_' + partial.partialType.toLowerCase() + '.html' : '';
         $scope.partial = ($scope.partial != partial) ? partial : null;
     };
@@ -130,7 +122,6 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
             $scope.createdPartials.push($scope.createdPartial[i]);
 
         }
-        console.log($scope.createdPartials);
         //delete form data
         $scope.createdPartial.selectedPartialType = null;
         $scope.createdPartial.text = null;
@@ -146,7 +137,6 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         $scope.createdPartial = {};
         $scope.page = null; //Hide selected if present
         $('.light-blue').removeClass('light-blue');
-       // console.log($scope.createdPage);
 
     };
 
@@ -161,11 +151,8 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
         $scope.selectedDiagramType = {};
         $scope.currentChoosedPartialPosition = partialPos;
-        console.log($scope.createdPartial);
        
        // $scope.createdPartial[partialPos].Position = partialPos;
-
-        console.log($scope.createdPartials);
 
         $scope.showDropdownPartitalType = true;
         $scope.choosedDiagram = false;
@@ -195,7 +182,6 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
                 $scope.createdPartial[$scope.currentChoosedPartialPosition].PartialType = $scope.createdPartial.selectedPartialType;
                 $scope.choosedDiagram = false;
                 $scope.choosedText = true;
-                console.log($scope.currentChoosedPartialPosition);
                 break;
 
             case "Diagram":
@@ -206,13 +192,11 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
 
 
         }
-        console.log($scope.createdPartials);
     }
 
     //on new page created partial with diagram
     $scope.setChoosenDiagramType = function () {
         $scope.createdPartial[$scope.currentChoosedPartialPosition].DiagramType = $scope.createdPartial.selectedDiagramType;
-        console.log($scope.createdPage);
     }
 
     //on new page created partial with text
@@ -222,7 +206,6 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
         text.content = $scope.createdPartial.text;
         text.textType = "Header";
         $scope.createdPartial[$scope.currentChoosedPartialPosition].textContents.push(text);
-        //console.log($scope.createdPartial[$scope.currentChoosedPartialPosition]);
     }
 
 
@@ -230,9 +213,7 @@ adminModule.controller('AdminPagesController', ['$scope', 'LayoutScreenService',
     //on new page save
     $scope.savePage = function (p) {
         var newPartials = $scope.createdPartials;
-        //console.log(newPartials);
         LayoutScreenService.createPage(p, newPartials).success(function (data) {
-            console.log(data);
             $scope.createdPage = null;
             $scope.savedPage = true; 
             $scope.pages.push(data);

@@ -123,6 +123,24 @@ input[type="submit"].red:hover,
 .button.red:hover{
     background-color:#BF0404;
 }
+
+select{
+    display:inline-block;
+    padding:.25em .5em;
+    font-size:1em;
+    width:90%;
+}
+textarea{
+    display:inline-block;
+    padding:.25em .5em;
+    height:100px; 
+    width:90%;
+}
+
+div.form .row{
+    margin:5px 0;
+}
+
 form>.row{
     padding:5px 0;
 }

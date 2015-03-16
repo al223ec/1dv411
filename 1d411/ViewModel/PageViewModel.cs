@@ -26,5 +26,10 @@ namespace _1d411.ViewModel
         public string Url { get; set; }
 
         public string Content { get; set; }
+        public string Align { get; set; }
+        public string Valign { get; set; }
+        public bool Bold { get; set; }
+        public bool Italic { get; set; }
+        public int FontSize { get; set; }
     }
 }

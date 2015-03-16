@@ -82,11 +82,8 @@ adminModule.controller('AdminCreatePagesController', ['$scope', 'LayoutScreenSer
             $scope.createPage = function () {
                 $('#create-page-loading').show();
                 $('.admin-message').hide().html('').removeClass('warning');//hide messages
-                //FIXA...
-                //sets the path to the choosed image. maybe should to this on the serverside instead
-                //$scope.newPage.partials[$scope.currentPartialPos - 1].url = $scope.newPage.partials[$scope.currentPartialPos - 1].url;
+                $scope.newPage.partials[$scope.currentPartialPos - 1].url = $scope.newPage.partials[$scope.currentPartialPos - 1].url;
                 LayoutScreenService.createPage($scope.newPage).success(function (data) {
-                    console.log($scope);
                     $scope.nullPage();//clear page objects to hide forms/view
                     $('.template-list .light-blue').removeClass('light-blue');
                     $scope.pages.unshift(data);

@@ -73,7 +73,12 @@ namespace _1d411.Controllers
                     Text text = new Text 
                     {
                         Content = pageViewModel.Partials[i].Content,
-                        Position = pageViewModel.Partials[i].Position
+                        Position = pageViewModel.Partials[i].Position,
+                        Align = pageViewModel.Partials[i].Align,
+                        Valign = pageViewModel.Partials[i].Valign,
+                        FontSize = pageViewModel.Partials[i].FontSize,
+                        Bold = pageViewModel.Partials[i].Bold,
+                        Italic = pageViewModel.Partials[i].Italic
                     };
                     page.Partials.Add(text);
                 }
