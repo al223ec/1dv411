@@ -433,9 +433,9 @@ namespace _1dv411.Domain
             string endDateOrders = (lastOrder != null) ? lastOrder.Date.ToString("yyyy-MM-dd hh:mm:ss") : "";
 
             Shipment firstShipment = _unitOfWork.ShipmentRepository.GetOne(null, q => q.OrderBy(s => s.PostingDate));
-            string startDateShipments = (firstShipment != null) ? firstShipment.PostingDate.ToString("yyyy-mm-dd hh:mm:ss") : "";
+            string startDateShipments = (firstShipment != null) ? firstShipment.PostingDate.ToString("yyyy-MM-dd hh:mm:ss") : "";
             Shipment last = _unitOfWork.ShipmentRepository.GetOne(null, q => q.OrderByDescending(s => s.PostingDate));
-            string endDateShipments = (last != null) ? last.PostingDate.ToString("yyyy-mm-dd hh:mm:ss") : "";
+            string endDateShipments = (last != null) ? last.PostingDate.ToString("yyyy-MM-dd hh:mm:ss") : "";
             
             var stats = new {
                 totalOrders = totalOrders,
