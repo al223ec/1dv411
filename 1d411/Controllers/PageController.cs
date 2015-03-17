@@ -52,9 +52,6 @@ namespace _1d411.Controllers
         [Route("")]
         public IHttpActionResult CreatePage(PageViewModel pageViewModel)
         {
-            //TODO: Fetch partials
-           // Page newPage = data.page;
-           //_service.PageService.CreatePage(newPage);
             var page = pageViewModel.Page;
             page.Partials = new List<Partial>();
             for (int i = 0; i < pageViewModel.Partials.Count; i++)

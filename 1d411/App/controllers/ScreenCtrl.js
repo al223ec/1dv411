@@ -28,14 +28,14 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
         function setPages(pagesData) {
             $scope.pages = pagesData;
             var current = 0;
-            nextSlide($scope.pages[current]);
 
             var sliderFunc = function () {
                 timer = $timeout(function () {
-                    nextSlide($scope.pages[current]);
-                    current = (current + 1 >= $scope.pages.length) ? 0 : current + 1;
-
-                    timer = $timeout(sliderFunc, $scope.screen.timer);
+                    LayoutScreenService.getPage($scope.pages[current].id).success(function (data) {
+                        nextSlide(data);
+                        current = (current + 1 >= $scope.pages.length) ? 0 : current + 1;
+                        timer = $timeout(sliderFunc, $scope.screen.timer);
+                    });
                 }, $scope.screen.timer);
             };
             sliderFunc();

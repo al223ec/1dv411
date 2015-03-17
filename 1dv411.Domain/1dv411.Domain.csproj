@@ -67,12 +67,10 @@
     <Compile Include="DbEntities\PageScreen.cs" />
     <Compile Include="DbEntities\Order.cs" />
     <Compile Include="DbEntities\Partials\Partial.cs" />
-    <Compile Include="DbEntities\Partials\PartialTypes.cs" />
     <Compile Include="DbEntities\Screen.cs" />
     <Compile Include="DbEntities\Partials\Text.cs" />
     <Compile Include="DbEntities\Shipment.cs" />
     <Compile Include="DbEntities\Template.cs" />
-    <Compile Include="DbServices\IDbService.cs" />
     <Compile Include="DiagramData.cs" />
     <Compile Include="DiagramService.cs" />
     <Compile Include="IService.cs" />

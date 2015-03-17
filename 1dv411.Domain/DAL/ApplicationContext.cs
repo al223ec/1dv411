@@ -51,9 +51,6 @@ namespace _1dv411.Domain.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            //modelBuilder.HasDefaultSchema("app");
-            // One-to-many with Fluent API.
-            //modelBuilder.Entity<User>().HasMany<Tweet>(t => t.Tweets).WithRequired(t => t.User).HasForeignKey(t => t.UserId);
 
             base.OnModelCreating(modelBuilder);
         }
