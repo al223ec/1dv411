@@ -19,6 +19,11 @@ namespace _1dv411.Domain.DbEntities
         public virtual Page Page { get; set; }
 
         public int Position { get; set; }
+        public string Align { get; set; }
+        public string Valign { get; set; }
+        public bool Bold { get; set; }
+        public bool Italic { get; set; }
+        public int FontSize { get; set; }
 
         public abstract string PartialType { get; }
 

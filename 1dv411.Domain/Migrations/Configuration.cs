@@ -21,22 +21,22 @@ namespace _1dv411.Domain.Migrations
 
         protected override void Seed(_1dv411.Domain.DAL.ApplicationContext context)
         {
-            //SeedTemplates(context);
-            //SeedScreens(context);
-            //SeedPages(context);
-            //SeedPagePartials(context);
-            //SeedPageScreens(context);
+            SeedTemplates(context);
+            SeedScreens(context);
+            SeedPages(context);
+            SeedPagePartials(context);
+            SeedPageScreens(context);
 
             /*För att seeda fakeade ordrar och shipments*/
-            //var ordersThisYear = GetTestOrders(DateTime.Today);
-            //ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
-            //var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
-            //ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
-            //var shipmentsThisYear = GetTestShipments(DateTime.Today);
-            //shipmentsThisYear.ForEach(s => context.Shipments.AddOrUpdate(s));
-            //var shipmentsLastYear = GetTestShipments(DateTime.Today.AddYears(-1));
-            //shipmentsLastYear.ForEach(s => context.Shipments.AddOrUpdate(s));
-            //context.SaveChanges(); 
+            var ordersThisYear = GetTestOrders(DateTime.Today);
+            ordersThisYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            var ordersLastYear = GetTestOrders(DateTime.Today.AddYears(-1));
+            ordersLastYear.ForEach(o => context.Orders.AddOrUpdate(o));
+            var shipmentsThisYear = GetTestShipments(DateTime.Today);
+            shipmentsThisYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            var shipmentsLastYear = GetTestShipments(DateTime.Today.AddYears(-1));
+            shipmentsLastYear.ForEach(s => context.Shipments.AddOrUpdate(s));
+            context.SaveChanges(); 
         }
 
         private void SeedTemplates(_1dv411.Domain.DAL.ApplicationContext context)
