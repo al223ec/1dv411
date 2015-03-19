@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col w50">
                 <h4>Screens</h4>
-                <p>All currently screens in the system, click on to view.</p>
+                <p>All current screens in the system, click to display.</p>
                 <ul>
                     <li ng-repeat="s in screens">
                         <a href="/app/screen/{{s.id}}">{{s.name}}</a>
@@ -14,13 +14,9 @@
             </div>
             <div class="col w50">
                 <div class="row">
-                    <h3>Admin</h3>
-                    <a href="/app/admin/screens/">Administration</a>
-                </div>
-                <div class="row">
                     <h3>Statistics</h3>
                     <div class="row">
-                        <div class="col w50">Total amount of Orders</div>
+                        <div class="col w50">Orders</div>
                         <div class="col w50">{{stats.totalOrders}}</div>
                     </div>
                     <div class="row">
@@ -29,10 +25,10 @@
                     </div>
                     <div class="row">
                         <div class="col w50">To</div>
-                        <div class="col w50">{{stats.endDateOrder}}</div>
+                        <div class="col w50">{{stats.endDateOrders}}</div>
                     </div>
                     <div class="row">
-                        <div class="col w50">Total amount of Shipments</div>
+                        <div class="col w50">Shipments</div>
                         <div class="col w50">{{stats.totalShipments}}</div>
                     </div>
                     <div class="row">
@@ -44,28 +40,29 @@
                         <div class="col w50">{{stats.endDateShipments}}</div>
                     </div>
                 </div>
-                <div class="row">
-                    <h4>Seed database</h4>
-                    <p>Seeding the database with orders and shipments takes a long time because of the huge amount of rows in the databases. To seed use the URLs below.</p>
-                    <p>
-                        Ordrers one month at the time<br />
-                        /diagrams/seed-orders-for/{year:int}/{month:int}
-                    </p>
-                    <p>
-                        All orders(since 2007), several hundred thousands, probably takes more than an hour.<br />
-                        (inactivated)/diagrams/seed-all-live-orders
-                    </p>
-                    <p>
-                        Shipments on month at the time:<br />
-                        /diagrams/seed-shipments-for/{year:int}/{month:int}
-                    </p>
-                    <p>
-                        All shipments(since 2007), several hundred thousands, probably takes more than an hour.<br />
-                        (inaktiverad)/diagrams/seed-all-live-shipments
-                    </p>
-                </div>
 
             </div>
+        </div>
+
+        <div class="row">
+            <h4>Seed database</h4>
+            <p>Seeding the database with orders and shipments takes a long time because of the huge amount of rows in the databases. To seed use the URLs below.</p>
+            <p>
+                Ordrers one month at the time<br />
+                /diagrams/seed-orders-for/{year:int}/{month:int}
+            </p>
+            <p>
+                All orders(since 2007), several hundred thousands, probably takes more than an hour.<br />
+                (inactivated)/diagrams/seed-all-live-orders
+            </p>
+            <p>
+                Shipments on month at the time:<br />
+                /diagrams/seed-shipments-for/{year:int}/{month:int}
+            </p>
+            <p>
+                All shipments(since 2007), several hundred thousands, probably takes more than an hour.<br />
+                (inaktiverad)/diagrams/seed-all-live-shipments
+            </p>
         </div>
 
     </div>
