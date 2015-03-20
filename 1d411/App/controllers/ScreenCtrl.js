@@ -6,10 +6,12 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
         LayoutScreenService.getScreen($routeParams.id)
         .error(function (data, status, headers, config) {})
         .success(function (screenData, status, headers, config) {
+
             if (screenData != null) { //I dagsläget returnerar servern en 200 även om id inte finns i databasen men data är däremot null
                 $scope.screen = screenData;
                 LayoutScreenService.getPagesWithScreenId($scope.screen.id)
                 .success(function (pagesData) {
+
                     if(pagesData != null){
                         setPages(pagesData);
                     }
@@ -25,14 +27,13 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
 
         function setPages(pagesData) {
             $scope.pages = pagesData;
+            var timer;
             var current = 0;
             nextSlide($scope.pages[current]);
             current = (current + 1 >= $scope.pages.length) ? 0 : current + 1;
 
             var sliderFunc = function () {
                 timer = $timeout(function () {
-                    $scope.page = null;
-                    $scope.partials = null;
                     LayoutScreenService.getPage($scope.pages[current].id).success(function (data) {
                         nextSlide(data);
                         current = (current + 1 >= $scope.pages.length) ? 0 : current + 1;
@@ -41,13 +42,14 @@ screenModule.controller('ScreenController', ['$scope', 'LayoutScreenService', '$
                 }, $scope.screen.timer);
             };
             sliderFunc();
-            var timer;
+            
             $scope.$on('$destroy', function () {
                 $timeout.cancel(timer);
             });
         }
 
         function nextSlide(page) {
+
             $scope.page = page;
             var templateName = page.template.fileName == null ? "default.html" : page.template.fileName;
             var templateUrl = appConfig.templateUrlRoot + templateName;
